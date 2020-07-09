@@ -1,16 +1,12 @@
 <?php
+include("config.php");
 
-$db_password = $_ENV["mysql_password"];
 
-$conn = new mysqli('db', 'kiro_user', $db_password,'kiro');
-
-if($conn->connect_error){
-  die('Erreur lors de la connection à la base de donnée: ' .$conn->connect_error);
+if (isset($_SESSION['user'])){
+  print_r($_SESSION['user']);
 }
 
-
-
-echo "It is working; I do not know why";
-
-phpinfo();
+if (isset($_GET['inscr'])){ //On affiche un message pour signifier la bonne deconnexion
+  $msg = "Ton inscription a bien été prise en compte, il te reste à cliquer sur le lien envoyé par mail au chef d'équipe pour valider l'inscription, pense à vérifier dans tes spams.";
+}
 ?>
