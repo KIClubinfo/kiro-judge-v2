@@ -3,8 +3,8 @@
 const PORT = 8080;
 const ALLOWED_ORIGIN = ["kiro.enpc.org", "cxhome.org"]
 
-let env = process.argv[2] || 'dev';
-
+let envType = process.argv[2] || 'dev';
+let envDocker = (process.argv[3] === 'true') || false;
 
 const WebSocketServer = require('websocket').server;
 const http = require('http');
@@ -12,10 +12,10 @@ const mysql = require('mysql');
 
 // On ouvre la connection à la bdd
 let databaseConnection = mysql.createConnection({
-    host: "localhost",
+    host: envDocker ? 'db' : 'localhost',
     user: "kiro_user",
     database: "kiro",
-    port: 6033,
+    port: envDocker ? 3306 : 6033,
     password: process.env.mysql_password || ''
 })
 
@@ -58,7 +58,7 @@ let wsServer = new WebSocketServer({
 })
 
 function acceptConnectionFrom(origin) {
-    return (env === 'dev') ? true : ALLOWED_ORIGIN.includes(origin);
+    return (envType === 'dev') ? true : ALLOWED_ORIGIN.includes(origin);
 }
 
 let connections = {};
