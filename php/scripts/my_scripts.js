@@ -7,3 +7,8 @@ function validatePassword(){
     confirm_password.setCustomValidity('');
   }
 }
+
+function avance(aMasquer, aAfficher){
+  document.getElementById(aMasquer).style.display = "none";
+  document.getElementById(aAfficher).style.display = "block";
+}

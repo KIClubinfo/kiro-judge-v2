@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `kiro`.`users` (
   `nom` VARCHAR(100) NOT NULL ,
   `password` VARCHAR(128) NOT NULL ,
   `mail` VARCHAR(255) NOT NULL ,
-  `chef` BOOLEAN NOT NULL ,
+  `mdp_a_changer` BOOLEAN NOT NULL ,
   `tel` VARCHAR(15) NOT NULL ,
   `code_reinitialiser` VARCHAR(150) NULL DEFAULT NULL ,
   `ecole` VARCHAR(300) NOT NULL , PRIMARY KEY (`id`))
@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS `kiro`.`teams` (
   `nom` VARCHAR(180) NOT NULL ,
   `score` BIGINT NOT NULL ,
   `classement` INT NOT NULL ,
-  `code_valider` INT NOT NULL ,
   `valide` BOOLEAN NOT NULL ,
   `hub` INT NOT NULL ,
   `numero_emplacement` INT NOT NULL , PRIMARY KEY (`id`))

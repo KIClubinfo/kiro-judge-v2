@@ -65,8 +65,32 @@ class team
       echo "Erreur lors de la création de la classe team";
     }
   }
-
+  public function update_score($score){ //Pour mettre à jour le score de l'équipe
+      global $conn;
+      if ($req = $conn->prepare("SELECT score FROM teams WHERE id=?")) { //requete préparée
+          $req->bind_param("i", $this->id);
+          $req->execute();
+          $result = $req->get_result()->fetch_array(MYSQLI_ASSOC); //resulats de la requête
+          $req->close();
+          $score_ancien = $result['score'];
+          if ($score>$score_ancien){ //si le score est meilleur
+            if ($req3 = $conn->prepare("UPDATE teams SET score =? WHERE id=?")) {
+              $req3->bind_param("si", $score,$this->id);
+              $req3->execute();
+              $req3->close();
+              $this->score = $score;
+            }
+            else{
+            $erreur1 = "Erreur lors de la mise à jour du score dans le update de la base de donnée.";
+            }
+          }
+      }
+      else{
+        echo "Erreur lors de la mise à jour du score";
+      }
+  }
 }
+
 function sanitize_string($str) {
   global $conn;
 	$sanitize = mysqli_real_escape_string($conn,$str);
@@ -96,4 +120,5 @@ function sanitize_string($str) {
     <meta name="description" content="Le Kiro est un concours ouvert aux étudiants intéressés par la résolution effective d'un problème de recherche opérationnelle. Il est sous le format d'un hackaton de 6h.">
     <meta name="keywords" content="ponts et chaussées, ponts, chaussees, enpc, ponts parisTech, enseignement, ingénieur, bde, partenaires, clubs, activité, WEI, admissibles, alpha, plaquette, plaquette alpha, contact, cutlure, sport, ingénieur, finance, transport, élèves-ingénieurs, ingénieurs, conseil, prepa, classe prepa, cauchy, science, MMC, mecanique, finance, recherche operationnelle, recheche, operationnelle, renault, industrie, génie industrielle, programmation, python, c++, code, hackaton" />
     <meta name="author" content="Antonin Parrot">
+    <link href="scripts/style.css" rel="stylesheet" type="text/css" media="all">
 </head>

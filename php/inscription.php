@@ -108,23 +108,59 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
   else{ //formulaire pas envoyé
 
     ?>
-
     <form action ="" method="post" name="inscription">
-      <label for="prenom">Prénom:</label>
-      <input type="prenom" name="prenom" maxlength="100" required>
-      <label for="nom">Nom de famille:</label>
-      <input type="nom" name="nom" maxlength="100" required>
-      <label for="email">Email:</label>
-      <input type="email" name="email" maxlength="255" required>
-      <label for="password">Mot de passe (6 caractères minimum):</label>
-      <input minlength="6" type="password" name="password" onchange='validatePassword();' required>
-      <label for="password-verif">Mot de passe (vérification):</label>
-      <input minlength="6" type="password" name="password-verif" onchange='validatePassword();' required>
-      <label for="tel">Numéro de téléhpone:</label>
-      <input type="tel" name="tel" maxlength="15" required>
-      <label for="GCU">J'accepte les <a href="gcu.php">conditions générales d'utilisation</a></label>
-      <input type="checkbox" id="GCU" name="GCU" required>
-      <input type="submit" name="submit" value="Se connecter">
+      <div id="participant-1" style="display: block;">
+        <ul class="steps">
+          <li class="is-active">Participant 1</li>
+          <li>Participant 2</li>
+          <li>Participant 3</li>
+        </ul>
+        <label for="prenom-1">Prénom :</label>
+        <input type="text" name="prenom-1" maxlength="100" required> <br />
+        <label for="nom-1">Nom de famille:</label>
+        <input type="text" name="nom-1" maxlength="100" required> <br />
+        <label for="email-1">Email:</label>
+        <input type="email" name="email-1" maxlength="255" required> <br />
+        <label for="tel-1">Numéro de téléhpone:</label>
+        <input type="tel" name="tel-1" maxlength="15" required> <br />
+        <input type="button" value="Étape suivante" onclick="javascript:avance('participant-1', 'participant-2');">
+      </div>
+      <div id="participant-2" style="display: none;">
+        <ul class="steps">
+          <li>Participant 1</li>
+          <li class="is-active">Participant 2</li>
+          <li>Participant 3</li>
+        </ul>
+        <label for="prenom-2">Prénom :</label>
+        <input type="text" name="prenom-2" maxlength="100" required><br />
+        <label for="nom-2">Nom de famille:</label>
+        <input type="text" name="nom-2" maxlength="100" required><br />
+        <label for="email-2">Email:</label>
+        <input type="email" name="email-2" maxlength="255" required><br />
+        <label for="tel-2">Numéro de téléhpone:</label>
+        <input type="tel" name="tel-2" maxlength="15" required><br />
+        <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');"><br />
+        <input type="button" value="Étape suivante" onclick="javascript:avance('participant-2', 'participant-3');">
+      </div>
+      <div id="participant-3" style="display: none;">
+        <ul class="steps">
+          <li>Participant 1</li>
+          <li>Participant 2</li>
+          <li class="is-active">Participant 3</li>
+        </ul>
+        <label for="prenom-3">Prénom :</label>
+        <input type="text" name="prenom-3" maxlength="100" required><br />
+        <label for="nom-2">Nom de famille:</label>
+        <input type="text" name="nom-3" maxlength="100" required><br />
+        <label for="email-2">Email:</label>
+        <input type="email" name="email-3" maxlength="255" required><br />
+        <label for="tel-3">Numéro de téléhpone:</label>
+        <input type="tel" name="tel-3" maxlength="15" required><br />
+        <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
+        <input type="checkbox" id="GCU" name="GCU" required><br />
+        <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');"><br />
+        <input type="submit" name="submit" value="S'inscrire">
+      </div>
     </form>
     <?php
   }
@@ -162,5 +198,5 @@ if (isset($erreur)){
     <input type="submit" name="submit" value="Se connecter">
   <?php
 }
-include("footer.php")
+include("footer.php");
 ?>
