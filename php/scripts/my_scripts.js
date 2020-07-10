@@ -16,7 +16,6 @@ function avance(aMasquer, aAfficher){
       ancien.style.display = "none";
       nouveau.style.display = "block";
     }
-
   }
   else if (aMasquer === "participant-2"){ //Pour passer du 2 au 3, que si tout est valide
     if (document.getElementById("prenom-2").validity.valid && document.getElementById("nom-2").validity.valid && document.getElementById("email-2").validity.valid && document.getElementById("tel-2").validity.valid && document.getElementById("ecole-2").validity.valid){ //si tous les champs sont ok on envoie la suite
@@ -24,7 +23,7 @@ function avance(aMasquer, aAfficher){
       nouveau.style.display = "block";
     }
   }
-  else if (){
+  else if (aMasquer === "equipe"){
     if (document.getElementById("team-name").validity.valid){ //si tous les champs sont ok on envoie la suite
       ancien.style.display = "none";
       nouveau.style.display = "block";

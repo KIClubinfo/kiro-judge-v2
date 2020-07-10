@@ -6,7 +6,7 @@ $db_password = $_ENV["mysql_password"];
 
 setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
 
-$date_limite_inscription = strtotime("4-11-2020");
+$date_limite_inscription = strtotime("11.4.2020");
 
 $conn = new mysqli('db', 'kiro_user', $db_password,'kiro');
 
