@@ -9,6 +9,30 @@ function validatePassword(){
 }
 
 function avance(aMasquer, aAfficher){
-  document.getElementById(aMasquer).style.display = "none";
-  document.getElementById(aAfficher).style.display = "block";
+  var ancien = document.getElementById(aMasquer);
+  var nouveau = document.getElementById(aAfficher);
+  if (aMasquer === "participant-1"){ //Pour passer du 1 au 2, que si tout est valide
+    if (document.getElementById("prenom-1").validity.valid && document.getElementById("nom-1").validity.valid && document.getElementById("email-1").validity.valid && document.getElementById("tel-1").validity.valid && document.getElementById("ecole-1").validity.valid){ //si tous les champs sont ok on envoie la suite
+      ancien.style.display = "none";
+      nouveau.style.display = "block";
+    }
+
+  }
+  else if (aMasquer === "participant-2"){ //Pour passer du 2 au 3, que si tout est valide
+    if (document.getElementById("prenom-2").validity.valid && document.getElementById("nom-2").validity.valid && document.getElementById("email-2").validity.valid && document.getElementById("tel-2").validity.valid && document.getElementById("ecole-2").validity.valid){ //si tous les champs sont ok on envoie la suite
+      ancien.style.display = "none";
+      nouveau.style.display = "block";
+    }
+  }
+  else if (){
+    if (document.getElementById("team-name").validity.valid){ //si tous les champs sont ok on envoie la suite
+      ancien.style.display = "none";
+      nouveau.style.display = "block";
+    }
+
+  }
+  else{ //Si on n'avance pas alors trkl
+       ancien.style.display = "none";
+      nouveau.style.display = "block";
+  }
 }
