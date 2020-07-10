@@ -13,6 +13,19 @@ services:
       - 8123:80
     environment:
       - mysql_password=${mysql_password}
+  websocket:
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    container_name: node_12
+    depends_on:
+      - db
+    volumes:
+      - ./node:/usr/src/app/
+    ports:
+      - 8125:8080
+    environment:
+      - mysql_password=${mysql_password}
   db:
     container_name: mysql8
     image: mysql:8.0.20
