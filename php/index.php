@@ -7,7 +7,7 @@ if (isset($_SESSION['user'])){
 }
 
 if (isset($_GET['inscr'])){ //On affiche un message pour signifier la bonne deconnexion
-  $msg = "Ton inscription a bien été prise en compte, il te reste à cliquer sur le lien envoyé par mail au chef d'équipe pour valider l'inscription, pense à vérifier dans tes spams.";
+  $msg = "Ton inscription a bien été prise en compte, il te reste qu'à te connecter avec le mot de passe envoyé par mail, pense à vérifier dans tes spams.";
 }
 ?>
 <a href="inscription.php"> Inscription</a>

@@ -4,13 +4,34 @@ include("config.php");
 
 if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])){ //Il a envoyé le formulaire
-    if (isset($_POST['mail']) and !empty($_POST['mail']) and isset($_POST['password-bde']) and !empty($_POST['password-bde']) and isset($_POST['bde'])
-    and !empty($_POST['bde']) and isset($_POST['nom']) and !empty($_POST['nom']) and isset($_POST['prenom']) and !empty($_POST['prenom']) and isset($_POST['password']) and !empty($_POST['password'])){ //Si il a bien tout rempli
-      if (is_string($_POST['mail']) and is_string($_POST['password']) and is_string($_POST['prenom']) and is_string($_POST['password-bde']) and is_numeric($_POST['bde']) and is_string($_POST['nom']) ){ //il a bien envoyé des chaines de caractères
-        if (strlen($_POST['email'])<=255 and preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $_POST['email'])){ //Son email est valide
-          if (isset($_POST['GCU'])){ //gcu
-              if (strlen($_POST['nom'])<=100 and strlen($_POST['prenom'])<=100){ //nom prenom pas trop grands
-                if (strlen($_POST['password'])>=6){ //password assez long
+
+    if (isset($_POST['prenom-1']) and !empty($_POST['prenom-1']) and isset($_POST['prenom-2']) and !empty($_POST['prenom-2']) and isset($_POST['prenom-3'])
+    and !empty($_POST['prenom-3']) and
+    isset($_POST['nom-1']) and !empty($_POST['nom-1']) and isset($_POST['nom-2']) and !empty($_POST['nom-2']) and isset($_POST['nom-3'])
+    and !empty($_POST['nom-3']) and
+    isset($_POST['email-1']) and !empty($_POST['email-1']) and isset($_POST['email-2']) and !empty($_POST['email-2']) and isset($_POST['email-3'])
+    and !empty($_POST['email-3']) and
+    isset($_POST['tel-1']) and !empty($_POST['tel-1']) and isset($_POST['tel-2']) and !empty($_POST['tel-2']) and isset($_POST['tel-3'])
+    and !empty($_POST['tel-3'])){ //Si il a bien tout rempli
+
+      if (is_string($_POST['prenom-1']) and is_string($_POST['prenom-2']) and is_string($_POST['prenom-3']) and
+      is_string($_POST['nom-1']) and is_string($_POST['nom-2']) and is_string($_POST['nom-3']) and
+      is_string($_POST['email-1']) and is_string($_POST['email-2']) and is_string($_POST['email-3']) and
+      is_string($_POST['tel-1']) and is_string($_POST['tel-2']) and is_string($_POST['tel-3'])){ //il a bien envoyé des chaines de caractères
+
+        if (strlen($_POST['email-1'])<=255 and preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $_POST['email-1']) and
+            strlen($_POST['email-2'])<=255 and preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $_POST['email-2']) and
+            strlen($_POST['email-3'])<=255 and preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $_POST['email-3'])){ //Les emails sont valides
+
+          if (isset($_POST['GCU'])){ //gcu validées
+
+              if (strlen($_POST['nom-1'])<=100 and strlen($_POST['nom-2'])<=100 and strlen($_POST['nom-3'])<=100 and
+                  strlen($_POST['prenom-1'])<=100 and strlen($_POST['prenom-2'])<=100 and strlen($_POST['prenom-3']) <= 100){ //nom prenom pas trop grands
+
+                if (strlen($_POST['tel-1'])<=15 and preg_match("^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$", $_POST['tel-1']) and
+                    strlen($_POST['tel-2'])<=15 and preg_match("^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$", $_POST['tel-2']) and
+                    strlen($_POST['tel-3'])<=15 and preg_match("^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$", $_POST['tel-3'])){ //Les tel sont valides
+
                   $email = str_replace(array("\n","\r",PHP_EOL),'',$_POST['email']); //faille CRLF
                   //securisation des entrées
                   $safe_email = sanitize_string($email);
@@ -116,14 +137,14 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
           <li>Participant 3</li>
         </ul>
         <label for="prenom-1">Prénom :</label>
-        <input type="text" name="prenom-1" maxlength="100" required> <br />
+        <input type="text" id="prenom-1" name="prenom-1" maxlength="100" required> <br />
         <label for="nom-1">Nom de famille:</label>
-        <input type="text" name="nom-1" maxlength="100" required> <br />
+        <input type="text" id="nom-1" name="nom-1" maxlength="100" required> <br />
         <label for="email-1">Email:</label>
-        <input type="email" name="email-1" maxlength="255" required> <br />
+        <input type="email" id="email-1" name="email-1" maxlength="255" required> <br />
         <label for="tel-1">Numéro de téléhpone:</label>
-        <input type="tel" name="tel-1" maxlength="15" required> <br />
-        <input type="button" value="Étape suivante" onclick="javascript:avance('participant-1', 'participant-2');">
+        <input type="tel" id="tel-1" name="tel-1" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
+        <button onclick="javascript:avance('participant-1', 'participant-2');">Étape suivante </button>
       </div>
       <div id="participant-2" style="display: none;">
         <ul class="steps">
@@ -132,15 +153,15 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
           <li>Participant 3</li>
         </ul>
         <label for="prenom-2">Prénom :</label>
-        <input type="text" name="prenom-2" maxlength="100" required><br />
+        <input type="text" id="prenom-2" name="prenom-2" maxlength="100" required> <br />
         <label for="nom-2">Nom de famille:</label>
-        <input type="text" name="nom-2" maxlength="100" required><br />
+        <input type="text" id="nom-2" name="nom-2" maxlength="100" required> <br />
         <label for="email-2">Email:</label>
-        <input type="email" name="email-2" maxlength="255" required><br />
+        <input type="email" id="email-2" name="email-2" maxlength="255" required> <br />
         <label for="tel-2">Numéro de téléhpone:</label>
-        <input type="tel" name="tel-2" maxlength="15" required><br />
+        <input type="tel" id="tel-2" name="tel-2" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
         <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');"><br />
-        <input type="button" value="Étape suivante" onclick="javascript:avance('participant-2', 'participant-3');">
+        <button onclick="javascript:avance('participant-2', 'participant-3');">Étape suivante </button>
       </div>
       <div id="participant-3" style="display: none;">
         <ul class="steps">
@@ -155,7 +176,7 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
         <label for="email-2">Email:</label>
         <input type="email" name="email-3" maxlength="255" required><br />
         <label for="tel-3">Numéro de téléhpone:</label>
-        <input type="tel" name="tel-3" maxlength="15" required><br />
+        <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
         <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
         <input type="checkbox" id="GCU" name="GCU" required><br />
         <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');"><br />
@@ -174,28 +195,63 @@ else{ //si l'utilisateur est déjà connecté
 }
 if (isset($erreur)){
   //si on doit afficher le formulaire avec un message d'erreur
-  if ($req = $conn->prepare("SELECT id, nom_ecole FROM bde")) { //requete préparée
-      $req->execute();
-      $result = $req->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
-      $req->close();
-  }
+
   ?>
   <span class="erreur"><?php echo $erreur; ?> </span>
   <form action ="" method="post" name="inscription">
-    <label for="email" >Email:</label>
-    <input type="email" name="email" value="<?php if (isset($_POST['email'])){ echo htmlspecialchars($_POST['email']);}?>" required>
-    <label for="password">Mot de passe (8 caractères minimum):</label>
-    <input minlength="8" type="password" name="password" required>
-    <label for="prenom">Prénom:</label>
-    <input type="prenom" name="prenom" value="<?php if (isset($_POST['prenom'])){ echo htmlspecialchars($_POST['prenom']);}?>" required>
-    <label for="nom">Nom de famille:</label>
-    <input type="nom" name="nom" value="<?php if (isset($_POST['nom'])){ echo htmlspecialchars($_POST['nom']);}?>" required>
-
-    <label for="password-bde">Mot de passe du BDE:</label>
-    <input type="password" name="password-bde" required>
-    <label for="GCU">J'accepte les <a href="gcu.php">conditions générales d'utilisation</a></label>
-    <input type="checkbox" id="GCU" name="GCU" required>
-    <input type="submit" name="submit" value="Se connecter">
+    <div id="participant-1" style="display: block;">
+      <ul class="steps">
+        <li class="is-active">Participant 1</li>
+        <li>Participant 2</li>
+        <li>Participant 3</li>
+      </ul>
+      <label for="prenom-1">Prénom :</label>
+      <input type="text" id="prenom-1" name="prenom-1" maxlength="100" required> <br />
+      <label for="nom-1">Nom de famille:</label>
+      <input type="text" id="nom-1" name="nom-1" maxlength="100" required> <br />
+      <label for="email-1">Email:</label>
+      <input type="email" id="email-1" name="email-1" maxlength="255" required> <br />
+      <label for="tel-1">Numéro de téléhpone:</label>
+      <input type="tel" id="tel-1" name="tel-1" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
+      <button onclick="javascript:avance('participant-1', 'participant-2');">Étape suivante </button>
+    </div>
+    <div id="participant-2" style="display: none;">
+      <ul class="steps">
+        <li>Participant 1</li>
+        <li class="is-active">Participant 2</li>
+        <li>Participant 3</li>
+      </ul>
+      <label for="prenom-2">Prénom :</label>
+      <input type="text" id="prenom-2" name="prenom-2" maxlength="100" required> <br />
+      <label for="nom-2">Nom de famille:</label>
+      <input type="text" id="nom-2" name="nom-2" maxlength="100" required> <br />
+      <label for="email-2">Email:</label>
+      <input type="email" id="email-2" name="email-2" maxlength="255" required> <br />
+      <label for="tel-2">Numéro de téléhpone:</label>
+      <input type="tel" id="tel-2" name="tel-2" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
+      <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');"><br />
+      <button onclick="javascript:avance('participant-2', 'participant-3');">Étape suivante </button>
+    </div>
+    <div id="participant-3" style="display: none;">
+      <ul class="steps">
+        <li>Participant 1</li>
+        <li>Participant 2</li>
+        <li class="is-active">Participant 3</li>
+      </ul>
+      <label for="prenom-3">Prénom :</label>
+      <input type="text" name="prenom-3" maxlength="100" required><br />
+      <label for="nom-2">Nom de famille:</label>
+      <input type="text" name="nom-3" maxlength="100" required><br />
+      <label for="email-2">Email:</label>
+      <input type="email" name="email-3" maxlength="255" required><br />
+      <label for="tel-3">Numéro de téléhpone:</label>
+      <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
+      <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
+      <input type="checkbox" id="GCU" name="GCU" required><br />
+      <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');"><br />
+      <input type="submit" name="submit" value="S'inscrire">
+    </div>
+  </form>
   <?php
 }
 include("footer.php");
