@@ -1,20 +1,313 @@
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
 .steps{
+  display: flex;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-image: linear-gradient(rgb(40,40,40),rgb(90,90,90)) ;
   text-align: center;
+  font-size: 25px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
-
 
 .steps li{
   display: inline-block;
-  margin: 20px;
+  margin: 1.3%;
   color: #ccc;
-  padding-bottom: 5px;
+  flex-grow: 1;
+}
+
+.steps img{
+  display: inline-block;
+  margin: 1.25%;
+  margin-right: auto;
+  color: #ccc;
+  flex-basis: 3%;
+  flex-grow: 0;
+  width: 5%;
 }
 
 .steps li.is-active{
-  border-bottom: 1px solid #3498db;
-  color: #3498db;
+  text-shadow: #0fa6d3 0.5px 0 0.5px;
+  color: #0fa6d3;
+}
+
+.steps2{
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  margin-bottom: 5%;
+  padding: 0;
+  text-align: center;
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.steps2 li{
+  display: inline-block;
+  margin: 1.3%;
+  color: black;
+  flex-grow: 1;
+}
+
+.steps2 img{
+  display: inline-block;
+  margin: 1.25%;
+  margin-right: auto;
+  color: black;
+  flex-basis: 3%;
+  flex-grow: 0;
+  width: 5%;
+}
+
+.steps2 li.is-active{
+  text-shadow: #0fa6d3 0.5px 0 0.5px;
+  text-decoration: #0fa6d3;
+  color: #0fa6d3;
+}
+
+.container{
+  max-width: 70%;
+	padding: 0.625% 1.25%;
+	background: #f4f7f8;
+	margin: 3.125% auto;
+	padding: 1.25%;
+	background: #f4f7f8;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.container fieldset{
+	border: none;
+}
+.container legend {
+	font-size: 1.4em;
+	margin-bottom: 0.625%;
+}
+
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"],
+.container input[type="tel"],
+.container textarea,
+.container select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: #e8eeef;
+	color:black;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+  transition: background-color 0.2s ease-in-out;
+}
+.container input[type="text"]:focus,
+.container input[type="email"]:focus,
+.container input[type="password"]:focus,
+.container input[type="tel"]:focus,
+.container textarea:focus,
+.container select:focus{
+	background: #d2d9dd;
+}
+.container select{
+	-webkit-appearance: menulist-button;
+	height:35px;
+}
+.container .number {
+	background: #0fa6d3;
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+  margin-right: 4px;
+  margin-bottom: 25px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	border-radius: 15px 15px 15px 2px;
+}
+
+.container input[type="submit"],
+.container input[type="button"],
+button
+{
+  cursor: pointer;
+  position: relative;
+  display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: #0fa6d3;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	border: 1px solid #0e95c2;
+  border-width: 1px 1px 3px;
+  border-radius: 3px;
+  transition: background 0.2s ease-in-out;
+}
+
+.container input[type="submit"]:hover,
+.container input[type="button"]:hover,
+button:hover
+{
+	background: #0d84b1;
+}
+
+.container2{
+  display: flex;
+  justify-content: space-between;
+}
+.content {
+  overflow: hidden;
+  position: relative;
+}
+
+
+.content:before {
+  content: "";
+  position: fixed;
+  left: -5%;
+  top: -5%;
+  z-index: -1;
+
+  display: block;
+  background-image: url('../images/logo_kiro.png');
+  background-size:cover;
+  width: 110%;
+  height: 110%;
+
+  -webkit-filter: grayscale(40%);
+  -moz-filter: grayscale(40%);
+  -o-filter: grayscale(40%);
+  -ms-filter: grayscale(40%);
+  filter: grayscale(40%);
+}
+
+.erreur{
+  background-color: rgba(242, 28, 37, 0.1);
+  padding: 3%;
+  border-radius: 3px;
+  border: solid 2px #e62859 ;
+  text-align: center;
+  color: rgb(255,28,37) ;
+  margin-bottom: 5%;
+}
+
+@media screen and (max-width:1200 px){
+
+  .steps{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgb(40,40,40),rgb(90,90,90)) ;
+    text-align: center;
+    font-size: 11px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  .steps2{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+    text-align: center;
+    font-size: 11px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  .container{
+    max-width: 80%;
+    padding: 0.625% 1.25%;
+    background: #f4f7f8;
+    margin: 3.125% auto;
+    padding: 1.25%;
+    background: #f4f7f8;
+    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  .container .number {
+    background: #0fa6d3;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 13px;
+    margin-right: 4px;
+    margin-bottom: 25px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 2px;
+  }
+
+
+  .container legend {
+    font-size: 10px;
+    margin-bottom: 0.625%;
+  }
+
+  .container input[type="text"],
+  .container input[type="email"],
+  .container input[type="password"],
+  .container input[type="tel"],
+  .container textarea,
+  .container select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 9px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: #e8eeef;
+	color:black;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+  transition: background-color 0.2s ease-in-out;
+  }
+
+.container input[type="submit"],
+.container input[type="button"],
+button
+{
+  cursor: pointer;
+  position: relative;
+  display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: #0fa6d3;
+	font-size: 10px;
+	text-align: center;
+	font-style: normal;
+	border: 1px solid #0fa6d3;
+  border-width: 1px 1px 3px;
+  border-radius: 3px;
+  transition: background 0.2s ease-in-out;
+}
 }
