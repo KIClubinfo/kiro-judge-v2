@@ -3,14 +3,14 @@
 const PORT = 8080;
 const ALLOWED_ORIGIN = ["kiro.enpc.org", "cxhome.org"]
 
-let envType = process.argv[2] || 'dev';
-let envDocker = (process.argv[3] === 'true') || false;
+const envType = process.argv[2] || 'dev';
+const envDocker = (process.argv[3] === 'true') || false;
 
 const WebSocketServer = require('websocket').server;
 const http = require('http');
 const mysql = require('mysql');
 
-// On ouvre la connection à la bdd
+// On explique comment ouvrir une connection avec la bdd
 let databaseConnection = mysql.createConnection({
     host: envDocker ? 'db' : 'localhost',
     user: "kiro_user",
@@ -19,15 +19,44 @@ let databaseConnection = mysql.createConnection({
     password: process.env.mysql_password || ''
 })
 
-databaseConnection.connect(function (error) {
-    if (error) throw error;
-    console.log("database connected.");
+function updateLeaderboard(results) {
+    results.forEach(function(element, index, array) {
+        let sql_update_request = "UPDATE teams SET classement = " + (index + 1) + " WHERE id = " + element.id + ";";
 
-    databaseConnection.query("SHOW TABLES;", function (error, result) {
-        if (error) throw error;
-        console.log("Result: " + result.toString());
+        databaseConnection.query(sql_update_request, (error, results) => {
+            if (error) throw error;
+        })
     })
-})
+    console.log("Leaderboard updated.");
+}
+
+function notifyTeams(results) {
+    console.log(results);
+}
+
+function updateLeaderboardAndNotify() {
+    // On check si on est déjà connecté, sinon on se connecte.
+    if (databaseConnection.state === "disconnected") {
+        databaseConnection.connect(function (error) {
+            if (error) throw error;
+            console.log("database connected.");
+        })
+    }
+
+    // On récupére l'ensemble des équipes avec leur score, dans l'ordre décroissant
+    let sql_request = "SELECT * FROM teams ORDER BY score DESC;";
+
+    databaseConnection.query(sql_request, function (error, results) {
+        if (error) throw error;
+        updateLeaderboard(results);
+
+        // pa bô, apprend à faire du js Pierre....
+        databaseConnection.query(sql_request, function (error, results) {
+            if (error) throw error;
+            notifyTeams(results);
+        });
+    });
+}
 
 let server = http.createServer(function (request, response) {
     let origin = request.headers.host;
@@ -35,6 +64,7 @@ let server = http.createServer(function (request, response) {
         console.log((new Date()) + ' Received request for ' + request.url);
         if (request.url === '/refresh') {
             // Do some stuff here...
+            updateLeaderboardAndNotify();
             response.writeHead(200);
         } else {
             response.writeHead(404);
