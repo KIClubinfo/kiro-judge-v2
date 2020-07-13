@@ -3,9 +3,7 @@ session_start();
 
 $db_password = $_ENV["mysql_password"];
 
-
 setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
-
 $date_limite_inscription = strtotime("11.4.2020");
 
 $conn = new mysqli('db', 'kiro_user', $db_password,'kiro');
@@ -23,8 +21,7 @@ class user
   public $id_team;
   public $mail;
   public $ecole;
-  public $numero;
-  public $chef;
+  public $tel;
   public function __construct($id){ //il faut vérfier en amont la donnée ici !
     global $conn;
     $this->id = $id; // id
@@ -37,8 +34,8 @@ class user
         $this->nom = htmlspecialchars($result['nom']);
         $this->id_team = htmlspecialchars($result['id_team']);
         $this->mail = htmlspecialchars($result['mail']);
-        $this->numero = htmlspecialchars($result['numero']);
-        $this->chef = htmlspecialchars($result['chef']);
+        $this->tel = htmlspecialchars($result['tel']);
+        $this->ecole = htmlspecialchars($result['ecole']);
     }
     else{
       echo "Erreur lors de la création de la classe user";

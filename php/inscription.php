@@ -61,7 +61,7 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
                           $result4 = $req4->get_result()->fetch_array(MYSQLI_ASSOC); //resulats de la requête
                           $req4->close();
 
-                          if (empty($result4)){ //il ne faut pas qu'un compte existe deja avec un des mails
+                          if (empty($result4) and $safe_email_1 != $safe_email_2 and $safe_email_2 != $safe_email_3 and $safe_email_1 != $safe_email_3){ //il ne faut pas qu'un compte existe deja avec un des mails
 
 
                             $safe_nom_1 = ucfirst(sanitize_string($_POST['nom-1']));
@@ -96,40 +96,49 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
                                 $req4->close();
 
                                 if (empty($result4)){ //il ne faut pas qu'une team existe avec ce nom
+                                  if ($req44 = $conn->prepare("SELECT MAX(id) FROM teams")){//Savoir emplacement
+                                    $req44->execute();
+                                    $result44 = $req44->get_result()->fetch_array(MYSQLI_ASSOC); //resulats de la requête
+                                    $req44->close();   //selectionne l'emplacement max pour savoir le nouvel emplacement
+                                    $id_team = intval($result44['MAX(id)'])+ 1;
 
-                                  if ($req2 = $conn->prepare("INSERT INTO users (prenom, nom, password, mail, ecole, tel, mdp_a_changer) VALUES (?,?,?,?,?,?,1),(?,?,?,?,?,?,1),(?,?,?,?,?,?,1)")) { //Creation des 3 users
-                                    $req2->bind_param("ssssssssssssssssss", $safe_prenom_1,$safe_nom_1,$ready_password_1,$safe_email_1,$safe_ecole_1,$safe_tel_1,$safe_prenom_2,$safe_nom_2,$ready_password_2,$safe_email_2,$safe_ecole_2,$safe_tel_2,$safe_prenom_3,$safe_nom_3,$ready_password_3,$safe_email_3,$safe_ecole_3,$safe_tel_3);
-                                    $req2->execute();
-                                    $req2->close();
+                                    if ($req2 = $conn->prepare("INSERT INTO users (prenom, nom, password, mail, ecole, tel, mdp_a_changer,id_team) VALUES (?,?,?,?,?,?,1,?),(?,?,?,?,?,?,1,?),(?,?,?,?,?,?,1,?)")) { //Creation des 3 users
+                                      $req2->bind_param("ssssssissssssissssssi", $safe_prenom_1,$safe_nom_1,$ready_password_1,$safe_email_1,$safe_ecole_1,$safe_tel_1,$id_team,$safe_prenom_2,$safe_nom_2,$ready_password_2,$safe_email_2,$safe_ecole_2,$safe_tel_2,$id_team,$safe_prenom_3,$safe_nom_3,$ready_password_3,$safe_email_3,$safe_ecole_3,$safe_tel_3,$id_team);
+                                      $req2->execute();
+                                      $req2->close();
 
-                                    if ($req4 = $conn->prepare("SELECT MAX(numero_emplacement) FROM teams WHERE hub=?")){//Savoir emplacement
-                                      $req4->bind_param("i", $team_hub);
-                                      $req4->execute();
-                                      $result4 = $req4->get_result()->fetch_array(MYSQLI_ASSOC); //resulats de la requête
-                                      $req4->close();   //selectionne l'emplacement max pour savoir le nouvel emplacement
-                                      $valeur_emplacement = intval($result4['MAX(numero_emplacement)'])+ 1;
-                                      //Maintenant on créé la team
-                                      if ($req2 = $conn->prepare("INSERT INTO teams (nom, score, classement,valide,hub,numero_emplacement)
-                                      VALUES (?,0,0,0,?,?)")) { //Creation de la team
-                                        $req2->bind_param("sii", $team_name,$team_hub,$valeur_emplacement);
-                                        $req2->execute();
-                                        $req2->close();
+                                      if ($req4 = $conn->prepare("SELECT MAX(numero_emplacement) FROM teams WHERE hub=?")){//Savoir emplacement
+                                        $req4->bind_param("i", $team_hub);
+                                        $req4->execute();
+                                        $result4 = $req4->get_result()->fetch_array(MYSQLI_ASSOC); //resulats de la requête
+                                        $req4->close();   //selectionne l'emplacement max pour savoir le nouvel emplacement
+                                        $valeur_emplacement = intval($result4['MAX(numero_emplacement)'])+ 1;
+                                        //Maintenant on créé la team
+                                        if ($req2 = $conn->prepare("INSERT INTO teams (nom, score, classement,valide,hub,numero_emplacement)
+                                        VALUES (?,0,0,0,?,?)")) { //Creation de la team
+                                          $req2->bind_param("sii", $team_name,$team_hub,$valeur_emplacement);
+                                          $req2->execute();
+                                          $req2->close();
 
-                                        //JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
-                                        //Tu leur rappelles aussi leur team (htmlspecialchars($team_name)) et genre tu peux faire dedans du bonjour [prenom] (htmlspecialchars($safe_prenom_1), htmlspecialchars($safe_nom_1), )
-                                        //Faut que le mail soit smpatchique avec genre "a bientot ..."
+                                          //JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
+                                          //Tu leur rappelles aussi leur team (htmlspecialchars($team_name)) et genre tu peux faire dedans du bonjour [prenom] (htmlspecialchars($safe_prenom_1), htmlspecialchars($safe_nom_1), )
+                                          //Faut que le mail soit smpatchique avec genre "a bientot ..."
 
+                                        }
+                                        else{
+                                                $erreur = "Erreur lors de la création de la team.";
+                                        }
                                       }
                                       else{
-                                              $erreur = "Erreur lors de la création de la team.";
+                                        $erreur = "Erreur lors de la récupération de l'emplacement.";
                                       }
                                     }
                                     else{
-                                      $erreur = "Erreur lors de la récupération de l'emplacement.";
+                                            $erreur = "Erreur lors de la création d'un utilisateur.";
                                     }
-                                  }
-                                  else{
-                                          $erreur = "Erreur lors de la création d'un utilisateur.";
+                                  }else
+                                  {
+                                    $erreur = "Erreur lors de la récupération de l'id de la team.";
                                   }
                                 }
                                 else{

@@ -14,6 +14,7 @@ if (isset($_GET['inscr'])){ //On affiche un message pour signifier la bonne deco
 
 
 <a href="inscription.php"> Inscription</a>
+<a href="connexion.php"> Inscription</a>
 
 <?php
 include("footer.php");

@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `kiro`.`users` (
   `mail` VARCHAR(255) NOT NULL ,
   `mdp_a_changer` BOOLEAN NOT NULL ,
   `tel` VARCHAR(15) NOT NULL ,
-  `code_reinitialiser` VARCHAR(150) NULL DEFAULT NULL ,
+  `id_team` INT NOT NULL,
   `ecole` VARCHAR(300) NOT NULL , PRIMARY KEY (`id`))
   ENGINE = InnoDB;
 
