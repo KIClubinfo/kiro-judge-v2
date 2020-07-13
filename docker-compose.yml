@@ -51,3 +51,11 @@ services:
       - 8124:80
     depends_on:
       - db 
+  webinstaller:
+    build:
+      context: ./webinstaller
+    container_name: webinstaller_0
+    depends_on:
+      - db
+    environment:
+      - mysql_password=${mysql_password}

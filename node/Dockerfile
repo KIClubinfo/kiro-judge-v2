@@ -2,9 +2,9 @@ FROM node:12.18.2
 
 WORKDIR /usr/src/app
 COPY package.json ./
+RUN npm install nodemon -g
 RUN npm install
 
-COPY . .
 EXPOSE 8080
 
-CMD ["node", "index.js", "dev", "true"]
+CMD ["nodemon", "index.js", "dev", "true"]
