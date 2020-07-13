@@ -6,7 +6,7 @@ include("config.php");
 
 if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connecté
 
-  if (date("m.d.y") < $date_limite_inscription){ //Date inscription
+  if (date("m.d.y") <= $date_limite_inscription){ //Date inscription
 
     if (isset($_POST['submit'])){ //Il a envoyé le formulaire
 
@@ -119,10 +119,12 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
                                           $req2->bind_param("sii", $team_name,$team_hub,$valeur_emplacement);
                                           $req2->execute();
                                           $req2->close();
-
+                                          echo "ok";
                                           //JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
                                           //Tu leur rappelles aussi leur team (htmlspecialchars($team_name)) et genre tu peux faire dedans du bonjour [prenom] (htmlspecialchars($safe_prenom_1), htmlspecialchars($safe_nom_1), )
-                                          //Faut que le mail soit smpatchique avec genre "a bientot ..."
+                                          //Faut que le mail soit smpatchique avec genre "a bientot ...", bien remplir les headers
+
+                                          //Puis redirection vers page index
 
                                         }
                                         else{
@@ -186,86 +188,112 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
 
       ?>
       <form action ="" method="post" name="inscription">
-        <div id="equipe" style="display: block;">
-          <ul class="steps">
-            <li class="is-active">Équipe</li>
-            <li>Participant 1</li>
-            <li>Participant 2</li>
-            <li>Participant 3</li>
-          </ul>
-          <label for="team-name">Nom d'équipe :</label>
-          <input type="text" id="team-name" name="team-name" maxlength="180" required> <br />
-          <label for="team-hub">Choix du lieu:</label>
-          <select name="team-hub" id="team-hub">
-              <option value="1">Hub de l'École des Ponts</option>
-              <option value="2">Hub du plateau Saclay</option>
-          </select><br />
 
-          <button onclick="javascript:avance('equipe', 'participant-1');">Étape suivante </button>
+        <div id="equipe" style="display: block;" class="content">
+          <div class="container">
+            <ul class="steps2">
+              <li class="is-active">Équipe</li>
+              <li>Participant 1</li>
+              <li>Participant 2</li>
+              <li>Participant 3</li>
+            </ul>
+
+            <label for="team-name">Nom d'équipe :</label>
+            <input type="text" id="team-name" name="team-name" maxlength="180" required> <br />
+            <label for="team-hub">Choix du lieu:</label>
+            <select name="team-hub" id="team-hub">
+                <option value="1">Hub de l'École des Ponts</option>
+                <option value="2">Hub du plateau Saclay</option>
+            </select><br />
+
+            <input type="button" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
+          </div>
         </div>
-        </div>
-        <div id="participant-1" style="display: none;">
-          <ul class="steps">
-            <li>Équipe</li>
-            <li class="is-active">Participant 1</li>
-            <li>Participant 2</li>
-            <li>Participant 3</li>
-          </ul>
+
+        <div id="participant-1" style="display: none;" class="content">
+          <div class="container">
+            <ul class="steps2">
+              <li>Équipe</li>
+              <li class="is-active">Participant 1</li>
+              <li>Participant 2</li>
+              <li>Participant 3</li>
+            </ul>
+
+          <legend><div class="number">1</div> Informations personnelles</legend>
           <label for="prenom-1">Prénom :</label>
           <input type="text" id="prenom-1" name="prenom-1" maxlength="100" required> <br />
           <label for="nom-1">Nom de famille:</label>
           <input type="text" id="nom-1" name="nom-1" maxlength="100" required> <br />
+          <label for="ecole-1">École :</label>
+          <input type="text" id="ecole-1" name="ecole-1" maxlength="300" required> <br />
+          <legend><div class="number">2</div> Contact</legend>
           <label for="email-1">Email:</label>
           <input type="email" id="email-1" name="email-1" maxlength="255" required> <br />
           <label for="tel-1">Numéro de téléphone:</label>
           <input type="tel" id="tel-1" name="tel-1" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-          <label for="ecole-1">École :</label>
-          <input type="text" id="ecole-1" name="ecole-1" maxlength="300" required> <br />
-          <input type="button" value="Étape précédente" onclick="javascript:avance('participant-1', 'equipe');"><br />
-          <button onclick="javascript:avance('participant-1', 'participant-2');">Étape suivante </button>
-        </div>
-        <div id="participant-2" style="display: none;">
-          <ul class="steps">
-            <li>Équipe</li>
-            <li>Participant 1</li>
-            <li class="is-active">Participant 2</li>
-            <li>Participant 3</li>
-          </ul>
-          <label for="prenom-2">Prénom :</label>
-          <input type="text" id="prenom-2" name="prenom-2" maxlength="100" required> <br />
-          <label for="nom-2">Nom de famille:</label>
-          <input type="text" id="nom-2" name="nom-2" maxlength="100" required> <br />
-          <label for="email-2">Email:</label>
-          <input type="email" id="email-2" name="email-2" maxlength="255" required> <br />
-          <label for="tel-2">Numéro de téléphone:</label>
-          <input type="tel" id="tel-2" name="tel-2" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-          <label for="ecole-2">École :</label>
-          <input type="text" id="ecole-2" name="ecole-2" maxlength="300" required> <br />
-          <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');"><br />
-          <button onclick="javascript:avance('participant-2', 'participant-3');">Étape suivante </button>
-        </div>
-        <div id="participant-3" style="display: none;">
-          <ul class="steps">
-            <li>Équipe</li>
-            <li>Participant 1</li>
-            <li>Participant 2</li>
-            <li class="is-active">Participant 3</li>
-          </ul>
+
+          <div class="container2">
+            <input type="button" value="Étape précédente" onclick="javascript:avance('participant-1', 'equipe');">
+            <input type="button" value="Étape suivante" onclick="javascript:avance('participant-1', 'participant-2');">
+          </div>
+        </div></div>
+
+
+        <div id="participant-2" style="display: none;" class="content">
+          <div class="container">
+            <ul class="steps2">
+              <li>Équipe</li>
+              <li>Participant 1</li>
+              <li class="is-active">Participant 2</li>
+              <li>Participant 3</li>
+            </ul>
+            <legend><div class="number">1</div> Informations personnelles</legend>
+            <label for="prenom-2">Prénom :</label>
+            <input type="text" id="prenom-2" name="prenom-2" maxlength="100" required> <br />
+            <label for="nom-2">Nom de famille:</label>
+            <input type="text" id="nom-2" name="nom-2" maxlength="100" required> <br />
+            <label for="ecole-2">École :</label>
+            <input type="text" id="ecole-2" name="ecole-2" maxlength="300" required> <br />
+            <legend><div class="number">2</div> Contact</legend>
+            <label for="email-2">Email:</label>
+            <input type="email" id="email-2" name="email-2" maxlength="255" required> <br />
+            <label for="tel-2">Numéro de téléphone:</label>
+            <input type="tel" id="tel-2" name="tel-2" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
+
+            <div class="container2">
+              <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');">
+              <input type="button" value="Étape suivante" onclick="javascript:avance('participant-2', 'participant-3');">
+            </div>
+        </div></div>
+
+
+        <div id="participant-3" style="display: none;" class="content">
+          <div class="container">
+            <ul class="steps2">
+              <li>Équipe</li>
+              <li>Participant 1</li>
+              <li>Participant 2</li>
+              <li class="is-active">Participant 3</li>
+            </ul>
+          <legend><div class="number">1</div> Informations personnelles</legend>
           <label for="prenom-3">Prénom :</label>
           <input type="text" name="prenom-3" maxlength="100" required><br />
           <label for="nom-2">Nom de famille:</label>
           <input type="text" name="nom-3" maxlength="100" required><br />
+          <label for="ecole-3">École :</label>
+          <input type="text" id="ecole-3" name="ecole-3" maxlength="300" required> <br />
+          <legend><div class="number">2</div> Contact</legend>
           <label for="email-2">Email:</label>
           <input type="email" name="email-3" maxlength="255" required><br />
           <label for="tel-3">Numéro de téléphone:</label>
           <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-          <label for="ecole-3">École :</label>
-          <input type="text" id="ecole-3" name="ecole-3" maxlength="300" required> <br />
           <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
           <input type="checkbox" id="GCU" name="GCU" required><br />
-          <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');"><br />
-          <input type="submit" name="submit" value="S'inscrire">
-        </div>
+          <div class="container2">
+            <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
+            <input type="submit" name="submit" value="S'inscrire">
+          </div>
+        </div></div>
       </form>
       <?php
     }
@@ -273,13 +301,18 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
   else //Si date d'inscription dépassée
   {
     ?>
-    Les inscriptions sont closes
+    <div class="content">
+      <div class="erreur">Les inscriptions sont closes.</div>
+    </div>
+
     <?php
   }
 }
 else{ //si l'utilisateur est déjà connecté
   ?>
-  Vous êtes déjà connecté.
+  <div class="content">
+    <div class="erreur">Vous êtes déjà connecté.</div>
+  </div>
   <?php
 }
 
@@ -287,89 +320,117 @@ if (isset($erreur)){
   //si on doit afficher le formulaire avec un message d'erreur
 
   ?>
-  <span class="erreur"><?php echo $erreur; ?> </span>
-  <form action ="" method="post" name="inscription">
-    <div id="equipe" style="display: block;">
-      <ul class="steps">
-        <li class="is-active">Équipe</li>
-        <li>Participant 1</li>
-        <li>Participant 2</li>
-        <li>Participant 3</li>
-      </ul>
-      <label for="team-name">Nom d'équipe :</label>
-      <input type="text" id="team-name" name="team-name" maxlength="180" value="<?php if (isset($_POST['team-name'])){ echo htmlspecialchars($_POST['team-name']); }?>" required> <br />
-      <label for="team-hub">Choix du lieu:</label>
-      <select name="team-hub" id="team-hub">
-          <option value="1" <?php if  (isset($_POST['team-hub'])){ if ($_POST['team-hub']==1){ echo 'selected';}}?> >Hub de l'École des Ponts</option>
-          <option value="2" <?php if  (isset($_POST['team-hub'])){ if ($_POST['team-hub']==2){ echo 'selected';}}?> >Hub du plateau Saclay</option>
-      </select><br />
 
-      <button onclick="javascript:avance('equipe', 'participant-1');">Étape suivante </button>
+
+  <form action ="" method="post" name="inscription">
+
+    <div id="equipe" style="display: block;" class="content">
+      <div class="container">
+        <ul class="steps2">
+          <li class="is-active">Équipe</li>
+          <li>Participant 1</li>
+          <li>Participant 2</li>
+          <li>Participant 3</li>
+        </ul>
+        <div class="erreur"><?php echo $erreur; ?> </div>
+        <label for="team-name">Nom d'équipe :</label>
+        <input type="text" id="team-name" name="team-name" maxlength="180" value="<?php if (isset($_POST['team-name'])){ echo htmlspecialchars($_POST['team-name']); }?>" required> <br />
+        <label for="team-hub">Choix du lieu:</label>
+        <select name="team-hub" id="team-hub">
+            <option value="1" <?php if  (isset($_POST['team-hub'])){ if ($_POST['team-hub']==1){ echo 'selected';}}?> >Hub de l'École des Ponts</option>
+            <option value="2" <?php if  (isset($_POST['team-hub'])){ if ($_POST['team-hub']==2){ echo 'selected';}}?> >Hub du plateau Saclay</option>
+        </select>
+
+        <input type="button" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
+      </div>
     </div>
-    </div>
-    <div id="participant-1" style="display: none;">
-      <ul class="steps">
-        <li>Équipe</li>
-        <li class="is-active">Participant 1</li>
-        <li>Participant 2</li>
-        <li>Participant 3</li>
-      </ul>
+
+    <div id="participant-1" style="display: none;" class="content">
+      <div class="container">
+        <ul class="steps2">
+          <li>Équipe</li>
+          <li class="is-active">Participant 1</li>
+          <li>Participant 2</li>
+          <li>Participant 3</li>
+        </ul>
+
+      <legend><div class="number">1</div> Informations personnelles</legend>
       <label for="prenom-1">Prénom :</label>
       <input type="text" id="prenom-1" name="prenom-1" value="<?php if (isset($_POST['prenom-1'])){ echo htmlspecialchars($_POST['prenom-1']); }?>" maxlength="100" required> <br />
       <label for="nom-1">Nom de famille:</label>
-      <input type="text" id="nom-1" name="nom-1" value="<?php if (isset($_POST['nom-1'])){ echo htmlspecialchars($_POST['nom-1']); }?>"  maxlength="100" required> <br />
+      <input type="text" id="nom-1" name="nom-1" value="<?php if (isset($_POST['nom-1'])){ echo htmlspecialchars($_POST['nom-1']); }?>" maxlength="100" required> <br />
+      <label for="ecole-1">École :</label>
+      <input type="text" id="ecole-1" name="ecole-1" value="<?php if (isset($_POST['ecole-1'])){ echo htmlspecialchars($_POST['ecole-1']); }?>" maxlength="300" required> <br />
+      <legend><div class="number">2</div> Contact</legend>
       <label for="email-1">Email:</label>
       <input type="email" id="email-1" name="email-1" value="<?php if (isset($_POST['email-1'])){ echo htmlspecialchars($_POST['email-1']); }?>" maxlength="255" required> <br />
       <label for="tel-1">Numéro de téléphone:</label>
-      <input type="tel" id="tel-1" name="tel-1" maxlength="15" value="<?php if (isset($_POST['tel-1'])){ echo htmlspecialchars($_POST['tel-1']); }?>"  pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-      <label for="ecole-1">École :</label>
-      <input type="text" id="ecole-1" name="ecole-1" value="<?php if (isset($_POST['ecole-1'])){ echo htmlspecialchars($_POST['ecole-1']); }?>"  maxlength="300" required> <br />
-      <input type="button" value="Étape précédente" onclick="javascript:avance('participant-1', 'equipe');"><br />
-      <button onclick="javascript:avance('participant-1', 'participant-2');">Étape suivante </button>
-    </div>
-    <div id="participant-2" style="display: none;">
-      <ul class="steps">
-        <li>Équipe</li>
-        <li>Participant 1</li>
-        <li class="is-active">Participant 2</li>
-        <li>Participant 3</li>
-      </ul>
-      <label for="prenom-2">Prénom :</label>
-      <input type="text" id="prenom-2" name="prenom-2" maxlength="100" value="<?php if (isset($_POST['prenom-2'])){ echo htmlspecialchars($_POST['prenom-2']); }?>"  required> <br />
-      <label for="nom-2">Nom de famille:</label>
-      <input type="text" id="nom-2" name="nom-2" maxlength="100" value="<?php if (isset($_POST['nom-2'])){ echo htmlspecialchars($_POST['nom-2']); }?>"  required> <br />
-      <label for="email-2">Email:</label>
-      <input type="email" id="email-2" name="email-2" maxlength="255" value="<?php if (isset($_POST['email-2'])){ echo htmlspecialchars($_POST['email-2']); }?>"  required> <br />
-      <label for="tel-2">Numéro de téléphone:</label>
-      <input type="tel" id="tel-2" name="tel-2" maxlength="15" value="<?php if (isset($_POST['tel-2'])){ echo htmlspecialchars($_POST['tel-2']); }?>"  pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-      <label for="ecole-2">École :</label>
-      <input type="text" id="ecole-2" name="ecole-2" maxlength="300" value="<?php if (isset($_POST['ecole-2'])){ echo htmlspecialchars($_POST['ecole-2']); }?>"  required> <br />
-      <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');"><br />
-      <button onclick="javascript:avance('participant-2', 'participant-3');">Étape suivante </button>
-    </div>
-    <div id="participant-3" style="display: none;">
-      <ul class="steps">
-        <li>Équipe</li>
-        <li>Participant 1</li>
-        <li>Participant 2</li>
-        <li class="is-active">Participant 3</li>
-      </ul>
+      <input type="tel" id="tel-1" name="tel-1" maxlength="15" value="<?php if (isset($_POST['tel-1'])){ echo htmlspecialchars($_POST['tel-1']); }?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
+
+      <div class="container2">
+        <input type="button" value="Étape précédente" onclick="javascript:avance('participant-1', 'equipe');">
+        <input type="button" value="Étape suivante" onclick="javascript:avance('participant-1', 'participant-2');">
+      </div>
+    </div></div>
+
+
+    <div id="participant-2" style="display: none;" class="content">
+      <div class="container">
+        <ul class="steps2">
+          <li>Équipe</li>
+          <li>Participant 1</li>
+          <li class="is-active">Participant 2</li>
+          <li>Participant 3</li>
+        </ul>
+        <legend><div class="number">1</div> Informations personnelles</legend>
+        <label for="prenom-2">Prénom :</label>
+        <input type="text" id="prenom-2" name="prenom-2" value="<?php if (isset($_POST['prenom-2'])){ echo htmlspecialchars($_POST['prenom-2']); }?>" maxlength="100" required> <br />
+        <label for="nom-2">Nom de famille:</label>
+        <input type="text" id="nom-2" name="nom-2" value="<?php if (isset($_POST['nom-2'])){ echo htmlspecialchars($_POST['nom-2']); }?>" maxlength="100" required> <br />
+        <label for="ecole-2">École :</label>
+        <input type="text" id="ecole-2" name="ecole-2" value="<?php if (isset($_POST['ecole-2'])){ echo htmlspecialchars($_POST['ecole-2']); }?>" maxlength="300" required> <br />
+        <legend><div class="number">2</div> Contact</legend>
+        <label for="email-2">Email:</label>
+        <input type="email" id="email-2" name="email-2" value="<?php if (isset($_POST['email-2'])){ echo htmlspecialchars($_POST['email-2']); }?>" maxlength="255" required> <br />
+        <label for="tel-2">Numéro de téléphone:</label>
+        <input type="tel" id="tel-2" name="tel-2" maxlength="15" value="<?php if (isset($_POST['tel-2'])){ echo htmlspecialchars($_POST['tell-2']); }?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
+
+        <div class="container2">
+          <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');">
+          <input type="button" value="Étape suivante" onclick="javascript:avance('participant-2', 'participant-3');">
+        </div>
+    </div></div>
+
+
+    <div id="participant-3" style="display: none;" class="content">
+      <div class="container">
+        <ul class="steps2">
+          <li>Équipe</li>
+          <li>Participant 1</li>
+          <li>Participant 2</li>
+          <li class="is-active">Participant 3</li>
+        </ul>
+      <legend><div class="number">1</div> Informations personnelles</legend>
       <label for="prenom-3">Prénom :</label>
-      <input type="text" name="prenom-3" maxlength="100" value="<?php if (isset($_POST['prenom-3'])){ echo htmlspecialchars($_POST['prenom-3']); }?>" required><br />
+      <input type="text" name="prenom-3" maxlength="100"value="<?php if (isset($_POST['prenom-3'])){ echo htmlspecialchars($_POST['prenom-3']); }?>"  required><br />
       <label for="nom-2">Nom de famille:</label>
       <input type="text" name="nom-3" maxlength="100" value="<?php if (isset($_POST['nom-3'])){ echo htmlspecialchars($_POST['nom-3']); }?>" required><br />
+      <label for="ecole-3">École :</label>
+      <input type="text" id="ecole-3" name="ecole-3" value="<?php if (isset($_POST['ecole-3'])){ echo htmlspecialchars($_POST['ecole-3']); }?>" maxlength="300" required> <br />
+      <legend><div class="number">2</div> Contact</legend>
       <label for="email-2">Email:</label>
       <input type="email" name="email-3" maxlength="255" value="<?php if (isset($_POST['email-3'])){ echo htmlspecialchars($_POST['email-3']); }?>" required><br />
       <label for="tel-3">Numéro de téléphone:</label>
-      <input type="tel" name="tel-3" maxlength="15" value="<?php if (isset($_POST['tel-3'])){ echo htmlspecialchars($_POST['tel-3']); }?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-      <label for="ecole-3">École :</label>
-      <input type="text" id="ecole-3" name="ecole-3" maxlength="300" value="<?php if (isset($_POST['ecole-3'])){ echo htmlspecialchars($_POST['ecole-3']); }?>" required> <br />
+      <input type="tel" name="tel-3" value="<?php if (isset($_POST['tel-3'])){ echo htmlspecialchars($_POST['tel-3']); }?>" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
       <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
       <input type="checkbox" id="GCU" name="GCU" required><br />
-      <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');"><br />
-      <input type="submit" name="submit" value="S'inscrire">
-    </div>
+      <div class="container2">
+        <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
+        <input type="submit" name="submit" value="S'inscrire">
+      </div>
+    </div></div>
   </form>
+
   <?php
 }
 

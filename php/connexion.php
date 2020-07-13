@@ -10,19 +10,45 @@ if (!(isset($_SESSION['user']))){ //Si l'utilisateur n'est pas connecté
           $safe_email = sanitize_string($_POST['email']);
           $ready_password = sanitize_string($_POST['password']);
 
-          if ($req = $conn->prepare("SELECT * FROM users WHERE email=?")) {
+          if ($req = $conn->prepare("SELECT * FROM users WHERE mail=?")) {
             $req->bind_param("s", $safe_email);
             $req->execute();
             $result = $req->get_result()->fetch_array(MYSQLI_ASSOC);
             $req->close();
             if (!empty($result) and password_verify($ready_password, $result['password'])){ //l'utilisateur a le bon mot de passe
               if (!$result['mdp_a_changer']){ //s'il ne doit pas modifier son mot de passe
-
+                if ($req3 = $conn->prepare("UPDATE teams SET valide=1 WHERE id=?")) { //Si la team n'est pas encore valide on la valide
+                  $req3->bind_param("i", intval($result['team_id']));
+                  $req3->execute();
+                  $req3->close();
+                  $user = new user($result['id']);// mettre en session
+                  $_SESSION['user'] = $user;
+                  $team = new team($result['team_id']);
+                  $_SESSION['team'] = $team;
+                  header('Location: index.php?co=1');
+                  exit();
+                }
+                else{
+                  $erreur = "Erreur lors de la mise à jour du status de l'équipe.";
+                }
 
               }
-              else{
+              else{ //Doit changer son mot de passe
+                $_SESSION['id'] = intval($result['id']); //ca sera utile pour modifier le mot de passe
+                $_SESSION['team_id'] = intval($result['team_id']); //ca sera utile pour modifier le mot de passe
                 ?>
-                php formulaire changer son mot de passe
+                <div class="content">
+                  <div class="container">
+                    <form action="" method="post">
+                      <p>Vous devez modifier votre mot de passe.</p>
+                      <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
+                      <input minlength="6" type="password" name="password" onchange='validatePassword();' required>
+                      <label for="password-verif">Nouveau mot de passe (vérification):</label>
+                      <input minlength="6" type="password" name="password-verif" onchange='validatePassword();' required>
+                      <input type="submit" name="submit22" value="Changer mon mot de passe">
+                    </form>
+                  </div>
+                </div>
                 <?php
               }
 
@@ -52,32 +78,109 @@ if (!(isset($_SESSION['user']))){ //Si l'utilisateur n'est pas connecté
   }
   else{ //formulaire non envoyé
     ?>
-    <form action="" method="post">
-      <label for="mail">Email :</label>
-      <input maxlength="255" type="email" name="email" required><br />
-      <label for="password">Mot de passe :</label>
-      <input minlength="6" type="password" name="password" required><br />
-      <input type="submit" name="submit" value="Se connecter">
-    </form>
+    <div class="content">
+      <div class="container">
+        <form action="" method="post">
+          <label for="mail">Email :</label>
+          <input maxlength="255" type="email" name="email" required><br />
+          <label for="password">Mot de passe :</label>
+          <input minlength="6" type="password" name="password" required><br />
+          <a align="right" href="oublie.php">Mot de passe oublié</a>
+          <input type="submit" name="submit" value="Se connecter">
+        </form>
+      </div>
+    </div>
     <?php
   }
 
 }
 else{
     ?>
-    Vous êtes déjà connectés.
+    <div class="content">
+      <div class="erreur">Vous êtes déjà connecté.</div>
+    </div>
   <?php
 }
 
+if (isset($erreur)){
+  //si on doit afficher le formulaire avec un message d'erreur
+ ?>
+ <div class="content">
+   <div class="container">
+     <div class="erreur"><?php echo $erreur; ?></div>
+     <form action="" method="post">
+       <label for="mail">Email :</label>
+       <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) { echo htmlspecialchars($_POST['email']); } ?>" required><br />
+       <label for="password">Mot de passe :</label>
+       <input minlength="6" type="password" name="password" required><br />
+       <a align="right" href="oublie.php">Mot de passe oublié</a>
+       <input type="submit" name="submit" value="Se connecter">
+     </form>
+   </div>
+ </div>
+ <?php
+}
 
 
+if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSION['id']))){  //S'il a envoyé le changement de mot de passe
+    if  (isset($_POST['password-verif']) and !empty($_POST['password-verif']) and isset($_POST['password']) and !empty($_POST['password'])){ //Si il a bien tout rempli
+      if (is_string($_POST['password']) and is_string($_POST['password-verif'])){ //il a bien envoyé des chaines de caractères
+        $safe_password = sanitize_string($_POST['password']);
+        $safe_password_verif = sanitize_string($_POST['password-verif']);
+        $ready_password = password_hash($safe_password, PASSWORD_BCRYPT);
 
+        if ($safe_password === $safe_password_verif){ //password correpondent
+          if ($req3 = $conn->prepare("UPDATE users SET password =?, mdp_a_changer=0 WHERE id=?")) { //Il pourra désormais se connecter
+            $req3->bind_param("si", $ready_password,$_SESSION['id']);
+            $req3->execute();
+            $req3->close();
+            $user = new user($_SESSION['id']);// mettre en session
+            $_SESSION['user'] = $user;
+            $team = new team($_SESSION['team_id']);
+            $_SESSION['team'] = $team;
+            unset($_SESSION['id']); //On supprime cette variable et on connecte l'user
+            unset($_SESSION['team_id']); //On supprime cette variable et on connecte l'user
+            header('Location: index.php?co2=1');
+            exit();
+          }
+          else{
+            $erreur22 = "Erreur lors de la mise à jour du mot de passe.";
+          }
+        }
+        else{
+          $erreur22 = "Les deux mots de passe ne correspondent pas.";
+
+        }
+      }
+      else{
+        $erreur22 = "Vous n'avez pas entré des chaînes de caractères.";
+      }
+    }
+    else{
+      $erreur22 = "Vous n'avez pas rempli tous les champs.";
+    }
+
+  }
+
+if (isset($erreur22)){
+  ?>
+  <div class="content">
+    <div class="container">
+      <div class="erreur"><?php echo $erreur22; ?></div>
+      <form action="" method="post">
+        <p>Vous devez modifier votre mot de passe.</p>
+        <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
+        <input minlength="6" type="password" name="password" onchange='validatePassword();' required>
+        <label for="password-verif">Nouveau mot de passe (vérification):</label>
+        <input minlength="6" type="password" name="password-verif" onchange='validatePassword();' required>
+        <input type="submit" name="submit22" value="Changer mon mot de passe">
+      </form>
+    </div>
+  </div>
+  <?php
+}
 ?>
 
-<label for="password">Mot de passe (6 caractères minimum):</label>
-<input minlength="6" type="password" name="password" onchange='validatePassword();' required>
-<label for="password-verif">Mot de passe (vérification):</label>
-<input minlength="6" type="password" name="password-verif" onchange='validatePassword();' required>
 
 <?php
 include("footer.php");
