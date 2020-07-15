@@ -10,6 +10,8 @@ const WebSocketServer = require('websocket').server;
 const http = require('http');
 const mysql = require('mysql');
 
+let last_result;
+
 // On explique comment ouvrir une connection avec la bdd
 let databaseConnection = mysql.createConnection({
     host: envDocker ? 'db' : 'localhost',
@@ -20,18 +22,25 @@ let databaseConnection = mysql.createConnection({
 })
 
 function updateLeaderboard(results) {
-    results.forEach(function(element, index, array) {
+    results.forEach(function(element, index) {
+        if (element.classement === (index + 1)) return;
         let sql_update_request = "UPDATE teams SET classement = " + (index + 1) + " WHERE id = " + element.id + ";";
 
         databaseConnection.query(sql_update_request, (error, results) => {
             if (error) throw error;
         })
     })
+
+    for (let i = 0; i < results.length; i++) {
+        results[i].classement = (i + 1);
+    }
+
     console.log("Leaderboard updated.");
 }
 
 function notifyTeams(results) {
-    console.log(results);
+    console.log(JSON.stringify(results))
+    broadcast(JSON.stringify(results));
 }
 
 function updateLeaderboardAndNotify() {
@@ -48,13 +57,9 @@ function updateLeaderboardAndNotify() {
 
     databaseConnection.query(sql_request, function (error, results) {
         if (error) throw error;
+        last_result = results;
         updateLeaderboard(results);
-
-        // pa bô, apprend à faire du js Pierre....
-        databaseConnection.query(sql_request, function (error, results) {
-            if (error) throw error;
-            notifyTeams(results);
-        });
+        notifyTeams(results);
     });
 }
 
@@ -107,16 +112,11 @@ wsServer.on('request', function (request) {
     connections[connection.id] = connection;
 
     console.log((new Date()) + ' Connection accepted with Connection ID : ' + connection.id);
-    connection.on('message', function(message) {
-        if (message.type === 'utf8') {
-            console.log('Received Message: ' + message.utf8Data);
-            connection.sendUTF(message.utf8Data);
-        }
-        else if (message.type === 'binary') {
-            console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
-            connection.sendBytes(message.binaryData);
-        }
-    });
+    if (!last_result) {
+        updateLeaderboardAndNotify();
+    } else {
+        sendToConnectionId(connection.id, JSON.stringify(last_result))
+    }
     connection.on('close', function(reasonCode, description) {
         console.log((new Date()) + ' Connection ' + connection.id + ' disconnected.');
         delete connections[connection.id];
@@ -140,4 +140,3 @@ function sendToConnectionId(connectionID, data) {
         connection.send(data);
     }
 }
-
