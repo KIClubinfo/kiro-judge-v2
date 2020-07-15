@@ -18,14 +18,14 @@ if (!(isset($_SESSION['user']))){ //Si l'utilisateur n'est pas connecté
             if (!empty($result) and password_verify($ready_password, $result['password'])){ //l'utilisateur a le bon mot de passe
               if (!$result['mdp_a_changer']){ //s'il ne doit pas modifier son mot de passe
                 if ($req3 = $conn->prepare("UPDATE teams SET valide=1 WHERE id=?")) { //Si la team n'est pas encore valide on la valide
-                  $req3->bind_param("i", intval($result['team_id']));
+                  $req3->bind_param("i", intval($result['id_team']));
                   $req3->execute();
                   $req3->close();
                   $user = new user($result['id']);// mettre en session
                   $_SESSION['user'] = $user;
-                  $team = new team($result['team_id']);
+                  $team = new team($result['id_team']);
                   $_SESSION['team'] = $team;
-                  header('Location: index.php?co=1');
+                  header('Location: index.php?co');
                   exit();
                 }
                 else{
@@ -35,12 +35,14 @@ if (!(isset($_SESSION['user']))){ //Si l'utilisateur n'est pas connecté
               }
               else{ //Doit changer son mot de passe
                 $_SESSION['id'] = intval($result['id']); //ca sera utile pour modifier le mot de passe
-                $_SESSION['team_id'] = intval($result['team_id']); //ca sera utile pour modifier le mot de passe
+                $_SESSION['id_team'] = intval($result['id_team']); //ca sera utile pour modifier le mot de passe
+                include("header.php");
                 ?>
+
                 <div class="content">
                   <div class="container">
                     <form action="" method="post">
-                      <p>Vous devez modifier votre mot de passe.</p>
+                      <div class="erreur">Vous devez modifier votre mot de passe.</div>
                       <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
                       <input minlength="6" type="password" name="password" onchange='validatePassword();' required>
                       <label for="password-verif">Nouveau mot de passe (vérification):</label>
@@ -76,7 +78,8 @@ if (!(isset($_SESSION['user']))){ //Si l'utilisateur n'est pas connecté
     }
 
   }
-  else{ //formulaire non envoyé
+  else if (!isset($_POST['submit22'])){ //formulaire non envoyé
+    include("header.php");
     ?>
     <div class="content">
       <div class="container">
@@ -85,7 +88,9 @@ if (!(isset($_SESSION['user']))){ //Si l'utilisateur n'est pas connecté
           <input maxlength="255" type="email" name="email" required><br />
           <label for="password">Mot de passe :</label>
           <input minlength="6" type="password" name="password" required><br />
-          <a align="right" href="oublie.php">Mot de passe oublié</a>
+          <div style="text-align: right">
+            <a align="right" href="oublie.php">Mot de passe oublié</a>
+          </div>
           <input type="submit" name="submit" value="Se connecter">
         </form>
       </div>
@@ -95,6 +100,7 @@ if (!(isset($_SESSION['user']))){ //Si l'utilisateur n'est pas connecté
 
 }
 else{
+    include("header.php");
     ?>
     <div class="content">
       <div class="erreur">Vous êtes déjà connecté.</div>
@@ -104,6 +110,7 @@ else{
 
 if (isset($erreur)){
   //si on doit afficher le formulaire avec un message d'erreur
+  include("header.php");
  ?>
  <div class="content">
    <div class="container">
@@ -113,7 +120,9 @@ if (isset($erreur)){
        <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) { echo htmlspecialchars($_POST['email']); } ?>" required><br />
        <label for="password">Mot de passe :</label>
        <input minlength="6" type="password" name="password" required><br />
-       <a align="right" href="oublie.php">Mot de passe oublié</a>
+       <div style="text-align: right">
+         <a align="right" href="oublie.php">Mot de passe oublié</a>
+       </div>
        <input type="submit" name="submit" value="Se connecter">
      </form>
    </div>
@@ -136,11 +145,11 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
             $req3->close();
             $user = new user($_SESSION['id']);// mettre en session
             $_SESSION['user'] = $user;
-            $team = new team($_SESSION['team_id']);
+            $team = new team($_SESSION['id_team']);
             $_SESSION['team'] = $team;
             unset($_SESSION['id']); //On supprime cette variable et on connecte l'user
-            unset($_SESSION['team_id']); //On supprime cette variable et on connecte l'user
-            header('Location: index.php?co2=1');
+            unset($_SESSION['id_team']); //On supprime cette variable et on connecte l'user
+            header('Location: index.php?co2');
             exit();
           }
           else{
@@ -163,16 +172,17 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
   }
 
 if (isset($erreur22)){
+  include("header.php");
   ?>
   <div class="content">
     <div class="container">
       <div class="erreur"><?php echo $erreur22; ?></div>
       <form action="" method="post">
-        <p>Vous devez modifier votre mot de passe.</p>
+        <div class="erreur">Vous devez modifier votre mot de passe.</div>
         <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
-        <input minlength="6" type="password" name="password" onchange='validatePassword();' required>
+        <input minlength="6" id="password" type="password" name="password" onchange='validatePassword();' required>
         <label for="password-verif">Nouveau mot de passe (vérification):</label>
-        <input minlength="6" type="password" name="password-verif" onchange='validatePassword();' required>
+        <input minlength="6" id="password-verif" type="password" name="password-verif" onchange='validatePassword();' required>
         <input type="submit" name="submit22" value="Changer mon mot de passe">
       </form>
     </div>
