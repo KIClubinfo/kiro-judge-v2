@@ -1,18 +1,13 @@
 const mysql = require('mysql');
+const tools = require('./tools');
 const randomstring = require('randomstring');
+
 const populationSize = process.argv[2] || 0;
-const envDocker = process.argv[3] || true;
 
 const TEAM_NAME_LENGTH = 8;
 const SCORE_MAX = 1024;
 
-let databaseConnection = mysql.createConnection({
-    host: envDocker ? 'db' : 'localhost',
-    user: "kiro_user",
-    database: "kiro",
-    port: envDocker ? 3306 : 6033,
-    password: process.env.mysql_password || ''
-})
+let databaseConnection = tools.databaseConnection;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));

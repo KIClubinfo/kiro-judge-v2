@@ -1,7 +1,11 @@
 'use strict';
 
 const PORT = 8080;
+// For websockets.
 const ALLOWED_ORIGIN = ["kiro.enpc.org", "cxhome.org"];
+// For HTTP requests. Seems legit because if docker-compose is configured correctly, only containers can call this
+// address.
+const ALLOWED_HOST = ["node_12:8080"];
 
 const envType = process.argv[2] || 'dev';
 const envDocker = (process.argv[3] === 'true') || false;
@@ -64,8 +68,8 @@ function updateLeaderboardAndNotify() {
 }
 
 let server = http.createServer(function (request, response) {
-    let origin = request.headers.host;
-    if (acceptConnectionFrom(origin)) {
+    let host = request.headers.host;
+    if (acceptConnectionTo(host)) {
         console.log((new Date()) + ' Received request for ' + request.url);
         if (request.url === '/refresh') {
             // Do some stuff here...
@@ -75,7 +79,7 @@ let server = http.createServer(function (request, response) {
             response.writeHead(404);
         }
     } else {
-        console.log('Connection refused from : ' + origin);
+        console.log('Connection refused from : ' + host);
         response.writeHead(403);
     }
 
@@ -94,6 +98,10 @@ let wsServer = new WebSocketServer({
 
 function acceptConnectionFrom(origin) {
     return (envType === 'dev') ? true : ALLOWED_ORIGIN.includes(origin);
+}
+
+function acceptConnectionTo(host) {
+    return (envType === 'dev') ? true : ALLOWED_HOST.includes(host);
 }
 
 let connections = {};

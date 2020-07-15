@@ -1,13 +1,7 @@
 const mysql = require('mysql');
-const envDocker = process.argv[2] || true;
+const tools = require('./tools');
 
-let databaseConnection = mysql.createConnection({
-    host: envDocker ? 'db' : 'localhost',
-    user: "kiro_user",
-    database: "kiro",
-    port: envDocker ? 3306 : 6033,
-    password: process.env.mysql_password || ''
-});
+let databaseConnection = tools.databaseConnection;
 
 if (databaseConnection.state === "disconnected") {
     databaseConnection.connect(function (error) {
