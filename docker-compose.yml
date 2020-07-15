@@ -20,12 +20,11 @@ services:
     container_name: node_12
     depends_on:
       - db
-    volumes:
-      - ./node:/usr/src/app/
     ports:
       - 8125:8080
     environment:
       - mysql_password=${mysql_password}
+      - NODE_ENV=production
   db:
     container_name: mysql8
     image: mysql:8.0.20
@@ -56,6 +55,14 @@ services:
     build:
       context: ./webinstaller
     container_name: webinstaller_0
+    depends_on:
+      - db
+    environment:
+      - mysql_password=${mysql_password}
+  webtest:
+    build:
+      context: ./webtest
+    container_name: webtest_0
     depends_on:
       - db
     environment:

@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const envDocker = process.argv[2] || false;
+const envDocker = process.argv[2] || true;
 
 let databaseConnection = mysql.createConnection({
     host: envDocker ? 'db' : 'localhost',

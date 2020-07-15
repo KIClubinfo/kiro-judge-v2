@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const randomstring = require('randomstring');
 const populationSize = process.argv[2] || 0;
-const envDocker = process.argv[3] || false;
+const envDocker = process.argv[3] || true;
 
 const TEAM_NAME_LENGTH = 8;
 const SCORE_MAX = 1024;

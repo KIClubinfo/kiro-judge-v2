@@ -1,7 +1,7 @@
 'use strict';
 
 const PORT = 8080;
-const ALLOWED_ORIGIN = ["kiro.enpc.org", "cxhome.org"]
+const ALLOWED_ORIGIN = ["kiro.enpc.org", "cxhome.org"];
 
 const envType = process.argv[2] || 'dev';
 const envDocker = (process.argv[3] === 'true') || false;
@@ -100,6 +100,8 @@ let connections = {};
 let connectionIDCounter = 0;
 
 wsServer.on('request', function (request) {
+    console.log("Connection attempt...");
+
     if (!acceptConnectionFrom(request.origin)) {
         // Make sure we only accept requests from an allowed origin
         request.reject();
