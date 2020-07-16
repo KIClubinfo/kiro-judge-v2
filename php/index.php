@@ -7,8 +7,6 @@ if (isset($_SESSION['user'])){
   print_r($_SESSION['team']);
 }
 
-$vv = new team(2);
-print_r($vv);
 
 if (isset($_GET['inscr'])){ //On affiche un message pour signifier la bonne inscription
   $msg = "Ton inscription a bien été prise en compte, il te reste qu'à te connecter avec le mot de passe envoyé par mail, pense à vérifier dans tes spams.";

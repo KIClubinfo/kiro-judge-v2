@@ -1,4 +1,2 @@
 mot de passe oublié
-
-connexion ==> num emplace
 mail php inscri 

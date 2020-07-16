@@ -61,8 +61,7 @@ class team
         $this->score = htmlspecialchars($result['score']);
         $this->classement = htmlspecialchars($result['classement']);
         $this->hub = htmlspecialchars($result['hub']);
-        $this->$numero_emplacement = 'test1';
-        $this->$numero_emplacement = 'test2_'.htmlspecialchars($result['numero_emplacement']).'_test3';
+        $this->numero_emplacement = htmlspecialchars($result['numero_emplacement']);
 
     }
     else{
@@ -85,6 +84,8 @@ class team
               $req3->execute();
               $req3->close();
               $this->score = $score;
+              $contents = file_get_contents("http://node_12:8080/refresh"); //mise à jour des classements
+
             }
             else{
             $erreur1 = "Erreur lors de la mise à jour du score dans le update de la base de donnée.";
