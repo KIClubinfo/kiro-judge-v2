@@ -22,6 +22,7 @@ class user
   public $mail;
   public $ecole;
   public $tel;
+  public $admin;
   public function __construct($id){ //il faut vérfier en amont la donnée ici !
     global $conn;
     $this->id = $id; // id
@@ -31,6 +32,7 @@ class user
         $result = $req->get_result()->fetch_array(MYSQLI_ASSOC); //resulats de la requête
         $req->close();
         $this->prenom = htmlspecialchars($result['prenom']);
+        $this->admin =  $result['admin'];
         $this->nom = htmlspecialchars($result['nom']);
         $this->id_team = htmlspecialchars($result['id_team']);
         $this->mail = htmlspecialchars($result['mail']);
@@ -49,6 +51,8 @@ class team
   public $score;
   public $classement;
   public $hub;
+  public $nom;
+  public $valide;
   public $numero_emplacement; //le numéro de sa table dans le hub
   public function __construct($id){ //il faut vérfier en amont la donnée ici !
     global $conn;
@@ -59,7 +63,9 @@ class team
         $result = $req->get_result()->fetch_array(MYSQLI_ASSOC); //resulats de la requête
         $req->close();
         $this->score = htmlspecialchars($result['score']);
+        $this->valide = $result['valide'];
         $this->classement = htmlspecialchars($result['classement']);
+        $this->nom = htmlspecialchars($result['nom']);
         $this->hub = htmlspecialchars($result['hub']);
         $this->numero_emplacement = htmlspecialchars($result['numero_emplacement']);
 
@@ -102,6 +108,15 @@ function sanitize_string($str) {
   global $conn;
 	$sanitize = mysqli_real_escape_string($conn,$str);
 	return $sanitize;
+}
+
+function is_admin() { //renvoie true si l'user est un admin
+  if (isset($_SESSION['user'])){
+    if ($_SESSION['user']->admin){
+      return True;
+    }
+  }
+  return False;
 }
 
 ?>

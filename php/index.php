@@ -21,14 +21,24 @@ if (isset($_GET['deco'])){ //On affiche un message pour signifier la bonne conne
   $msg = "Tu a bien été déconnecté.";
 }
 
+if (isset($_GET['change'])){ //On affiche un message pour signifier la bonne connexion
+  $msg = "Ton nouveau mot de passe vous a été envoyé par email.";
+}
+
+if (isset($_GET['maj_admin'])){ //On affiche un message pour signifier la bonne connexion
+  $msg = "Les données de l'utilisateur ont été mises à jour.";
+}
 echo $msg;
+
 ?>
 
 
 
 <a href="inscription.php"> Inscription</a> <br />
 <a href="connexion.php"> Connexion</a> <br />
+<a href="teams.php?id_team=11"> Teams</a> <br />
 <a href="deconnexion.php"> Deconnexion</a> <br />
+<?php if(is_admin()) { echo '<a href="edit_info_admin.php"> Editer des infos</a> <br />'; } ?>
 
 <?php
 include("footer.php");

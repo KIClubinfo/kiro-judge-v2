@@ -119,7 +119,6 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
                                           $req2->bind_param("sii", $team_name,$team_hub,$valeur_emplacement);
                                           $req2->execute();
                                           $req2->close();
-                                          echo "ok";
                                           echo $password3;
 
                                           //JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
@@ -397,7 +396,7 @@ if (isset($erreur)){
         <label for="email-2">Email:</label>
         <input type="email" id="email-2" name="email-2" onkeydown = "if (event.keyCode == 13)  document.getElementById('button-3').click()" value="<?php if (isset($_POST['email-2'])){ echo htmlspecialchars($_POST['email-2']); }?>" maxlength="255" required> <br />
         <label for="tel-2">Numéro de téléphone:</label>
-        <input type="tel" id="tel-2" name="tel-2" onkeydown = "if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" value="<?php if (isset($_POST['tel-2'])){ echo htmlspecialchars($_POST['tell-2']); }?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
+        <input type="tel" id="tel-2" name="tel-2" onkeydown = "if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" value="<?php if (isset($_POST['tel-2'])){ echo htmlspecialchars($_POST['tel-2']); }?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
 
         <div class="container2">
           <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');">
