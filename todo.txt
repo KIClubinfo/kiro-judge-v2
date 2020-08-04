@@ -1,0 +1,2 @@
+envoie mail inscription et mdp oublié
+graphe evolution des scores
