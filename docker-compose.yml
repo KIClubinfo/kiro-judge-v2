@@ -45,7 +45,6 @@ services:
     restart: always
     environment:
       PMA_HOST: db
-      PMA_USER: root
     ports:
       - 8124:80
     depends_on:
