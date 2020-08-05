@@ -43,8 +43,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5
     restart: always
-    environment:
-      PMA_HOST: db
+
     ports:
       - 8124:80
     depends_on:
