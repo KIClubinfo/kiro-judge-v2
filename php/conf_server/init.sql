@@ -21,4 +21,4 @@ CREATE TABLE IF NOT EXISTS `kiro`.`teams` (
   `numero_emplacement` INT NOT NULL , PRIMARY KEY (`id`))
   ENGINE = InnoDB;
 
-INSERT INTO `users` (`id`, `prenom`, `nom`, `password`, `mail`, `mdp_a_changer`, `tel`, `id_team`, `admin`,`ecole`) VALUES ('1', 'admin', 'admin', '$2y$10$0R6d.079M9MYb9QzAuVV1udzg8Y1zhHv5cckqdir/66ijwenjq.hG', 'admin@kiro.enpc.org', '1', '00000000', '0','1', 'KI');
+INSERT INTO `kiro`.`users` (`id`, `prenom`, `nom`, `password`, `mail`, `mdp_a_changer`, `tel`, `id_team`, `admin`,`ecole`) VALUES ('1', 'admin', 'admin', '$2y$10$0R6d.079M9MYb9QzAuVV1udzg8Y1zhHv5cckqdir/66ijwenjq.hG', 'admin@kiro.enpc.org', '1', '00000000', '0','1', 'KI');
