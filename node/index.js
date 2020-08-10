@@ -1,8 +1,8 @@
 'use strict';
 
 const PORT = 8080;
-// For websockets.
-const ALLOWED_ORIGIN = ["kiro.enpc.org", "cxhome.org"];
+// For websockets. Are we gonna have trouble with proxies ?
+const ALLOWED_ORIGIN = ["http://kiro.enpc.org", "http://cxhome.org:8123"];
 // For HTTP requests. Seems legit because if docker-compose is configured correctly, only containers can call this
 // address.
 const ALLOWED_HOST = ["node_12:8080"];

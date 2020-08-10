@@ -10,6 +10,3 @@ else{ //Sinon
   header('Location: index.php');
   exit();
 }
-
-include("footer.php")
-?>

@@ -9,7 +9,9 @@
   "author": "Pierre Glandon",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "mysql": "^2.18.1",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "xs-blowfish": "^2.0.0"
   }
 }

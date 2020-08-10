@@ -121,6 +121,7 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
                                           $req2->close();
                                           echo $password3;
 
+                                          // TODO : JEAN-LOUP
                                           //JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
                                           //Tu leur rappelles aussi leur team (htmlspecialchars($team_name)) et genre tu peux faire dedans du bonjour [prenom] (htmlspecialchars($safe_prenom_1), htmlspecialchars($safe_nom_1), )
                                           //Faut que le mail soit smpatchique avec genre "a bientot ...", bien remplir les headers
