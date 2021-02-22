@@ -33,7 +33,6 @@ echo $msg;
 ?>
 
 
-
 <a href="inscription.php"> Inscription</a> <br />
 <a href="connexion.php"> Connexion</a> <br />
 <a href="teams.php?id_team=11"> Teams</a> <br />

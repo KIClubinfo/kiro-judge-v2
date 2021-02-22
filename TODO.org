@@ -1,0 +1,35 @@
+#+TITLE: Todo
+* Everywhere
+** TODO add some fucking CSS
+* When not connected
+** TODO Index
+- [ ] add redirection when connected.
+- [ ] Display only relevant information.
+** TODO Inscription
+- [ ] Display passwords at the end when sucessful.
+- [ ] Be more clear on what is expected in each field.
+- [ ] Send an email to validate inscription
+* When connected
+** TODO Page d'accueil
+- [ ] Presentation du concours
+- [ ] Reglement
+- [ ] Deroulement (horaire + specifite en ligne)
+- [ ] Sponsor
+** TODO Leaderboard
+- [ ] Accessible pour les non-connectes (highlight quand on est connecte)
+- [ ] En temps reel
+** TODO Page d'equipe
+- [ ] Score actuel
+- [ ] Derniere submission
+- [ ] Submission d'un nouveau resultat
+- [ ] Graphe de l'evolution du score ? (Optionnal)
+** TODO Page de contact
+- [ ] Mails et numero de telephones des orgas
+- [ ] Lien vers le discord/slack du concours
+** TODO Page de profil
+- [ ] Changement de mot de passe
+- [ ] Photo de profil ?
+- [ ] Rectification champs
+** TODO Sidebar
+- [ ] Lien vers les onglets precedents
+- [ ] Bouton de deconnexion

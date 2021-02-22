@@ -119,14 +119,19 @@ if (!(isset($_SESSION['user']))){ //vérifie que l'utilisateur n'est pas connect
                                           $req2->bind_param("sii", $team_name,$team_hub,$valeur_emplacement);
                                           $req2->execute();
                                           $req2->close();
+
+                                          echo $password1;
+                                          echo "\n";
+                                          echo $password2;
+                                          echo "\n";
                                           echo $password3;
 
                                           // TODO : JEAN-LOUP
-                                          //JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
-                                          //Tu leur rappelles aussi leur team (htmlspecialchars($team_name)) et genre tu peux faire dedans du bonjour [prenom] (htmlspecialchars($safe_prenom_1), htmlspecialchars($safe_nom_1), )
-                                          //Faut que le mail soit smpatchique avec genre "a bientot ...", bien remplir les headers
+                                          // JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
+                                          // Tu leur rappelles aussi leur team (htmlspecialchars($team_name)) et genre tu peux faire dedans du bonjour [prenom] (htmlspecialchars($safe_prenom_1), htmlspecialchars($safe_nom_1), )
+                                          // Faut que le mail soit smpatchique avec genre "a bientot ...", bien remplir les headers
 
-                                          //Puis redirection vers page index&inscr
+                                          // Puis redirection vers page index&inscr
 
                                         }
                                         else{
