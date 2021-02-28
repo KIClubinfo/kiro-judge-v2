@@ -1,37 +1,51 @@
 
 # Table of Contents
 
-1.  [Everywhere](#orgbbf4441)
-    1.  [add some fucking CSS](#orgeb66abb)
-2.  [When not connected](#orgddfbdef)
-    1.  [Index](#org3624eab)
-    2.  [Inscription](#orgbb446cb)
-3.  [When connected](#orga927ef3)
-    1.  [Page d&rsquo;accueil](#org615f65c)
-    2.  [Leaderboard](#orgad1961e)
-    3.  [Page d&rsquo;equipe](#orgd3c64de)
-    4.  [Page de contact](#orgb9027a0)
-    5.  [Page de profil](#orgd1aae65)
-    6.  [Sidebar](#org2212c7c)
+1.  [Everywhere](#org7c05353)
+    1.  [Add some fucking CSS](#org22e55bb)
+    2.  [Add guard not to display anything before a certain date](#orgf920272)
+2.  [Admin Page](#org877ef21)
+3.  [When not connected](#org5b8c955)
+    1.  [Index](#org58fb8f1)
+    2.  [Inscription](#org3570910)
+4.  [When connected](#orgf2f1e12)
+    1.  [Page d&rsquo;accueil](#org5e47456)
+    2.  [Leaderboard](#org943b314)
+    3.  [Page d&rsquo;equipe](#org0d63538)
+    4.  [Page de contact](#orga8cd599)
+    5.  [Page de profil](#org63d9e29)
+    6.  [Sidebar](#org67725a5)
 
 
 
-<a id="orgbbf4441"></a>
+<a id="org7c05353"></a>
 
 # Everywhere
 
 
-<a id="orgeb66abb"></a>
+<a id="org22e55bb"></a>
 
-## TODO add some fucking CSS
+## TODO Add some fucking CSS
 
 
-<a id="orgddfbdef"></a>
+<a id="orgf920272"></a>
+
+## TODO Add guard not to display anything before a certain date
+
+
+<a id="org877ef21"></a>
+
+# TODO Admin Page
+
+-   [ ] Ability to change password of any user.
+
+
+<a id="org5b8c955"></a>
 
 # When not connected
 
 
-<a id="org3624eab"></a>
+<a id="org58fb8f1"></a>
 
 ## TODO Index
 
@@ -39,21 +53,21 @@
 -   [ ] Display only relevant information.
 
 
-<a id="orgbb446cb"></a>
+<a id="org3570910"></a>
 
 ## TODO Inscription
 
--   [ ] Display passwords at the end when sucessful.
+-   [X] Display passwords at the end when sucessful.
 -   [ ] Be more clear on what is expected in each field.
 -   [ ] Send an email to validate inscription
 
 
-<a id="orga927ef3"></a>
+<a id="orgf2f1e12"></a>
 
 # When connected
 
 
-<a id="org615f65c"></a>
+<a id="org5e47456"></a>
 
 ## TODO Page d&rsquo;accueil
 
@@ -63,7 +77,7 @@
 -   [ ] Sponsor
 
 
-<a id="orgad1961e"></a>
+<a id="org943b314"></a>
 
 ## TODO Leaderboard
 
@@ -71,7 +85,7 @@
 -   [ ] En temps reel
 
 
-<a id="orgd3c64de"></a>
+<a id="org0d63538"></a>
 
 ## TODO Page d&rsquo;equipe
 
@@ -81,7 +95,7 @@
 -   [ ] Graphe de l&rsquo;evolution du score ? (Optionnal)
 
 
-<a id="orgb9027a0"></a>
+<a id="orga8cd599"></a>
 
 ## TODO Page de contact
 
@@ -89,7 +103,7 @@
 -   [ ] Lien vers le discord/slack du concours
 
 
-<a id="orgd1aae65"></a>
+<a id="org63d9e29"></a>
 
 ## TODO Page de profil
 
@@ -98,7 +112,7 @@
 -   [ ] Rectification champs
 
 
-<a id="org2212c7c"></a>
+<a id="org67725a5"></a>
 
 ## TODO Sidebar
 

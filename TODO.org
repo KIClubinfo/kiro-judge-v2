@@ -1,12 +1,15 @@
 #+TITLE: Todo
 * Everywhere
-** TODO add some fucking CSS
+** TODO Add some fucking CSS
+** TODO Add guard not to display anything before a certain date
+* TODO Admin Page
+- [ ] Ability to change password of any user.
 * When not connected
 ** TODO Index
 - [ ] add redirection when connected.
 - [ ] Display only relevant information.
 ** TODO Inscription
-- [ ] Display passwords at the end when sucessful.
+- [X] Display passwords at the end when sucessful.
 - [ ] Be more clear on what is expected in each field.
 - [ ] Send an email to validate inscription
 * When connected
