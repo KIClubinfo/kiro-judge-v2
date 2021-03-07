@@ -8,7 +8,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // Fichier de config ? Modification à la main ? Variable d'environnement ?
 // Tout cela ne me plait guère...
-var WEBSOCKET_URL = "ws://cxhome.org:8125";
+var WEBSOCKET_URL = "ws://localhost:8125";
 
 var Score = function (_React$Component) {
     _inherits(Score, _React$Component);
