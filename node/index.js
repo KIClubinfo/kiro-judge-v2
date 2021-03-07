@@ -2,10 +2,10 @@
 
 const PORT = 8080;
 // For websockets. Are we gonna have trouble with proxies ?
-const ALLOWED_ORIGIN = ["http://kiro.enpc.org", "http://cxhome.org:8123", "*", "http://localhost:8123",];
+const ALLOWED_ORIGIN = ["http://kiro.enpc.org", "http://cxhome.org:8123", "*"];
 // For HTTP requests. Seems legit because if docker-compose is configured correctly, only containers can call this
 // address.
-const ALLOWED_HOST = ["node_12:8080", "*"];
+const ALLOWED_HOST = ["node_12:8080"];
 
 const envType = process.argv[2] || 'dev';
 const envDocker = (process.argv[3] === 'true') || false;
