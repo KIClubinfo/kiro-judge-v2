@@ -2,7 +2,7 @@
 include("../config.php");
 header('Content-type: application/json');
 
-if (isset($_SESSION['user'])){ //Si connecté
+if (isset($_SESSION['user'])) { //Si connecté
     http_response_code(200);
     $data = $_SESSION['user'];
 } else {
@@ -10,5 +10,4 @@ if (isset($_SESSION['user'])){ //Si connecté
     $data = [];
 }
 
-echo(json_encode($data));
-
+echo (json_encode($data));

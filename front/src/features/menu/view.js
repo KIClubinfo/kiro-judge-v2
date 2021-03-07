@@ -1,6 +1,6 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {changeView, selectCurrentView} from "../kiro/kiroSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { changeView, selectCurrentView } from "../kiro/kiroSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faTachometerAlt, faAddressBook, faListOl, faUser } from '@fortawesome/free-solid-svg-icons'
 import styles from './menu.module.css';
@@ -13,7 +13,7 @@ export function Menu() {
             <div id='logo'> Insert logo here </div>
             <div id='top'>{currentView}</div>
             <div className='mid'>
-                <ViewSelectButton name='Index' label='Accueil' icon={faHome}/>
+                <ViewSelectButton name='Index' label='Accueil' icon={faHome} />
                 <ViewSelectButton name='Dashboard' icon={faTachometerAlt} />
                 <ViewSelectButton name='Contact' icon={faAddressBook} />
                 <ViewSelectButton name='Leaderboard' icon={faListOl} />
@@ -34,7 +34,8 @@ function ViewSelectButton(props) {
         return (
             <div className='mid-element'>
                 <button onClick={() => {
-                    dispatch(changeView(viewLabel));}}
+                    dispatch(changeView(viewLabel));
+                }}
                 >
                     <FontAwesomeIcon icon={props.icon} />
                     <div className='mid-element-label'>{displayLabel}</div>
@@ -46,7 +47,8 @@ function ViewSelectButton(props) {
     return (
         <div className='mid-element'>
             <button onClick={() => {
-                dispatch(changeView(viewLabel));}}
+                dispatch(changeView(viewLabel));
+            }}
             >
                 {displayLabel}
             </button>

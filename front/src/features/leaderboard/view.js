@@ -57,11 +57,11 @@ export class ScoreBoard extends React.Component {
         return (
             <table>
                 <tbody>
-                {
-                    this.state.scores.map((element, index) => {
-                        return <Score name={element.nom} score={element.score} classement={element.classement} key={element.id} />
-                    })
-                }
+                    {
+                        this.state.scores.map((element, index) => {
+                            return <Score name={element.nom} score={element.score} classement={element.classement} key={element.id} />
+                        })
+                    }
 
                 </tbody>
             </table>

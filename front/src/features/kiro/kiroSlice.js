@@ -3,16 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 // Slice
 
 export const kiroSlice = createSlice({
-    name: 'kiro',
-    initialState: {
-        currentView: 'Dashboard',
-    },
+  name: 'kiro',
+  initialState: {
+    currentView: 'Dashboard',
+  },
 
-    reducers: {
-      changeView: (state, action) => {
-        state.currentView = action.payload;
-      },
+  reducers: {
+    changeView: (state, action) => {
+      state.currentView = action.payload;
     },
+  },
 })
 
 // Actions

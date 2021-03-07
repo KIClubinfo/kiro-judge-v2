@@ -26,7 +26,7 @@ let databaseConnection = mysql.createConnection({
 })
 
 function updateLeaderboard(results) {
-    results.forEach(function(element, index) {
+    results.forEach(function (element, index) {
         if (element.classement === (index + 1)) return;
         let sql_update_request = "UPDATE teams SET classement = " + (index + 1) + " WHERE id = " + element.id + ";";
 
@@ -127,7 +127,7 @@ wsServer.on('request', function (request) {
     } else {
         sendToConnectionId(connection.id, JSON.stringify(last_result))
     }
-    connection.on('close', function(reasonCode, description) {
+    connection.on('close', function (reasonCode, description) {
         console.log((new Date()) + ' Connection ' + connection.id + ' disconnected.');
         delete connections[connection.id];
     });
@@ -135,7 +135,7 @@ wsServer.on('request', function (request) {
 
 // Broadcast to all open connections
 function broadcast(data) {
-    Object.keys(connections).forEach(function(key) {
+    Object.keys(connections).forEach(function (key) {
         let connection = connections[key];
         if (connection.connected) {
             connection.send(data);

@@ -15,12 +15,12 @@ function getRandomInt(max) {
 
 if (databaseConnection.state === "disconnected") {
     databaseConnection.connect(function (error) {
-    if (error) throw error;
+        if (error) throw error;
         console.log("database connected.");
     })
 }
 
-for(let i = 0; i < populationSize; i++) {
+for (let i = 0; i < populationSize; i++) {
     let nom = randomstring.generate(TEAM_NAME_LENGTH);
     let score = getRandomInt(SCORE_MAX);
 

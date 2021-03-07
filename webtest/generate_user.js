@@ -20,5 +20,5 @@ function getRandomInt(max) {
 let hash = '$2y$08$9TTThrthZhTOcoHELRjuN.3mJd2iKYIeNlV/CYJUWWRnDfRRw6fD2';
 hash = hash.replace(/^\$2y(.+)$/i, '$2a$1');
 let password = bcrypt("password", hash);
-console.log(password.);
+console.log(password);
 

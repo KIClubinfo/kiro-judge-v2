@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import {Menu} from "./features/menu/view";
-import {MainView} from "./features/kiro/view";
+import { Menu } from "./features/menu/view";
+import { MainView } from "./features/kiro/view";
 
 function App() {
   return (
-      <>
-          <Menu />
-        <MainView />
+    <>
+      <Menu />
+      <MainView />
 
-      </>
+    </>
   );
 }
 
