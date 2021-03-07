@@ -72,17 +72,6 @@ body {
   color: #0fa6d3;
 }
 
-.container {
-  max-width: 70%;
-  padding: 0.625% 1.25%;
-  background: #f4f7f8;
-  margin: 3.125% auto;
-  padding: 1.25%;
-  background: #f4f7f8;
-  border-radius: 8px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-
 .container fieldset {
   border: none;
 }
@@ -163,6 +152,12 @@ body {
   justify-content: space-between;
 }
 
+.containergrey {
+  background-color: rgb(150, 150, 150);
+  border-radius: 4px;
+  padding: 10px;
+}
+
 .content {
   overflow: hidden;
   position: relative;
@@ -171,14 +166,14 @@ body {
 .content:before {
   content: "";
   position: fixed;
-  left: -5%;
-  top: -5%;
+  left: 0;
+  top: 0;
   z-index: -1;
   display: block;
   background-image: url('../images/logo_kiro.png');
   background-size: cover;
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   -webkit-filter: grayscale(40%);
   -moz-filter: grayscale(40%);
   -o-filter: grayscale(40%);

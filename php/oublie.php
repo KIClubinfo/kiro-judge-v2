@@ -51,7 +51,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   } else { //formulaire non envoyé
     include("header.php");
 ?>
-    <div class="content">
+    <div class="content" style="min-height: 70%;">
       <div class="container">
         <form action="" method="post">
           Nous allons vous envoyer un nouveau mot de passe par mail. <br />
@@ -66,7 +66,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
 } else {
   include("header.php");
   ?>
-  <div class="content">
+  <div class="content" style="min-height: 70%;">
     <div class="erreur">Vous êtes déjà connecté.</div>
   </div>
 <?php
@@ -76,7 +76,7 @@ if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
 ?>
-  <div class="content">
+  <div class="content" style="min-height: 70%;">
     <div class="container">
       <div class="erreur"><?php echo $erreur; ?></div>
       <form action="" method="post">

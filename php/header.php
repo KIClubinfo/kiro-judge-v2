@@ -24,7 +24,11 @@
   <meta name="keywords" content="ponts et chaussées, ponts, chaussees, enpc, ponts parisTech, enseignement, ingénieur, bde, partenaires, clubs, activité, WEI, admissibles, alpha, plaquette, plaquette alpha, contact, cutlure, sport, ingénieur, finance, transport, élèves-ingénieurs, ingénieurs, conseil, prépa, classe prépa, cauchy, science, MMC, mecanique, finance, recherche opérationnelle, recherche, opérationnelle, renault, industrie, génie industriel, programmation, python, c++, code, hackaton" />
   <meta name="author" content="Antonin Parrot, Jean-Loup Raymond, Pierre Glandon">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link href="scripts/style.css" rel="stylesheet" type="text/css" media="all">
+  <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+  <link href="styles/style.css" rel="stylesheet" type="text/css" media="all">
+  <link href="styles/default.css" rel="stylesheet" type="text/css" media="all">
+  <link href="styles/fonts.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>

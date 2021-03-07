@@ -1,6 +1,8 @@
 <?php
 
 include("config.php");
+include("header.php");
+include("navbar.php");
 
 
 
@@ -190,8 +192,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
 ?>
       <form action="" method="post" name="inscription">
 
-        <div id="equipe" style="display: block;" class="content">
-          <div class="container">
+        <div id="equipe" style="display: block; margin-top: 15px" class="content">
+          <div class="container containergrey">
             <ul class="steps2">
               <li class="is-active">Équipe</li>
               <li>Participant 1</li>
@@ -210,8 +212,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
           </div>
         </div>
 
-        <div id="participant-1" style="display: none;" class="content">
-          <div class="container">
+        <div id="participant-1" style="display: none; margin-top: 15px" class="content">
+          <div class="container containergrey">
             <ul class="steps2">
               <li>Équipe</li>
               <li class="is-active">Participant 1</li>
@@ -244,8 +246,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
         </div>
 
 
-        <div id="participant-2" style="display: none;" class="content">
-          <div class="container">
+        <div id="participant-2" style="display: none; margin-top: 15px" class="content">
+          <div class="container containergrey">
             <ul class="steps2">
               <li>Équipe</li>
               <li>Participant 1</li>
@@ -277,8 +279,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
         </div>
 
 
-        <div id="participant-3" style="display: none;" class="content">
-          <div class="container">
+        <div id="participant-3" style="display: none; margin-top: 15px" class="content">
+          <div class="container containergrey">
             <ul class="steps2">
               <li>Équipe</li>
               <li>Participant 1</li>
@@ -340,8 +342,8 @@ if (isset($erreur)) {
 
   <form action="" method="post" name="inscription">
 
-    <div id="equipe" style="display: block;" class="content">
-      <div class="container">
+    <div id="equipe" style="display: block; margin-top: 15px" class="content">
+      <div class="container containergrey">
         <ul class="steps2">
           <li class="is-active">Équipe</li>
           <li>Participant 1</li>
@@ -371,8 +373,8 @@ if (isset($erreur)) {
       </div>
     </div>
 
-    <div id="participant-1" style="display: none;" class="content">
-      <div class="container">
+    <div id="participant-1" style="display: none; margin-top: 15px" class="content">
+      <div class="container containergrey">
         <ul class="steps2">
           <li>Équipe</li>
           <li class="is-active">Participant 1</li>
@@ -415,8 +417,8 @@ if (isset($erreur)) {
     </div>
 
 
-    <div id="participant-2" style="display: none;" class="content">
-      <div class="container">
+    <div id="participant-2" style="display: none; margin-top: 15px" class="content">
+      <div class="container containergrey">
         <ul class="steps2">
           <li>Équipe</li>
           <li>Participant 1</li>
@@ -458,8 +460,8 @@ if (isset($erreur)) {
     </div>
 
 
-    <div id="participant-3" style="display: none;" class="content">
-      <div class="container">
+    <div id="participant-3" style="display: none; margin-top: 15px" class="content">
+      <div class="container containergrey">
         <ul class="steps2">
           <li>Équipe</li>
           <li>Participant 1</li>

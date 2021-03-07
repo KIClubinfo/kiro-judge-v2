@@ -1,5 +1,7 @@
 <?php
 include("config.php");
+include("header.php");
+include("navbar.php");
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
@@ -36,8 +38,8 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 include("header.php");
 ?>
 
-                <div class="content">
-                  <div class="container">
+                <div class="content" style="margin-top: 15px">
+                  <div class="container containergrey">
                     <form action="" method="post">
                       <div class="erreur">Vous devez modifier votre mot de passe.</div>
                       <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
@@ -68,8 +70,8 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   } else if (!isset($_POST['submit22'])) { //formulaire non envoyé
     include("header.php");
     ?>
-    <div class="content">
-      <div class="container">
+    <div class="content" style="margin-top: 15px">
+      <div class="container containergrey">
         <form action="" method="post">
           <label for="mail">Email :</label>
           <input maxlength="255" type="email" name="email" required><br />
@@ -87,7 +89,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
 } else {
   include("header.php");
   ?>
-  <div class="content">
+  <div class="content" style="margin-top: 15px">
     <div class="erreur">Vous êtes déjà connecté.</div>
   </div>
 <?php
@@ -97,8 +99,8 @@ if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
 ?>
-  <div class="content">
-    <div class="container">
+  <div class="content" style="margin-top: 15px">
+    <div class="container containergrey">
       <div class="erreur"><?php echo $erreur; ?></div>
       <form action="" method="post">
         <label for="mail">Email :</label>
@@ -155,8 +157,8 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
 if (isset($erreur22)) {
   include("header.php");
 ?>
-  <div class="content">
-    <div class="container">
+  <div class="content" style="margin-top: 15px">
+    <div class="container containergrey">
       <div class="erreur"><?php echo $erreur22; ?></div>
       <form action="" method="post">
         <div class="erreur">Vous devez modifier votre mot de passe.</div>

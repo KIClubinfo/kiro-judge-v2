@@ -1,5 +1,7 @@
 <?php
 include("config.php");
+include("header.php");
+include("navbar.php");
 
 $team_id_affiche = 1; //Team par défaut
 if (isset($_GET['id_team'])) { //Si on veut voir une team spécificique
@@ -41,7 +43,7 @@ if ($req = $conn->prepare("SELECT id FROM users WHERE id_team=?")) { //requete p
 if (isset($erreur)) { //si erreur dans la team demandé
   include("header.php");
 ?>
-  <div class="content">
+  <div class="content" style="min-height: 35%;">
     <div class="container">
       <div class="erreur"><?php echo $erreur; ?></div>
     </div>
@@ -52,7 +54,7 @@ if (isset($erreur)) { //si erreur dans la team demandé
 if (isset($erreur2)) { //Si erreur dans l'afficage de la team
   include("header.php");
 ?>
-  <div class="content">
+  <div class="content" style="min-height: 35%;">
     <div class="container">
       <div class="erreur"><?php echo $erreur2; ?></div>
     </div>
@@ -63,7 +65,7 @@ if (isset($erreur2)) { //Si erreur dans l'afficage de la team
 if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   include("header.php");
 ?>
-  <div class="content">
+  <div class="content" style="min-height: 35%;">
     <div class="container">
       <?php
       if (!$team_affiche->valide) { //Si la team n'est pas active
