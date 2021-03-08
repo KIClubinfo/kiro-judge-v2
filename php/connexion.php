@@ -1,7 +1,7 @@
 <?php
 include("config.php");
-include("header.php");
-include("navbar.php");
+// include("header.php");
+// include("navbar.php");
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
@@ -20,7 +20,8 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
             if (!empty($result) and password_verify($ready_password, $result['password'])) { //l'utilisateur a le bon mot de passe
               if (!$result['mdp_a_changer']) { //s'il ne doit pas modifier son mot de passe
                 if ($req3 = $conn->prepare("UPDATE teams SET valide=1 WHERE id=?")) { //Si la team n'est pas encore valide on la valide
-                  $req3->bind_param("i", intval($result['id_team']));
+                  $id_team = intval($result['id_team']);
+                  $req3->bind_param("i", $id_team);
                   $req3->execute();
                   $req3->close();
                   $user = new user($result['id']); // mettre en session

@@ -1,8 +1,8 @@
 <?php
 include("config.php");
-include("navbar.php");
 
 if (is_admin()) { //Si l'utilisateur est un admin
+include("navbar.php");
   if (isset($_GET['id']) and !empty($_GET['id']) and is_numeric($_GET['id'])) { //Si on sait déja l'id de l'user et qu'il est valide
     if (isset($_POST['submit'])) { //Posté le changement
       if (

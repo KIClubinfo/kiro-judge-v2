@@ -2,12 +2,7 @@
 include("config.php");
 include("header.php");
 include("navbar.php");
-
-if (isset($_SESSION['user'])) {
-  print_r($_SESSION['user']);
-  print_r($_SESSION['team']);
-}
-
+include("popup.php");
 
 if (isset($_GET['inscr'])) { //On affiche un message pour signifier la bonne inscription
   $msg = "Ton inscription a bien été prise en compte, il te reste qu'à te connecter avec le mot de passe envoyé par mail, pense à vérifier dans tes spams.";
@@ -17,6 +12,7 @@ if (isset($_GET['co'])) { //On affiche un message pour signifier la bonne connex
 }
 if (isset($_GET['co2'])) { //On affiche un message pour signifier la bonne connexion et modification du mot de passe
   $msg = "Tu es bien connecté et ton mot de passe a été modifié.";
+
 }
 if (isset($_GET['deco'])) { //On affiche un message pour signifier la bonne déconnexion
   $msg = "Tu a bien été déconnecté.";
@@ -29,11 +25,10 @@ if (isset($_GET['change'])) { //On affiche un message pour signifier le bon chan
 if (isset($_GET['maj_admin'])) { //On affiche un message pour signifier la bonne mise à jour par un admin
   $msg = "Les données de l'utilisateur ont été mises à jour.";
 }
-echo $msg;
-
-if (is_admin()) {
-  echo '<a href="edit_info_admin.php"> Editer des infos</a> <br />';
-} ?>
+if (!empty($msg)) {
+  popup($msg);
+}
+ ?>
 
 <div id="banner">
   <div class="container">
