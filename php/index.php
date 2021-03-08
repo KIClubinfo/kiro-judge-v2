@@ -14,6 +14,10 @@ if (isset($_GET['co2'])) { //On affiche un message pour signifier la bonne conne
   $msg = "Tu es bien connecté et ton mot de passe a été modifié.";
 
 }
+
+if (isset($_GET['ns'])) {
+    $msg = "Tu ne peux pas accédé a cette page pour le moment.";
+}
 if (isset($_GET['deco'])) { //On affiche un message pour signifier la bonne déconnexion
   $msg = "Tu a bien été déconnecté.";
 }
@@ -221,7 +225,7 @@ if (!empty($msg)) {
       <span class="byline">Participez !</span>
     </div>
     <ul class="actions">
-      <li><button class="button" onclick="self.location.href='index.html'">S'inscrire</a></li>
+        <li><button class="button" onclick="self.location.href='inscription.php'">S'inscrire</button></li>
       <br>
     </ul>
     <div class="title" style="margin-bottom: 1em; padding-top: 2em;">

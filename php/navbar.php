@@ -20,7 +20,7 @@
 ';
        }
        else {
-           echo '<li><a href="concours.php">Concours</a></li>';
+           echo '<li><a href="concours/index.php">Concours</a></li>';
            echo '<li><a href="deconnexion.php" title="">Déconnexion</a></li>';
        }
 
