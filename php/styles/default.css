@@ -50,7 +50,7 @@ a:hover {
 }
 
 .container {
-	overflow: hidden;
+	overflow: unset;
 	margin: 0em auto;
 	width: 1000px;
 }
@@ -299,6 +299,13 @@ ul.contact li a.icon-rss:before {
 	padding: 3em 0em;
 }
 
+@media (max-width: 850px) {
+	#header {
+		position: relative;
+		padding: 0em;
+	}
+  }
+  
 /*********************************************************************************/
 
 /* Logo                                                                          */
@@ -306,9 +313,10 @@ ul.contact li a.icon-rss:before {
 /*********************************************************************************/
 
 #logo {
-	position: absolute;
-	top: 1em;
-	left: 0;
+	position: relative;
+	bottom: 1em;
+	left: 0em;
+	margin-right: 1.5em;
 }
 
 #logo h1 {

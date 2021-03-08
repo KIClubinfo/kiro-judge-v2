@@ -18,7 +18,7 @@ if (isset($_GET['id_team'])) { //Si on veut voir une team spécificique
         $erreur = "L'équipe demandée n'existe pas.";
       }
     } else {
-      $erreur = "Erreur lors de la selection des teams.";
+      $erreur = "Erreur lors de la sélection des teams.";
     }
   } else {
     $erreur = "Vous n'avez pas entré un chiffre.";
@@ -36,7 +36,7 @@ if ($req = $conn->prepare("SELECT id FROM users WHERE id_team=?")) { //requete p
   $membre_2 = new user($result[1]["id"]);
   $membre_3 = new user($result[2]["id"]);
 } else {
-  $erreur2 = "Erreur lors de la selection des membres de l'équipe.";
+  $erreur2 = "Erreur lors de la sélection des membres de l'équipe.";
 }
 
 
