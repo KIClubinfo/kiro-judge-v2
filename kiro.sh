@@ -2,4 +2,4 @@
 set -euo pipefail
 
 source .env
-docker-compose up
+docker-compose up -d
