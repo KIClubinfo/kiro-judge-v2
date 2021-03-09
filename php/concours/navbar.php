@@ -11,6 +11,7 @@
                 <li><a href="/concours/leaderboard.php" title="">Leaderboard</a></li>
                 <li><a href="/concours/profile.php" title="">Mon Equipe</a></li>
                 <li><a href="/deconnexion.php" title="">Deconnection</a></li>
+<li><a href="/index.php" title="">Retour au site vitrine</a></li>
             </ul>
         </div>
     </div>
