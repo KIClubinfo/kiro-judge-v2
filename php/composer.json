@@ -1,0 +1,15 @@
+{
+    "name": "ki/kiro",
+    "description": "The back of KIRO Judge (Judge system of the Hackathon from the ENPC)",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.3"
+    },
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Pierre Glandon",
+            "email": "pglandon78@gmail.com"
+        }
+    ]
+}

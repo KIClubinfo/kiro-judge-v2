@@ -6,8 +6,8 @@
 - [ ] Ability to change password of any user.
 * When not connected
 ** TODO Index
-- [ ] add redirection when connected.
-- [ ] Display only relevant information.
+- [X] add redirection when connected.
+- [X] Display only relevant information.
 ** TODO Inscription
 - [X] Display passwords at the end when sucessful.
 - [ ] Be more clear on what is expected in each field.
@@ -20,7 +20,7 @@
 - [ ] Sponsor
 ** TODO Leaderboard
 - [ ] Accessible pour les non-connectes (highlight quand on est connecte)
-- [ ] En temps reel
+- [X] En temps reel
 ** TODO Page d'equipe
 - [ ] Score actuel
 - [ ] Derniere submission
