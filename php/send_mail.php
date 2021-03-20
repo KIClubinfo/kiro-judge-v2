@@ -84,7 +84,7 @@ $message= '
                                 <tr>
                                     <td style="padding: 20px 0 0 0; color: #222222; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
                                         Pour accéder au site du KIRO Judge, où vous mettrez en ligne vos résultats et verrez votre place dans la
-                                        compétition,<br/> c’est <a href="">ici</a> avec l’identifiant :<br/> '.$id.'<br/> et le mot de passe :<br/> '.$password.'.<br/>
+                                        compétition, c’est <a href="">ici</a> avec l’identifiant : '.$id.' et le mot de passe : '.$password.'.<br/>
                                         <br/>
                                         A bientôt au KIRO,<br/>
                                         <br/>
