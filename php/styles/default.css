@@ -465,7 +465,7 @@ ul.contact li a.icon-rss:before {
 #featured {
 	overflow: hidden;
 	padding: 5em 0em;
-	background-image: url('../images/featuredbg.jpg');
+	background-image: url('../images/featuredbg.png');
 	background-repeat: repeat;
 	background-size: cover;
 	background-position-y: 0em;
