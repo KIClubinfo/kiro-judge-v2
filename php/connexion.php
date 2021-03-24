@@ -1,10 +1,6 @@
 <?php
 include("config.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
- include("header.php");
- include("navbar.php");
-}
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
