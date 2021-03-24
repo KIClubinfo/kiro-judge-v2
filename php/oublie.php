@@ -1,7 +1,6 @@
 <?php
 include("config.php");
 include("navbar.php");
-include("popup.php");
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
@@ -36,7 +35,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 $erreur = "Erreur lors de la mise à jour du mot de passe.";
               }
             } else {
-              $erreur = "L'email n'éxiste pas.";
+              $erreur = "L'email n'existe pas.";
             }
           } else {
             $erreur = "Erreur lors du traitement de la requête.";
@@ -45,7 +44,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
           $erreur = "Votre email n'est pas dans le bon format ou est trop long (255 caractères maximum).";
         }
       } else {
-        $erreur = "Vous n'avez pas envoyé des chaînes de caractères.";
+        $erreur = "Vous n'avez pas envoyé de chaîne de caractère.";
       }
     } else {
       $erreur = "Vous n'avez pas rempli tous les champs.";
