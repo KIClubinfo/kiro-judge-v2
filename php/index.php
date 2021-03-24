@@ -216,11 +216,7 @@ if (!empty($msg)) {
     <p><strong>Cité Descartes, 6-8 Avenue Blaise Pascal, 77420 Champs-sur-Marne<br>
         Bâtiment Coriolis, aile Fresnel, premier étage <br>
       </strong></p>
-    <p>
-      <img src="images/rera.png" width="60px"> Station <strong>Noisy-Champs</strong>
-    </p>
-    <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.89880101832!2d2.585794315902489!3d48.84106897928592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60e2d7f85dc39%3A0x14058c059473d90b!2s%C3%89cole+nationale+des+ponts+et+chauss%C3%A9es!5e0!3m2!1sfr!2sfr!4v1524491067082" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-    <p><strong>Télécom Paris, 19 Place Marguerite Perey, 91120 Palaiseau
+     <p><strong>Télécom Paris, 19 Place Marguerite Perey, 91120 Palaiseau
       </strong></p>
     <p>Pour ceux passant l’épreuve au format distanciel, le lien du discord vous sera envoyé après inscription.
       La remise des prix aura lieu à la Maison des Ponts.
