@@ -2,7 +2,6 @@
 include("config.php");
 include("header.php");
 include("navbar.php");
-include("popup.php");
 
 if (isset($_GET['inscr'])) { //On affiche un message pour signifier la bonne inscription
   $msg = "Ton inscription a bien été prise en compte, il te reste qu'à te connecter avec le mot de passe envoyé par mail, pense à vérifier dans tes spams.";

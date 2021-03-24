@@ -65,107 +65,104 @@ if (isset($erreur2)) { //Si erreur dans l'afficage de la team
 if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   include("header.php");
 ?>
-  <div class="content" style="min-height: 35%;">
+  <div class="content limiter" style="min-height: 35%;">
     <div class="container">
       <?php
       if (!$team_affiche->valide) { //Si la team n'est pas active
         echo '<div class="erreur">Cette équipe n\'est pas active.</div>';
       }
       ?>
-      <table border="4">
-        <thead>
-          <tr>
-            <?php if (is_admin()) {
-              echo '<th>Id</th>';
-            } ?>
-            <th>Nom d'équipe</th>
-            <th>Classement</th>
-            <th>Score</th>
-            <th>Hub</th>
-            <th>Numéro d'emplacement</th>
+      <div class="wrap-table100" style="margin-top: 5vh;">
+        <div class="table">
 
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
+          <div class="row2 header">
             <?php if (is_admin()) {
-              echo '<td>' . htmlspecialchars($team_affiche->id) . '</td>';
+              echo '<div class="cell">Id</div>';
             } ?>
-            <td><?php echo htmlspecialchars($team_affiche->nom); ?></td>
-            <td><?php echo htmlspecialchars($team_affiche->classement); ?></td>
-            <td><?php echo htmlspecialchars($team_affiche->score); ?></td>
-            <td><?php if ($team_affiche->hub == 1) {
-                  echo "Hub de l'École des Ponts";
-                } else {
-                  echo "Hub du Plateau Saclay";
-                } ?></td>
-            <td><?php echo htmlspecialchars($team_affiche->numero_emplacement); ?></td>
+            <div class="cell">Nom d'équipe</div>
+            <div class="cell">Classement</div>
+            <div class="cell">Score</div>
+            <div class="cell">Hub</div>
+            <div class="cell">Emplacement</div>
+          </div>
+          <div class="row2">
+            <?php if (is_admin()) {
+              echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div>';
+            } ?>
+            <div class="cell"><?php echo htmlspecialchars($team_affiche->nom); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
+            <div class="cell"><?php if ($team_affiche->hub == 1) {
+                                echo "Hub de l'École des Ponts";
+                              } else {
+                                echo "Hub du Plateau Saclay";
+                              } ?></div>
+            <div class="cell"><?php echo htmlspecialchars($team_affiche->numero_emplacement); ?></div>
+          </div>
+        </div>
+      </div>
+      <div class="wrap-table100" style="margin-top: 5vh;">
+        <div class="table">
 
-          </tr>
-        </tbody>
-      </table><br /> <br />
-      <table border="4">
-        <thead>
-          <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>École</th>
+          <div class="row2 header">
+            <div class="cell">Prénom</div>
+            <div class="cell">Nom</div>
+            <div class="cell">École</div>
             <?php if (is_admin()) { //Si affichage admin 
             ?>
-              <th>Numéro de téléphone</th>
-              <th>Mail</th>
-              <th>Id</th>
+              <div class="cell">Numéro de téléphone</div>
+              <div class="cell">Mail</div>
+              <div class="cell">Id</div>
             <?php } ?>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><?php echo htmlspecialchars($membre_1->prenom); ?></td>
-            <td><?php echo htmlspecialchars($membre_1->nom); ?></td>
-            <td><?php echo htmlspecialchars($membre_1->ecole); ?></td>
+          </div>
+          <div class="row2">
+            <div class="cell"><?php echo htmlspecialchars($membre_1->prenom); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($membre_1->nom); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($membre_1->ecole); ?></div>
             <?php if (is_admin()) {
-              echo '<td>' . htmlspecialchars($membre_1->tel) . '</td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_1->tel) . '</div>';
             } ?>
             <?php if (is_admin()) {
-              echo '<td>' . htmlspecialchars($membre_1->mail) . '</td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_1->mail) . '</td>';
             } ?>
             <?php if (is_admin()) {
-              echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_1->id) . '">' . htmlspecialchars($membre_1->id) . '</a></td>';
+              echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_1->id) . '">' . htmlspecialchars($membre_1->id) . '</a></div>';
             } ?>
-          </tr>
-          <tr>
-            <td><?php echo htmlspecialchars($membre_2->prenom); ?></td>
-            <td><?php echo htmlspecialchars($membre_2->nom); ?></td>
-            <td><?php echo htmlspecialchars($membre_2->ecole); ?></td>
+          </div>
+          
+          <div class="row2">
+            <div class="cell"><?php echo htmlspecialchars($membre_2->prenom); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($membre_2->nom); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($membre_2->ecole); ?></div>
             <?php if (is_admin()) {
-              echo '<td>' . htmlspecialchars($membre_2->tel) . '</td>';
-            } ?>
-            <?php if (is_admin()) {
-              echo '<td>' . htmlspecialchars($membre_2->mail) . '</td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_2->tel) . '</div>';
             } ?>
             <?php if (is_admin()) {
-              echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></td>';
-            } ?>
-          </tr>
-          <tr>
-            <td><?php echo htmlspecialchars($membre_3->prenom); ?></td>
-            <td><?php echo htmlspecialchars($membre_3->nom); ?></td>
-            <td><?php echo htmlspecialchars($membre_3->ecole); ?></td>
-            <?php if (is_admin()) {
-              echo '<td>' . htmlspecialchars($membre_3->tel) . '</td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</td>';
             } ?>
             <?php if (is_admin()) {
-              echo '<td>' . htmlspecialchars($membre_3->mail) . '</td>';
+              echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></div>';
+            } ?>
+          </div>
+          
+          <div class="row2">
+            <div class="cell"><?php echo htmlspecialchars($membre_2->prenom); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($membre_2->nom); ?></div>
+            <div class="cell"><?php echo htmlspecialchars($membre_2->ecole); ?></div>
+            <?php if (is_admin()) {
+              echo '<div class="cell">' . htmlspecialchars($membre_2->tel) . '</div>';
             } ?>
             <?php if (is_admin()) {
-              echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_3->id) . '">' . htmlspecialchars($membre_3->id) . '</a></td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</td>';
             } ?>
-          </tr>
-        </tbody>
-      </table>
+            <?php if (is_admin()) {
+              echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></div>';
+            } ?>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-<?php
+  <?php
 }
 include("footer.php");
-?>
+  ?>
