@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("popup.php");
 
 $db_password = $_ENV["mysql_password"];
 

@@ -15,14 +15,14 @@ if (isset($_GET['co2'])) { //On affiche un message pour signifier la bonne conne
 }
 
 if (isset($_GET['ns'])) {
-  $msg = "Tu ne peux pas accédé a cette page pour le moment.";
+  $msg = "Tu ne peux pas accéder à cette page pour le moment.";
 }
 if (isset($_GET['deco'])) { //On affiche un message pour signifier la bonne déconnexion
-  $msg = "Tu a bien été déconnecté.";
+  $msg = "Tu as bien été déconnecté.";
 }
 
 if (isset($_GET['change'])) { //On affiche un message pour signifier le bon changement de mot de passe
-  $msg = "Ton nouveau mot de passe vous a été envoyé par email.";
+  $msg = "Ton nouveau mot de passe t'a été envoyé par email.";
 }
 
 if (isset($_GET['maj_admin'])) { //On affiche un message pour signifier la bonne mise à jour par un admin

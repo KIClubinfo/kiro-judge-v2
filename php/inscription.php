@@ -1,7 +1,7 @@
 <?php
 
 include("config.php");
- include("popup.php");
+include("popup.php");
 
 
 if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connecté

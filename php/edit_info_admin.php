@@ -54,7 +54,7 @@ include("navbar.php");
                       $erreur2 = "Un compte existe déjà avec cette adresse mail.";
                     }
                   } else {
-                    $erreur2 = "Erreur lors de la selection des users.";
+                    $erreur2 = "Erreur lors de la sélection des users.";
                   }
                 } else {
                   $erreur2 = "Le numéro de télephone n'est pas valable.";
@@ -63,13 +63,13 @@ include("navbar.php");
                 $erreur2 = "Un des champs est trop long.";
               }
             } else {
-              $erreur2 = "L'email n'est pas sous le bon format.";
+              $erreur2 = "L'e-mail n'est pas sous le bon format.";
             }
           } else {
             $erreur2 = "Le jeton CSRF est invalide.";
           }
         } else {
-          $erreur2 = "Vous n'avez pas envoyé des chaînes de caractères.";
+          $erreur2 = "Vous n'avez pas envoyé de chaîne de caractère.";
         }
       } else {
         $erreur2 = "Vous n'avez pas rempli tous les champs.";
@@ -83,7 +83,7 @@ include("navbar.php");
         include("header.php");
 ?>
         <div class="content">
-          <div class="container">
+          <div class="container containergrey">
             <form action="" method="post">
               <legend>
                 <div class="number">1</div> Informations personnelles
@@ -171,7 +171,7 @@ include("navbar.php");
     ?>
 
     <div class="content">
-      <div class="container">
+      <div class="container containergrey">
         <form action="" method="post">
           <div class="erreur"><?php echo $erreur2; ?> </div>
           <legend>
