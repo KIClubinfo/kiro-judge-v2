@@ -94,9 +94,11 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
             <div class="cell"><?php if ($team_affiche->hub == 1) {
                                 echo "Hub de l'École des Ponts";
-                              } else {
+                              } elseif ($team_affiche->hub == 2) {
                                 echo "Hub du Plateau Saclay";
-                              } ?></div>
+                              } else{
+                                echo "Hub distanciel (Discord)";
+                              }?></div>
             <div class="cell"><?php echo htmlspecialchars($team_affiche->numero_emplacement); ?></div>
           </div>
         </div>
@@ -108,7 +110,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell">Prénom</div>
             <div class="cell">Nom</div>
             <div class="cell">École</div>
-            <?php if (is_admin()) { //Si affichage admin 
+            <?php if (is_admin()) { //Si affichage admin
             ?>
               <div class="cell">Numéro de téléphone</div>
               <div class="cell">Mail</div>
@@ -129,7 +131,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_1->id) . '">' . htmlspecialchars($membre_1->id) . '</a></div>';
             } ?>
           </div>
-          
+
           <div class="row2">
             <div class="cell"><?php echo htmlspecialchars($membre_2->prenom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_2->nom); ?></div>
@@ -144,7 +146,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></div>';
             } ?>
           </div>
-          
+
           <div class="row2">
             <div class="cell"><?php echo htmlspecialchars($membre_2->prenom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_2->nom); ?></div>
