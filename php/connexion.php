@@ -73,7 +73,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
     include("navbar.php");
 
     ?>
-    <div class="content" style="margin-top: 15px">
+    <div class="content" style=" padding-top: 20vh">
       <div class="container containergrey">
         <form action="" method="post">
           <label for="mail">Email :</label>
@@ -94,7 +94,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   include("navbar.php");
 
   ?>
-  <div class="content" style="margin-top: 15px">
+  <div class="content" style=" padding-top: 20vh">
     <div class="erreur">Vous êtes déjà connecté.</div>
   </div>
 <?php
@@ -106,7 +106,7 @@ if (isset($erreur)) {
   include("navbar.php");
 
 ?>
-  <div class="content" style="margin-top: 15px">
+  <div class="content" style= "padding-top: 20vh">
     <div class="container containergrey">
       <div class="erreur"><?php echo $erreur; ?></div>
       <form action="" method="post">
@@ -166,7 +166,7 @@ if (isset($erreur22)) {
   include("navbar.php");
 
 ?>
-  <div class="content" style="margin-top: 15px">
+  <div class="content" style="padding-top: 20vh">
     <div class="container containergrey">
       <div class="erreur"><?php echo $erreur22; ?></div>
       <form action="" method="post">

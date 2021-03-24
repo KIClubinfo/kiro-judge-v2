@@ -1,5 +1,7 @@
 <?php
 include("config.php");
+include("navbar.php");
+include("popup.php");
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
