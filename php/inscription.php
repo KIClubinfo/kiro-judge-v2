@@ -45,7 +45,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
               if (
                 strlen($_POST['nom-1']) <= 100 and strlen($_POST['nom-2']) <= 100 and strlen($_POST['nom-3']) <= 100 and
                 strlen($_POST['prenom-1']) <= 100 and strlen($_POST['prenom-2']) <= 100 and strlen($_POST['prenom-3']) <= 100 and
-                intval($_POST['team-hub']) < 3 and  intval($_POST['team-hub']) > 0 and strlen($_POST['team-name']) <= 180 and
+                intval($_POST['team-hub']) < 4 and  intval($_POST['team-hub']) > 0 and strlen($_POST['team-name']) <= 180 and
                 strlen($_POST['ecole-1']) <= 300 and strlen($_POST['ecole-2']) <= 300 and strlen($_POST['ecole-3']) <= 300
               ) { //nom prenom pas trop grands
 
@@ -206,6 +206,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             <select name="team-hub" id="team-hub">
               <option value="1">Hub de l'École des Ponts</option>
               <option value="2">Hub du plateau Saclay</option>
+              <option value="3">Hub distanciel (Discord)</option>
             </select><br />
             <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
           </div>
@@ -367,7 +368,11 @@ if (isset($erreur)) {
                                 echo 'selected';
                               }
                             } ?>>Hub du plateau Saclay</option>
-        </select>
+        <option value="3" <?php if (isset($_POST['team-hub'])) {
+                                                if ($_POST['team-hub'] == 3) {
+                                                  echo 'selected';
+                                                }
+                                              } ?>>Hub distanciel (Discord)</option>
 
         <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
       </div>
@@ -494,7 +499,7 @@ if (isset($erreur)) {
         <input type="tel" name="tel-3" value="<?php if (isset($_POST['tel-3'])) {
                                                 echo htmlspecialchars($_POST['tel-3']);
                                               } ?>" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-        <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
+        <label for="GCU">Nous acceptons le <a target="_blank" href="https://kiro.enpc.org/#reglement">réglement du concours</a></label>
         <input type="checkbox" id="GCU" name="GCU" required><br /> <br />
         <div class="container2">
           <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
