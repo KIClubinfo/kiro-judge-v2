@@ -5,11 +5,8 @@
                 <li>
                     <img src="images/kiro.svg" width="100vw" id="logo">
                 </li>
-                <li><a href="index.php#concours" title="">Le concours</a></li>
-                <li><a href="index.php#reglement" title="">Le règlement</a></li>
-                <li><a href="index.php#old" title="">Anciens sujets</a></li>
-                <li><a href="index.php#participer" title="">Participer</a></li>
-                <li><a href="teams.php?id_team=11" title="">Équipes</a></li>
+                <li><a href="index.php" title="">Accueil</a></li>
+                <li><a href="teams.php" title="">Équipes</a></li>
                 <?php
                 if (!isset($_SESSION['user'])) {
                     echo '

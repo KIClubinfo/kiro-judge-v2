@@ -65,7 +65,7 @@ if (!empty($msg)) {
     </div>
     <div class="row h-100">
       <div class="col-sm-6">
-        <div class="box box_bg" style="height: 100%"> <a href="https://cermics.enpc.fr"><img src="images/cermics.png" height="80" style="margin-top: -30px;"></a>
+        <div class="box box_bg" style="height: 100%"> <a href="https://cermics.enpc.fr"><img src="images/cermics.png" height="150px"></a>
           <p style="margin-top: 15px;">Le <strong>CERMICS</strong> (Centre d'Enseignement et de Recherche
             en Mathématiques et Calcul Scientifique) est le laboratoire de recherche en mathématiques
             appliquées de l'École des Ponts ParisTech. Ses principaux domaines de recherche sont les
@@ -74,7 +74,7 @@ if (!empty($msg)) {
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="box box_bg" style="height: 100%"> <a href="https://www.sncf.com/fr"><img src="images/sncf.png" width="250px"></a>
+        <div class="box box_bg" style="height: 100%"> <a href="https://www.sncf.com/fr"><img src="images/sncf.png" height="150px"></a>
           <p style="margin-top: 15px;"> Créé en 1937, le <strong>Groupe SNCF</strong> est l’entreprise ferroviaire publique française. Leur réseau compte près de 29 000 km de lignes, 3000 gares ferroviaires, et gère chaque jour 15 000 départs de trains pour 10 millions de voyageurs et 250 000 tonnes de marchandises. En perpétuelle évolution, le groupe investit dans le développement et la modernisation du réseau ferré national, tout en s’adaptant aux défis environnementaux actuels. Il possède aussi plusieurs filiales à l’international, telles que Geodis, spécialisée dans le transport de marchandises, ou encore Keolis, leader mondial du métro automatique et du tramway. </p>
         </div>
       </div>
