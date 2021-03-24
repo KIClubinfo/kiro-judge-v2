@@ -1,9 +1,7 @@
 <?php
 
 include("config.php");
-include("header.php");
-include("navbar.php");
-
+ include("popup.php");
 
 
 if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connecté
@@ -317,24 +315,25 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
   } else //Si date d'inscription dépassée
   {
     include("header.php");
-    ?>
-    <div class="content">
-      <div class="erreur">Les inscriptions sont closes.</div>
-    </div>
+ include("navbar.php");
 
+ popup("Les inscriptions sont closes.");
+    ?>
   <?php
   }
 } else { //si l'utilisateur est déjà connecté
   include("header.php");
+include("navbar.php");
+
+popup("Vous êtes déjà connecté.")
   ?>
-  <div class="content">
-    <div class="erreur">Vous êtes déjà connecté.</div>
-  </div>
+
 <?php
 }
 
 if (isset($erreur)) {
   include("header.php");
+  include("navbar.php");
   //si on doit afficher le formulaire avec un message d'erreur
 
 ?>
@@ -350,7 +349,7 @@ if (isset($erreur)) {
           <li>Participant 2</li>
           <li>Participant 3</li>
         </ul>
-        <div class="erreur"><?php echo $erreur; ?> </div>
+        <?php popup($erreur); ?>
         <label for="team-name">Nom d'équipe :</label>
         <input type="text" id="team-name" name="team-name" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" maxlength="180" value="<?php if (isset($_POST['team-name'])) {
                                                                                                                                                                       echo htmlspecialchars($_POST['team-name']);
