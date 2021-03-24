@@ -1,3 +1,4 @@
+$2y$12$F6Q4LapmPtZw8RzpVuAhd.47PJ7KG2xQTUeRB/d3XCI7cjG9qW8OG
 <?php
 
 include("config.php");
@@ -187,6 +188,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
       }
     } else { //formulaire pas envoyé
       include("header.php");
+      include("navbar.php");
 ?>
       <form action="" method="post" name="inscription">
 
