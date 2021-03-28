@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `kiro`.`teams` (
   `classement` INT NOT NULL ,
   `valide` BOOLEAN NOT NULL ,
   `hub` INT NOT NULL ,
+  `type_equipe` INT NOT NULL ,
   `numero_emplacement` INT NOT NULL , PRIMARY KEY (`id`))
   ENGINE = InnoDB;
 

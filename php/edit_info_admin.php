@@ -130,6 +130,7 @@ include("navbar.php");
         <thead>
           <tr>
             <th>Id équipe</th>
+            <th>Type équipe</th>
             <th>Nom d'équipe</th>
             <th>Id</th>
             <th>Prénom</th>
@@ -146,6 +147,7 @@ include("navbar.php");
             $team = new team($user["id_team"]);
             $player = new user($user["id"]);
             echo '<td><a href="teams.php?id_team=' . htmlspecialchars($team->id) . '">' . htmlspecialchars($team->id) . '</a></td>';
+            echo '<td>' . htmlspecialchars($team->type_equipe) . '</td>';
             echo '<td>' . htmlspecialchars($team->nom) . '</td>';
             echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($player->id) . '">' . htmlspecialchars($player->id) . '</a></td>';
             echo '<td>' . htmlspecialchars($player->prenom) . '</td>';
@@ -153,6 +155,8 @@ include("navbar.php");
             echo '<td>' . htmlspecialchars($player->mail) . '</td>';
             echo '<td>' . htmlspecialchars($player->tel) . '</td>';
             echo '<td>' . htmlspecialchars($player->ecole) . '</td>';
+
+
             echo '</tr>';
           } ?>
         </tbody>

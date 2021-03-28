@@ -108,7 +108,7 @@ if (isset($erreur)) {
 ?>
   <div class="content" style= "padding-top: 20vh">
     <div class="container containergrey">
-      <div class="erreur"><?php echo $erreur; ?></div>
+       <?php popup($erreur); ?>
       <form action="" method="post">
         <label for="mail">Email :</label>
         <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) {
@@ -168,7 +168,7 @@ if (isset($erreur22)) {
 ?>
   <div class="content" style="padding-top: 20vh">
     <div class="container containergrey">
-      <div class="erreur"><?php echo $erreur22; ?></div>
+      <?php  popup($erreur22); ?>
       <form action="" method="post">
         <div class="erreur">Vous devez modifier votre mot de passe.</div>
         <label for="password">Nouveau mot de passe (6 caractères minimum):</label>

@@ -55,6 +55,7 @@ class team
   public $nom;
   public $valide;
   public $numero_emplacement; // le numéro de sa table dans le hub
+  public $type_equipe;
   public function __construct($id)
   { // il faut vérfier en amont la donnée ici !
     global $conn;
@@ -69,6 +70,7 @@ class team
       $this->classement = htmlspecialchars($result['classement']);
       $this->nom = htmlspecialchars($result['nom']);
       $this->hub = htmlspecialchars($result['hub']);
+      $this->type_equipe = htmlspecialchars($result['type_equipe']);
       $this->numero_emplacement = htmlspecialchars($result['numero_emplacement']);
     } else {
       echo "Erreur lors de la création de la classe team";

@@ -45,7 +45,8 @@ if (isset($erreur)) { //si erreur dans la team demandé
 ?>
   <div class="content" style="min-height: 35%;">
     <div class="container">
-      <div class="erreur"><?php echo $erreur; ?></div>
+      <?php popup($erreur); ?>
+
     </div>
   </div>
 <?php
@@ -56,7 +57,7 @@ if (isset($erreur2)) { //Si erreur dans l'afficage de la team
 ?>
   <div class="content" style="min-height: 35%;">
     <div class="container">
-      <div class="erreur"><?php echo $erreur2; ?></div>
+    <?php popup($erreur2); ?>
     </div>
   </div>
 <?php
@@ -69,7 +70,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
     <div class="container">
       <?php
       if (!$team_affiche->valide) { //Si la team n'est pas active
-        echo '<div class="erreur">Cette équipe n\'est pas active.</div>';
+        popup("Cette équipe n\'est pas active.");
       }
       ?>
       <div class="wrap-table100" style="margin-top: 5vh;">

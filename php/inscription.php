@@ -19,7 +19,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
         isset($_POST['tel-1']) and !empty($_POST['tel-1']) and isset($_POST['tel-2']) and !empty($_POST['tel-2']) and isset($_POST['tel-3'])
         and !empty($_POST['tel-3'])  and
         isset($_POST['team-name']) and !empty($_POST['team-name']) and isset($_POST['team-hub'])  and !empty($_POST['team-hub']) and
-        isset($_POST['ecole-1']) and !empty($_POST['ecole-1']) and isset($_POST['ecole-2'])  and !empty($_POST['ecole-2']) and isset($_POST['ecole-3']) and !empty($_POST['ecole-3'])
+        isset($_POST['ecole-1']) and !empty($_POST['ecole-1']) and isset($_POST['ecole-2'])  and !empty($_POST['ecole-2']) and isset($_POST['ecole-3']) and !empty($_POST['ecole-3']) and
+        and isset($_POST['type_equipe']) and !empty($_POST['type_equipe'])
       ) { //Si il a bien tout rempli
 
 
@@ -30,6 +31,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
           is_string($_POST['tel-1']) and is_string($_POST['tel-2']) and is_string($_POST['tel-3']) and
           is_string($_POST['team-name']) and is_numeric($_POST['team-hub']) and
           is_string($_POST['ecole-1']) and is_string($_POST['ecole-2']) and is_string($_POST['ecole-3'])
+          and  is_numeric($_POST['type_equipe'])
         ) { //il a bien envoyé des chaines de caractères
 
 
@@ -45,8 +47,9 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                 strlen($_POST['nom-1']) <= 100 and strlen($_POST['nom-2']) <= 100 and strlen($_POST['nom-3']) <= 100 and
                 strlen($_POST['prenom-1']) <= 100 and strlen($_POST['prenom-2']) <= 100 and strlen($_POST['prenom-3']) <= 100 and
                 intval($_POST['team-hub']) < 4 and  intval($_POST['team-hub']) > 0 and strlen($_POST['team-name']) <= 180 and
-                strlen($_POST['ecole-1']) <= 300 and strlen($_POST['ecole-2']) <= 300 and strlen($_POST['ecole-3']) <= 300
-              ) { //nom prenom pas trop grands
+                strlen($_POST['ecole-1']) <= 300 and strlen($_POST['ecole-2']) <= 300 and strlen($_POST['ecole-3']) <= 300 and
+                intval($_POST['type_equipe']) >= 0 and intval($_POST['type_equipe']) < 4
+              ) { //nom prenom pas trop grands, type equipe pas bon
 
                 if (
                   strlen($_POST['tel-1']) <= 15 and preg_match("#^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$#", $_POST['tel-1']) and
@@ -207,6 +210,9 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
               <option value="2">Hub du plateau Saclay</option>
               <option value="3">Hub distanciel (Discord)</option>
             </select><br />
+            <INPUT type= "radio" name="type_equipe" value="1"> Équipe 1A des ponts
+            <INPUT type= "radio" name="type_equipe" value="2"> Équipe étudiante
+            <INPUT type= "radio" name="type_equipe" value="3" checked> Autre
             <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
           </div>
         </div>
@@ -372,6 +378,10 @@ if (isset($erreur)) {
                                                   echo 'selected';
                                                 }
                                               } ?>>Hub distanciel (Discord)</option>
+
+                                              <INPUT type= "radio" name="type_equipe" value="1"> Équipe 1A des ponts
+                                              <INPUT type= "radio" name="type_equipe" value="2"> Équipe étudiante
+                                              <INPUT type= "radio" name="type_equipe" value="3" checked> Autre
 
         <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
       </div>
