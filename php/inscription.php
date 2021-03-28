@@ -20,7 +20,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
         and !empty($_POST['tel-3'])  and
         isset($_POST['team-name']) and !empty($_POST['team-name']) and isset($_POST['team-hub'])  and !empty($_POST['team-hub']) and
         isset($_POST['ecole-1']) and !empty($_POST['ecole-1']) and isset($_POST['ecole-2'])  and !empty($_POST['ecole-2']) and isset($_POST['ecole-3']) and !empty($_POST['ecole-3']) and
-        and isset($_POST['type_equipe']) and !empty($_POST['type_equipe'])
+        isset($_POST['type_equipe']) and !empty($_POST['type_equipe'])
       ) { //Si il a bien tout rempli
 
 
