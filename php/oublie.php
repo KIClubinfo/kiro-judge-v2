@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+include("navbar.php");
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
@@ -34,7 +35,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 $erreur = "Erreur lors de la mise à jour du mot de passe.";
               }
             } else {
-              $erreur = "L'email n'éxiste pas.";
+              $erreur = "L'email n'existe pas.";
             }
           } else {
             $erreur = "Erreur lors du traitement de la requête.";
@@ -43,7 +44,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
           $erreur = "Votre email n'est pas dans le bon format ou est trop long (255 caractères maximum).";
         }
       } else {
-        $erreur = "Vous n'avez pas envoyé des chaînes de caractères.";
+        $erreur = "Vous n'avez pas envoyé de chaîne de caractère.";
       }
     } else {
       $erreur = "Vous n'avez pas rempli tous les champs.";
@@ -51,13 +52,14 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   } else { //formulaire non envoyé
     include("header.php");
 ?>
-    <div class="content" style="min-height: 70%;">
-      <div class="container">
+    <div class="content" style="min-height: 70%; margin-top: 20vh">
+      <div class="container containergrey">
         <form action="" method="post">
-          Nous allons vous envoyer un nouveau mot de passe par mail. <br />
+          <p style="text-align: center">Nous allons vous envoyer un nouveau mot de passe par mail. <br/></p>
+          <br/>
           <label for="mail">Email :</label>
           <input maxlength="255" type="email" name="email" required><br />
-          <input type="submit" name="submit" value="Se connecter">
+          <input type="submit" name="submit" value="Réinitialiser votre mot de passe">
         </form>
       </div>
     </div>
@@ -76,16 +78,17 @@ if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
 ?>
-  <div class="content" style="min-height: 70%;">
-    <div class="container">
+  <div class="content" style="min-height: 70%;  margin-top: 20vh">
+    <div class="container containergrey">
       <div class="erreur"><?php echo $erreur; ?></div>
       <form action="" method="post">
-        Nous allons vous envoyer un nouveau mot de passe par mail. <br />
+        <p style="text-align: center">Nous allons vous envoyer un nouveau mot de passe par mail. <br/></p>
+        <br/>
         <label for="mail">Email :</label>
         <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) {
                                                                   echo htmlspecialchars($_POST['email']);
                                                                 } ?>" required><br />
-        <input type="submit" name="submit" value="Se connecter">
+        <input type="submit" name="submit" value="Réinitialiser votre mot de passe">
       </form>
     </div>
   </div>

@@ -54,7 +54,7 @@ include("navbar.php");
                       $erreur2 = "Un compte existe déjà avec cette adresse mail.";
                     }
                   } else {
-                    $erreur2 = "Erreur lors de la selection des users.";
+                    $erreur2 = "Erreur lors de la sélection des users.";
                   }
                 } else {
                   $erreur2 = "Le numéro de télephone n'est pas valable.";
@@ -63,13 +63,13 @@ include("navbar.php");
                 $erreur2 = "Un des champs est trop long.";
               }
             } else {
-              $erreur2 = "L'email n'est pas sous le bon format.";
+              $erreur2 = "L'e-mail n'est pas sous le bon format.";
             }
           } else {
             $erreur2 = "Le jeton CSRF est invalide.";
           }
         } else {
-          $erreur2 = "Vous n'avez pas envoyé des chaînes de caractères.";
+          $erreur2 = "Vous n'avez pas envoyé de chaîne de caractère.";
         }
       } else {
         $erreur2 = "Vous n'avez pas rempli tous les champs.";
@@ -83,7 +83,7 @@ include("navbar.php");
         include("header.php");
 ?>
         <div class="content">
-          <div class="container">
+          <div class="container containergrey">
             <form action="" method="post">
               <legend>
                 <div class="number">1</div> Informations personnelles
@@ -130,6 +130,7 @@ include("navbar.php");
         <thead>
           <tr>
             <th>Id équipe</th>
+            <th>Type équipe</th>
             <th>Nom d'équipe</th>
             <th>Id</th>
             <th>Prénom</th>
@@ -146,6 +147,7 @@ include("navbar.php");
             $team = new team($user["id_team"]);
             $player = new user($user["id"]);
             echo '<td><a href="teams.php?id_team=' . htmlspecialchars($team->id) . '">' . htmlspecialchars($team->id) . '</a></td>';
+            echo '<td>' . htmlspecialchars($team->type_equipe) . '</td>';
             echo '<td>' . htmlspecialchars($team->nom) . '</td>';
             echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($player->id) . '">' . htmlspecialchars($player->id) . '</a></td>';
             echo '<td>' . htmlspecialchars($player->prenom) . '</td>';
@@ -153,6 +155,8 @@ include("navbar.php");
             echo '<td>' . htmlspecialchars($player->mail) . '</td>';
             echo '<td>' . htmlspecialchars($player->tel) . '</td>';
             echo '<td>' . htmlspecialchars($player->ecole) . '</td>';
+
+
             echo '</tr>';
           } ?>
         </tbody>
@@ -171,7 +175,7 @@ include("navbar.php");
     ?>
 
     <div class="content">
-      <div class="container">
+      <div class="container containergrey">
         <form action="" method="post">
           <div class="erreur"><?php echo $erreur2; ?> </div>
           <legend>

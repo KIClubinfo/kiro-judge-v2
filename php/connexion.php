@@ -1,12 +1,6 @@
 <?php
 include("config.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
- include("header.php");
- include("navbar.php");
-} else {
-  header('Location: index.php?co');
-}
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
@@ -42,6 +36,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 $_SESSION['id'] = intval($result['id']); //ca sera utile pour modifier le mot de passe
                 $_SESSION['id_team'] = intval($result['id_team']); //ca sera utile pour modifier le mot de passe
                 include("header.php");
+                include("navbar.php");
 ?>
 
                 <div class="content" style="margin-top: 15px">
@@ -75,8 +70,10 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
     }
   } else if (!isset($_POST['submit22'])) { //formulaire non envoyé
     include("header.php");
+    include("navbar.php");
+
     ?>
-    <div class="content" style="margin-top: 15px">
+    <div class="content" style=" padding-top: 20vh">
       <div class="container containergrey">
         <form action="" method="post">
           <label for="mail">Email :</label>
@@ -94,8 +91,10 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   }
 } else {
   include("header.php");
+  include("navbar.php");
+
   ?>
-  <div class="content" style="margin-top: 15px">
+  <div class="content" style=" padding-top: 20vh">
     <div class="erreur">Vous êtes déjà connecté.</div>
   </div>
 <?php
@@ -104,10 +103,12 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
 if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
+  include("navbar.php");
+
 ?>
-  <div class="content" style="margin-top: 15px">
+  <div class="content" style= "padding-top: 20vh">
     <div class="container containergrey">
-      <div class="erreur"><?php echo $erreur; ?></div>
+       <?php popup($erreur); ?>
       <form action="" method="post">
         <label for="mail">Email :</label>
         <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) {
@@ -162,10 +163,12 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
 
 if (isset($erreur22)) {
   include("header.php");
+  include("navbar.php");
+
 ?>
-  <div class="content" style="margin-top: 15px">
+  <div class="content" style="padding-top: 20vh">
     <div class="container containergrey">
-      <div class="erreur"><?php echo $erreur22; ?></div>
+      <?php  popup($erreur22); ?>
       <form action="" method="post">
         <div class="erreur">Vous devez modifier votre mot de passe.</div>
         <label for="password">Nouveau mot de passe (6 caractères minimum):</label>

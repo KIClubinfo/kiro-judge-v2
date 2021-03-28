@@ -2,16 +2,28 @@
 * Everywhere
 ** TODO Add some fucking CSS
 ** TODO Add guard not to display anything before a certain date
+** TODO Check PHP version
+** TODO Add Hub (distanciel)
+** TODO Javascript to check if valid parameter
+** TODO Reverse proxy websocket
 * TODO Admin Page
 - [ ] Ability to change password of any user.
 * When not connected
 ** TODO Index
 - [X] add redirection when connected.
 - [X] Display only relevant information.
+- [ ] Logo same size for sponsors
+- [ ] Add previous subjects and instances
+- [ ] Remove space between old subject / planning
+- [ ] Change article 2: ouvert a tous distanciel ou presentiel, comment on fait les lots.
+- [ ] Remove Participez! + Plan
 ** TODO Inscription
 - [X] Display passwords at the end when sucessful.
 - [ ] Be more clear on what is expected in each field.
 - [ ] Send an email to validate inscription
+** TODO Nav Bar
+- [ ] Change bar wheter connected or not
+- [X] Remove everything (keep index, connexion and inscription)
 * When connected
 ** TODO Page d'accueil
 - [ ] Presentation du concours

@@ -1,9 +1,6 @@
 <?php
 
 include("config.php");
-include("header.php");
-include("navbar.php");
-
 
 
 if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connecté
@@ -22,7 +19,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
         isset($_POST['tel-1']) and !empty($_POST['tel-1']) and isset($_POST['tel-2']) and !empty($_POST['tel-2']) and isset($_POST['tel-3'])
         and !empty($_POST['tel-3'])  and
         isset($_POST['team-name']) and !empty($_POST['team-name']) and isset($_POST['team-hub'])  and !empty($_POST['team-hub']) and
-        isset($_POST['ecole-1']) and !empty($_POST['ecole-1']) and isset($_POST['ecole-2'])  and !empty($_POST['ecole-2']) and isset($_POST['ecole-3']) and !empty($_POST['ecole-3'])
+        isset($_POST['ecole-1']) and !empty($_POST['ecole-1']) and isset($_POST['ecole-2'])  and !empty($_POST['ecole-2']) and isset($_POST['ecole-3']) and !empty($_POST['ecole-3']) and
+        and isset($_POST['type_equipe']) and !empty($_POST['type_equipe'])
       ) { //Si il a bien tout rempli
 
 
@@ -33,6 +31,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
           is_string($_POST['tel-1']) and is_string($_POST['tel-2']) and is_string($_POST['tel-3']) and
           is_string($_POST['team-name']) and is_numeric($_POST['team-hub']) and
           is_string($_POST['ecole-1']) and is_string($_POST['ecole-2']) and is_string($_POST['ecole-3'])
+          and  is_numeric($_POST['type_equipe'])
         ) { //il a bien envoyé des chaines de caractères
 
 
@@ -47,9 +46,10 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
               if (
                 strlen($_POST['nom-1']) <= 100 and strlen($_POST['nom-2']) <= 100 and strlen($_POST['nom-3']) <= 100 and
                 strlen($_POST['prenom-1']) <= 100 and strlen($_POST['prenom-2']) <= 100 and strlen($_POST['prenom-3']) <= 100 and
-                intval($_POST['team-hub']) < 3 and  intval($_POST['team-hub']) > 0 and strlen($_POST['team-name']) <= 180 and
-                strlen($_POST['ecole-1']) <= 300 and strlen($_POST['ecole-2']) <= 300 and strlen($_POST['ecole-3']) <= 300
-              ) { //nom prenom pas trop grands
+                intval($_POST['team-hub']) < 4 and  intval($_POST['team-hub']) > 0 and strlen($_POST['team-name']) <= 180 and
+                strlen($_POST['ecole-1']) <= 300 and strlen($_POST['ecole-2']) <= 300 and strlen($_POST['ecole-3']) <= 300 and
+                intval($_POST['type_equipe']) >= 0 and intval($_POST['type_equipe']) < 4
+              ) { //nom prenom pas trop grands, type equipe pas bon
 
                 if (
                   strlen($_POST['tel-1']) <= 15 and preg_match("#^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$#", $_POST['tel-1']) and
@@ -190,10 +190,11 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
       }
     } else { //formulaire pas envoyé
       include("header.php");
+      include("navbar.php");
 ?>
       <form action="" method="post" name="inscription">
 
-        <div id="equipe" style="display: block; margin-top: 15px" class="content">
+        <div id="equipe" style="display: block; padding-top: 20vh" class="content">
           <div class="container containergrey">
             <ul class="steps2">
               <li class="is-active">Équipe</li>
@@ -208,12 +209,16 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             <select name="team-hub" id="team-hub">
               <option value="1">Hub de l'École des Ponts</option>
               <option value="2">Hub du plateau Saclay</option>
+              <option value="3">Hub distanciel (Discord)</option>
             </select><br />
+            <INPUT type= "radio" name="type_equipe" value="1"> Équipe 1A des ponts
+            <INPUT type= "radio" name="type_equipe" value="2"> Équipe étudiante
+            <INPUT type= "radio" name="type_equipe" value="3" checked> Autre
             <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
           </div>
         </div>
 
-        <div id="participant-1" style="display: none; margin-top: 15px" class="content">
+        <div id="participant-1" style="display: none; padding-top: 20vh" class="content">
           <div class="container containergrey">
             <ul class="steps2">
               <li>Équipe</li>
@@ -247,7 +252,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
         </div>
 
 
-        <div id="participant-2" style="display: none; margin-top: 15px" class="content">
+        <div id="participant-2" style="display: none;  padding-top: 20vh" class="content">
           <div class="container containergrey">
             <ul class="steps2">
               <li>Équipe</li>
@@ -280,7 +285,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
         </div>
 
 
-        <div id="participant-3" style="display: none; margin-top: 15px" class="content">
+        <div id="participant-3" style="display: none;  padding-top: 20vh" class="content">
           <div class="container containergrey">
             <ul class="steps2">
               <li>Équipe</li>
@@ -318,24 +323,25 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
   } else //Si date d'inscription dépassée
   {
     include("header.php");
-    ?>
-    <div class="content">
-      <div class="erreur">Les inscriptions sont closes.</div>
-    </div>
+ include("navbar.php");
 
+ popup("Les inscriptions sont closes.");
+    ?>
   <?php
   }
 } else { //si l'utilisateur est déjà connecté
   include("header.php");
+include("navbar.php");
+
+popup("Vous êtes déjà connecté.")
   ?>
-  <div class="content">
-    <div class="erreur">Vous êtes déjà connecté.</div>
-  </div>
+
 <?php
 }
 
 if (isset($erreur)) {
   include("header.php");
+  include("navbar.php");
   //si on doit afficher le formulaire avec un message d'erreur
 
 ?>
@@ -343,7 +349,7 @@ if (isset($erreur)) {
 
   <form action="" method="post" name="inscription">
 
-    <div id="equipe" style="display: block; margin-top: 15px" class="content">
+    <div id="equipe" style="display: block;  padding-top: 20vh" class="content">
       <div class="container containergrey">
         <ul class="steps2">
           <li class="is-active">Équipe</li>
@@ -351,7 +357,7 @@ if (isset($erreur)) {
           <li>Participant 2</li>
           <li>Participant 3</li>
         </ul>
-        <div class="erreur"><?php echo $erreur; ?> </div>
+        <?php popup($erreur); ?>
         <label for="team-name">Nom d'équipe :</label>
         <input type="text" id="team-name" name="team-name" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" maxlength="180" value="<?php if (isset($_POST['team-name'])) {
                                                                                                                                                                       echo htmlspecialchars($_POST['team-name']);
@@ -368,13 +374,21 @@ if (isset($erreur)) {
                                 echo 'selected';
                               }
                             } ?>>Hub du plateau Saclay</option>
-        </select>
+        <option value="3" <?php if (isset($_POST['team-hub'])) {
+                                                if ($_POST['team-hub'] == 3) {
+                                                  echo 'selected';
+                                                }
+                                              } ?>>Hub distanciel (Discord)</option>
+
+                                              <INPUT type= "radio" name="type_equipe" value="1"> Équipe 1A des ponts
+                                              <INPUT type= "radio" name="type_equipe" value="2"> Équipe étudiante
+                                              <INPUT type= "radio" name="type_equipe" value="3" checked> Autre
 
         <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
       </div>
     </div>
 
-    <div id="participant-1" style="display: none; margin-top: 15px" class="content">
+    <div id="participant-1" style="display: none; padding-top: 20vh" class="content">
       <div class="container containergrey">
         <ul class="steps2">
           <li>Équipe</li>
@@ -418,7 +432,7 @@ if (isset($erreur)) {
     </div>
 
 
-    <div id="participant-2" style="display: none; margin-top: 15px" class="content">
+    <div id="participant-2" style="display: none; padding-top: 20vh" class="content">
       <div class="container containergrey">
         <ul class="steps2">
           <li>Équipe</li>
@@ -461,7 +475,7 @@ if (isset($erreur)) {
     </div>
 
 
-    <div id="participant-3" style="display: none; margin-top: 15px" class="content">
+    <div id="participant-3" style="display: none; padding-top: 20vh" class="content">
       <div class="container containergrey">
         <ul class="steps2">
           <li>Équipe</li>
@@ -495,7 +509,7 @@ if (isset($erreur)) {
         <input type="tel" name="tel-3" value="<?php if (isset($_POST['tel-3'])) {
                                                 echo htmlspecialchars($_POST['tel-3']);
                                               } ?>" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-        <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
+        <label for="GCU">Nous acceptons le <a target="_blank" href="https://kiro.enpc.org/#reglement">réglement du concours</a></label>
         <input type="checkbox" id="GCU" name="GCU" required><br /> <br />
         <div class="container2">
           <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">

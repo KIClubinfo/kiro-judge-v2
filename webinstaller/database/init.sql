@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS `kiro`.`teams` (
   `classement` INT NOT NULL ,
   `valide` BOOLEAN NOT NULL ,
   `hub` INT NOT NULL ,
+  `type_equipe` INT NOT NULL ,
   `numero_emplacement` INT NOT NULL , PRIMARY KEY (`id`))
   ENGINE = InnoDB;
 
-INSERT INTO `kiro`.`users` (`id`, `prenom`, `nom`, `password`, `mail`, `mdp_a_changer`, `tel`, `id_team`, `admin`,`ecole`) VALUES ('1', 'admin', 'admin', '$2y$10$0R6d.079M9MYb9QzAuVV1udzg8Y1zhHv5cckqdir/66ijwenjq.hG', 'admin@kiro.enpc.org', '1', '00000000', '0','1', 'KI');
+INSERT INTO `kiro`.`users` (`id`, `prenom`, `nom`, `password`, `mail`, `mdp_a_changer`, `tel`, `id_team`, `admin`,`ecole`) VALUES ('1', 'admin', 'admin', '$2y$12$F6Q4LapmPtZw8RzpVuAhd.47PJ7KG2xQTUeRB/d3XCI7cjG9qW8OG', 'admin@kiro.enpc.org', '1', '00000000', '0','1', 'KI');
