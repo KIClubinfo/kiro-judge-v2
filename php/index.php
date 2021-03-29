@@ -92,6 +92,7 @@ if (!empty($msg)) {
     <ul class="list2">
       <li> <a href="sujets/sujet1.pdf">Session 2017-2018, en partenariat avec Air France</a> et les <a href="sujets/sujet1.zip">instances</a></li>
       <li> <a href="sujets/sujet2.pdf">Session 2018-2019, en partenariat avec LocalSolver</a> et les <a href="sujets/sujet2.zip">instances</a></li>
+      <li> <a href="sujets/sujet3.pdf">Session 2019-2020, en partenariat avec LocalSolver</a> et les <a href="sujets/sujet3.zip">instances</a></li>
     </ul>
   </div>
 </div>
@@ -201,9 +202,20 @@ if (!empty($msg)) {
       sans recours possible. Le KI se réserve le droit de disqualifier sans réserve et sans recours possible
       les équipes n'ayant pas des conduites respectueuses envers les organisateurs ou les autres candidats.
     </p>
-    <div class="title" style="margin-bottom: 1em; padding-top: 2em;" id="participer">
-      <span class="byline">Participez !</span>
+
+    <div class="title" style="margin-bottom: 1em; padding-top: 2em;">
+      <span class="byline">Les lots</span>
     </div>
+
+    <p>Voici les prix remis aux trois premières équipes étudiantes, à partager entre les membres du groupe:
+    <ul class="list2">
+      <li>1er : 1500€</li>
+      <li>2ème : 1000 €</li>
+      <li>3ème : 500 €</li>
+    </ul>
+    En plus de ces prix, la 1ère équipe d’étudiants des Ponts gagnera un Ipad par personne.
+    </p>
+
     <ul class="actions">
       <li><button class="button" onclick="self.location.href='inscription.php'">S'inscrire</button></li>
       <br>
@@ -211,11 +223,13 @@ if (!empty($msg)) {
     <div class="title" style="margin-bottom: 1em; padding-top: 2em;">
       <span class="byline" id="acces">Plan d'accès</span>
     </div>
-    <p>Le concours se déroule dans les locaux de l'Ecole des Ponts, ainsi que dans ceux de Télécom Paris.</p>
+    <p>Plusieurs endroits sont disponibles pour passer le KIRO, en <strong>présentiel ou distanciel</strong>.</br> L'édition présentielle se déroulera à la fois dans les locaux de l'Ecole des Ponts et dans ceux de Télécom Paris.</p>
+    </br>
     <p><strong>Cité Descartes, 6-8 Avenue Blaise Pascal, 77420 Champs-sur-Marne<br>
         Bâtiment Coriolis, aile Fresnel, premier étage <br>
       </strong></p>
-     <p><strong>Télécom Paris, 19 Place Marguerite Perey, 91120 Palaiseau
+    </br>
+    <p><strong>Télécom Paris, 19 Place Marguerite Perey, 91120 Palaiseau
       </strong></p>
     <p>Pour ceux passant l’épreuve au format distanciel, le lien du discord vous sera envoyé après inscription.
       La remise des prix aura lieu à la Maison des Ponts.
