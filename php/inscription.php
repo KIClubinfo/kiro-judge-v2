@@ -325,7 +325,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
     include("header.php");
  include("navbar.php");
 
- popup("Les inscriptions sont closes.");
+ popup("Les inscriptions sont closes.", 6000, "error");
     ?>
   <?php
   }
@@ -333,7 +333,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
   include("header.php");
 include("navbar.php");
 
-popup("Vous êtes déjà connecté.")
+popup("Vous êtes déjà connecté.", 6000, "error")
   ?>
 
 <?php
@@ -357,7 +357,7 @@ if (isset($erreur)) {
           <li>Participant 2</li>
           <li>Participant 3</li>
         </ul>
-        <?php popup($erreur); ?>
+        <?php popup($erreur, 6000, "error"); ?>
         <label for="team-name">Nom d'équipe :</label>
         <input type="text" id="team-name" name="team-name" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" maxlength="180" value="<?php if (isset($_POST['team-name'])) {
                                                                                                                                                                       echo htmlspecialchars($_POST['team-name']);

@@ -96,7 +96,7 @@ class team
           $contents = file_get_contents("http://node_12:8080/refresh"); // mise à jour des classements
 
         } else {
-          $erreur1 = "Erreur lors de la mise à jour du score dans le update de la base de donnée.";
+          echo "Erreur lors de la mise à jour du score dans le update de la base de donnée.";
         }
       }
     } else {
