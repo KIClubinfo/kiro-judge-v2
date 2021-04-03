@@ -90,9 +90,9 @@ if (!empty($msg)) {
       <span class="byline">Liste des sujets des éditions précédentes</span>
     </div>
     <ul class="list2">
-      <li> <a href="sujets/sujet1.pdf">Session 2017-2018, en partenariat avec Air France</a> et les <a href="sujets/sujet1.zip">instances</a></li>
-      <li> <a href="sujets/sujet2.pdf">Session 2018-2019, en partenariat avec LocalSolver</a> et les <a href="sujets/sujet2.zip">instances</a></li>
-      <li> <a href="sujets/sujet3.pdf">Session 2019-2020, en partenariat avec LocalSolver</a> et les <a href="sujets/sujet3.zip">instances</a></li>
+      <li> <a href="sujets/sujet1.pdf" target="_blank">Session 2017-2018, en partenariat avec Air France</a> et les <a href="sujets/sujet1.zip" target="_blank">instances</a></li>
+      <li> <a href="sujets/sujet2.pdf" target="_blank">Session 2018-2019, en partenariat avec LocalSolver</a> et les <a href="sujets/sujet2.zip" target="_blank">instances</a></li>
+      <li> <a href="sujets/sujet3.pdf" target="_blank">Session 2019-2020, en partenariat avec Renault</a> et les <a href="sujets/sujet3.zip" target="_blank">instances</a></li>
     </ul>
   </div>
 </div>
@@ -108,7 +108,7 @@ if (!empty($msg)) {
     <div class="title" style="margin-bottom: 1em; padding-top: 2em;">
       <span class="byline">La session</span>
     </div>
-    <p>Cette quatrième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-Sur-Marne, à l’Ecole Télécom Paris à Palaiseau ou à distance sur Discord le <strong>jeudi 6 Mai 2021</strong>.
+    <p>Cette quatrième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne, à l’Ecole Télécom Paris à Palaiseau ou à distance sur Discord le <strong>jeudi 6 Mai 2021</strong>.
     </p>
     <div class="row h-100">
       <div class="col-sm-2">
@@ -150,7 +150,7 @@ if (!empty($msg)) {
       <div class="col-sm-4">
         <div class="box nobox">
           <span><strong>Article 2</strong></span>
-          <p> Chaque participant doit avoir entre 17 et 25 ans au 31 décembre de l'année 2020 et doit être inscrit dans une école d'ingénieur agréée par la CTI au cours de l'année 2021. </p>
+          <p> Le concours est ouvert à tous mais les lots sont réservés aux équipes remplissant les conditions évoquées plus bas. </p>
         </div>
       </div>
       <div class="col-sm-4">
@@ -213,7 +213,7 @@ if (!empty($msg)) {
       <li>2ème : 1000 €</li>
       <li>3ème : 500 €</li>
     </ul>
-    En plus de ces prix, la 1ère équipe d’étudiants des Ponts gagnera un Ipad par personne.
+    En plus de ces prix, la 1ère équipe d’étudiants des ponts gagnera un Ipad par personne.
     </p>
 
     <ul class="actions">

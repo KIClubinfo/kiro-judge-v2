@@ -3,7 +3,7 @@ include("config.php");
 include("header.php");
 include("navbar.php");
 
-$team_id_affiche = 1; //Team par défaut
+$team_id_affiche = -1; //pas de team selectionnee
 if (isset($_GET['id_team'])) { //Si on veut voir une team spécificique
   if (is_numeric($_GET['id_team'])) {
     $team_id = intval(sanitize_string($_GET['id_team']));
@@ -24,19 +24,21 @@ if (isset($_GET['id_team'])) { //Si on veut voir une team spécificique
     $erreur = "Vous n'avez pas entré un chiffre.";
   }
 }
+if ($team_id_affiche != -1){
+  $team_affiche = new team($team_id_affiche);
+  if ($req = $conn->prepare("SELECT id FROM users WHERE id_team=?")) { //requete préparée
+    $req->bind_param("i", $team_id_affiche);
+    $req->execute();
+    $result = $req->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
+    $req->close();
+    include("header.php");
+    $membre_1 = new user($result[0]["id"]);
+    $membre_2 = new user($result[1]["id"]);
+    $membre_3 = new user($result[2]["id"]);
+  } else {
+    $erreur2 = "Erreur lors de la sélection des membres de l'équipe.";
+  }
 
-$team_affiche = new team($team_id_affiche);
-if ($req = $conn->prepare("SELECT id FROM users WHERE id_team=?")) { //requete préparée
-  $req->bind_param("i", $team_id_affiche);
-  $req->execute();
-  $result = $req->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
-  $req->close();
-  include("header.php");
-  $membre_1 = new user($result[0]["id"]);
-  $membre_2 = new user($result[1]["id"]);
-  $membre_3 = new user($result[2]["id"]);
-} else {
-  $erreur2 = "Erreur lors de la sélection des membres de l'équipe.";
 }
 
 
@@ -165,6 +167,61 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
         </div>
       </div>
     </div>
+<?php
+if ($team_affiche === -1){//Si on n'affiche aucune team en particulier on va toutes les afficher
+  if ($req2 = $conn->prepare("SELECT id FROM teams")) { //toutes les id des teams
+      $req2->execute();
+      $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
+      $req2->close();
+  }
+  else{
+      $erreur3 = "Erreur lors de la connexion à la base de donnée.";
+      die();
+  }
+  ?>
+  <div class="content limiter" style="min-height: 35%;">
+    <div class="container">
+      <div class="wrap-table100" style="margin-top: 5vh;">
+        <div class="table">
+          <div class="row2 header">
+          <?php if (is_admin()) {
+            echo '<div class="cell">Id</div>';
+          } ?>
+          <div class="cell">Nom d'équipe</div>
+          <div class="cell">Classement</div>
+          <div class="cell">Score</div>
+          <div class="cell">Hub</div>
+          <div class="cell">Emplacement</div>
+        </div>
+
+  <?php
+  foreach($result_ids as $id_team){
+      $team_affiche = new team($id_team);
+      ?>
+      <div class="row2">
+        <?php if (is_admin()) {
+          echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div>';
+        } ?>
+        <div class="cell"><?php echo htmlspecialchars($team_affiche->nom); ?></div>
+        <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
+        <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
+        <div class="cell"><?php if ($team_affiche->hub == 1) {
+                            echo "Hub de l'École des Ponts";
+                          } elseif ($team_affiche->hub == 2) {
+                            echo "Hub du Plateau Saclay";
+                          } else{
+                            echo "Hub distanciel (Discord)";
+                          }?></div>
+        <div class="cell"><?php echo htmlspecialchars($team_affiche->numero_emplacement); ?></div>
+      </div>
+
+
+  <?php
+  }
+  echo "</div></div>";
+}
+
+ ?>
   <?php
 }
 include("footer.php");

@@ -309,7 +309,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             <input type="email" name="email-3" maxlength="255" required><br />
             <label for="tel-3">Numéro de téléphone:</label>
             <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-            <label for="GCU">Nous acceptons le <a target="_blank" href="https://hackathon.enpc.org/#reglement">réglement du concours</a></label>
+            <label for="GCU">Nous acceptons le <a target="_blank" href="/index.php/#reglement">réglement du concours</a></label>
             <input type="checkbox" id="GCU" name="GCU" required><br />
             <div class="container2">
               <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
@@ -509,7 +509,7 @@ if (isset($erreur)) {
         <input type="tel" name="tel-3" value="<?php if (isset($_POST['tel-3'])) {
                                                 echo htmlspecialchars($_POST['tel-3']);
                                               } ?>" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-        <label for="GCU">Nous acceptons le <a target="_blank" href="https://kiro.enpc.org/#reglement">réglement du concours</a></label>
+        <label for="GCU">Nous acceptons le <a target="_blank" href="/index.php/#reglement">réglement du concours</a></label>
         <input type="checkbox" id="GCU" name="GCU" required><br /> <br />
         <div class="container2">
           <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">

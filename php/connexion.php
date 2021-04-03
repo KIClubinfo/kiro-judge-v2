@@ -42,7 +42,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 <div class="content" style="margin-top: 15px">
                   <div class="container containergrey">
                     <form action="" method="post">
-                      <div class="erreur">Vous devez modifier votre mot de passe.</div>
+                      <?php popup("Vous devez modifier votre mot de passe."); ?>
                       <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
                       <input minlength="6" type="password" name="password" onchange='validatePassword();' required>
                       <label for="password-verif">Nouveau mot de passe (vérification):</label>
@@ -95,7 +95,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
 
   ?>
   <div class="content" style=" padding-top: 20vh">
-    <div class="erreur">Vous êtes déjà connecté.</div>
+    <?php popup("Vous êtes déjà connecté.", 6000, "error"); ?>
   </div>
 <?php
 }
@@ -108,7 +108,7 @@ if (isset($erreur)) {
 ?>
   <div class="content" style= "padding-top: 20vh">
     <div class="container containergrey">
-       <?php popup($erreur); ?>
+       <?php popup($erreur, 6000, "error"); ?>
       <form action="" method="post">
         <label for="mail">Email :</label>
         <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) {
@@ -168,9 +168,9 @@ if (isset($erreur22)) {
 ?>
   <div class="content" style="padding-top: 20vh">
     <div class="container containergrey">
-      <?php  popup($erreur22); ?>
+      <?php popup($erreur22, 6000, "error"); ?>
       <form action="" method="post">
-        <div class="erreur">Vous devez modifier votre mot de passe.</div>
+        Vous devez modifier votre mot de passe.
         <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
         <input minlength="6" id="password" type="password" name="password" onchange='validatePassword();' required>
         <label for="password-verif">Nouveau mot de passe (vérification):</label>
