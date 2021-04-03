@@ -341,8 +341,7 @@ if (isset($erreur)) {
   include("navbar.php");
   //si on doit afficher le formulaire avec un message d'erreur
 
-?>
-
+ popup($erreur, 6000, "error"); ?>
 
   <form action="" method="post" name="inscription">
 
@@ -354,7 +353,7 @@ if (isset($erreur)) {
           <li>Participant 2</li>
           <li>Participant 3</li>
         </ul>
-        <?php popup($erreur, 6000, "error"); echo $erreur; ?>
+
         <label for="team-name">Nom d'équipe :</label>
         <input type="text" id="team-name" name="team-name" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" maxlength="180" value="<?php if (isset($_POST['team-name'])) {
                                                                                                                                                                       echo htmlspecialchars($_POST['team-name']);
