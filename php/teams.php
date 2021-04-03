@@ -219,7 +219,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
 
   <?php
   }
-  echo "</div></div></div>";
+  echo "</div></div></div></div>";
 }
 
  ?>
