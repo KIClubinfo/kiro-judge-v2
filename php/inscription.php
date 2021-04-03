@@ -339,9 +339,8 @@ if (isset($erreur)) {
   include("navbar.php");
   //si on doit afficher le formulaire avec un message d'erreur
 ?>
-<div class="content" style= "padding-top: 20vh">
 
-  <?php popup($erreur, 6000, "error");?>
+<div>  <?php popup($erreur, 6000, "error");?> </div>
   <form action="" method="post" name="inscription">
     <div id="equipe" style="display: block;  padding-top: 20vh" class="content">
       <div class="container containergrey">
