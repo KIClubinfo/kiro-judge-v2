@@ -1,6 +1,4 @@
-
 <?php
-
 include("config.php");
 
 
@@ -341,7 +339,8 @@ if (isset($erreur)) {
   include("navbar.php");
   //si on doit afficher le formulaire avec un message d'erreur
 
- popup($erreur, 6000, "error"); ?>
+ popup($erreur, 6000, "error");
+ popup($erreur); ?>
 
   <form action="" method="post" name="inscription">
 
