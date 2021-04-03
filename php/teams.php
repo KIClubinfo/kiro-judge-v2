@@ -68,7 +68,6 @@ if (isset($erreur2)) { //Si erreur dans l'afficage de la team
 
 if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   include("header.php");
-  echo "ya une équipe"
 ?>
   <div class="content limiter" style="min-height: 35%;">
     <div class="container">
@@ -171,7 +170,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
     </div>
 <?php
 }else{//Si on n'affiche aucune team en particulier on va toutes les afficher
-  echo "on met tout";
   if ($req2 = $conn->prepare("SELECT id FROM teams")) { //toutes les id des teams
       $req2->execute();
       $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
@@ -221,7 +219,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
 
   <?php
   }
-  echo "</div></div>";
+  echo "</div></div></div>";
 }
 
  ?>
