@@ -14,7 +14,7 @@ if (isset($_GET['co2'])) { //On affiche un message pour signifier la bonne conne
 }
 
 if (isset($_GET['ns'])) {
-  $msg = "Tu ne peux pas accéder à cette page pour le moment.";
+  $msg_error = "Tu ne peux pas accéder à cette page pour le moment.";
 }
 if (isset($_GET['deco'])) { //On affiche un message pour signifier la bonne déconnexion
   $msg = "Tu as bien été déconnecté.";
@@ -29,6 +29,9 @@ if (isset($_GET['maj_admin'])) { //On affiche un message pour signifier la bonne
 }
 if (!empty($msg)) {
   popup($msg);
+}
+if (!empty($msg_error)) {
+  popup($msg, 6000, "erreur");
 }
 ?>
 

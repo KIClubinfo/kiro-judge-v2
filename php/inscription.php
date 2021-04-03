@@ -1,3 +1,4 @@
+
 <?php
 
 include("config.php");
@@ -136,15 +137,11 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
 
 
                                   send_mail($safe_email_1, htmlspecialchars($team_name), $safe_prenom_1, $safe_prenom_2, $safe_prenom_3, $safe_nom_2, $safe_nom_3, $email_1, $password1);
-                                  send_mail($safe_email_2, htmlspecialchars($team_name), $safe_prenom_2, $safe_prenom_3, $safe_prenom_1, $safe_nom_3, $safe_nom_1, $email_2, $password2);
-                                  send_mail($safe_email_3, htmlspecialchars($team_name), $safe_prenom_3, $safe_prenom_1, $safe_prenom_2, $safe_nom_1, $safe_nom_2, $email_3, $password3);
+                                  #send_mail($safe_email_2, htmlspecialchars($team_name), $safe_prenom_2, $safe_prenom_3, $safe_prenom_1, $safe_nom_3, $safe_nom_1, $email_2, $password2);
+                                  #send_mail($safe_email_3, htmlspecialchars($team_name), $safe_prenom_3, $safe_prenom_1, $safe_prenom_2, $safe_nom_1, $safe_nom_2, $email_3, $password3);
+                                  header('Location: /');
+                                  exit();
 
-                                  // TODO : JEAN-LOUP
-                                  // JEAN LOUP:  ENVOYER 1 MAIL à chacuns des mails ($safe_email_1,...) AVEC DEDANS LEUR ADDRESSE MAIL ET LEUR MOT DE PASSE ($password1,...).
-                                  // Tu leur rappelles aussi leur team (htmlspecialchars($team_name)) et genre tu peux faire dedans du bonjour [prenom] (htmlspecialchars($safe_prenom_1), htmlspecialchars($safe_nom_1), )
-                                  // Faut que le mail soit smpatchique avec genre "a bientot ...", bien remplir les headers
-
-                                  // Puis redirection vers page index&inscr
 
                                 } else {
                                   $erreur = "Erreur lors de la création de la team.";
@@ -309,7 +306,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             <input type="email" name="email-3" maxlength="255" required><br />
             <label for="tel-3">Numéro de téléphone:</label>
             <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-            <label for="GCU">Nous acceptons le <a target="_blank" href="/index.php/#reglement">réglement du concours</a></label>
+            <label for="GCU">Nous acceptons le <a target="_blank" href="/#reglement">réglement du concours</a></label>
             <input type="checkbox" id="GCU" name="GCU" required><br />
             <div class="container2">
               <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
@@ -509,7 +506,7 @@ if (isset($erreur)) {
         <input type="tel" name="tel-3" value="<?php if (isset($_POST['tel-3'])) {
                                                 echo htmlspecialchars($_POST['tel-3']);
                                               } ?>" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-        <label for="GCU">Nous acceptons le <a target="_blank" href="/index.php/#reglement">réglement du concours</a></label>
+        <label for="GCU">Nous acceptons le <a target="_blank" href="/#reglement">réglement du concours</a></label>
         <input type="checkbox" id="GCU" name="GCU" required><br /> <br />
         <div class="container2">
           <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
