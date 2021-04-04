@@ -120,7 +120,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
               echo '<div class="cell">' . htmlspecialchars($membre_1->tel) . '</div>';
             } ?>
             <?php if (!is_admin()) {
-              echo '<div class="cell">' . htmlspecialchars($membre_1->mail) . '</td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_1->mail) . '</div>';
             } ?>
             <?php if (!is_admin()) {
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_1->id) . '">' . htmlspecialchars($membre_1->id) . '</a></div>';
@@ -135,7 +135,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
               echo '<div class="cell">' . htmlspecialchars($membre_2->tel) . '</div>';
             } ?>
             <?php if (!is_admin()) {
-              echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</div>';
             } ?>
             <?php if (!is_admin()) {
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></div>';
@@ -150,7 +150,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
               echo '<div class="cell">' . htmlspecialchars($membre_2->tel) . '</div>';
             } ?>
             <?php if (!is_admin()) {
-              echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</td>';
+              echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</div>';
             } ?>
             <?php if (!is_admin()) {
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></div>';
