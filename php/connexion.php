@@ -27,8 +27,10 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                   $_SESSION['user'] = $user;
                   $team = new team($result['id_team']);
                   $_SESSION['team'] = $team;
-                  header('Location: index.php?co');
-                  exit();
+                  if ($_SESSION['user']->admin === 0){
+                    header('Location: index.php?co2');
+                    exit();
+                  }
                 } else {
                   $erreur = "Erreur lors de la mise à jour du status de l'équipe.";
                 }
@@ -145,7 +147,7 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
             header('Location: index.php?co2');
             exit();
           }
-          
+
 
         } else {
           $erreur22 = "Erreur lors de la mise à jour du mot de passe.";
