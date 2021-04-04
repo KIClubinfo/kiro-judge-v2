@@ -10,7 +10,15 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
 
           $safe_email = sanitize_string($_POST['email']);
 
-      
+          if ($req = $conn->prepare("SELECT * FROM users WHERE mail=?")) { //verifie si un compte existe
+            $req->bind_param("s", $safe_email);
+            $req->execute();
+            $result = $req->get_result()->fetch_array(MYSQLI_ASSOC);
+            $req->close();
+    
+          } else {
+            $erreur = "Erreur lors du traitement de la requête.";
+          }
         } else {
           $erreur = "Votre email n'est pas dans le bon format ou est trop long (255 caractères maximum).";
         }
