@@ -105,7 +105,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell">Prénom</div>
             <div class="cell">Nom</div>
             <div class="cell">École</div>
-            <?php if (is_admin()) { //Si affichage admin
+            <?php if (!is_admin()) { //Si affichage admin
             ?>
               <div class="cell">Numéro de téléphone</div>
               <div class="cell">Mail</div>
