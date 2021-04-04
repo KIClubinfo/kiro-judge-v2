@@ -26,11 +26,6 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 $req3->close();
 
 
-                //TODO: Envoyer mail avec nouveau mot de passe
-                //header('Location: index.php?change');
-
-                echo $password;
-                //exit();
               } else {
                 $erreur = "Erreur lors de la mise à jour du mot de passe.";
               }
