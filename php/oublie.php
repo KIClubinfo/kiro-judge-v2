@@ -26,12 +26,10 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 $req3->execute();
                 $req3->close();
 
+                send_password($safe_email, $password, sanitize_string($result['prenom']));
+                header('Location: /index.php?change');
+                exit();
 
-                //TODO: Envoyer mail avec nouveau mot de passe
-                //header('Location: index.php?change');
-
-                echo $password;
-                //exit();
               } else {
                 $erreur = "Erreur lors de la mise à jour du mot de passe.";
               }
