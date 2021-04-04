@@ -67,7 +67,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   <?php
   }
 } else {
-  include("header.php");
+
   header('Location: /index.php?already_co');
   exit();
 }
