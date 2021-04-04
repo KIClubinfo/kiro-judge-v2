@@ -317,14 +317,9 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
     }
   } else //Si date d'inscription dépassée
   {
-    include("header.php");
- include("navbar.php");
-?>
-<div id="equipe" style="display: block; padding-top: 20vh" class="content"> </div>
+    header('Location: /index.php?inscriptions_closes');
+    exit();
 
-
-  <?php
-   popup("Les inscriptions sont closes.", 6000, "error");
   }
 } else { //si l'utilisateur est déjà connecté
   include("header.php");
