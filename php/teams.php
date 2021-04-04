@@ -180,6 +180,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       $erreur3 = "Erreur lors de la connexion à la base de donnée.";
       die();
   }
+
   ?>
   <div class="content limiter" style="min-height: 35%;">
     <div class="container">
@@ -198,6 +199,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   <?php
   foreach($result_ids as $id_team){
       $team_affiche = new team($id_team);
+      print_r($team_affiche);
       ?>
       <div class="row2">
         <?php if (!is_admin()) { ?>
