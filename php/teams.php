@@ -105,7 +105,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell">Prénom</div>
             <div class="cell">Nom</div>
             <div class="cell">École</div>
-            <?php if (!is_admin()) { //Si affichage admin
+            <?php if (is_admin()) { //Si affichage admin
             ?>
               <div class="cell">Numéro de téléphone</div>
               <div class="cell">Mail</div>
@@ -131,13 +131,13 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell"><?php echo htmlspecialchars($membre_2->prenom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_2->nom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_2->ecole); ?></div>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($membre_2->tel) . '</div>';
             } ?>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</td>';
             } ?>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></div>';
             } ?>
           </div>
@@ -146,13 +146,13 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell"><?php echo htmlspecialchars($membre_2->prenom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_2->nom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_2->ecole); ?></div>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($membre_2->tel) . '</div>';
             } ?>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($membre_2->mail) . '</td>';
             } ?>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></div>';
             } ?>
           </div>
