@@ -174,6 +174,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   if ($req2 = $conn->prepare("SELECT id FROM teams")) { //toutes les id des teams
       $req2->execute();
       $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
+
       $req2->close();
   }
   else{
@@ -198,6 +199,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
 
   <?php
   foreach($result_ids as $id_team){
+    print_r($result_ids);
       print_r($id_team);
       $team_affiche = new team($id_team);
       //print_r($team_affiche);
