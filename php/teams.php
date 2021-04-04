@@ -57,7 +57,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
     <div class="container">
       <?php
       if (is_admin() and !$team_affiche->valide) { //Si la team n'est pas active
-        popup("Cette équipe n'est pas active.");
+        popup("Cette équipe n'est pas active.", 6000, "error");
       }
       ?>
       <div class="wrap-table100" style="margin-top: 5vh;">
@@ -65,7 +65,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
 
 
           <div class="row2 header">
-            <?php if (!is_admin()) {
+            <?php if (is_admin()) {
               echo '<div class="cell">Id</div>';
             } ?>
             <div class="cell">Nom d'équipe</div>
@@ -75,7 +75,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell">Type</div>
           </div>
           <div class="row2">
-            <?php if (!is_admin()) {
+            <?php if (is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div>';
             } ?>
             <div class="cell"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></div>
