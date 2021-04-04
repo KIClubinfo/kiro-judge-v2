@@ -1,6 +1,6 @@
 <?php
 include("config.php");
-include("navbar.php");
+
 
 if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   if (isset($_POST['submit'])) { //Il a envoyé le formulaire
@@ -51,6 +51,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
     }
   } else { //formulaire non envoyé
     include("header.php");
+    include("navbar.php");
 ?>
     <div class="content" style="min-height: 70%; margin-top: 20vh">
       <div class="container containergrey">
@@ -67,20 +68,17 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
   }
 } else {
   include("header.php");
-  ?>
-  <div class="content" style="min-height: 70%;">
-    <div class="erreur">Vous êtes déjà connecté.</div>
-  </div>
-<?php
+  header('Location: /index.php?already_co');
+  exit();
 }
 
 if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
+  popup($erreur, 6000, "error");
 ?>
   <div class="content" style="min-height: 70%;  margin-top: 20vh">
     <div class="container containergrey">
-      <div class="erreur"><?php echo $erreur; ?></div>
       <form action="" method="post">
         <p style="text-align: center">Nous allons vous envoyer un nouveau mot de passe par mail. <br/></p>
         <br/>
@@ -96,9 +94,5 @@ if (isset($erreur)) {
 <?php
 }
 
-?>
-
-
-<?php
 include("footer.php");
 ?>
