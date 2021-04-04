@@ -19,8 +19,13 @@ if (isset($_GET['ns'])) {
 if (isset($_GET['deco'])) { //On affiche un message pour signifier la bonne déconnexion
   $msg = "Tu as bien été déconnecté.";
 }
+
 if (isset($_GET['inscriptions_closes'])) { //On affiche un message pour signifier la bonne déconnexion
-  $msg = "Les inscriptions sont closes.";
+  $msg_error = "Les inscriptions sont closes.";
+}
+
+if (isset($_GET['already_co'])) { //On affiche un message pour signifier la bonne déconnexion
+  $msg_error = "Vous êtes déjà connecté.";
 }
 
 if (isset($_GET['change'])) { //On affiche un message pour signifier le bon changement de mot de passe

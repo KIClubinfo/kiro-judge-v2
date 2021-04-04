@@ -89,15 +89,11 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
     </div>
   <?php
   }
-} else {
-  include("header.php");
-  include("navbar.php");
+} else { //deja connecte
+  header('Location: /index.php?already_co');
+  exit();
 
-  ?>
-  <div class="content" style=" padding-top: 20vh">
-    <?php popup("Vous êtes déjà connecté.", 6000, "error"); ?>
-  </div>
-<?php
+
 }
 
 if (isset($erreur)) {

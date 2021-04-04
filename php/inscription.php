@@ -322,13 +322,9 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
 
   }
 } else { //si l'utilisateur est déjà connecté
-  include("header.php");
-include("navbar.php");
+  header('Location: /index.php?already_co');
+  exit();
 
-popup("Vous êtes déjà connecté.", 6000, "error")
-  ?>
-
-<?php
 }
 
 if (isset($erreur)) {
