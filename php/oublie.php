@@ -8,7 +8,25 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
       if (is_string($_POST['email'])) { //il a bien envoyé des chaines de caractères
         if (strlen($_POST['email']) <= 255 and preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $_POST['email'])) { //Son email est valide
 
-      
+          $safe_email = sanitize_string($_POST['email']);
+
+          if ($req = $conn->prepare("SELECT * FROM users WHERE mail=?")) { //verifie si un compte existe
+            $req->bind_param("s", $safe_email);
+            $req->execute();
+            $result = $req->get_result()->fetch_array(MYSQLI_ASSOC);
+            $req->close();
+            if (!empty($result)) { //le mail existe bel et bien
+
+              $password = bin2hex(random_bytes(9)); //On génère un mot de passe aléatoire
+              $ready_password = password_hash($password, PASSWORD_BCRYPT);
+
+    
+            } else {
+              $erreur = "L'email n'existe pas.";
+            }
+          } else {
+            $erreur = "Erreur lors du traitement de la requête.";
+          }
         } else {
           $erreur = "Votre email n'est pas dans le bon format ou est trop long (255 caractères maximum).";
         }
@@ -44,6 +62,7 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
 if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
+  include("navbar.php")
   popup($erreur, 6000, "error");
 ?>
   <div class="content" style="min-height: 70%;  margin-top: 20vh">
