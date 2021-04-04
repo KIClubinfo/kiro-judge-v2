@@ -4,7 +4,7 @@ include("config.php");
 
 if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connecté
 
-  if (date("m.d.y") < $date_limite_inscription) { //Date inscription
+  if (var_dump($aujourdhui < $date_limite_inscription)) { //Date inscription
 
     if (isset($_POST['submit'])) { //Il a envoyé le formulaire
 
