@@ -46,23 +46,18 @@ if ($team_id_affiche != -1){
 if (isset($erreur)) { //si erreur dans la team demandé
   include("header.php");
 ?>
-  <div class="content" style="min-height: 35%;">
-    <div class="container">
+
       <?php popup($erreur); ?>
 
-    </div>
-  </div>
 <?php
 }
 
 if (isset($erreur2)) { //Si erreur dans l'afficage de la team
   include("header.php");
 ?>
-  <div class="content" style="min-height: 35%;">
-    <div class="container">
+
     <?php popup($erreur2); ?>
-    </div>
-  </div>
+
 <?php
 }
 
