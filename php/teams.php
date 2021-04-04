@@ -188,24 +188,24 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       <div class="wrap-table100" style="margin-top: 5vh;">
         <div class="table">
           <div class="row2 header">
-          <?php if (!is_admin()) {
-            ?><div class="cell">Id</div><?php ; } ?>
+          <?php if (is_admin()) {?>
+          <div class="cell">Id</div><?php ; } ?>
           <div class="cell">Nom d'équipe</div>
           <div class="cell">Classement</div>
           <div class="cell">Score</div>
           <div class="cell">Hub</div>
-          <div class="cell">Emplacement</div>
+          <div class="cell">Type</div>
+
         </div>
 
   <?php
   foreach($result_ids as $id_team){
       $id_team = $id_team["id"];
       $team_affiche = new team($id_team);
-      //print_r($team_affiche);
       ?>
       <div class="row2">
-        <?php if (!is_admin()) { ?>
-        <div class="cell"><?php echo htmlspecialchars($team_affiche->id) ?></div> <?php  } ?>
+        <?php if (is_admin()) { ?>
+      <div class="cell"><?php echo htmlspecialchars($team_affiche->id) ?></div> <?php  } ?>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->nom); ?></div>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
@@ -216,7 +216,13 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
                           } else{
                             echo "Hub distanciel (Discord)";
                           }?></div>
-        <div class="cell"><?php echo htmlspecialchars($team_affiche->numero_emplacement); ?></div>
+        <div class="cell"><?php if ($team_affiche->type_equipe == 1) {
+                                              echo "1A";
+                                } elseif ($team_affiche->type_equipe == 2) {
+                                              echo "Étudiante";
+                                } else{
+                                              echo "Autre";
+                                  }?></div>
       </div>
 
 

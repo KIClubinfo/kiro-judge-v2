@@ -138,7 +138,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                                   #send_mail($safe_email_1, htmlspecialchars($team_name), $safe_prenom_1, $safe_prenom_2, $safe_prenom_3, $safe_nom_2, $safe_nom_3, $email_1, $password1);
                                   #send_mail($safe_email_2, htmlspecialchars($team_name), $safe_prenom_2, $safe_prenom_3, $safe_prenom_1, $safe_nom_3, $safe_nom_1, $email_2, $password2);
                                   #send_mail($safe_email_3, htmlspecialchars($team_name), $safe_prenom_3, $safe_prenom_1, $safe_prenom_2, $safe_nom_1, $safe_nom_2, $email_3, $password3);
-                                  header('Location: /index.php');
+                                  header('Location: /index.php?inscr');
                                   exit();
 
 
