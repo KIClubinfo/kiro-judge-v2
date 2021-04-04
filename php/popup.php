@@ -17,7 +17,7 @@ const Toast = Swal.mixin({
 
 Toast.fire({
   icon: '$icon',
-  title: 'htmlspecialchars($message)'
+  title: '".htmlspecialchars($message)."'
 })
 </script>";
    }
