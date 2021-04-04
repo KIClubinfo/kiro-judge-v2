@@ -56,28 +56,29 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   <div class="content limiter" style="min-height: 35%;">
     <div class="container">
       <?php
-      if (!$team_affiche->valide) { //Si la team n'est pas active
-        popup("Cette équipe n\'est pas active.");
+      if (is_admin() and !$team_affiche->valide) { //Si la team n'est pas active
+        popup("Cette équipe n'est pas active.");
       }
       ?>
       <div class="wrap-table100" style="margin-top: 5vh;">
         <div class="table">
 
+
           <div class="row2 header">
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">Id</div>';
             } ?>
             <div class="cell">Nom d'équipe</div>
             <div class="cell">Classement</div>
             <div class="cell">Score</div>
             <div class="cell">Hub</div>
-            <div class="cell">Emplacement</div>
+            <div class="cell">Type</div>
           </div>
           <div class="row2">
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div>';
             } ?>
-            <div class="cell"><?php echo htmlspecialchars($team_affiche->nom); ?></div>
+            <div class="cell"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></div>
             <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
             <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
             <div class="cell"><?php if ($team_affiche->hub == 1) {
@@ -87,7 +88,13 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
                               } else{
                                 echo "Hub distanciel (Discord)";
                               }?></div>
-            <div class="cell"><?php echo htmlspecialchars($team_affiche->numero_emplacement); ?></div>
+            <div class="cell"><?php if ($team_affiche->type_equipe == 1) {
+                                                                    echo "1A";
+                                                      } elseif ($team_affiche->type_equipe == 2) {
+                                                                    echo "Étudiante";
+                                                      } else{
+                                                                    echo "Autre";
+                                                        }?></div>
           </div>
         </div>
       </div>
@@ -98,7 +105,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell">Prénom</div>
             <div class="cell">Nom</div>
             <div class="cell">École</div>
-            <?php if (is_admin()) { //Si affichage admin
+            <?php if (!is_admin()) { //Si affichage admin
             ?>
               <div class="cell">Numéro de téléphone</div>
               <div class="cell">Mail</div>
@@ -109,13 +116,13 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell"><?php echo htmlspecialchars($membre_1->prenom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_1->nom); ?></div>
             <div class="cell"><?php echo htmlspecialchars($membre_1->ecole); ?></div>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($membre_1->tel) . '</div>';
             } ?>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell">' . htmlspecialchars($membre_1->mail) . '</td>';
             } ?>
-            <?php if (is_admin()) {
+            <?php if (!is_admin()) {
               echo '<div class="cell"><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_1->id) . '">' . htmlspecialchars($membre_1->id) . '</a></div>';
             } ?>
           </div>
