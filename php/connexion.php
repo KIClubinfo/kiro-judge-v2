@@ -141,8 +141,12 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
           $_SESSION['team'] = $team;
           unset($_SESSION['id']); //On supprime cette variable et on connecte l'user
           unset($_SESSION['id_team']); //On supprime cette variable et on connecte l'user
-          header('Location: index.php?co2');
-          exit();
+          if ($_SESSION['user']->admin === 0){
+            header('Location: index.php?co2');
+            exit();
+          }
+          
+
         } else {
           $erreur22 = "Erreur lors de la mise à jour du mot de passe.";
         }
