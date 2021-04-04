@@ -319,10 +319,12 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
   {
     include("header.php");
  include("navbar.php");
+?>
+<div class="container containergrey"> </div>
 
- popup("Les inscriptions sont closes.", 6000, "error");
-    ?>
+
   <?php
+   popup("Les inscriptions sont closes.", 6000, "error");
   }
 } else { //si l'utilisateur est déjà connecté
   include("header.php");
