@@ -168,12 +168,14 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
         </div>
       </div>
     </div>
+
 <?php
 }else{//Si on n'affiche aucune team en particulier on va toutes les afficher
   if ($req2 = $conn->prepare("SELECT id FROM teams")) { //toutes les id des teams
       $req2->execute();
       $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
       $req2->close();
+      print_r($result_ids);
   }
   else{
       $erreur3 = "Erreur lors de la connexion à la base de donnée.";
