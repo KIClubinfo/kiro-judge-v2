@@ -320,7 +320,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
     include("header.php");
  include("navbar.php");
 ?>
-<div class="container containergrey">OO </div>
+<div id="equipe" style="display: block; padding-top: 20vh" class="content"> </div>
 
 
   <?php
