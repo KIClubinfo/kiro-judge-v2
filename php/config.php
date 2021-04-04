@@ -5,7 +5,7 @@ include("popup.php");
 $db_password = $_ENV["mysql_password"];
 
 setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
-$date_limite_inscription = date_create('2020-05-05');
+$date_limite_inscription = date_create('2021-05-05');
 $aujourdhui = new DateTime("now");
 
 $conn = new mysqli('db', 'kiro_user', $db_password, 'kiro');
