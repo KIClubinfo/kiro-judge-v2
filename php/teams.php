@@ -175,7 +175,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       $req2->execute();
       $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
       $req2->close();
-      print_r($result_ids);
   }
   else{
       $erreur3 = "Erreur lors de la connexion à la base de donnée.";
@@ -187,7 +186,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       <div class="wrap-table100" style="margin-top: 5vh;">
         <div class="table">
           <div class="row2 header">
-          <?php if (is_admin()) {
+          <?php if (!is_admin()) {
             echo '<div class="cell">Id</div>';
           } ?>
           <div class="cell">Nom d'équipe</div>
@@ -202,7 +201,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       $team_affiche = new team($id_team);
       ?>
       <div class="row2">
-        <?php if (is_admin()) {
+        <?php if (!is_admin()) {
           echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div>';
         } ?>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->nom); ?></div>
