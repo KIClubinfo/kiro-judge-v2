@@ -97,6 +97,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                       $ready_password_3 = password_hash($password3, PASSWORD_BCRYPT);
 
                       $team_name = sanitize_string($_POST['team-name']);
+                      $type_equipe = intval($_POST['type_equipe']);
                       $team_hub = intval($_POST['team-hub']);
 
                       //On veut etre sur qu'aucune team existe avec ce nom
@@ -125,9 +126,9 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                                 $req4->close();   //selectionne l'emplacement max pour savoir le nouvel emplacement
                                 $valeur_emplacement = intval($result4['MAX(numero_emplacement)']) + 1;
                                 //Maintenant on créé la team
-                                if ($req2 = $conn->prepare("INSERT INTO teams (nom, score, classement,valide,hub,numero_emplacement)
+                                if ($req2 = $conn->prepare("INSERT INTO teams (nom, score, classement,valide,hub,type_equipe,numero_emplacement)
                                         VALUES (?,0,0,0,?,?)")) { //Creation de la team
-                                  $req2->bind_param("sii", $team_name, $team_hub, $valeur_emplacement);
+                                  $req2->bind_param("siii", $team_name, $team_hub, $type_equipe,$valeur_emplacement);
                                   $req2->execute();
                                   $req2->close();
 
