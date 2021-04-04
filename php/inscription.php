@@ -340,7 +340,8 @@ if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
 ?>
 
-<div>  <?php popup($erreur, 6000, "error");?> </div>
+<div class="content" style= "padding-top: 20vh">
+    <div class="container containergrey"> <?php popup($erreur, 6000, "error");?>
   <form action="" method="post" name="inscription">
     <div id="equipe" style="display: block;  padding-top: 20vh" class="content">
       <div class="container containergrey">
