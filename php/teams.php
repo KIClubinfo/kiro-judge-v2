@@ -201,7 +201,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       ?>
       <div class="row2">
         <?php if (!is_admin()) { ?>
-        <div class="cell"><?php echo htmlspecialchars($team_affiche->id) ?></div><?php>'; } ?>
+        <div class="cell"><?php echo htmlspecialchars($team_affiche->id) ?></div> <?php '; } ?>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->nom); ?></div>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
