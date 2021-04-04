@@ -1,7 +1,8 @@
 <?php
 session_start();
 include("popup.php");
-
+error_reporting(E_ALL);
+ini_set('display_errors','On');
 $db_password = $_ENV["mysql_password"];
 
 setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
