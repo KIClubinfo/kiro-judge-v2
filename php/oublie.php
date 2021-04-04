@@ -25,7 +25,8 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 $req3->bind_param("si", $ready_password, $id);
                 $req3->execute();
                 $req3->close();
-
+                
+                include("send_mail.php");
                 send_password($safe_email, $password, sanitize_string($result['prenom']));
                 header('Location: /index.php?change');
                 exit();
