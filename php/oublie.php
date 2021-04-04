@@ -21,7 +21,12 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
               $ready_password = password_hash($password, PASSWORD_BCRYPT);
 
               if ($req3 = $conn->prepare("UPDATE users SET password=?,mdp_a_changer=1 WHERE id=?")) { //Si la team n'est pas encore valide on la valide
-  
+                $req3->bind_param("si", $ready_password, intval($result['id']));
+                $req3->execute();
+                $req3->close();
+
+
+      
               } else {
                 $erreur = "Erreur lors de la mise à jour du mot de passe.";
               }
