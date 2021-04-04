@@ -198,6 +198,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
 
   <?php
   foreach($result_ids as $id_team){
+      print_r($id_team);
       $team_affiche = new team($id_team);
       print_r($team_affiche);
       ?>
