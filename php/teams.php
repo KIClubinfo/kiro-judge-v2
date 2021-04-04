@@ -187,7 +187,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
         <div class="table">
           <div class="row2 header">
           <?php if (!is_admin()) {
-            echo '<div class="cell">Id</div> \n'; } ?>
+            ?><div class="cell">Id</div><?php ; } ?>
           <div class="cell">Nom d'équipe</div>
           <div class="cell">Classement</div>
           <div class="cell">Score</div>
@@ -201,7 +201,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       ?>
       <div class="row2">
         <?php if (!is_admin()) {
-          echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div> \n'; } ?>
+          echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div>'; } ?>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->nom); ?></div>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
