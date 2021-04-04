@@ -15,7 +15,15 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
             $req->execute();
             $result = $req->get_result()->fetch_array(MYSQLI_ASSOC);
             $req->close();
-    
+            if (!empty($result)) { //le mail existe bel et bien
+
+              $password = bin2hex(random_bytes(9)); //On génère un mot de passe aléatoire
+              $ready_password = password_hash($password, PASSWORD_BCRYPT);
+
+          
+            } else {
+              $erreur = "L'email n'existe pas.";
+            }
           } else {
             $erreur = "Erreur lors du traitement de la requête.";
           }
