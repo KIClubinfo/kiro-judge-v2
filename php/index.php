@@ -16,6 +16,11 @@ if (isset($_GET['co2'])) { //On affiche un message pour signifier la bonne conne
 if (isset($_GET['ns'])) {
   $msg_error = "Tu ne peux pas accéder à cette page pour le moment.";
 }
+
+if (isset($_GET['not_connected'])) {
+  $msg_error = "Tu dois être connecté pour accéder à cette partie.";
+}
+
 if (isset($_GET['deco'])) { //On affiche un message pour signifier la bonne déconnexion
   $msg = "Tu as bien été déconnecté.";
 }
