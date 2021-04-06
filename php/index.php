@@ -45,7 +45,7 @@ if (!empty($msg)) {
   popup($msg);
 }
 if (!empty($msg_error)) {
-  popup($msg_error, 6000, "erreur");
+  popup($msg_error, 6000, "error");
 }
 ?>
 
