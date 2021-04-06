@@ -40,11 +40,12 @@ if (isset($_GET['change'])) { //On affiche un message pour signifier le bon chan
 if (isset($_GET['maj_admin'])) { //On affiche un message pour signifier la bonne mise à jour par un admin
   $msg = "Les données de l'utilisateur ont été mises à jour.";
 }
+
 if (!empty($msg)) {
   popup($msg);
 }
 if (!empty($msg_error)) {
-  popup($msg, 6000, "erreur");
+  popup($msg_error, 6000, "erreur");
 }
 ?>
 
