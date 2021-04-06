@@ -83,7 +83,7 @@ $message= '
                                 <tr>
                                     <td style="padding: 20px 0 0 0; color: #222222; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
                                         Pour accéder au site du KIRO Judge, où vous mettrez en ligne vos résultats et verrez votre place dans la
-                                        compétition, c’est <a href="http://kiro.enpc.org">ici</a> avec les identifiants : </br>Mail :  '.$id.' </br> Mot de passe : '.$password.'<br/>
+                                        compétition, c’est <a href="http://kiro.enpc.org">ici</a> avec les identifiants : <br/><br/>Mail :  '.$id.' <br/> Mot de passe : '.$password.'<br/>
                                         <br/>
                                         A bientôt au KIRO,<br/>
                                         <br/>
