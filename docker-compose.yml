@@ -13,6 +13,7 @@ services:
       - 8123:80
     environment:
       - mysql_password=${mysql_password}
+      - gmail_password=${gmail_password}
   websocket:
     build:
       context: ./node
