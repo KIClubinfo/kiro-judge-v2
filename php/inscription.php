@@ -45,7 +45,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
               if (
                 strlen($_POST['nom-1']) <= 100 and strlen($_POST['nom-2']) <= 100 and strlen($_POST['nom-3']) <= 100 and
                 strlen($_POST['prenom-1']) <= 100 and strlen($_POST['prenom-2']) <= 100 and strlen($_POST['prenom-3']) <= 100 and
-                intval($_POST['team-hub']) < 4 and  intval($_POST['team-hub']) > 0 and strlen($_POST['team-name']) <= 180 and
+                intval($_POST['team-hub']) < 4 and  intval($_POST['team-hub']) > 0 and strlen($_POST['team-name']) <= 25 and
                 strlen($_POST['ecole-1']) <= 300 and strlen($_POST['ecole-2']) <= 300 and strlen($_POST['ecole-3']) <= 300 and
                 intval($_POST['type_equipe']) >= 0 and intval($_POST['type_equipe']) < 4
               ) { //nom prenom pas trop grands, type equipe pas bon
@@ -200,7 +200,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             </ul>
 
             <label for="team-name">Nom d'équipe :</label>
-            <input type="text" id="team-name" name="team-name" maxlength="180" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" required> <br />
+            <input type="text" id="team-name" name="team-name" maxlength="25" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" required> <br />
             <label for="team-hub">Choix du lieu:</label>
             <select name="team-hub" id="team-hub">
               <option value="1">Hub de l'École des Ponts</option>
