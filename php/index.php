@@ -48,7 +48,7 @@ if (!empty($msg_error)) {
   popup($msg_error, 6000, "error");
 }
 ?>
-fefezfze
+
 <div id="banner">
   <div class="container">
     <div class="title">
