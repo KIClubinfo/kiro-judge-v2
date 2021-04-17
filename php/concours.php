@@ -27,6 +27,15 @@ include("navbar.php");
   <input type="submit" value="Envoyer">
 </form>
 
+<?php
+if (isset($_SESSION['user'])) {
+  $link = $_ENV["discord_link"];
+  echo '
+<p style="text-align: center;">Rejoignez le serveur Discord pour participer au concours à distance: <br>
+ <a href="'; echo $link; echo '" title="Discord">Rejoindre le Discord</a></p>
+';
+}
+?> 
 
 <?php
 include("footer.php")

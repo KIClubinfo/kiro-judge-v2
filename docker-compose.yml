@@ -14,6 +14,7 @@ services:
     environment:
       - mysql_password=${mysql_password}
       - gmail_password=${gmail_password}
+      - discord_link=${discord_link}
   websocket:
     build:
       context: ./node

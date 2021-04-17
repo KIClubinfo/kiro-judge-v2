@@ -296,23 +296,94 @@ body {
   padding-bottom: 19px;
 }
 
-.row2 .cell:nth-child(1) {
-  width: 360px;
+/* Pour la page normale (où il n'y a que 5 éléments) */
+/* Pour le tableau des équipes */
+.row2 .cell:nth-child(1):nth-last-child(5) {
+  width: 25%;
   padding-left: 40px;
+  word-break: break-all;
 }
 
-.row2 .cell:nth-child(2) {
-  width: 160px;
+.row2 .cell:nth-child(2):nth-last-child(4) {
+  width: 16%;
+  word-break: break-all;
+  padding-left: 20px;
 }
 
-.row2 .cell:nth-child(3) {
-  width: 250px;
+.row2 .cell:nth-child(3):nth-last-child(3) {
+  width: 16%;
+  padding-left: 20px;
+  word-break: break-all;
 }
 
-.row2 .cell:nth-child(4) {
-  width: 190px;
+.row2 .cell:nth-child(4):nth-last-child(2) {
+  width: 22%;
+  padding-left: 20px;
+  word-break: break-all;
 }
 
+.row2 .cell:nth-child(5):nth-last-child(1) {
+  padding-left: 20px;
+  word-break: break-all;
+}
+
+/* Pour le détail d'une équipe */
+
+.row2 .cell:nth-child(1):nth-last-child(3) {
+  width: 33.3333%;
+  padding-left: 40px;
+  word-break: break-all;
+}
+
+.row2 .cell:nth-child(2):nth-last-child(2) {
+  width: 33.3333%;
+  word-break: break-all;
+  padding-left: 20px;
+}
+
+.row2 .cell:nth-child(3):nth-last-child(1) {
+  width: 33.3333%;
+  word-break: break-all;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+/* Pour la page admin (où il y a 6 éléments) */
+
+.row2 .cell:nth-child(1):nth-last-child(6) {
+  width: 16%;
+  padding-left: 40px;
+  word-break: break-all;
+}
+
+.row2 .cell:nth-child(2):nth-last-child(5) {
+  width: 16%;
+  padding-left: 20px;
+  word-break: break-all;
+}
+
+.row2 .cell:nth-child(3):nth-last-child(4) {  
+  width: 18%;
+  padding-left: 20px;
+  word-break: break-all;
+}
+
+.row2 .cell:nth-child(4):nth-last-child(3) {
+  width: 16%;
+  padding-left: 20px;
+  word-break: break-all;
+}
+
+.row2 .cell:nth-child(5):nth-last-child(2) {
+  width: 22%;
+  padding-left: 20px;
+  word-break: break-all;
+}
+
+.row2 .cell:nth-child(6):nth-last-child(1) {
+  padding-left: 20px;
+  word-break: break-all;
+}
 
 .table, .row2 {
   width: 100% !important;
