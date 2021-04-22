@@ -83,8 +83,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
             <div class="cell"><?php if ($team_affiche->hub == 1) {
                                 echo "Hub de l'École des Ponts";
-                              } elseif ($team_affiche->hub == 2) {
-                                echo "Hub du Plateau Saclay";
                               } else{
                                 echo "Hub distanciel (Discord)";
                               }?></div>
@@ -204,8 +202,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
         <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
         <div class="cell"><?php if ($team_affiche->hub == 1) {
                             echo "Hub de l'École des Ponts";
-                          } elseif ($team_affiche->hub == 2) {
-                            echo "Hub du Plateau Saclay";
                           } else{
                             echo "Hub distanciel (Discord)";
                           }?></div>

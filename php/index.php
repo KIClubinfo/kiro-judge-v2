@@ -125,7 +125,7 @@ if (!empty($msg_error)) {
     <div class="title" style="margin-bottom: 1em; padding-top: 2em;">
       <span class="byline">La session</span>
     </div>
-    <p>Cette quatrième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne, à l’Ecole Télécom Paris à Palaiseau ou à distance sur Discord le <strong>jeudi 6 Mai 2021</strong>.
+    <p>Cette quatrième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne ou à distance sur Discord le <strong>jeudi 6 Mai 2021</strong>.
     </p>
     <div class="row h-100">
       <div class="col-sm-2">
@@ -240,14 +240,12 @@ if (!empty($msg_error)) {
     <div class="title" style="margin-bottom: 1em; padding-top: 2em;">
       <span class="byline" id="acces">Plan d'accès</span>
     </div>
-    <p>Plusieurs endroits sont disponibles pour passer le KIRO, en <strong>présentiel ou distanciel</strong>.</br> L'édition présentielle se déroulera à la fois dans les locaux de l'Ecole des Ponts et dans ceux de Télécom Paris.</p>
+    <p>Plusieurs options sont disponibles pour passer le KIRO, en <strong>présentiel ou distanciel</strong>.</br> L'édition présentielle se déroulera dans les locaux de l'Ecole des Ponts.</p>
     </br>
     <p><strong>Cité Descartes, 6-8 Avenue Blaise Pascal, 77420 Champs-sur-Marne<br>
         Bâtiment Coriolis, aile Fresnel, premier étage <br>
       </strong></p>
     </br>
-    <p><strong>Télécom Paris, 19 Place Marguerite Perey, 91120 Palaiseau
-      </strong></p>
     <p>Pour ceux passant l’épreuve au format distanciel, le lien du discord vous sera envoyé après inscription.
       La remise des prix aura lieu à la Maison des Ponts.
     </p>

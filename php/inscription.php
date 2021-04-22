@@ -128,7 +128,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                                 //Maintenant on créé la team
                                 if ($req2 = $conn->prepare("INSERT INTO teams (nom, score, classement,valide,hub,type_equipe,numero_emplacement)
                                         VALUES (?,0,0,0,?,?,?)")) { //Creation de la team
-                                  $req2->bind_param("siii", $team_name, $team_hub, $type_equipe,$valeur_emplacement);
+                                  $req2->bind_param("siii", $team_name, $team_hub, $type_equipe, $valeur_emplacement);
                                   $req2->execute();
                                   $req2->close();
 
@@ -140,8 +140,6 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                                   send_mail($safe_email_3, htmlspecialchars($team_name), $safe_prenom_3, $safe_prenom_1, $safe_prenom_2, $safe_nom_1, $safe_nom_2, $email_3, $password3);
                                   header('Location: /index.php?inscr');
                                   exit();
-
-
                                 } else {
                                   $erreur = "Erreur lors de la création de la team.";
                                 }
@@ -204,12 +202,11 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             <label for="team-hub">Choix du lieu:</label>
             <select name="team-hub" id="team-hub">
               <option value="1">Hub de l'École des Ponts</option>
-              <option value="2">Hub du plateau Saclay</option>
               <option value="3">Hub distanciel (Discord)</option>
             </select><br />
-            <INPUT type= "radio" name="type_equipe" value="1"> Équipe 1A des ponts
-            <INPUT type= "radio" name="type_equipe" value="2"> Équipe étudiante
-            <INPUT type= "radio" name="type_equipe" value="3" checked> Autre
+            <INPUT type="radio" name="type_equipe" value="1"> Équipe 1A des ponts
+            <INPUT type="radio" name="type_equipe" value="2"> Équipe étudiante
+            <INPUT type="radio" name="type_equipe" value="3" checked> Autre
             <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
           </div>
         </div>
@@ -314,27 +311,25 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
           </div>
         </div>
       </form>
-    <?php
+  <?php
     }
   } else //Si date d'inscription dépassée
   {
     header('Location: /index.php?inscriptions_closes');
     exit();
-
   }
 } else { //si l'utilisateur est déjà connecté
   header('Location: /index.php?already_co');
   exit();
-
 }
 
 if (isset($erreur)) {
   include("header.php");
   include("navbar.php");
   //si on doit afficher le formulaire avec un message d'erreur
-?>
+  ?>
 
- <?php popup($erreur, 6000, "error");?>
+  <?php popup($erreur, 6000, "error"); ?>
   <form action="" method="post" name="inscription">
     <div id="equipe" style="display: block;  padding-top: 20vh" class="content">
       <div class="container containergrey">
@@ -347,8 +342,8 @@ if (isset($erreur)) {
 
         <label for="team-name">Nom d'équipe :</label>
         <input type="text" id="team-name" name="team-name" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" maxlength="180" value="<?php if (isset($_POST['team-name'])) {
-          echo htmlspecialchars($_POST['team-name']);
-          } ?>" required> <br />
+                                                                                                                                                                      echo htmlspecialchars($_POST['team-name']);
+                                                                                                                                                                    } ?>" required> <br />
 
         <label for="team-hub">Choix du lieu:</label>
         <select name="team-hub" id="team-hub">
@@ -357,22 +352,17 @@ if (isset($erreur)) {
                                 echo 'selected';
                               }
                             } ?>>Hub de l'École des Ponts</option>
-          <option value="2" <?php if (isset($_POST['team-hub'])) {
-                              if ($_POST['team-hub'] == 2) {
+          <option value="3" <?php if (isset($_POST['team-hub'])) {
+                              if ($_POST['team-hub'] == 3) {
                                 echo 'selected';
                               }
-                            } ?>>Hub du plateau Saclay</option>
-        <option value="3" <?php if (isset($_POST['team-hub'])) {
-                                                if ($_POST['team-hub'] == 3) {
-                                                  echo 'selected';
-                                                }
-                                              } ?>>Hub distanciel (Discord)</option>
+                            } ?>>Hub distanciel (Discord)</option>
 
-                                              <INPUT type= "radio" name="type_equipe" value="1"> Équipe 1A des ponts
-                                              <INPUT type= "radio" name="type_equipe" value="2"> Équipe étudiante
-                                              <INPUT type= "radio" name="type_equipe" value="3" checked> Autre
+          <INPUT type="radio" name="type_equipe" value="1"> Équipe 1A des ponts
+          <INPUT type="radio" name="type_equipe" value="2"> Équipe étudiante
+          <INPUT type="radio" name="type_equipe" value="3" checked> Autre
 
-        <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
+          <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
       </div>
     </div>
 
