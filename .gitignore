@@ -1,3 +1,5 @@
 /db_data/
 /php/composer.phar
 /php/vendor/
+/php/solution_checker/
+/.idea/
