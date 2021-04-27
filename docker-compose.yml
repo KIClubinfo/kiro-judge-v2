@@ -9,6 +9,7 @@ services:
       - db
     volumes:
       - ./php:/var/www/html/
+      - "/var/www/html/uploads"
     ports:
       - 8123:80
     environment:

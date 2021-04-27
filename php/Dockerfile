@@ -15,3 +15,10 @@ COPY composer.lock .
 RUN chmod +x composer_install.sh
 RUN ./composer_install.sh
 RUN php composer.phar install
+
+RUN apt update && apt upgrade -y
+RUN apt install python3 -y
+RUN mkdir -p solution_checker
+COPY solution_checker/ solution_check/
+RUN mkdir -p uploads
+RUN chmod -R 777 uploads

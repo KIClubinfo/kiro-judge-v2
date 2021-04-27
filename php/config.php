@@ -14,6 +14,17 @@ setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
 $date_limite_inscription = date_create('2021-05-05');
 $aujourdhui = new DateTime("now");
 
+$phpFileUploadErrors = array(
+    0 => 'There is no error, the file uploaded with success',
+    1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+    2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+    3 => 'The uploaded file was only partially uploaded',
+    4 => 'No file was uploaded',
+    6 => 'Missing a temporary folder',
+    7 => 'Failed to write file to disk.',
+    8 => 'A PHP extension stopped the file upload.',
+);
+
 $conn = new mysqli('db', 'kiro_user', $db_password, 'kiro');
 
 if ($conn->connect_error) {
@@ -66,9 +77,10 @@ class team
   public function __construct($id)
   { // il faut vérfier en amont la donnée ici !
     global $conn;
-    $this->id = $id; // id
+    $this->id = intval($id); // id
     if ($req = $conn->prepare("SELECT * FROM teams WHERE id=?")) { // requête préparée
-      $req->bind_param("i", $id);
+      $req->bind_param("i", $this->id);
+      var_dump($id);
       $req->execute();
       $result = $req->get_result()->fetch_array(MYSQLI_ASSOC); // résulats de la requête
       $req->close();
