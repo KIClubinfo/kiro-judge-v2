@@ -19,7 +19,7 @@ include("header.php");
 include("navbar.php");
 
 ?>
-<a href="sujets/sujet4.pdf">Accéder au sujet</a> truc choli <a href="sujets/sujet4.zip">Télécharger les instances</a>
+<a href="sujets.php">Accéder au sujet</a> 
 
 <form action="send_instance.php" method="post">
   <label for="entree">Instance:</label>
