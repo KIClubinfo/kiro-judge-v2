@@ -57,7 +57,7 @@ function updateLeaderboardAndNotify() {
     }
 
     // On récupére l'ensemble des équipes avec leur score, dans l'ordre décroissant
-    let sql_request = "SELECT * FROM teams ORDER BY score DESC;";
+    let sql_request = "SELECT (nom, public_score, hub, type_equipe) FROM teams ORDER BY score DESC;";
 
     databaseConnection.query(sql_request, function (error, results) {
         if (error) throw error;
