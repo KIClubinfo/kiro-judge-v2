@@ -1,6 +1,10 @@
 <?php
 include("config.php");
 
+if (!is_admin()) {
+    header('Location: index.php?ns');
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['user'])) {
