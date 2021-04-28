@@ -160,7 +160,7 @@ function update_solution($solution_id, $score, $error)
 
 function get_solution_filepath($instance_id, $team_id, $solution_id)
 {
-    return sprintf("/var/www/html/uploads/%i_%i_%i.json", $team_id, $instance_id, $solution_id);
+    return sprintf("/var/www/html/uploads/%s_%s_%s.json", $team_id, $instance_id, $solution_id);
 }
 
 function sanitize_string($str)
