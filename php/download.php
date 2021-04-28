@@ -17,7 +17,7 @@ if (!isset($_SESSION["user"])){
 $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 $dateconcours = new DateTime('2021-05-06 12:00:00');
 
-if ($date>=$dateconcours) {
+if ($date>=$dateconcours or is_admin()) {
     //telechargement du fichier
     if(isset($_GET['path'])){
         //Read the filename

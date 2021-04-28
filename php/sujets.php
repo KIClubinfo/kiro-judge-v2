@@ -27,7 +27,7 @@ include("navbar.php");
 $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 $dateconcours = new DateTime('2021-05-06 12:00:00');
 
-if ($date>=$dateconcours) {
+if ($date>=$dateconcours or !is_admin()) {
                     echo '
                     <p style="text-align: center;">Accédez au <a href="download.php?path=sujets/sujet3.pdf">sujet du concours</a>.</p>
                     <p style="text-align: center;">Téléchargez les <a href="download.php?path=sujets/sujet3.zip">instances</a> du sujet.</p>
