@@ -68,6 +68,7 @@ class team
 {
     public $id;
     public $score;
+    public $public_score;
     public $classement;
     public $hub;
     public $nom;
@@ -85,6 +86,7 @@ class team
             $result = $req->get_result()->fetch_array(MYSQLI_ASSOC); // résulats de la requête
             $req->close();
             $this->score = htmlspecialchars($result['score']);
+            $this->public_score = htmlspecialchars($result['public_score']);
             $this->valide = $result['valide'];
             $this->classement = htmlspecialchars($result['classement']);
             $this->nom = htmlspecialchars($result['nom']);
