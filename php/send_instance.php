@@ -47,22 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
 
                     update_solution($solution_id, $score, $errors_string);
-//                    $is_better = false;
-//
-//                    if ($score >= $team->score) {
-//                        // On enregistre le score dans la BDD.
-//                        $team->update_score($score);
-////                        $is_better = true;
-////                        global $conn;
-////                        if ($request = $conn->prepare("UPDATE teams SET score = ? WHERE id = ?")) {
-////                            $request.bind_param("ii", $score, $team->id);
-////                            $request.execute();
-////                            $request.close();
-////                        }
-//                        echo "New score: ";
-//                        echo $score;
-//
-//                    }
                 } else {
                     echo $phpFileUploadErrors[$error] ;
                     echo "<br />";
@@ -78,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         http_response_code(401);
     }
 } else {
-    // On revoie un formulaire d'envoi de fichier :
+    if (isset($_SESSION['user'])) {
     ?>
     <form action="" method="post" enctype="multipart/form-data">
         <p>Solutions:
@@ -90,4 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </p>
     </form>
     <?php
+    } else {
+        header('Location: /index.php?ns');
+    }
 }
