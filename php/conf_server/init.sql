@@ -43,4 +43,6 @@ create table if not exists solutions
 )
 ENGINE = InnoDB;
 
+ALTER TABLE teams ADD COLUMN public_score  int default 0 not null;
+
 INSERT INTO `kiro`.`users` (`id`, `prenom`, `nom`, `password`, `mail`, `mdp_a_changer`, `tel`, `id_team`, `admin`,`ecole`) VALUES ('1', 'admin', 'admin', '$2y$12$F6Q4LapmPtZw8RzpVuAhd.47PJ7KG2xQTUeRB/d3XCI7cjG9qW8OG', 'admin@kiro.enpc.org', '1', '00000000', '0','1', 'KI');
