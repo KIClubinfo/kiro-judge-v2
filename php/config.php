@@ -121,7 +121,17 @@ class team
                     $req3->bind_param("si", $score, $this->id);
                     $req3->execute();
                     $req3->close();
-                    $this->score = $score;
+
+                    // VERIFIER QU'UNE CERTAINE CONDITION SUR LA DATE SOIT REMPLIE (@leaderboad_freeze)
+                    if (true) {
+                        if ($req3 = $conn->prepare("UPDATE teams SET public_score =? WHERE id=?")) {
+                            $req3->bind_param("si", $score, $this->id);
+                            $req3->execute();
+                            $req3->close();
+                            $this->score = $score;
+                        }
+                    }
+
                     $contents = file_get_contents("http://node_12:8080/refresh"); // mise à jour des classements
 
                 } else {
