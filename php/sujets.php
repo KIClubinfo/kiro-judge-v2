@@ -1,5 +1,5 @@
 <?php
-// Route kiro.enpc.org/sujet.php
+// Route kiro.enpc.org/sujets.php
 // Le site ou l'on peut trouver le sujet et les instances.
 
 include("config.php");
@@ -26,8 +26,7 @@ include("navbar.php");
 <?php
 $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 $dateconcours = new DateTime('2021-05-06 12:00:00');
-//test pour afficher les liens
-//$dateconcours = new DateTime('2021-04-27 12:00:00');
+
 if ($date>=$dateconcours) {
                     echo '
                     <p style="text-align: center;">Accédez au <a href="download.php?path=sujets/sujet3.pdf">sujet du concours</a>.</p>
@@ -42,5 +41,5 @@ if ($date>=$dateconcours) {
 </div>
 
 <?php
-include("footer.php")
+include("footer.php");
 ?>
