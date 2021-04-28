@@ -199,7 +199,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
 
         <div class="cell"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></div>
         <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
-        <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
+        <div class="cell"><?php echo htmlspecialchars($team_affiche->public_score); ?></div>
         <div class="cell"><?php if ($team_affiche->hub == 1) {
                             echo "Hub de l'École des Ponts";
                           } else{

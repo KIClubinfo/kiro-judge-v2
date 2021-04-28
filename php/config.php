@@ -68,6 +68,7 @@ class team
 {
     public $id;
     public $score;
+    public $public_score;
     public $classement;
     public $hub;
     public $nom;
@@ -85,6 +86,7 @@ class team
             $result = $req->get_result()->fetch_array(MYSQLI_ASSOC); // résulats de la requête
             $req->close();
             $this->score = htmlspecialchars($result['score']);
+            $this->public_score = htmlspecialchars($result['public_score']);
             $this->valide = $result['valide'];
             $this->classement = htmlspecialchars($result['classement']);
             $this->nom = htmlspecialchars($result['nom']);
@@ -122,8 +124,10 @@ class team
                     $req3->execute();
                     $req3->close();
 
-                    // VERIFIER QU'UNE CERTAINE CONDITION SUR  LA DATE SOIT REMPLIE (@leaderboad_freeze)
-                    if (true) {
+                    // VERIFIER QU'UNE CERTAINE CONDITION SUR LA DATE SOIT REMPLIE (@leaderboad_freeze)
+                    $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
+                    $datefreeze = new DateTime('2021-05-06 16:30:00');
+                    if ($date<=$datefreeze) {
                         if ($req3 = $conn->prepare("UPDATE teams SET public_score =? WHERE id=?")) {
                             $req3->bind_param("si", $score, $this->id);
                             $req3->execute();
