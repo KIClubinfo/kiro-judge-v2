@@ -19,6 +19,10 @@ include("header.php");
 include("navbar.php");
 
 ?>
+
+<div class="content" style="margin-top: 15vh">
+    <div class="container containergrey">
+
 <a href="sujets.php">Accéder au sujet</a> 
 
 <form action="send_instance.php" method="post">
@@ -37,6 +41,9 @@ if (isset($_SESSION['user'])) {
 }
 ?> 
 
+  </div>
+</div>
+
 <?php
-include("footer.php")
+include("footer.php");
 ?>
