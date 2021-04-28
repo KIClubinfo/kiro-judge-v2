@@ -24,7 +24,7 @@ for (let i = 0; i < populationSize; i++) {
     let nom = randomstring.generate(TEAM_NAME_LENGTH);
     let score = getRandomInt(SCORE_MAX);
 
-    let sql_query = "INSERT INTO `teams` (`id`, `nom`, `score`, `classement`, `valide`, `hub`, `numero_emplacement`) VALUES (NULL, '" + nom + "', " + score + ", '0', '0', '0', '0');";
+    let sql_query = "INSERT INTO `teams` (`id`, `nom`, `score`, `classement`, `valide`, `hub`, `numero_emplacement`, `type_equipe`) VALUES (NULL, '" + nom + "', " + score + ", '0', '0', '0', '0', '0');";
 
     databaseConnection.query(sql_query, function (error, result) {
         if (error) throw error;

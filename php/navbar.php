@@ -3,7 +3,7 @@
         <div id="menu">
             <ul class="menu">
                 <li>
-                    <img src="images/kiro.svg" width="100vw" id="logo">
+                    <a href="index.php"><img src="images/kiro.svg" width="100vw" id="logo"></a>
                 </li>
                 <li><a href="index.php" title="">Accueil</a></li>
                 <li><a href="teams.php" title="">Équipes</a></li>
