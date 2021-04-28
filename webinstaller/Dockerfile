@@ -7,6 +7,6 @@ WORKDIR /usr/src/app/
 COPY webinstall.sh .
 RUN chmod +x ./webinstall.sh
 
-COPY . .
+COPY database database
 
 CMD ["sh", "-c", "/usr/src/app/webinstall.sh"]
