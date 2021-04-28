@@ -169,7 +169,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       $req2->close();
   }
   else{
-      $erreur3 = "Erreur lors de la connexion à la base de donnée.";
+      $erreur3 = "Erreur lors de la connexion à la base de données.";
       die();
   }
 

@@ -11,11 +11,13 @@ const WEBSOCKET_URL = "ws://cxhome.org:8125"
 class Score extends React.Component {
     render() {
         return (
-            <tr>
-                <td id="team_name">{this.props.name}</td>
-                <td id="team_score">{this.props.score}</td>
-                <td id="team_classement">{this.props.classement}</td>
-            </tr>
+            <div class="row2">
+                <div class="cell">{this.props.name}</div>
+                <div class="cell">{this.props.score}</div>
+                <div class="cell">{this.props.classement}</div>
+                <div class="cell">{this.props.hub}</div>
+                <div class="cell">{this.props.type_equipe}</div>
+            </div>
         );
     }
 }
@@ -55,16 +57,27 @@ export class ScoreBoard extends React.Component {
 
     render() {
         return (
-            <table>
-                <tbody>
-                    {
-                        this.state.scores.map((element, index) => {
-                            return <Score name={element.nom} score={element.score} classement={element.classement} key={element.id} />
-                        })
-                    }
-
-                </tbody>
-            </table>
+            <div class="container">
+                <div class="wrap-table100" style="margin-top: 5vh;">
+                    <div class="table">
+                        <div class="row2 header">
+                            <div class="cell">Nom d'équipe</div>
+                            <div class="cell">Classement</div>
+                            <div class="cell">Score</div>
+                            <div class="cell">Hub</div>
+                            <div class="cell">Type</div>
+                        </div>
+                            {
+                                this.state.scores.map((element, index) => {
+                                    return <Score name={element.nom} score={element.score} classement={element.classement} hub={element.hub} type_equipe={element.type_equipe} key={element.id} />
+                                })
+                            }
+                    </div>
+                </div>
+            </div>
         );
     }
 }
+
+const element = <ScoreBoard />;
+ReactDOM.render(element, document.getElementById('leaderboard'));
