@@ -122,7 +122,7 @@ class team
                     $req3->execute();
                     $req3->close();
 
-                    // VERIFIER QU'UNE CERTAINE CONDITION SUR LA DATE SOIT REMPLIE (@leaderboad_freeze)
+                    // VERIFIER QU'UNE CERTAINE CONDITION SUR  LA DATE SOIT REMPLIE (@leaderboad_freeze)
                     if (true) {
                         if ($req3 = $conn->prepare("UPDATE teams SET public_score =? WHERE id=?")) {
                             $req3->bind_param("si", $score, $this->id);
