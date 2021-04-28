@@ -123,7 +123,9 @@ class team
                     $req3->close();
 
                     // VERIFIER QU'UNE CERTAINE CONDITION SUR LA DATE SOIT REMPLIE (@leaderboad_freeze)
-                    if (true) {
+                    $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
+                    $datefreeze = new DateTime('2021-05-06 16:30:00');
+                    if ($date<=$datefreeze) {
                         if ($req3 = $conn->prepare("UPDATE teams SET public_score =? WHERE id=?")) {
                             $req3->bind_param("si", $score, $this->id);
                             $req3->execute();
