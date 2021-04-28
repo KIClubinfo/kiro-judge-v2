@@ -211,6 +211,7 @@ if (!empty($msg_error)) {
     <ul class="list2">
       <li> Vous devez apporter votre ordinateur, c'est avec celui-ci que vous allez envoyer vos solutions.
       <li> Tous les langages de programmation et bibliothèques sont autorisés.
+      <li> Les instances et les solutions seront au format Json. Il est donc recommandé aux participants d'apprendre à utiliser les librairies correspondantes pour le language qu'ils souhaitent utiliser.
       <li> L'équipe gagnante devra impérativement fournir l'algorithme qui a permis d'établir cette solution,
         même si celle-ci est aléatoire.
     </ul>
