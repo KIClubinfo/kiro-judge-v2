@@ -13,7 +13,7 @@ class Score extends React.Component {
         return (
             <div class="row2">
                 <div class="cell">{this.props.name}</div>
-                <div class="cell">{this.props.score}</div>
+                <div class="cell">{this.props.public_score}</div>
                 <div class="cell">{this.props.classement}</div>
                 <div class="cell">{this.props.hub}</div>
                 <div class="cell">{this.props.type_equipe}</div>
@@ -69,7 +69,7 @@ export class ScoreBoard extends React.Component {
                         </div>
                             {
                                 this.state.scores.map((element, index) => {
-                                    return <Score name={element.nom} score={element.score} classement={element.classement} hub={element.hub} type_equipe={element.type_equipe} key={element.id} />
+                                    return <Score name={element.nom} public_score={element.public_score} classement={element.classement} hub={element.hub} type_equipe={element.type_equipe} key={element.id} />
                                 })
                             }
                     </div>
