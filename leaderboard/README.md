@@ -6,7 +6,7 @@
 
 ## Run (before inserting into the whole site)
 
-Change `WEBSOCKER_URL` in **Leaderboard.js** to `localhost:8124`.
+Change `WEBSOCKER_URL` in **Leaderboard.js** to `ws://localhost:8125`.
 
 ## Deploy
 
