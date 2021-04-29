@@ -49,12 +49,6 @@ a:hover {
 	text-decoration: none;
 }
 
-.container {
-	overflow: unset;
-	margin: 0em auto;
-	width: 1000px;
-}
-
 /*********************************************************************************/
 
 /* Image Style                                                                   */
@@ -286,35 +280,13 @@ ul.contact li a.icon-rss:before {
 
 /*********************************************************************************/
 
-/* Header                                                                        */
-
-/*********************************************************************************/
-
-#header-wrapper {
-	background: #333333;
-}
-
-#header {
-	position: relative;
-	padding: 3em 0em;
-}
-
-@media (max-width: 850px) {
-	#header {
-		position: relative;
-		padding: 0em;
-	}
-  }
-  
-/*********************************************************************************/
-
 /* Logo                                                                          */
 
 /*********************************************************************************/
 
 #logo {
 	position: relative;
-	bottom: 1em;
+	bottom: 0em;
 	left: 0em;
 	margin-right: 1.5em;
 }
@@ -328,6 +300,34 @@ ul.contact li a.icon-rss:before {
 	text-transform: uppercase;
 	color: #FFF;
 }
+
+.perso{
+	background-color: #333333;
+}
+
+.perso li a{
+	margin-left: 4vw;
+	margin-right: 4vw;
+	letter-spacing: 1px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1em;
+	color: #DDD;
+}
+
+.perso li a:hover{
+	color: #FFF;
+}
+
+.logomargin{
+	margin-left: 8vw;
+}
+
+@media screen and (max-width: 990px) {
+	.logomargin{
+		display: none !important;
+	}
+  }
 
 /*********************************************************************************/
 
@@ -351,11 +351,11 @@ ul.contact li a.icon-rss:before {
 }
 
 #menu li a, #menu li span {
-	padding: 3em;
+	padding: 2vw;
+	font-size: 100%;
 	letter-spacing: 1px;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 1.2em;
 	color: #FFF;
 }
 
