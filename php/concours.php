@@ -20,6 +20,7 @@ include("navbar.php");
 
 ?>
 <a href="sujets.php">Accéder au sujet</a> 
+<a href="leaderboard.php">Accéder au classement</a> 
 
 <form action="send_instance.php" method="post">
   <label for="entree">Instance:</label>
