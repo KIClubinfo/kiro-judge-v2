@@ -6,7 +6,7 @@ import React from "react";
 
 // Fichier de config ? Modification à la main ? Variable d'environnement ?
 // Tout cela ne me plait guère...
-const WEBSOCKET_URL = "ws://cxhome.org:8125"
+const WEBSOCKET_URL = "ws://localhost:8125"
 
 class Score extends React.Component {
     render() {
