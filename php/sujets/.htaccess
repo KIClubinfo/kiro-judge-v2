@@ -2,10 +2,10 @@ ErrorDocument 404 /404.php
 ErrorDocument 403 /403.php
 Options -Indexes
 
-<Files *.pdf> 
+<Files sujet4.pdf> 
 Deny from All
 </Files>
 
-<Files *.zip> 
+<Files sujet4.zip> 
 Deny from All
 </Files>
