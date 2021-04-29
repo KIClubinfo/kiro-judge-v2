@@ -63,13 +63,13 @@ if (!empty($msg_error)) {
       <h2 style="font-size: 2.7em;">Un concours de recherche opérationnelle pour les étudiants</h2>
       <span class="byline">À l'École des Ponts ParisTech</span>
     </div>
-    <p> Participez à la quatrième édition du <strong>KIRO</strong>, un concours organisé par le Club Informatique de l'École des Ponts, en partenariat avec le <a href="https://www.sncf.com/fr">GROUPE SNCF</a> et le laboratoire du CERMICS. Il s'agit d'un concours ouvert aux étudiants intéressés par la résolution effective d'un problème de recherche opérationnelle. </p>
+    <p> Participez à la quatrième édition du <strong>KIRO</strong>, un concours organisé par le Club Informatique de l'École des Ponts, en partenariat avec le <a href="https://www.sncf.com/fr">GROUPE SNCF</a> et le laboratoire du <a href="https://cermics.enpc.fr">CERMICS</a>. Il s'agit d'un concours ouvert aux étudiants intéressés par la résolution effective d'un problème de recherche opérationnelle. </p>
     <p> En quelques mots, le KIRO c'est : </p>
     <ul class="list">
       <li>Des équipes de 3</li>
       <li>6h d'épreuve</li>
       <li>L'occasion de réfléchir à une véritable problématique d'entreprise</li>
-      <li>L'opportunité de gagner un prix d'une valeur de 3 000 &euro;</li>
+      <li>L'opportunité de gagner des prix d'un montant total de 3000 &euro;</li>
     </ul>
   </div>
 </div>
