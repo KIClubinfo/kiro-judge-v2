@@ -26,20 +26,20 @@ let databaseConnection = mysql.createConnection({
 })
 
 function updateLeaderboard(results) {
-    results.forEach(function (element, index) {
-        if (element.classement === (index + 1)) return;
-        let sql_update_request = "UPDATE teams SET classement = " + (index + 1) + " WHERE id = " + element.id + ";";
-
-        databaseConnection.query(sql_update_request, (error, results) => {
-            if (error) throw error;
-        })
-    })
-
-    for (let i = 0; i < results.length; i++) {
-        results[i].classement = (i + 1);
-    }
-
-    console.log("Leaderboard updated.");
+    // results.forEach(function (element, index) {
+    //     if (element.classement === (index + 1)) return;
+    //     let sql_update_request = "UPDATE teams SET classement = " + (index + 1) + " WHERE id = " + element.id + ";";
+    //
+    //     databaseConnection.query(sql_update_request, (error, results) => {
+    //         if (error) throw error;
+    //     })
+    // })
+    //
+    // for (let i = 0; i < results.length; i++) {
+    //     results[i].classement = (i + 1);
+    // }
+    //
+    // console.log("Leaderboard updated.");
 }
 
 function notifyTeams(results) {
@@ -57,7 +57,7 @@ function updateLeaderboardAndNotify() {
     }
 
     // On récupére l'ensemble des équipes avec leur score, dans l'ordre décroissant
-    let sql_request = "SELECT (nom, public_score, hub, type_equipe) FROM teams ORDER BY score DESC;";
+    let sql_request = "SELECT nom, public_score, type_equipe, hub FROM teams ORDER BY public_score DESC;";
 
     databaseConnection.query(sql_request, function (error, results) {
         if (error) throw error;
