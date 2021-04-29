@@ -306,8 +306,8 @@ ul.contact li a.icon-rss:before {
 }
 
 .perso li a{
-	margin-left: 1.5em;
-	margin-right: 1.5em;
+	margin-left: 4vw;
+	margin-right: 4vw;
 	letter-spacing: 1px;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -317,6 +317,10 @@ ul.contact li a.icon-rss:before {
 
 .perso li a:hover{
 	color: #FFF;
+}
+
+.logomargin{
+	margin-left: 8vw;
 }
 
 @media screen and (max-width: 990px) {
