@@ -19,6 +19,10 @@ include("header.php");
 include("navbar.php");
 
 ?>
+
+<div class="content" style="margin-top: 15vh">
+    <div class="container containergrey">
+
 <a href="sujets.php">Accéder au sujet</a> 
 <a href="leaderboard.php">Accéder au classement</a> 
 

@@ -27,10 +27,10 @@ include("navbar.php");
 $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 $dateconcours = new DateTime('2021-05-06 12:00:00');
 
-if ($date>=$dateconcours or !is_admin()) {
+if ($date>=$dateconcours or is_admin()) {
                     echo '
-                    <p style="text-align: center;">Accédez au <a href="download.php?path=sujets/sujet3.pdf">sujet du concours</a>.</p>
-                    <p style="text-align: center;">Téléchargez les <a href="download.php?path=sujets/sujet3.zip">instances</a> du sujet.</p>
+                    <p style="text-align: center;">Accédez au <a href="download.php?path=sujets/sujet4.pdf">sujet du concours</a>.</p>
+                    <p style="text-align: center;">Téléchargez les <a href="download.php?path=sujets/sujet4.zip">instances</a> du sujet.</p>
                 ';
                 } else {
                     echo '<p style="text-align: center;">Le sujet et les instances apparaîtront ici au début de l\'épreuve, le <B>jeudi 6 mai 2021 à 12h</B>.</p>';
