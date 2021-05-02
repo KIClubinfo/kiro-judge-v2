@@ -4,9 +4,9 @@ include("header.php");
 include("navbar.php");
 ?>
 
-<div class=whitespace>
-  <div id="page" class="container">
-    <div class="title" style="margin-bottom: 1em" id="old">
+<div class="content" style=" padding-top: 20vh; text-align: center;">
+  <div class="container containergrey">
+    <div class="title">
       <h2 style="font-size: 2.7em">Upload des Instances</h2>
       <span class="byline">Vous pouvez déposer vos instances en cliquant sur le bouton ci-dessous :</span>
     </div>
@@ -17,3 +17,6 @@ include("navbar.php");
   </div>
 </div>
 
+<?php
+include("footer.php");
+?>

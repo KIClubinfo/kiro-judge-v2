@@ -10,14 +10,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height:600px;    
-  background: #5256ad;
+  min-height:600px;
+  min-width: 700px;    
+  background: #474747;
 }
       
   div#depose {
-    height:200px;
+    height:300px;
+    min-width: 600px;
     font-size:20px;
-    line-height: 180px;
+    line-height: 280px;
     color:rgb(255, 255, 255);    
     text-align: center;
     padding:10px;
@@ -70,7 +72,7 @@ body {
     border: none;
     outline: none;
     background: #fff;
-    color: #5256ad;
+    color: #474747;
     border-radius: 5px;
     cursor: pointer;
 }
