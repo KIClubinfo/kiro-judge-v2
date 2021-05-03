@@ -248,10 +248,8 @@ if (!empty($msg_error)) {
       </strong></p>
     </br>
     <p>Pour ceux passant l’épreuve au format distanciel, le lien du discord vous sera envoyé après inscription.
-      La remise des prix aura lieu à la Maison des Ponts.
+      La remise des prix aura lieu sur place.
     </p>
-    <p><strong>Maison des Ponts, 42 Rue Boissière, 75116 Paris
-      </strong></p>
   </div>
 </div>
 
