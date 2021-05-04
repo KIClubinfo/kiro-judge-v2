@@ -1,5 +1,11 @@
 <?php
 include("config.php");
+
+if (!isset($_SESSION["user"])){
+    header('Location: index.php?not_connected');
+    exit();
+}
+
 include("header.php");
 include("navbar.php");
 ?>
@@ -27,8 +33,9 @@ $errors = 'errors';
 $team = 'team';
 $instance_id = 'instance_id';
 $solution_id = 'solution_id';
-$team = 'team';
 $teamid = $_SESSION['team']->id;
+$team = new team($teamid);
+
 //var_dump($test);
 $Best_Sol = array();
 $Last_Sol = array();
@@ -38,6 +45,7 @@ for($i=0;$i<4;$i++) {
 }
 //var_dump($Best_Sol);
 //var_dump($Last_Sol);
+global $conn;
 if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $date DESC")) {
     $req->bind_param('i', $teamid);
     $req->execute();
@@ -50,16 +58,16 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
     <div class="content limiter">
         <div class="container containergrey">
             <div class="title">
-                <h2 align="center">équipe <?php echo($_SESSION[$team]->nom)?></h2>
+                <h2 align="center" style="margin-top: 0.3em">équipe <?php echo($team->nom)?></h2>
             </div>
             <div class="title">
                 <span class="byline"> Score actuel:</span>
-                <h2 align="center"><?php echo($_SESSION[$team]->score)?></h2>
+                <h2 align="center"><?php echo($team->score)?></h2>
             </div>
             <div class="title">
                 <span class="byline"> Meilleures solutions:</span>
             </div>
-            <div class="wrap-table100">
+            <div class="wrap-table100" style="text-align: center">
                 <div class="table">
                     <div class="row2 header">
                         <?php foreach($Best_Sol as $sol){ ?>
@@ -68,7 +76,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                     <div class="row2">
                         <?php foreach($Best_Sol as $sol){ ?>
-                        <div class="cell">Score: <?php echo($sol[$score])?> </div>
+                        <div class="cell"><?php echo($sol[$score])?> </div>
                         <?php }?>
                     </div>
                     <div class="row2">
@@ -78,10 +86,11 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                 </div>
             </div>
+            <br/>
             <div class="title">
                 <span class="byline"> Dernières solutions:</span>
             </div>
-            <div class="wrap-table100">
+            <div class="wrap-table100" style="text-align: center">
                 <div class="table">
                     <div class="row2 header">
                         <?php foreach($Last_Sol as $sol){ ?>
@@ -90,7 +99,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                     <div class="row2">
                         <?php foreach($Last_Sol as $sol){ ?>
-                            <div class="cell">Score: <?php echo($sol[$score])?> </div>
+                            <div class="cell"><?php echo($sol[$score])?> </div>
                         <?php }?>
                     </div>
                     <div class="row2">
@@ -105,10 +114,11 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                 </div>
             </div>
+            <br />
             <div class="title">
                 <span class="byline"> Historique des solutions:</span>
             </div>
-            <div class="wrap-table100">
+            <div class="wrap-table100" style="text-align: center">
                 <div class="table">
                     <div class="row2 header">
                         <div class="cell" align="center">Instance</div>
