@@ -4,30 +4,22 @@
 
 include("config.php");
 
-if (!is_admin()) {
-                  header('Location: index.php?ns');
-                  exit();
-}
-
-
 if (!isset($_SESSION["user"])){
   header('Location: index.php?not_connected');
   exit();
 }
 
+include("date_protection.php");
+$dateconcours = new DateTime('2021-05-06 11:30:00');
+protect_before($dateconcours);
+
 include("header.php");
 include("navbar.php");
 
 ?>
-<a href="sujets.php">Accéder au sujet</a> 
-<a href="leaderboard.php">Accéder au classement</a> 
 
-<form action="send_instance.php" method="post">
-  <label for="entree">Instance:</label>
-  <input type="file" name="entree">
-  <input type="submit" value="Envoyer">
-</form>
-
+<div class="content" style="margin-top: 15vh">
+  <div class="container containergrey" style="margin-bottom: 5vh">
 <?php
 if (isset($_SESSION['user'])) {
   $link = $_ENV["discord_link"];
@@ -36,8 +28,15 @@ if (isset($_SESSION['user'])) {
  <a href="'; echo $link; echo '" title="Discord">Rejoindre le Discord</a></p>
 ';
 }
-?> 
+?>
+    <p style="text-align: center;">Accédez au sujet pour participer au concours:<br>
+    <a href="sujets.php">Accéder au sujet</a></p> 
+  </div>
 
+  <div class="container containergrey">
+    <p style="text-align: center;">Uploadez des instances pour que votre score soit pris en compte:<br>
+    <a href="upload.php">Uploader des instances</a></p>
+    <p style="text-align: center;">Accédez au classement en temps réel de tous les candidats:<br>      <a href="leaderboard.php">Accéder au classement</a></p>
   </div>
 </div>
 

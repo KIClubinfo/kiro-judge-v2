@@ -1,0 +1,51 @@
+nav.concours
+{
+    float: left;
+    margin-left: 100px;
+    width: 200px;
+    background-color: rgb(190, 190, 190);
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+}
+
+ul.concours
+{
+    list-style-type:none;
+    text-align: left;
+}
+
+section.concours
+{
+    margin-left: 330px;
+    max-width: 1000px;
+    min-height: 270px;
+    background-color: rgb(190, 190, 190);
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 5vh;
+}
+
+li.titlesection
+{
+    margin: 0;
+	padding: 0;
+	font-weight: 700;
+    color: #2B3F48;
+    margin-bottom: 5px;
+}
+
+a.titlesection
+{
+    margin: 0;
+	padding: 0;
+	font-weight: 700;
+	color: #2B3F48;
+}
+
+.error-button
+{
+    display: inline;
+    padding: 0.1em;
+}

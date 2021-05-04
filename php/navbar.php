@@ -22,7 +22,7 @@
             } else {
                 echo '
                 <li class="nav-item">
-                <a class="nav-link" href="concours.php">Concours <span class="sr-only"></span></a>
+                <a class="nav-link" href="concourstest.php">Concours <span class="sr-only"></span></a>
                 </li>';
                 echo '
                 <li class="nav-item">

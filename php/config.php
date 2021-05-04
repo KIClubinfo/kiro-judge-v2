@@ -98,6 +98,16 @@ class team
         }
     }
 
+    public function get_instance_best_score($instance) {
+        global $conn;
+        $results = $conn->query("SELECT score FROM solutions WHERE team_id = {$this->id} AND instance_id = {$instance} ORDER BY score DESC LIMIT 1;");
+        if (!empty($results)) {
+            $row = $results->fetch_assoc();
+            return $row["score"];
+        }
+        return 0;
+    }
+
 
     public function update_score()
     { // Pour mettre à jour le score de l'équipe
@@ -105,12 +115,11 @@ class team
         $score = 0;
 
         $results = $conn->query("SELECT distinct (instance_id) , max(score) score from solutions where team_id = {$this->id} and score >= 0 group by instance_id;");
-        if (!empty($result)) {
+        if (!empty($results)) {
             while ($row = $results->fetch_assoc()) {
                 $score += $row["score"];
             }
         }
-
 
         if ($req = $conn->prepare("SELECT score FROM teams WHERE id=?")) { // requête préparée
             $req->bind_param("i", $this->id);
