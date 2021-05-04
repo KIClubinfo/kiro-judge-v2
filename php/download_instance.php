@@ -18,7 +18,11 @@ protect_before($dateconcours);
     if(isset($_GET['path'])){
         //Read the filename
         $filename = $_GET['path'];
-        //Check the file exists or not
+        $regex='~^(/var/www/html/uploads/)(\d)*_(\d)*_(\d)*\.(json)$~';
+        if (!preg_match($regex, $filename)){
+            header('Location: index.php');
+            exit();
+        }
         $chaine=explode("/", $filename);
         $chaine=$chaine[5];
         $chaine=explode("_", $chaine);
@@ -27,6 +31,7 @@ protect_before($dateconcours);
             header('Location: index.php');
             exit();
         }
+        //Check the file exists or not
         if(file_exists($filename)) {
             //Define header informations
             header('Content-Description: File Transfer');
