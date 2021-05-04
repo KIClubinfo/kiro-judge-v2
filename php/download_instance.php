@@ -20,7 +20,9 @@ protect_before($dateconcours);
         $filename = $_GET['path'];
         //Check the file exists or not
         $chaine=explode("/", $filename);
-        $id=$chaine[4];
+        $chaine=$chaine[5];
+        $chaine=explode("_", $chaine);
+        $id=$chaine[0];
         if($id!=$_SESSION['team']->id){
             header('Location: index.php');
             exit();
