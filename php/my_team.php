@@ -33,8 +33,14 @@ $teamid = $_SESSION['team']->id;
 $Best_Sol = array();
 $Last_Sol = array();
 for($i=0;$i<4;$i++) {
-    $Best_Sol[] = Trouve_instance_max($score, $teamid, $i)[0];
-    $Last_Sol[] = Trouve_instance_max($score, $teamid, $i)[0];
+    $sc_max = Trouve_instance_max($score, $teamid, $i);
+    if($sc_max != NULL){
+        $Best_Sol[] = $sc_max[0];
+    }
+    $lst_sol = Trouve_instance_max($date, $teamid, $i);
+    if($lst_sol != NULL){
+        $Last_Sol[] = $lst_sol[0];
+    }
 }
 //var_dump($Best_Sol);
 //var_dump($Last_Sol);
@@ -62,18 +68,18 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
             <div class="wrap-table100">
                 <div class="table">
                     <div class="row2 header">
-                        <?php foreach($Best_Sol as $sol){ ?>
-                        <div class="cell" align="center">Instance <?php echo($sol[$instance_id])?></div>
+                        <?php foreach($Best_Sol as $sol){?>
+                            <div class="cell" align="center">Instance <?php echo($sol[$instance_id])?></div>
                         <?php }?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Best_Sol as $sol){ ?>
-                        <div class="cell">Score: <?php echo($sol[$score])?> </div>
+                        <?php foreach($Best_Sol as $sol){?>
+                                <div class="cell">Score: <?php echo($sol[$score])?> </div>
                         <?php }?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Best_Sol as $sol){ ?>
-                        <div class="cell">Chemin: <?php echo(get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]))?> </div>
+                        <?php foreach($Best_Sol as $sol){?>
+                                <div class="cell">Chemin: <?php echo(get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]))?> </div>
                         <?php }?>
                     </div>
                 </div>
@@ -84,23 +90,23 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
             <div class="wrap-table100">
                 <div class="table">
                     <div class="row2 header">
-                        <?php foreach($Last_Sol as $sol){ ?>
+                        <?php foreach($Last_Sol as $sol){?>
                             <div class="cell" align="center">Instance <?php echo($sol[$instance_id])?></div>
                         <?php }?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Last_Sol as $sol){ ?>
-                            <div class="cell">Score: <?php echo($sol[$score])?> </div>
+                        <?php foreach($Last_Sol as $sol){?>
+                                <div class="cell">Score: <?php echo($sol[$score])?> </div>
                         <?php }?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Last_Sol as $sol){ ?>
-                            <div class="cell" style="max-width: 20em">Erreurs: <?php echo($sol[$errors])?> </div>
+                        <?php foreach($Last_Sol as $sol){?>
+                                <div class="cell" style="max-width: 20em">Erreurs: <?php echo($sol[$errors])?> </div>
                         <?php }?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Last_Sol as $sol){ ?>
-                            <div class="cell">Chemin: <?php echo(get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]))?> </div>
+                        <?php foreach($Last_Sol as $sol){?>
+                                <div class="cell">Chemin: <?php echo(get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]))?> </div>
                         <?php }?>
                     </div>
                 </div>
