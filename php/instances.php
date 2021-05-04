@@ -23,6 +23,6 @@ const INSTANCE_SCORES = [
 function display_errors_button($errors) {
     $errors_format = str_replace(PHP_EOL, "<br/>", $errors);
     ?>
-    <button onclick="let x = <?php echo "'" . $errors_format . "'"; ?>;popUp(x)">Click me</button>
+    <button class="error-button" onclick="let x = <?php echo "'" . $errors_format . "'"; ?>;popUp(x)">Errors</button>
 <?php
 }

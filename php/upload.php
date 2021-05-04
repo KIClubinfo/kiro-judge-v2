@@ -54,7 +54,7 @@ include("navbar.php");
             move_uploaded_file($tmp_name, $file_path);
             $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
 
-
+            $old_score = $team->get_instance_best_score($key);
 
 
             $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
@@ -78,11 +78,12 @@ include("navbar.php");
   <div>
     <?php
             echo INSTANCE_NAMES[$key];
-            echo " ";
+            echo ": ";
             if ($score < 0) {
               display_errors_button($errors_string);
             } else {
-              echo $score;
+                $color = ($old_score < $score) ?"green" : "red";
+              echo "<span style='color: {$color}'>" . $score . "<span />";
             }
     ?>
   </div>

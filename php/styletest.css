@@ -43,3 +43,9 @@ a.titlesection
 	font-weight: 700;
 	color: #2B3F48;
 }
+
+.error-button
+{
+    display: inline;
+    padding: 0.1em;
+}
