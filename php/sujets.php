@@ -4,16 +4,15 @@
 
 include("config.php");
 
-if (!is_admin()) {
-                  header('Location: index.php?ns');
-                  exit();
-}
-
 
 if (!isset($_SESSION["user"])){
   header('Location: index.php?not_connected');
   exit();
 }
+
+include("date_protection.php");
+$dateconcours = new DateTime('2021-05-06 11:30:00');
+protect_before($dateconcours);
 
 include("header.php");
 include("navbar.php");
