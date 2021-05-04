@@ -113,26 +113,30 @@ include("navbar.php");
 
 ?>
 
-<section class="concours">
-  <form action="" method="post" enctype="multipart/form-data">
-    <p>Solutions (Vous pouvez envoyer un ou plusieurs fichiers a la fois):
-      <br />
-        A:
-      <input type="file" name="solutions[]" />
-      <br />
-        NS:
-      <input type="file" name="solutions[]" />
-      <br />
-        PE:
-      <input type="file" name="solutions[]" />
-      <br />
-        PMP:
-      <input type="file" name="solutions[]" />
-      <br />
-      <input type="submit" value="submit" name="submit" />
-    </p>
-  </form>
-</section>
+  <section class="concours">
+    <div class="title" style="margin-top:20px; text-align:center;">
+      <h2 style="font-size: 2.7em; margin-bottom:30px; text-align:center;">Upload des solutions</h2>
+      <form action="" method="post" enctype="multipart/form-data">
+        <span class="byline">Vous pouvez envoyer un ou plusieurs fichiers a la fois :</span>
+        <span class="byline" style="color:black; font-size:x-large;">
+          <br /><br />
+            A :
+          <input type="file" name="solutions[]" style="margin-left:64px"/>
+          <br /><br />
+            NS :
+          <input type="file" name="solutions[]" style="margin-left:48px"/>
+          <br /><br />
+            PE :
+          <input type="file" name="solutions[]" style="margin-left:53px"/>
+          <br /><br />
+            PMP :
+          <input type="file" name="solutions[]" style="margin-left:30px"/>
+          <br /><br />
+          <input type="submit" value="Envoyer" name="submit" />
+        </span>
+      </form>
+    </div>
+  </section>
 
 <?php
   }
