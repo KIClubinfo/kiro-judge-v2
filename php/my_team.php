@@ -124,10 +124,10 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                     <?php foreach ($All_Sol as $Sol){ ?>
                         <div class="row2">
-                            <div class="cell" align="center"><?php echo($Sol[$instance_id])?></div>
-                            <div class="cell" align="center"><?php echo($Sol[$score])?></div>
+                            <div class="cell" align="center" style ="vertical-align: middle"><?php echo($Sol[$instance_id])?></div>
+                            <div class="cell" align="center" style ="vertical-align: middle"><?php echo($Sol[$score])?></div>
                             <div class="cell" style="width: 35em"><?php echo($Sol[$errors])?></div>
-                            <div class="cell"><?php echo(get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]))?></div>
+                            <div class="cell" style ="vertical-align: middle"><?php echo(get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]))?></div>
                         </div>
                     <?php }?>
                 </div>
