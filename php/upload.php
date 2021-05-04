@@ -18,6 +18,7 @@ include("navbar.php");
 <head>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="styletest.css" />
+    <script src="scripts/display_errors.js"></script>
 </head>
 
 <div class="content" style="margin-top: 15vh">
@@ -28,6 +29,7 @@ include("navbar.php");
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['user'])) {
       if (isset($_POST['submit'])) {
+          include("instances.php");
         // On loop sur les instances envoyees
         // On execute le programme qui permet d'evaluer si ca fonctionne bien
         // $result_array = [];
@@ -52,19 +54,17 @@ include("navbar.php");
             move_uploaded_file($tmp_name, $file_path);
             $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
 
-            $instances = [
-              "/var/www/html/solution_checker/instances/Asmall_fixed.json",
-              "/var/www/html/solution_checker/instances/inst_A_fixed.json",
-              "/var/www/html/solution_checker/instances/inst_NS_fixed.json",
-              "/var/www/html/solution_checker/instances/inst_PMP_fixed.json"
-            ];
 
 
-            $command_format = sprintf($command, $file_path, $instances[$key]);
+
+            $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
             $results = [];
             exec($command_format, $results);
 
             $score = intval($results[0]);
+            if ($score >= 0) {
+                $score = INSTANCE_SCORES[$key] - $score;
+            }
             $errors_string = "";
             for ($i = 1; $i < sizeof($results); $i++) {
               $errors_string .= $results[$i] . PHP_EOL;
@@ -72,20 +72,14 @@ include("navbar.php");
 
             update_solution($solution_id, $score, $errors_string);
 
-            $instances_name = [
-              "A",
-              "NS",
-              "NP",
-              "PMP"
-            ];
 
   ?>
   <div>
     <?php
-            echo $instances_name[$key];
+            echo INSTANCE_NAMES[$key];
             echo " ";
             if ($score < 0) {
-              echo $errors_string;
+              display_errors_button($errors_string);
             } else {
               echo $score;
             }
@@ -98,8 +92,8 @@ include("navbar.php");
   ?>
   <div>
     <?php
-            echo $instances_name[$key];
-            echo " File not uploaded";
+            echo INSTANCE_NAMES[$key];
+            echo ": pas de solution fournie.";
     ?>
   </div>
 <?php
@@ -123,12 +117,16 @@ include("navbar.php");
   <form action="" method="post" enctype="multipart/form-data">
     <p>Solutions (Vous pouvez envoyer un ou plusieurs fichiers a la fois):
       <br />
+        A:
       <input type="file" name="solutions[]" />
       <br />
+        NS:
       <input type="file" name="solutions[]" />
       <br />
+        PE:
       <input type="file" name="solutions[]" />
       <br />
+        PMP:
       <input type="file" name="solutions[]" />
       <br />
       <input type="submit" value="submit" name="submit" />
