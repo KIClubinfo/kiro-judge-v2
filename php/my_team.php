@@ -5,7 +5,7 @@ include("navbar.php");
 ?>
 
 <?php
-function Trouve_instance_max($champ, $teamid, $instance){
+function Trouve_instance_max($champ, $teamid, $instance){ //Donne la ligne qui maximise le champ "champ" pour l'instance donnée en argument
     global $conn;
     if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? AND instance_id={$instance} ORDER BY {$champ} DESC LIMIT 1")) {
         $req->bind_param('i', $teamid);
@@ -20,6 +20,7 @@ function Trouve_instance_max($champ, $teamid, $instance){
 
 <?php
 //var_dump($_SESSION['team']);
+//Définition des textes des champs
 $score = 'score';
 $date = 'upload_time';
 $errors = 'errors';
@@ -94,7 +95,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                     <div class="row2">
                         <?php foreach($Last_Sol as $sol){ ?>
-                            <div class="cell">Erreurs: <?php echo($sol[$errors])?> </div>
+                            <div class="cell" style="max-width: 20em">Erreurs: <?php echo($sol[$errors])?> </div>
                         <?php }?>
                     </div>
                     <div class="row2">
@@ -119,7 +120,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                         <div class="row2">
                             <div class="cell" align="center"><?php echo($Sol[$instance_id])?></div>
                             <div class="cell" align="center"><?php echo($Sol[$score])?></div>
-                            <div class="cell"><?php echo($Sol[$errors])?></div>
+                            <div class="cell" style="width: 35em"><?php echo($Sol[$errors])?></div>
                             <div class="cell"><?php echo(get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]))?></div>
                         </div>
                     <?php }?>
