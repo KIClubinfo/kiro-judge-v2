@@ -104,14 +104,13 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                         <?php }?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Last_Sol as $sol){ ?>
+                        <?php foreach($Last_Sol as $sol){
+                            if ($sol[$score] >= 0) {?>
                             <div class="cell"><?php echo($sol[$score])?> </div>
-                        <?php }?>
-                    </div>
-                    <div class="row2">
-                        <?php foreach($Last_Sol as $sol){?>
+                        <?php } else {?>
                                 <div class="cell" style="max-width: 20em">Erreurs: <?php echo($sol[$errors])?> </div>
-                        <?php }?>
+
+                            <?php }}?>
                     </div>
                     <div class="row2">
                         <?php foreach($Last_Sol as $sol){?>
@@ -128,15 +127,24 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                 <div class="table">
                     <div class="row2 header">
                         <div class="cell" align="center">Instance</div>
-                        <div class="cell" align="center">Score</div>
-                        <div class="cell" align="center">Erreurs</div>
+                        <div class="cell" align="center">Score/Erreurs</div>
                         <div class="cell" align="center">Chemin</div>
                     </div>
                     <?php foreach ($All_Sol as $Sol){ ?>
                         <div class="row2">
                             <div class="cell" align="center" style ="vertical-align: middle"><?php echo($Sol[$instance_id])?></div>
-                            <div class="cell" align="center" style ="vertical-align: middle"><?php echo($Sol[$score])?></div>
-                            <div class="cell" style="width: 35em"><?php echo($Sol[$errors])?></div>
+                            <?php
+                            if ($Sol[$score] >= 0) {
+                            ?>
+                                <div class="cell" align="center" style ="vertical-align: middle"><?php echo($Sol[$score])?></div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="cell" style="width: 35em"><?php echo($Sol[$errors])?></div>
+
+                                <?php
+                            }
+                            ?>
                             <div class="cell" style ="vertical-align: middle"><?php echo(get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]))?></div>
                         </div>
                     <?php }?>
