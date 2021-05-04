@@ -1,5 +1,15 @@
 <?php
 include("config.php");
+
+if (!isset($_SESSION["user"])){
+    header('Location: index.php?not_connected');
+    exit();
+}
+  
+//include("date_protection.php");
+//$dateconcours = new DateTime('2021-05-06 11:30:00');
+//protect_before($dateconcours);
+
 include("header.php");
 include("navbar.php");
 ?>
@@ -72,7 +82,9 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                     <div class="row2">
                         <?php foreach($Best_Sol as $sol){ ?>
-                        <div class="cell">Chemin: <?php echo(get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]))?> </div>
+                            <div class="cell"><?php echo '<a href="download_instance.php?path=';
+                                            echo get_solution_filepath($sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                            echo '">Télécharger cette instance</a>';?></div>
                         <?php }?>
                     </div>
                 </div>
@@ -99,7 +111,9 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     </div>
                     <div class="row2">
                         <?php foreach($Last_Sol as $sol){ ?>
-                            <div class="cell">Chemin: <?php echo(get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]))?> </div>
+                            <div class="cell"><?php echo '<a href="download_instance.php?path=';
+                                            echo get_solution_filepath($sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                            echo '">Télécharger cette instance</a>';?></div>
                         <?php }?>
                     </div>
                 </div>
@@ -120,7 +134,9 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                             <div class="cell" align="center"><?php echo($Sol[$instance_id])?></div>
                             <div class="cell" align="center"><?php echo($Sol[$score])?></div>
                             <div class="cell"><?php echo($Sol[$errors])?></div>
-                            <div class="cell"><?php echo(get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]))?></div>
+                            <div class="cell"><?php echo '<a href="download_instance.php?path=';
+                                            echo get_solution_filepath($sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                            echo '">Télécharger cette instance</a>';?></div>
                         </div>
                     <?php }?>
                 </div>
@@ -132,4 +148,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
 
 <?php
 include("footer.php")
+
+
+    
 ?>
