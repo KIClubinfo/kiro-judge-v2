@@ -69,6 +69,7 @@ include("navbar.php");
             for ($i = 1; $i < sizeof($results); $i++) {
               $errors_string .= $results[$i] . PHP_EOL;
             }
+            $errors_string = substr($errors_string, 0, -1);
 
             update_solution($solution_id, $score, $errors_string);
 
