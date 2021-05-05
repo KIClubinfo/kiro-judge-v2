@@ -43,6 +43,7 @@ include("navbar.php");
         $user = new user($_SESSION["user"]->id);
 
         echo '<section class="concours">';
+        echo '<div style="display: grid; align-content: center">';
         foreach ($_FILES["solutions"]["error"] as $key => $error) {
           if ($error == UPLOAD_ERR_OK) {
 
@@ -92,14 +93,15 @@ include("navbar.php");
   ?>
   <div>
     <?php
-            echo INSTANCE_NAMES[$key];
-            echo ": pas de solution fournie.";
+            // echo INSTANCE_NAMES[$key];
+            // echo ": pas de solution fournie.";
     ?>
   </div>
 <?php
-
+    echo '<br />';
           }
         }
+        echo '<div />';
         $team->update_score();
         http_response_code(200);
         echo "</section>";
@@ -109,7 +111,7 @@ include("navbar.php");
     } else {
       http_response_code(401);
     }
-  } else {
+
 
 ?>
 
