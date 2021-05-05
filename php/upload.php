@@ -84,7 +84,7 @@ include("navbar.php");
             if ($score < 0) {
               display_errors_button($errors_string);
             } else {
-                $color = ($old_score < $score) ?"green" : "red";
+                $color = ($old_score > $score) ?"green" : "red";
               echo "<span style='color: {$color}; font-size: 1.7em;'>" . $score . "<span />";
             }
     ?>

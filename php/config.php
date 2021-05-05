@@ -114,12 +114,12 @@ class team
     public function update_score()
     { // Pour mettre à jour le score de l'équipe
         global $conn;
-        $score = 0;
+        $score = WORST_SCORE;
 
         $results = $conn->query("SELECT distinct (instance_id) , min(score) score from solutions where score >= 0 AND team_id = {$this->id} and score >= 0 group by instance_id;");
         if (!empty($results)) {
             while ($row = $results->fetch_assoc()) {
-                $score += $row["score"];
+                $score += - INSTANCE_SCORES[$row["instance_id"]] + $row["score"];
             }
         }
 
