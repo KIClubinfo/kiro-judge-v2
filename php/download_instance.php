@@ -27,7 +27,7 @@ protect_before($dateconcours);
         $chaine=$chaine[5];
         $chaine=explode("_", $chaine);
         $id=$chaine[0];
-        if($id!=$_SESSION['team']->id){
+        if($id!=$_SESSION['team']->id and !is_admin()){
             header('Location: index.php');
             exit();
         }
