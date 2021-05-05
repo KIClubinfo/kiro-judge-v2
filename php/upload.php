@@ -95,8 +95,8 @@ include("navbar.php");
   ?>
   <div>
     <?php
-            echo "<span style='font-size: 1.7em;margin-left:350px;'>".INSTANCE_NAMES[$key]."</span>";
-            echo "<span style='font-size: 1.7em;'> : Pas de solution fournie.</span>";
+            // echo "<span style='font-size: 1.7em;margin-left:350px;'>".INSTANCE_NAMES[$key]."</span>";
+            // echo "<span style='font-size: 1.7em;'> : Pas de solution fournie.</span>";
     ?>
   </div>
 

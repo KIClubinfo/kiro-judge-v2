@@ -17,27 +17,30 @@ include("header.php");
 include("navbar.php");
 
 ?>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styletest.css" />
+</head>
 
 <div class="content" style="margin-top: 15vh">
-  <div class="container containergrey" style="margin-bottom: 5vh">
-<?php
-if (isset($_SESSION['user'])) {
-  $link = $_ENV["discord_link"];
-  echo '
-<p style="text-align: center;">Rejoignez le serveur Discord pour participer au concours à distance: <br>
- <a href="'; echo $link; echo '" title="Discord">Rejoindre le Discord</a></p>
-';
-}
-?>
-    <p style="text-align: center;">Accédez au sujet pour participer au concours:<br>
-    <a href="sujets.php">Accéder au sujet</a></p> 
-  </div>
+    
+    <?php
+    include("menuconcours.php");
+    ?>
 
-  <div class="container containergrey">
-    <p style="text-align: center;">Uploadez des instances pour que votre score soit pris en compte:<br>
-    <a href="upload.php">Uploader des instances</a></p>
-    <p style="text-align: center;">Accédez au classement en temps réel de tous les candidats:<br>      <a href="leaderboard.php">Accéder au classement</a></p>
-  </div>
+    <section class="concours">
+        <div class="title" style="margin-top:20px; text-align:center;">
+            <h2 style="font-size: 2.7em">Concours</h2>
+            <span class="byline">Vous êtes sur la page du concours.<br></span>
+            <span class="byline">Vous trouverez sur cette page toutes les informations relatives au concours le jour J.<br><br></span>
+            <ul style="text-align:left; list-style-type:disc; margin-left:40px;">
+                <li class="byline" style="color:black; font-size:x-large;">Pour accéder au sujet et aux instances associées, rendez-vous dans l'onglet "Sujet"</li>
+                <li class="byline" style="color:black; font-size:x-large;">Pour uploader votre solution, rendez-vous dans l'onglet "Upload"</li>
+                <li class="byline" style="color:black; font-size:x-large;">Pour visualiser le classement en temps réel, rendez-vous dans l'onglet "Classement"</li>
+                <li class="byline" style="color:black; font-size:x-large;">Pour contacter le KI en cas de problème, rendez-vous dans l'onglet "Contact"</li>
+            </ul>
+        </div>
+    </section>
 </div>
 
 <?php
