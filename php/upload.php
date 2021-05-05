@@ -57,6 +57,7 @@ include("navbar.php");
 
             move_uploaded_file($tmp_name, $file_path);
             $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
+            var_dump($command);
 
             $old_score = $team->get_instance_best_score($key);
 
