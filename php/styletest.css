@@ -18,9 +18,9 @@ ul.concours
 
 section.concours
 {
-    margin-left: 330px;
-    max-width: 1000px;
-    min-height: 270px;
+    margin-left: 18vw;
+    max-width: 75vw;
+    min-height: 12vw;
     background-color: rgb(190, 190, 190);
     border-radius: 4px;
     padding: 10px;
