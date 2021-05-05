@@ -62,7 +62,6 @@ include("navbar.php");
 
 
             $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
-            var_dump($command_format);
 
               $results = [];
             exec($command_format, $results);
