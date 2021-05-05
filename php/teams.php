@@ -1,4 +1,6 @@
 <?php
+
+
 include("config.php");
 include("header.php");
 include("navbar.php");
@@ -69,8 +71,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
               echo '<div class="cell">Id</div>';
             } ?>
             <div class="cell">Nom d'équipe</div>
-            <div class="cell">Classement</div>
-            <div class="cell">Score</div>
             <div class="cell">Hub</div>
             <div class="cell">Type</div>
           </div>
@@ -79,8 +79,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
               echo '<div class="cell">' . htmlspecialchars($team_affiche->id) . '</div>';
             } ?>
             <div class="cell"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></div>
-            <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
-            <div class="cell"><?php echo htmlspecialchars($team_affiche->score); ?></div>
             <div class="cell"><?php if ($team_affiche->hub == 1) {
                                 echo "Hub de l'École des Ponts";
                               } else{
@@ -180,8 +178,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
           <?php if (is_admin()) {?>
           <div class="cell">Id</div><?php ; } ?>
           <div class="cell">Nom d'équipe</div>
-          <div class="cell">Classement</div>
-          <div class="cell">Score</div>
           <div class="cell">Hub</div>
           <div class="cell">Type</div>
 
@@ -198,8 +194,6 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
         <?php  } ?>
 
         <div class="cell"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></div>
-        <div class="cell"><?php echo htmlspecialchars($team_affiche->classement); ?></div>
-        <div class="cell"><?php echo htmlspecialchars($team_affiche->public_score); ?></div>
         <div class="cell"><?php if ($team_affiche->hub == 1) {
                             echo "Hub de l'École des Ponts";
                           } else{
