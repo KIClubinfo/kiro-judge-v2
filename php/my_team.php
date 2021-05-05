@@ -68,15 +68,24 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
 }
 //var_dump($All_Sol)
 ?>
-<div class="content" style="padding-top: 10vh">
-    <div class="content limiter">
-        <div class="container containergrey">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styletest.css" />
+</head>
+
+<div class="content" style="padding-top: 15vh;">
+
+    <div class="content limiter"> 
+        <?php
+        include("menuconcours.php");
+        ?>
+        <section class="concours">
             <div class="title">
-                <h2 align="center" style="margin-top: 0.3em">équipe <?php echo($team->nom)?></h2>
+                <h2 style="margin-top:20px; text-align:center; font-size: 2.7em; margin-bottom:30px;">EQUIPE <?php echo($team->nom)?></h2>
             </div>
             <div class="title">
                 <span class="byline"> Score actuel:</span>
-                <h2 align="center"><?php echo(number_format($team->score))?></h2>
+                <h2 style="margin-top:20px; text-align:center; font-size: 3.7em; margin-bottom:30px;"><?php echo(number_format($team->score))?></h2>
             </div>
             <div class="title">
                 <span class="byline"> Meilleures solutions:</span>
@@ -165,7 +174,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     <?php }?>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </div>
 </div>

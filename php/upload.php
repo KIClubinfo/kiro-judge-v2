@@ -43,6 +43,10 @@ include("navbar.php");
         $user = new user($_SESSION["user"]->id);
 
         echo '<section class="concours">';
+        echo '<div class="title" style="margin-top:20px; text-align:center;"><h2 style="font-size: 2.7em; margin-bottom:30px;">Résultat de l\'Upload</h2></div>';
+        echo '<div class="title" style="text-align:left;">';
+        echo '<span class="byline" style="margin-left: 210px; color:black;">Vous trouverez ci-dessous le résultat de l\'upload :</span>';
+        echo '</div>';
         foreach ($_FILES["solutions"]["error"] as $key => $error) {
           if ($error == UPLOAD_ERR_OK) {
 
@@ -77,13 +81,12 @@ include("navbar.php");
   ?>
   <div>
     <?php
-            echo INSTANCE_NAMES[$key];
-            echo ": ";
+            echo "<span style='font-size: 1.7em;margin-left:350px;'>".INSTANCE_NAMES[$key]." : </span>";
             if ($score < 0) {
               display_errors_button($errors_string);
             } else {
                 $color = ($old_score < $score) ?"green" : "red";
-              echo "<span style='color: {$color}'>" . $score . "<span />";
+              echo "<span style='color: {$color}; font-size: 1.7em;'>" . $score . "<span />";
             }
     ?>
   </div>
@@ -94,16 +97,21 @@ include("navbar.php");
   ?>
   <div>
     <?php
-            echo INSTANCE_NAMES[$key];
-            echo ": pas de solution fournie.";
+            echo "<span style='font-size: 1.7em;margin-left:350px;'>".INSTANCE_NAMES[$key]."</span>";
+            echo "<span style='font-size: 1.7em;'> : Pas de solution fournie.</span>";
     ?>
   </div>
+
 <?php
 
           }
         }
         $team->update_score();
         http_response_code(200);
+        echo '<div class="title" style="text-align:left;">';
+        echo '<span class="byline"><br/> <span style="color:red;">Rouge</span> : La solution est moins bonne que la précédente</span>';
+        echo '<span class="byline"><br/> <span style="color:green;">Vert</span> : La solution est meilleure que la précédente</span>';
+        echo '</div>';
         echo "</section>";
       } else {
         http_response_code(400);
