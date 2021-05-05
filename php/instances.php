@@ -7,10 +7,10 @@ const INSTANCE_NAMES = [
 ];
 
 const INSTANCE_FILES = [
-    "/var/www/html/solution_checker/instances/instance_A.json",
-    "/var/www/html/solution_checker/instances/instance_NS.json",
-    "/var/www/html/solution_checker/instances/instance_PE.json",
-    "/var/www/html/solution_checker/instances/instance_PMP.json"
+    "/var/www/html/solution_checker/instances/A.json",
+    "/var/www/html/solution_checker/instances/NS.json",
+    "/var/www/html/solution_checker/instances/PE.json",
+    "/var/www/html/solution_checker/instances/PMP.json"
 ];
 
 const INSTANCE_SCORES = [
