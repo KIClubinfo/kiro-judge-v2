@@ -1,11 +1,11 @@
-ErrorDocument 404 /404.php 
-ErrorDocument 403 /403.php
+ErrorDocument 404 https://kiro.enpc.org/404.php
+ErrorDocument 403 https://kiro.enpc.org/403.php
 Options -Indexes
 
-<Files sujet4.pdf> 
+<Files *.pdf> 
 Deny from All
 </Files>
 
-<Files sujet4.zip> 
+<Files *.zip> 
 Deny from All
 </Files>

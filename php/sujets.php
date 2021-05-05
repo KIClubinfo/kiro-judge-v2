@@ -39,9 +39,9 @@ include("navbar.php");
 
             if ($date>=$dateconcours or is_admin()) {
                                 echo '
-                                <span class="byline">Accédez au <a href="download.php?path=sujets/sujet4.pdf">sujet du concours</a>.<br><br></span>
+                                <span class="byline">Accédez au <a href="download.php?path=/var/www/html/sujets/sujet4.pdf">sujet du concours</a>.<br><br></span>
                                 
-                                <span class="byline">Téléchargez les <a href="download.php?path=sujets/sujet4.zip">instances</a> du sujet.</span>
+                                <span class="byline">Téléchargez les <a href="download.php?path=/var/www/html/sujets/sujet4.zip">instances</a> du sujet.</span>
                             ';
                             } else {
                                 echo '<span class="byline">Le sujet et les instances apparaîtront ici au début de l\'épreuve : <br> Le <B>jeudi 6 mai 2021 à 12h</B>.</span>';

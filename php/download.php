@@ -18,6 +18,11 @@ protect_before($dateconcours);
     if(isset($_GET['path'])){
         //Read the filename
         $filename = $_GET['path'];
+        $regex='~^(/var/www/html/sujets/sujet4)\.(zip|pdf)$~';
+        if (!preg_match($regex, $filename)){
+            header('Location: index.php');
+            exit();
+        }
         //Check the file exists or not
         if(file_exists($filename)) {
             //Define header informations
