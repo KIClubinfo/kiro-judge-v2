@@ -16,6 +16,17 @@ include("instances.php");
 ?>
 
 <?php
+function Trouve_instance_min($champ, $teamid, $instance){ //Donne la ligne qui maximise le champ "champ" pour l'instance donnée en argument
+    global $conn;
+    if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? AND instance_id={$instance} AND score >= 0 ORDER BY {$champ} ASC LIMIT 1")) {
+        $req->bind_param('i', $teamid);
+        $req->execute();
+        $L_max = $req->get_result()->fetch_all(MYSQLI_ASSOC);
+        $req->close();
+        return($L_max);
+    }
+}
+
 function Trouve_instance_max($champ, $teamid, $instance){ //Donne la ligne qui maximise le champ "champ" pour l'instance donnée en argument
     global $conn;
     if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? AND instance_id={$instance} ORDER BY {$champ} DESC LIMIT 1")) {
@@ -48,7 +59,7 @@ $team = new team($teamid);
 $Best_Sol = array();
 $Last_Sol = array();
 for($i=0;$i<4;$i++) {
-    $sc_max = Trouve_instance_max($score, $teamid, $i);
+    $sc_max = Trouve_instance_min($score, $teamid, $i);
     if($sc_max != NULL){
         $Best_Sol[] = $sc_max[0];
     }
@@ -84,21 +95,21 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
             <div class="wrap-table100" style="text-align: center">
                 <div class="table">
                     <div class="row2 header">
-                        <?php foreach($Best_Sol as $sol){?>
+                        <?php foreach($Best_Sol as $sol){ if ($sol[$score] >= 0) {?>
                             <div class="cell" align="center">Instance <?php echo(INSTANCE_NAMES[$sol[$instance_id]])?></div>
-                        <?php }?>
+                        <?php }}?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Best_Sol as $sol){ ?>
-                        <div class="cell" ><?php echo(number_format($sol[$score]))?> </div>
-                        <?php }?>
+                        <?php foreach($Best_Sol as $sol){ if ($sol[$score] >= 0) {?>
+                        <div class="cell" style="margin: auto" ><?php echo(number_format($sol[$score]))?> </div>
+                        <?php }}?>
                     </div>
                     <div class="row2">
-                        <?php foreach($Best_Sol as $sol){ ?>
+                        <?php foreach($Best_Sol as $sol){ if ($sol[$score] >= 0) {?>
                             <div class="cell"><?php echo '<a href="download_instance.php?path=';
-                                            echo get_solution_filepath($sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                            echo get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]);
                                             echo '">Télécharger cette instance</a>';?></div>
-                        <?php }?>
+                        <?php }}?>
                     </div>
                 </div>
             </div>
@@ -125,7 +136,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     <div class="row2">
                         <?php foreach($Last_Sol as $sol){ ?>
                             <div class="cell"><?php echo '<a href="download_instance.php?path=';
-                                            echo get_solution_filepath($sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                            echo get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]);
                                             echo '">Télécharger cette instance</a>';?></div>
                         <?php }?>
                     </div>
@@ -135,13 +146,18 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
             <div class="title">
                 <span class="byline"> Historique des solutions:</span>
             </div>
+<?php
+if (sizeof($All_Sol) > 0) {
+    ?>
             <div class="wrap-table100" style="text-align: center">
                 <div class="table">
+
                     <div class="row2 header">
                         <div class="cell" align="center">Instance</div>
                         <div class="cell" align="center">Score/Erreurs</div>
                         <div class="cell" align="center">Chemin</div>
                     </div>
+
                     <?php foreach ($All_Sol as $Sol){ ?>
                         <div class="row2">
                             <div class="cell" align="center" style ="vertical-align: middle"><?php echo(INSTANCE_NAMES[$Sol[$instance_id]])?></div>
@@ -158,13 +174,16 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                             }
                             ?>
                             <div class="cell" style ="vertical-align: middle"><?php echo '<a href="download_instance.php?path=';
-                                            echo get_solution_filepath($sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                            echo get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]);
                                             echo '">Télécharger cette instance</a>';?>
                             </div>
                         </div>
                     <?php }?>
                 </div>
             </div>
+    <?php
+}
+    ?>
         </div>
     </div>
 </div>

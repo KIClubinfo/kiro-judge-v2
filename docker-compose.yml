@@ -9,7 +9,7 @@ services:
       - db
     volumes:
       - ./php:/var/www/html/
-      - "/var/www/html/uploads"
+      - "./php/uploads:/var/www/html/uploads"
       - "/var/www/html/vendor"
     ports:
       - 8123:80

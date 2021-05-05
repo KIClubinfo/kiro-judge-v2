@@ -62,9 +62,7 @@ include("navbar.php");
             exec($command_format, $results);
 
             $score = intval($results[0]);
-            if ($score >= 0) {
-                $score = INSTANCE_SCORES[$key] - $score;
-            }
+
             $errors_string = "";
             for ($i = 1; $i < sizeof($results); $i++) {
               $errors_string .= $results[$i] . PHP_EOL;
@@ -82,7 +80,7 @@ include("navbar.php");
             if ($score < 0) {
               display_errors_button($errors_string);
             } else {
-                $color = ($old_score < $score) ?"green" : "red";
+                $color = ($old_score > $score) ?"green" : "red";
               echo "<span style='color: {$color}'>" . $score . "<span />";
             }
     ?>

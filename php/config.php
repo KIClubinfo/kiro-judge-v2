@@ -100,12 +100,14 @@ class team
 
     public function get_instance_best_score($instance) {
         global $conn;
-        $results = $conn->query("SELECT score FROM solutions WHERE team_id = {$this->id} AND instance_id = {$instance} ORDER BY score DESC LIMIT 1;");
+        $results = $conn->query("SELECT score FROM solutions WHERE team_id = {$this->id} AND instance_id = {$instance} AND score >= 0 ORDER BY score ASC LIMIT 1;");
         if (!empty($results)) {
             $row = $results->fetch_assoc();
-            return $row["score"];
+            if (isset($row)) {
+                return $row["score"];
+            }
         }
-        return 0;
+        return WORST_SCORE;
     }
 
 
@@ -114,7 +116,7 @@ class team
         global $conn;
         $score = 0;
 
-        $results = $conn->query("SELECT distinct (instance_id) , max(score) score from solutions where team_id = {$this->id} and score >= 0 group by instance_id;");
+        $results = $conn->query("SELECT distinct (instance_id) , min(score) score from solutions where score >= 0 AND team_id = {$this->id} and score >= 0 group by instance_id;");
         if (!empty($results)) {
             while ($row = $results->fetch_assoc()) {
                 $score += $row["score"];
@@ -127,7 +129,7 @@ class team
             $result = $req->get_result()->fetch_array(MYSQLI_ASSOC); // résulats de la requête
             $req->close();
             $score_ancien = $result['score'];
-            if ($score > $score_ancien) { // si le score est meilleur
+            if ($score < $score_ancien) { // si le score est meilleur
                 if ($req3 = $conn->prepare("UPDATE teams SET score =? WHERE id=?")) {
                     $req3->bind_param("si", $score, $this->id);
                     $req3->execute();

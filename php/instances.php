@@ -20,6 +20,8 @@ const INSTANCE_SCORES = [
     17584000,
 ];
 
+const WORST_SCORE = 58831240;
+
 function display_errors_button($errors) {
     $errors_format = str_replace(PHP_EOL, "<br/>", $errors);
     ?>
