@@ -4,7 +4,7 @@ include("config.php");
 
 if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connecté
 
-    if ($aujourdhui < $date_limite_inscription) { //Date inscription
+    if ($aujourdhui > $date_limite_inscription) { //Date inscription
 
         if (isset($_POST['submit'])) { //Il a envoyé le formulaire
 
@@ -181,138 +181,143 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             include("header.php");
             include("navbar.php");
 ?>
+    <header class="masthead">
+        <div class="container" style="max-width:45rem;">
             <form action="" method="post" name="inscription">
-
-                <div id="equipe" style="display: block; padding-top: 20vh" class="content">
-                    <div class="container containergrey">
-                        <ul class="steps2">
-                            <li class="is-active">Équipe</li>
-                            <li>Participant 1</li>
-                            <li>Participant 2</li>
-                            <li>Participant 3</li>
-                        </ul>
-
-                        <label for="team-name">Nom d'équipe :</label>
-                        <input type="text" id="team-name" name="team-name" maxlength="25" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" required> <br />
-                        <label for="team-hub">Choix du lieu:</label>
-                        <select name="team-hub" id="team-hub">
-                            <option value="1">Hub de l'École des Ponts</option>
-                            <option value="3">Hub distanciel (Discord)</option>
-                        </select><br />
-                        <INPUT type="radio" name="type_equipe" value="1"> Équipe 1A des ponts
-                        <INPUT type="radio" name="type_equipe" value="2"> Équipe étudiante
-                        <INPUT type="radio" name="type_equipe" value="3" checked> Autre
-                        <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
+                <div id="equipe" style="display: block;" class="box">
+                <!--<button class="page-link" onclick="javascript:avance('equipe', 'participant-1');" href="#">Participant 1</button>-->
+                    <ul class="pagination">
+                      <li class="page-item active"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group">
+                      <label for="team-name" class="form-label mt-4">Nom de l'équipe :</label>
+                      <input type="text" id="team-name" name="team-name" maxlength="25" 
+                      onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" 
+                      required class="form-control" placeholder="Saisissez le nom de l'équipe">
                     </div>
+                    <div class="form-group">
+                      <label for="team-hub" class="form-label mt-4">Choix du lieu :</label>
+                      <select name="team-hub" id="team-hub" class="form-select">
+                        <option value="1">Hub de l'école des Ponts ParisTech</option>
+                        <option value="3">Hub distanciel (Discord)</option>
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin:2rem;">
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="1"> Équipe 1A des ponts
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="2"> Équipe étudiante
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> Autre
+                    </div>
+                    <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-primary">Étape suivante</button>
+                </div>
+            
+                <div id="participant-1" style="display: none;" class="box">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
+                      <label for="prenom-1" class="form-label mt-4">Prénom :</label>
+                      <input type="text" id="prenom-1" name="prenom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="100" required class="form-control" placeholder="Saisissez le prénom du premier participant">
+                      
+                      <label for="nom-1" class="form-label mt-4">Nom :</label>
+                      <input type="text" id="nom-1" name="nom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="100" required class="form-control" placeholder="Saisissez le nom du premier participant">
+
+                      <label for="ecole-1" class="form-label mt-4">École :</label>
+                      <input type="text" id="ecole-1" name="ecole-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="300" required class="form-control" placeholder="Saisissez l'école du premier participant">
+                    </div>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">2. Contact :</h4>
+                      <label for="email-1" class="form-label mt-4">Email :</label>
+                      <input type="email" id="email-1" name="email-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="255" required class="form-control" placeholder="Saisissez le mail du premier participant">
+                      
+                      <label for="tel-1" class="form-label mt-4">Numéro de téléphone :</label>
+                      <input type="tel" id="tel-1" name="tel-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" placeholder="Saisissez le numéro de téléphone du premier participant">
+                    </div>
+                    <button type="button" onclick="javascript:avance('participant-1', 'equipe');" class="btn btn-primary">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-1', 'participant-2');" class="btn btn-primary">Étape suivante</button>
                 </div>
 
-                <div id="participant-1" style="display: none; padding-top: 20vh" class="content">
-                    <div class="container containergrey">
-                        <ul class="steps2">
-                            <li>Équipe</li>
-                            <li class="is-active">Participant 1</li>
-                            <li>Participant 2</li>
-                            <li>Participant 3</li>
-                        </ul>
+                <div id="participant-2" style="display: none;" class="box">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
+                      <label for="prenom-2" class="form-label mt-4">Prénom :</label>
+                      <input type="text" id="prenom-2" name="prenom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="100" required class="form-control" placeholder="Saisissez le prénom du second participant">
+                      
+                      <label for="nom-2" class="form-label mt-4">Nom :</label>
+                      <input type="text" id="nom-2" name="nom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="100" required class="form-control" placeholder="Saisissez le nom du second participant">
 
-                        <legend>
-                            <div class="number">1</div>
-                            Informations personnelles
-                        </legend>
-                        <label for="prenom-1">Prénom :</label>
-                        <input type="text" id="prenom-1" name="prenom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="100" required> <br />
-                        <label for="nom-1">Nom de famille:</label>
-                        <input type="text" id="nom-1" name="nom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="100" required> <br />
-                        <label for="ecole-1">École :</label>
-                        <input type="text" id="ecole-1" name="ecole-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="300" required> <br />
-                        <legend>
-                            <div class="number">2</div>
-                            Contact
-                        </legend>
-                        <label for="email-1">Email:</label>
-                        <input type="email" id="email-1" name="email-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="255" required> <br />
-                        <label for="tel-1">Numéro de téléphone:</label>
-                        <input type="tel" id="tel-1" name="tel-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-
-                        <div class="container2">
-                            <input type="button" value="Étape précédente" onclick="javascript:avance('participant-1', 'equipe');">
-                            <input type="button" id="button-2" value="Étape suivante" onclick="javascript:avance('participant-1', 'participant-2');">
-                        </div>
+                      <label for="ecole-2" class="form-label mt-4">École :</label>
+                      <input type="text" id="ecole-2" name="ecole-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="300" required class="form-control" placeholder="Saisissez l'école du second participant">
                     </div>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">2. Contact :</h4>
+                      <label for="email-2" class="form-label mt-4">Email :</label>
+                      <input type="email" id="email-2" name="email-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="255" required class="form-control" placeholder="Saisissez le mail du second participant">
+                      
+                      <label for="tel-2" class="form-label mt-4">Numéro de téléphone :</label>
+                      <input type="tel" id="tel-2" name="tel-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" placeholder="Saisissez le numéro de téléphone du second participant">
+                    </div>
+                    <button type="button" onclick="javascript:avance('participant-2', 'participant-1');" class="btn btn-primary">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-2', 'participant-3');" class="btn btn-primary">Étape suivante</button>
                 </div>
 
+                <div id="participant-3" style="display: none;" class="box">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
+                      <label for="prenom-3" class="form-label mt-4">Prénom :</label>
+                      <input type="text" name="prenom-3" maxlength="100" required class="form-control" placeholder="Saisissez le prénom du troisième participant">
+                      
+                      <label for="nom-3" class="form-label mt-4">Nom :</label>
+                      <input type="text" name="nom-3" maxlength="100" required class="form-control" placeholder="Saisissez le nom du troisième participant">
 
-                <div id="participant-2" style="display: none;  padding-top: 20vh" class="content">
-                    <div class="container containergrey">
-                        <ul class="steps2">
-                            <li>Équipe</li>
-                            <li>Participant 1</li>
-                            <li class="is-active">Participant 2</li>
-                            <li>Participant 3</li>
-                        </ul>
-                        <legend>
-                            <div class="number">1</div>
-                            Informations personnelles
-                        </legend>
-                        <label for="prenom-2">Prénom :</label>
-                        <input type="text" id="prenom-2" name="prenom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="100" required> <br />
-                        <label for="nom-2">Nom de famille:</label>
-                        <input type="text" id="nom-2" name="nom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="100" required> <br />
-                        <label for="ecole-2">École :</label>
-                        <input type="text" id="ecole-2" name="ecole-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="300" required> <br />
-                        <legend>
-                            <div class="number">2</div>
-                            Contact
-                        </legend>
-                        <label for="email-2">Email:</label>
-                        <input type="email" id="email-2" name="email-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="255" required> <br />
-                        <label for="tel-2">Numéro de téléphone:</label>
-                        <input type="tel" id="tel-2" name="tel-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-
-                        <div class="container2">
-                            <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');">
-                            <input type="button" id="button-3" value="Étape suivante" onclick="javascript:avance('participant-2', 'participant-3');">
-                        </div>
+                      <label for="ecole-3" class="form-label mt-4">École :</label>
+                      <input type="text" id="ecole-3" name="ecole-3" maxlength="300" required class="form-control" placeholder="Saisissez l'école du troisième participant">
                     </div>
-                </div>
-
-
-                <div id="participant-3" style="display: none;  padding-top: 20vh" class="content">
-                    <div class="container containergrey">
-                        <ul class="steps2">
-                            <li>Équipe</li>
-                            <li>Participant 1</li>
-                            <li>Participant 2</li>
-                            <li class="is-active">Participant 3</li>
-                        </ul>
-                        <legend>
-                            <div class="number">1</div>
-                            Informations personnelles
-                        </legend>
-                        <label for="prenom-3">Prénom :</label>
-                        <input type="text" name="prenom-3" maxlength="100" required><br />
-                        <label for="nom-2">Nom de famille:</label>
-                        <input type="text" name="nom-3" maxlength="100" required><br />
-                        <label for="ecole-3">École :</label>
-                        <input type="text" id="ecole-3" name="ecole-3" maxlength="300" required> <br />
-                        <legend>
-                            <div class="number">2</div>
-                            Contact
-                        </legend>
-                        <label for="email-2">Email:</label>
-                        <input type="email" name="email-3" maxlength="255" required><br />
-                        <label for="tel-3">Numéro de téléphone:</label>
-                        <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-                        <label for="GCU">Nous acceptons le <a target="_blank" href="/#reglement">réglement du
-                                concours</a></label>
-                        <input type="checkbox" id="GCU" name="GCU" required><br />
-                        <div class="container2">
-                            <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
-                            <input type="submit" name="submit" value="S'inscrire">
-                        </div>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">2. Contact :</h4>
+                      <label for="email-3" class="form-label mt-4">Email :</label>
+                      <input type="email" name="email-3" maxlength="255" required class="form-control" placeholder="Saisissez le mail du troisième participant">
+                      
+                      <label for="tel-3" class="form-label mt-4">Numéro de téléphone :</label>
+                      <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" placeholder="Saisissez le numéro de téléphone du troisième participant">
                     </div>
+                    <div class="form-check list-centered" style="margin-top:2rem;">
+                      <input type="checkbox" id="GCU" name="GCU" required class="form-check-input">
+                      <label class="form-check-label" for="GCU">Nous acceptons le <a target="_blank" href="/#reglement">réglement du concours</a></label>
+                    </div>
+                    <div class="box-invisible" style="color:grey;">
+                      <p>
+                        <em>En m’inscrivant je reconnais que j’accepte intégralement le réglement, 
+                        et que mon nom et mon école soient affichés publiquement sur le site.<br/><br/>
+                        Aucun autre usage que ceux requis par le concours ne sera fait de vos 
+                        données, et vous pouvez en demander la suppression en vous adressant 
+                        directement au Club Informatique.</em>
+                      </p>
+                    </div>
+                    <button type="button" onclick="javascript:avance('participant-3', 'participant-2');" class="btn btn-primary">Étape précédente</button>
+                    <button type="submit" name="submit" class="btn btn-primary">S'inscrire</button>
                 </div>
             </form>
+        </div>
+    </header>
     <?php
         }
     } else //Si date d'inscription dépassée
@@ -331,194 +336,148 @@ if (isset($erreur)) {
     //si on doit afficher le formulaire avec un message d'erreur
     ?>
 
-    <?php popup($erreur, 6000, "error"); ?>
-    <form action="" method="post" name="inscription">
-        <div id="equipe" style="display: block;  padding-top: 20vh" class="content">
-            <div class="container containergrey">
-                <ul class="steps2">
-                    <li class="is-active">Équipe</li>
-                    <li>Participant 1</li>
-                    <li>Participant 2</li>
-                    <li>Participant 3</li>
-                </ul>
-
-                <label for="team-name">Nom d'équipe :</label>
-                <input type="text" id="team-name" name="team-name" onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" maxlength="180" value="<?php if (isset($_POST['team-name'])) {
-                                                                                                                                                                                echo htmlspecialchars($_POST['team-name']);
-                                                                                                                                                                            } ?>" required> <br />
-
-                <label for="team-hub">Choix du lieu:</label>
-                <select name="team-hub" id="team-hub">
-                    <option value="1" <?php if (isset($_POST['team-hub'])) {
-                                            if ($_POST['team-hub'] == 1) {
-                                                echo 'selected';
-                                            }
-                                        } ?>>Hub de l'École des Ponts
-                    </option>
-                    <option value="3" <?php if (isset($_POST['team-hub'])) {
-                                            if ($_POST['team-hub'] == 3) {
-                                                echo 'selected';
-                                            }
-                                        } ?>>Hub distanciel (Discord)
-                    </option>
-
-                    <INPUT type="radio" name="type_equipe" value="1"> Équipe 1A des ponts
-                    <INPUT type="radio" name="type_equipe" value="2"> Équipe étudiante
-                    <INPUT type="radio" name="type_equipe" value="3" checked> Autre
-
-                    <input type="button" id="button-1" value="Étape suivante" onclick="javascript:avance('equipe', 'participant-1');">
-            </div>
-        </div>
-
-        <div id="participant-1" style="display: none; padding-top: 20vh" class="content">
-            <div class="container containergrey">
-                <ul class="steps2">
-                    <li>Équipe</li>
-                    <li class="is-active">Participant 1</li>
-                    <li>Participant 2</li>
-                    <li>Participant 3</li>
-                </ul>
-
-                <legend>
-                    <div class="number">1</div>
-                    Informations personnelles
-                </legend>
-                <label for="prenom-1">Prénom :</label>
-                <input type="text" id="prenom-1" name="prenom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" value="<?php if (isset($_POST['prenom-1'])) {
-                                                                                                                                                                echo htmlspecialchars($_POST['prenom-1']);
-                                                                                                                                                            } ?>" maxlength="100" required> <br />
-                <label for="nom-1">Nom de famille:</label>
-                <input type="text" id="nom-1" name="nom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" value="<?php if (isset($_POST['nom-1'])) {
-                                                                                                                                                        echo htmlspecialchars($_POST['nom-1']);
-                                                                                                                                                    } ?>" maxlength="100" required> <br />
-                <label for="ecole-1">École :</label>
-                <input type="text" id="ecole-1" name="ecole-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" value="<?php if (isset($_POST['ecole-1'])) {
-                                                                                                                                                            echo htmlspecialchars($_POST['ecole-1']);
-                                                                                                                                                        } ?>" maxlength="300" required> <br />
-                <legend>
-                    <div class="number">2</div>
-                    Contact
-                </legend>
-                <label for="email-1">Email:</label>
-                <input type="email" id="email-1" name="email-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" value="<?php if (isset($_POST['email-1'])) {
-                                                                                                                                                                echo htmlspecialchars($_POST['email-1']);
-                                                                                                                                                            } ?>" maxlength="255" required> <br />
-                <label for="tel-1">Numéro de téléphone:</label>
-                <input type="tel" id="tel-1" name="tel-1" maxlength="15" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" value="<?php if (isset($_POST['tel-1'])) {
-                                                                                                                                                                        echo htmlspecialchars($_POST['tel-1']);
-                                                                                                                                                                    } ?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-
-                <div class="container2">
-                    <input type="button" value="Étape précédente" onclick="javascript:avance('participant-1', 'equipe');">
-                    <input type="button" id="button-2" value="Étape suivante" onclick="javascript:avance('participant-1', 'participant-2');">
+    <header class="masthead">
+        <!--AFFICHAGE DU FORMULAIRE AVEC ERREUR-->
+        <div class="container" style="max-width:45rem;">
+            <?php #popup($erreur, 6000, "error"); ?>
+            <form action="" method="post" name="inscription">
+                <div id="equipe" style="display: block;" class="box">
+                <!--<button class="page-link" onclick="javascript:avance('equipe', 'participant-1');" href="#">Participant 1</button>-->
+                    <ul class="pagination">
+                      <li class="page-item active"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group">
+                      <label for="team-name" class="form-label mt-4">Nom de l'équipe :</label>
+                      <input type="text" id="team-name" name="team-name" maxlength="25" 
+                      onkeydown="if (event.keyCode == 13)  document.getElementById('button-1').click()" 
+                      required class="form-control" value="<?php if (isset($_POST['team-name'])) {echo htmlspecialchars($_POST['team-name']);} ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="team-hub" class="form-label mt-4">Choix du lieu :</label>
+                      <select name="team-hub" id="team-hub" class="form-select">
+                        <option value="1" <?php if (isset($_POST['team-hub'])) {if ($_POST['team-hub'] == 1) {echo 'selected';}} ?>>Hub de l'école des Ponts ParisTech</option>
+                        <option value="3" <?php if (isset($_POST['team-hub'])) {if ($_POST['team-hub'] == 3) {echo 'selected';}} ?>>Hub distanciel (Discord)</option>
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin:2rem;">
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="1"> Équipe 1A des ponts
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="2"> Équipe étudiante
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> Autre
+                    </div>
+                    <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-primary">Étape suivante</button>
                 </div>
-            </div>
-        </div>
+            
+                <div id="participant-1" style="display: none;" class="box">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
+                      <label for="prenom-1" class="form-label mt-4">Prénom :</label>
+                      <input type="text" id="prenom-1" name="prenom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="100" required class="form-control" value="<?php if (isset($_POST['prenom-1'])) {echo htmlspecialchars($_POST['prenom-1']);} ?>">
+                      
+                      <label for="nom-1" class="form-label mt-4">Nom :</label>
+                      <input type="text" id="nom-1" name="nom-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="100" required class="form-control" value="<?php if (isset($_POST['nom-1'])) {echo htmlspecialchars($_POST['nom-1']);} ?>">
 
-
-        <div id="participant-2" style="display: none; padding-top: 20vh" class="content">
-            <div class="container containergrey">
-                <ul class="steps2">
-                    <li>Équipe</li>
-                    <li>Participant 1</li>
-                    <li class="is-active">Participant 2</li>
-                    <li>Participant 3</li>
-                </ul>
-                <legend>
-                    <div class="number">1</div>
-                    Informations personnelles
-                </legend>
-                <label for="prenom-2">Prénom :</label>
-                <input type="text" id="prenom-2" name="prenom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" value="<?php if (isset($_POST['prenom-2'])) {
-                                                                                                                                                                echo htmlspecialchars($_POST['prenom-2']);
-                                                                                                                                                            } ?>" maxlength="100" required> <br />
-                <label for="nom-2">Nom de famille:</label>
-                <input type="text" id="nom-2" name="nom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" value="<?php if (isset($_POST['nom-2'])) {
-                                                                                                                                                        echo htmlspecialchars($_POST['nom-2']);
-                                                                                                                                                    } ?>" maxlength="100" required> <br />
-                <label for="ecole-2">École :</label>
-                <input type="text" id="ecole-2" name="ecole-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" value="<?php if (isset($_POST['ecole-2'])) {
-                                                                                                                                                            echo htmlspecialchars($_POST['ecole-2']);
-                                                                                                                                                        } ?>" maxlength="300" required> <br />
-                <legend>
-                    <div class="number">2</div>
-                    Contact
-                </legend>
-                <label for="email-2">Email:</label>
-                <input type="email" id="email-2" name="email-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" value="<?php if (isset($_POST['email-2'])) {
-                                                                                                                                                                echo htmlspecialchars($_POST['email-2']);
-                                                                                                                                                            } ?>" maxlength="255" required> <br />
-                <label for="tel-2">Numéro de téléphone:</label>
-                <input type="tel" id="tel-2" name="tel-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" value="<?php if (isset($_POST['tel-2'])) {
-                                                                                                                                                                        echo htmlspecialchars($_POST['tel-2']);
-                                                                                                                                                                    } ?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required> <br />
-
-                <div class="container2">
-                    <input type="button" value="Étape précédente" onclick="javascript:avance('participant-2', 'participant-1');">
-                    <input type="button" id="button-3" value="Étape suivante" onclick="javascript:avance('participant-2', 'participant-3');">
+                      <label for="ecole-1" class="form-label mt-4">École :</label>
+                      <input type="text" id="ecole-1" name="ecole-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="300" required class="form-control" value="<?php if (isset($_POST['ecole-1'])) {echo htmlspecialchars($_POST['ecole-1']);} ?>">
+                    </div>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">2. Contact :</h4>
+                      <label for="email-1" class="form-label mt-4">Email :</label>
+                      <input type="email" id="email-1" name="email-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="255" required class="form-control" value="<?php if (isset($_POST['email-1'])) {echo htmlspecialchars($_POST['email-1']);} ?>">
+                      
+                      <label for="tel-1" class="form-label mt-4">Numéro de téléphone :</label>
+                      <input type="tel" id="tel-1" name="tel-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" value="<?php if (isset($_POST['tel-1'])) {echo htmlspecialchars($_POST['tel-1']);} ?>">
+                    </div>
+                    <button type="button" onclick="javascript:avance('participant-1', 'equipe');" class="btn btn-primary">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-1', 'participant-2');" class="btn btn-primary">Étape suivante</button>
                 </div>
-            </div>
-        </div>
 
+                <div id="participant-2" style="display: none;" class="box">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
+                      <label for="prenom-2" class="form-label mt-4">Prénom :</label>
+                      <input type="text" id="prenom-2" name="prenom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="100" required class="form-control" value="<?php if (isset($_POST['prenom-2'])) {echo htmlspecialchars($_POST['prenom-2']);} ?>">
+                      
+                      <label for="nom-2" class="form-label mt-4">Nom :</label>
+                      <input type="text" id="nom-2" name="nom-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="100" required class="form-control" value="<?php if (isset($_POST['nom-2'])) {echo htmlspecialchars($_POST['nom-2']);} ?>">
 
-        <div id="participant-3" style="display: none; padding-top: 20vh" class="content">
-            <div class="container containergrey">
-                <ul class="steps2">
-                    <li>Équipe</li>
-                    <li>Participant 1</li>
-                    <li>Participant 2</li>
-                    <li class="is-active">Participant 3</li>
-                </ul>
-                <legend>
-                    <div class="number">1</div>
-                    Informations personnelles
-                </legend>
-                <label for="prenom-3">Prénom :</label>
-                <input type="text" name="prenom-3" maxlength="100" value="<?php if (isset($_POST['prenom-3'])) {
-                                                                                echo htmlspecialchars($_POST['prenom-3']);
-                                                                            } ?>" required><br />
-                <label for="nom-2">Nom de famille:</label>
-                <input type="text" name="nom-3" maxlength="100" value="<?php if (isset($_POST['nom-3'])) {
-                                                                            echo htmlspecialchars($_POST['nom-3']);
-                                                                        } ?>" required><br />
-                <label for="ecole-3">École :</label>
-                <input type="text" id="ecole-3" name="ecole-3" value="<?php if (isset($_POST['ecole-3'])) {
-                                                                            echo htmlspecialchars($_POST['ecole-3']);
-                                                                        } ?>" maxlength="300" required> <br />
-                <legend>
-                    <div class="number">2</div>
-                    Contact
-                </legend>
-                <label for="email-2">Email:</label>
-                <input type="email" name="email-3" maxlength="255" value="<?php if (isset($_POST['email-3'])) {
-                                                                                echo htmlspecialchars($_POST['email-3']);
-                                                                            } ?>" required><br />
-                <label for="tel-3">Numéro de téléphone:</label>
-                <input type="tel" name="tel-3" value="<?php if (isset($_POST['tel-3'])) {
-                                                            echo htmlspecialchars($_POST['tel-3']);
-                                                        } ?>" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
-                <label for="GCU">Nous acceptons le <a target="_blank" href="/#reglement">réglement du
-                        concours</a></label>
-                <input type="checkbox" id="GCU" name="GCU" required><br /> <br />
-                <div class="container2">
-                    <input type="button" value="Étape précédente" onclick="javascript:avance('participant-3', 'participant-2');">
-                    <input type="submit" name="submit" value="S'inscrire">
+                      <label for="ecole-2" class="form-label mt-4">École :</label>
+                      <input type="text" id="ecole-2" name="ecole-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="300" required class="form-control" value="<?php if (isset($_POST['ecole-2'])) {echo htmlspecialchars($_POST['ecole-2']);} ?>">
+                    </div>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">2. Contact :</h4>
+                      <label for="email-2" class="form-label mt-4">Email :</label>
+                      <input type="email" id="email-2" name="email-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="255" required class="form-control" value="<?php if (isset($_POST['email-2'])) {echo htmlspecialchars($_POST['email-2']);} ?>">
+                      
+                      <label for="tel-2" class="form-label mt-4">Numéro de téléphone :</label>
+                      <input type="tel" id="tel-2" name="tel-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" value="<?php if (isset($_POST['tel-2'])) {echo htmlspecialchars($_POST['tel-2']);} ?>">
+                    </div>
+                    <button type="button" onclick="javascript:avance('participant-2', 'participant-1');" class="btn btn-primary">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-2', 'participant-3');" class="btn btn-primary">Étape suivante</button>
                 </div>
-            </div>
+
+                <div id="participant-3" style="display: none;" class="box">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">Participant 3</a></li>
+                    </ul>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
+                      <label for="prenom-3" class="form-label mt-4">Prénom :</label>
+                      <input type="text" name="prenom-3" maxlength="100" required class="form-control" value="<?php if (isset($_POST['prenom-3'])) {echo htmlspecialchars($_POST['prenom-3']);} ?>">
+                      
+                      <label for="nom-3" class="form-label mt-4">Nom :</label>
+                      <input type="text" name="nom-3" maxlength="100" required class="form-control" value="<?php if (isset($_POST['nom-3'])) {echo htmlspecialchars($_POST['nom-3']);} ?>">
+
+                      <label for="ecole-3" class="form-label mt-4">École :</label>
+                      <input type="text" id="ecole-3" name="ecole-3" maxlength="300" required class="form-control" value="<?php if (isset($_POST['ecole-3'])) {echo htmlspecialchars($_POST['ecole-3']);} ?>">
+                    </div>
+                    <div class="form-group" style="margin-top:2rem;">
+                      <h4 style="color:#2f2f2f">2. Contact :</h4>
+                      <label for="email-3" class="form-label mt-4">Email :</label>
+                      <input type="email" name="email-3" maxlength="255" required class="form-control" value="<?php if (isset($_POST['email-3'])) {echo htmlspecialchars($_POST['email-3']);} ?>">
+                      
+                      <label for="tel-3" class="form-label mt-4">Numéro de téléphone :</label>
+                      <input type="tel" name="tel-3" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" value="<?php if (isset($_POST['tel-3'])) {echo htmlspecialchars($_POST['tel-3']);} ?>">
+                    </div>
+                    <div class="form-check list-centered" style="margin-top:2rem;">
+                      <input type="checkbox" id="GCU" name="GCU" required class="form-check-input">
+                      <label class="form-check-label" for="GCU">Nous acceptons le <a target="_blank" href="/#reglement">réglement du concours</a></label>
+                    </div>
+                    <div class="box-invisible" style="color:grey;">
+                      <p>
+                        <em>En m’inscrivant je reconnais que j’accepte intégralement le réglement, 
+                        et que mon nom et mon école soient affichés publiquement sur le site.<br/><br/>
+                        Aucun autre usage que ceux requis par le concours ne sera fait de vos 
+                        données, et vous pouvez en demander la suppression en vous adressant 
+                        directement au Club Informatique.</em>
+                      </p>
+                    </div>
+                    <button type="button" onclick="javascript:avance('participant-3', 'participant-2');" class="btn btn-primary">Étape précédente</button>
+                    <button type="submit" name="submit" class="btn btn-primary">S'inscrire</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </header>
 
 <?php
 }
-?>
-<div class="container containergrey" style="margin-top: 3em; text-align: center">
-    En m’inscrivant je reconnais que j’accepte intégralement le réglement, et que mon nom et mon école soient affichés publiquement sur le site.
-    <br/>
-    <br/>
-    Aucun autre usage que ceux requis par le concours ne sera fait de vos données, et vous pouvez en demander la suppression en vous adressant directement au Club Informatique.
-</div>
-
-<?php
 
 include("footer.php");
 ?>

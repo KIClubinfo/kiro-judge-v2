@@ -1,22 +1,49 @@
-<?php
-$conn->close();
-?>
-<script src="scripts/my_scripts.js"></script>
-<div style="position: relative; height: 70vh; width: 100%;">
-    <div id="copyright-wrapper">
-        <div id="copyright-filter">
-            <div id="copyright" class="container" style="width: 100vw;">
-                <div class="row" style="height: 30vh; width: 100%">
-                    <div class="col-sm" style="display: block; margin: auto; text-align:center"><a href="https://clubinfo.enpc.org" target="_blank"><img src="images/ki.png" height="100vh"></a></div>
-                    <div class="col-sm" style="display: block; margin: auto; text-align:center"><a href="https://cermics.enpc.fr"><img src="images/cermics.png" height="120vh"></a></div>
-                    <div class="col-sm" style="display: block; margin: auto; text-align:center"><a href="https://www.sncf.com/fr" target="_blank"><img src="images/sncf.png" height="80vh"></a></div>
-                    <div class="col-sm" style="display: block; margin: auto; text-align:center"><a href="https://www.fondationdesponts.fr/" target="_blank"><img src="images/fdp.png" height="110vh"></a></div>
-                    <div class="col-sm" style="display: block; margin: auto; text-align:center"><a href="https://bit.ly/32RLgtT" target="_blank"><img src="images/Oracle-Logo.png" height="90vh"></a></div>
+        <?php
+        #$conn->close();
+        ?>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center" style="margin-bottom: 2rem;">
+                    <div class="col-lg-3 my-3 my-lg-0">
+                        <a class="" href="#!" style="margin:3rem;"><img src="assets/img/cermics.png" style="width: 50%;"></i></a>
+                    </div>
+                    <div class="col-lg-2 my-3 my-lg-0">
+                        <a class="" href="#!" style="margin:3rem;"><img src="assets/img/fdp.png" style="width: 50%;"></i></a>
+                    </div>
+                    <div class="col-lg-2 my-3 my-lg-0">
+                        <a class="" href="#!" style="margin:3rem;"><img src="assets/img/sncf.png" style="width: 50%;"></i></a>
+                    </div>
+                    <div class="col-lg-2 my-3 my-lg-0">
+                        <a class="" href="#!" style="margin:3rem;"><img src="assets/img/ki.png" style="width: 50%;"></i></a>
+                    </div>
+                    <div class="col-lg-3 my-3 my-lg-0">
+                        <a class="" href="#!" style="margin:3rem;"><img src="assets/img/Oracle-Logo.png" style="width: 50%;"></i></a>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start text-white">Copyright &copy; Your Website 2021</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-light text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-light text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</body>
-
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="scripts/my_scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
 </html>
