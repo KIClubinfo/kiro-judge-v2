@@ -186,11 +186,11 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
             <form action="" method="post" name="inscription">
                 <div id="equipe" style="display: block;" class="box">
                 <!--<button class="page-link" onclick="javascript:avance('equipe', 'participant-1');" href="#">Participant 1</button>-->
-                    <ul class="pagination">
-                      <li class="page-item active"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link active" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group">
                       <label for="team-name" class="form-label mt-4">Nom de l'équipe :</label>
@@ -214,11 +214,11 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                 </div>
             
                 <div id="participant-1" style="display: none;" class="box">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group" style="margin-top:2rem;">
                       <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
@@ -244,11 +244,11 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                 </div>
 
                 <div id="participant-2" style="display: none;" class="box">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group" style="margin-top:2rem;">
                       <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
@@ -274,11 +274,11 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                 </div>
 
                 <div id="participant-3" style="display: none;" class="box">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group" style="margin-top:2rem;">
                       <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
@@ -343,11 +343,11 @@ if (isset($erreur)) {
             <form action="" method="post" name="inscription">
                 <div id="equipe" style="display: block;" class="box">
                 <!--<button class="page-link" onclick="javascript:avance('equipe', 'participant-1');" href="#">Participant 1</button>-->
-                    <ul class="pagination">
-                      <li class="page-item active"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link active" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group">
                       <label for="team-name" class="form-label mt-4">Nom de l'équipe :</label>
@@ -371,11 +371,11 @@ if (isset($erreur)) {
                 </div>
             
                 <div id="participant-1" style="display: none;" class="box">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group" style="margin-top:2rem;">
                       <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
@@ -401,11 +401,11 @@ if (isset($erreur)) {
                 </div>
 
                 <div id="participant-2" style="display: none;" class="box">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group" style="margin-top:2rem;">
                       <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>
@@ -431,11 +431,11 @@ if (isset($erreur)) {
                 </div>
 
                 <div id="participant-3" style="display: none;" class="box">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Équipe</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Participant 2</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">Participant 3</a></li>
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
+                        <li class="nav-item"><a class="nav-link" href="#">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Participant 2</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Participant 3</a></li>
                     </ul>
                     <div class="form-group" style="margin-top:2rem;">
                       <h4 style="color:#2f2f2f">1. Informations Personnelles :</h4>

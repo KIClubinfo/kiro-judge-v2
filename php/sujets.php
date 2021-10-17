@@ -18,39 +18,36 @@ include("header.php");
 include("navbar.php");
 
 ?>
+    <!-- Masthead-->
+    <header class="masthead" >
+        <div class="container-fluid">
+            <div class="row">
+                <?php include("menuconcours.php");?>
+                <div class="col-lg-8" id="main">
+                    <div class="container">
+                        <div class="box-concours" style="padding-top:2rem;">
+                            <h3 style="color:black;">Sujet du concours :</h3>
+                            <?php
+                            $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
+                            $dateconcours = new DateTime('2021-05-06 12:00:00');
 
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="styletest.css" />
-</head>
-
-<div class="content" style="margin-top: 15vh">
-
-    <?php
-    include("menuconcours.php");
-    ?>
-
-    <section class="concours">
-        <div class="title" style="margin-top:20px; text-align:center;">
-            <h2 style="font-size: 2.7em; margin-bottom:30px;">Sujet du concours</h2>
-            <?php
-            $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
-            $dateconcours = new DateTime('2021-05-06 12:00:00');
-
-            if ($date>=$dateconcours or is_admin()) {
-                                echo '
-                                <span class="byline">Accédez au <a href="download.php?path=/var/www/html/sujets/sujet4.pdf">sujet du concours</a>.<br><br></span>
-                                
-                                <span class="byline">Téléchargez les <a href="download.php?path=/var/www/html/sujets/sujet4.zip">instances</a> du sujet.</span>
-                            ';
-                            } else {
-                                echo '<span class="byline">Le sujet et les instances apparaîtront ici au début de l\'épreuve : <br> Le <B>jeudi 6 mai 2021 à 12h</B>.</span>';
-                            }
-            ?>
+                            if ($date>=$dateconcours) {//AJOUTER UN or is_admin() ET LES LIENS
+                                                echo '
+                                                <p style="color:black; font-size:large;">
+                                                Accédez au <a style="font-weight:700;" href="">sujet du concours</a>.</br>
+                                                Téléchargez les <a style="font-weight:700;" href="">instances</a> du sujet.
+                                                </p>
+                                            ';
+                                            } else {
+                                                echo '<p style="color:black; font-size:large;">Le sujet et les instances apparaîtront ici au début de l\'épreuve : <br> Le <B>jeudi 6 mai 2021 à 12h</B>.</p>';
+                                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
-</div>
-
+    </header>
 <?php
 include("footer.php");
 ?>

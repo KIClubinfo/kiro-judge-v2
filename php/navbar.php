@@ -21,10 +21,10 @@
                     <li class="nav-item"><a class="nav-link" href="concours.php">Concours</a></li>
                     <li class="nav-item"><a class="nav-link" href="deconnexion.php">Deconnexion</a></li>';
                 }
-                #if (is_admin()) {
+                if (is_admin()) {
                     echo '
                     <li class="nav-item"><a class="nav-link" href="edit_info_admin.php">Admin</a></li>';
-                #}
+                }
                 ?>
             </ul>
         </div>

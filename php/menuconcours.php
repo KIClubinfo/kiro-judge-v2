@@ -1,11 +1,14 @@
-<nav class="concours">
-    <h1 style="margin-top:20px; margin-bottom:30px">MENU</h1>
-    <ul class="concours">
-        <li class="titlesection"><a class="titlesection" href="concours.php">Accueil Concours</a></li>
-        <li class="titlesection"><a class="titlesection" href="sujets.php">Sujet</a></li>
-        <li class="titlesection"><a class="titlesection" href="upload.php">Upload des instances</a></li>
-        <li class="titlesection"><a class="titlesection" href="myTeam.php">Mon équipe</a></li>
-        <li class="titlesection"><a class="titlesection" href="leaderboard.php">Classement</a></li>
-        <li class="titlesection"><a class="titlesection" href="contact.php">Contact</a></li>
-    </ul>
-</nav>
+<div class="col-lg-4" style="margin-bottom:2rem;">
+    <div class="container">
+        <div class="box-concours">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0" style="text-align:left;">
+                <li class="nav-item"><a class="nav-link style1" href="concours.php">Accueil du concours</a></li>
+                <li class="nav-item"><a class="nav-link style1" href="sujets.php">Sujet</a></li>
+                <li class="nav-item"><a class="nav-link style1" href="#">Upload des instances</a></li>
+                <li class="nav-item"><a class="nav-link style1" href="#">Mon équipe</a></li>
+                <li class="nav-item"><a class="nav-link style1" href="leaderboard.php">Classement</a></li>
+                <li class="nav-item"><a class="nav-link style1" href="contact.php">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
