@@ -27,19 +27,20 @@ include("navbar.php");
                     <div class="container">
                         <div class="box-concours" style="padding-top:2rem;">
                             <h3 style="color:black;">Sujet du concours :</h3>
+                            <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous le sujet du concours :</p>
                             <?php
                             $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
                             $dateconcours = new DateTime('2021-05-06 12:00:00');
 
                             if ($date>=$dateconcours) {//AJOUTER UN or is_admin() ET LES LIENS
                                                 echo '
-                                                <p style="color:black; font-size:large;">
+                                                <span style="color:black; font-size:large;">
                                                 Accédez au <a style="font-weight:700;" href="">sujet du concours</a>.</br>
                                                 Téléchargez les <a style="font-weight:700;" href="">instances</a> du sujet.
-                                                </p>
+                                                </span>
                                             ';
                                             } else {
-                                                echo '<p style="color:black; font-size:large;">Le sujet et les instances apparaîtront ici au début de l\'épreuve : <br> Le <B>jeudi 6 mai 2021 à 12h</B>.</p>';
+                                                echo '<span style="color:black; font-size:large;">Le sujet et les instances apparaîtront ici au début de l\'épreuve : <br> Le <B>jeudi 6 mai 2021 à 12h</B>.</span>';
                                             }
                             ?>
                         </div>

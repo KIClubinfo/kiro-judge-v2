@@ -210,7 +210,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="2"> Équipe étudiante
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> Autre
                     </div>
-                    <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-primary">Étape suivante</button>
+                    <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-info">Étape suivante</button>
                 </div>
             
                 <div id="participant-1" style="display: none;" class="box">
@@ -239,8 +239,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                       <label for="tel-1" class="form-label mt-4">Numéro de téléphone :</label>
                       <input type="tel" id="tel-1" name="tel-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" placeholder="Saisissez le numéro de téléphone du premier participant">
                     </div>
-                    <button type="button" onclick="javascript:avance('participant-1', 'equipe');" class="btn btn-primary">Étape précédente</button>
-                    <button type="button" id="button-2" onclick="javascript:avance('participant-1', 'participant-2');" class="btn btn-primary">Étape suivante</button>
+                    <button type="button" onclick="javascript:avance('participant-1', 'equipe');" class="btn btn-info">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-1', 'participant-2');" class="btn btn-info">Étape suivante</button>
                 </div>
 
                 <div id="participant-2" style="display: none;" class="box">
@@ -269,8 +269,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                       <label for="tel-2" class="form-label mt-4">Numéro de téléphone :</label>
                       <input type="tel" id="tel-2" name="tel-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" placeholder="Saisissez le numéro de téléphone du second participant">
                     </div>
-                    <button type="button" onclick="javascript:avance('participant-2', 'participant-1');" class="btn btn-primary">Étape précédente</button>
-                    <button type="button" id="button-2" onclick="javascript:avance('participant-2', 'participant-3');" class="btn btn-primary">Étape suivante</button>
+                    <button type="button" onclick="javascript:avance('participant-2', 'participant-1');" class="btn btn-info">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-2', 'participant-3');" class="btn btn-info">Étape suivante</button>
                 </div>
 
                 <div id="participant-3" style="display: none;" class="box">
@@ -312,8 +312,8 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                         directement au Club Informatique.</em>
                       </p>
                     </div>
-                    <button type="button" onclick="javascript:avance('participant-3', 'participant-2');" class="btn btn-primary">Étape précédente</button>
-                    <button type="submit" name="submit" class="btn btn-primary">S'inscrire</button>
+                    <button type="button" onclick="javascript:avance('participant-3', 'participant-2');" class="btn btn-info">Étape précédente</button>
+                    <button type="submit" name="submit" class="btn btn-info">S'inscrire</button>
                 </div>
             </form>
         </div>
@@ -367,7 +367,7 @@ if (isset($erreur)) {
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="2"> Équipe étudiante
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> Autre
                     </div>
-                    <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-primary">Étape suivante</button>
+                    <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-info">Étape suivante</button>
                 </div>
             
                 <div id="participant-1" style="display: none;" class="box">
@@ -396,8 +396,8 @@ if (isset($erreur)) {
                       <label for="tel-1" class="form-label mt-4">Numéro de téléphone :</label>
                       <input type="tel" id="tel-1" name="tel-1" onkeydown="if (event.keyCode == 13)  document.getElementById('button-2').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" value="<?php if (isset($_POST['tel-1'])) {echo htmlspecialchars($_POST['tel-1']);} ?>">
                     </div>
-                    <button type="button" onclick="javascript:avance('participant-1', 'equipe');" class="btn btn-primary">Étape précédente</button>
-                    <button type="button" id="button-2" onclick="javascript:avance('participant-1', 'participant-2');" class="btn btn-primary">Étape suivante</button>
+                    <button type="button" onclick="javascript:avance('participant-1', 'equipe');" class="btn btn-info">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-1', 'participant-2');" class="btn btn-info">Étape suivante</button>
                 </div>
 
                 <div id="participant-2" style="display: none;" class="box">
@@ -426,8 +426,8 @@ if (isset($erreur)) {
                       <label for="tel-2" class="form-label mt-4">Numéro de téléphone :</label>
                       <input type="tel" id="tel-2" name="tel-2" onkeydown="if (event.keyCode == 13)  document.getElementById('button-3').click()" maxlength="15" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required class="form-control" value="<?php if (isset($_POST['tel-2'])) {echo htmlspecialchars($_POST['tel-2']);} ?>">
                     </div>
-                    <button type="button" onclick="javascript:avance('participant-2', 'participant-1');" class="btn btn-primary">Étape précédente</button>
-                    <button type="button" id="button-2" onclick="javascript:avance('participant-2', 'participant-3');" class="btn btn-primary">Étape suivante</button>
+                    <button type="button" onclick="javascript:avance('participant-2', 'participant-1');" class="btn btn-info">Étape précédente</button>
+                    <button type="button" id="button-2" onclick="javascript:avance('participant-2', 'participant-3');" class="btn btn-info">Étape suivante</button>
                 </div>
 
                 <div id="participant-3" style="display: none;" class="box">
@@ -469,8 +469,8 @@ if (isset($erreur)) {
                         directement au Club Informatique.</em>
                       </p>
                     </div>
-                    <button type="button" onclick="javascript:avance('participant-3', 'participant-2');" class="btn btn-primary">Étape précédente</button>
-                    <button type="submit" name="submit" class="btn btn-primary">S'inscrire</button>
+                    <button type="button" onclick="javascript:avance('participant-3', 'participant-2');" class="btn btn-info">Étape précédente</button>
+                    <button type="submit" name="submit" class="btn btn-info">S'inscrire</button>
                 </div>
             </form>
         </div>

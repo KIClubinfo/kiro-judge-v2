@@ -26,6 +26,7 @@ include("navbar.php");
                     <div class="container">
                         <div class="box-concours" style="padding-top:2rem;">
                             <h3 style="color:black;">Bienvenue dans l'espace dédié au concours :</h3>
+                            <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous des indications concernant les différentes rubriques</p>
                             <ul class="list-centered">
                                 <li style="color:black; font-size:large;">Pour accéder au sujet et aux instances associées, rendez-vous dans l'onglet "Sujet"</li>
                                 <li style="color:black; font-size:large;">Pour uploader votre solution, rendez-vous dans l'onglet "Upload des instances"</li>

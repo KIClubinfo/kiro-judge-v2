@@ -167,19 +167,19 @@ if (!empty($msg_error)) {
                 </div>
                 <h3 class="section-subheading-section text-muted">Le règlement</h3>
                 <div class="row h-100">
-                    <div class="col-sm-4">
+                    <div class="col-lg-4">
                       <div class="box-invisible">
                         <span><strong>Article 1</strong></span>
                         <p> L'inscription au concours est gratuite <br> Aucun frais n'est pris en charge par le KI. </p>
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-lg-4">
                       <div class="box-invisible">
                         <span><strong>Article 2</strong></span>
                         <p> Le concours est ouvert à tous mais les lots sont réservés aux équipes remplissant les conditions évoquées plus bas. </p>
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-lg-4">
                       <div class="box-invisible">
                         <span><strong>Article 3</strong></span>
                         <p>La participation se fait par équipes de trois candidats. Exceptionnellement, la présence physique des candidats n’est pas requise, et le concours pourra se faire en ligne sur Discord.</p>
@@ -256,7 +256,7 @@ if (!empty($msg_error)) {
                 </ul>
                 En plus de ces prix, la 1ère équipe d’étudiants des ponts gagnera un Ipad par personne.
                 </p>
-                <button class="button" onclick="self.location.href='inscription.php'">S'inscrire</button>
+                <button class="btn btn-info" onclick="self.location.href='inscription.php'">S'inscrire</button>
             </div>
             
             <div class="text-center section" style="border-top: 1px solid rgba(0, 0, 0, 0.15);">
