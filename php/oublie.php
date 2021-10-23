@@ -53,17 +53,18 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
     include("header.php");
     include("navbar.php");
 ?>
-    <div class="content" style="min-height: 70%; margin-top: 20vh">
-      <div class="container containergrey">
-        <form action="" method="post">
-          <p style="text-align: center">Nous allons vous envoyer un nouveau mot de passe par mail. <br/></p>
-          <br/>
-          <label for="mail">Email :</label>
-          <input maxlength="255" type="email" name="email" required><br />
-          <input type="submit" name="submit" value="Réinitialiser votre mot de passe">
-        </form>
-      </div>
-    </div>
+    <header class="masthead">
+        <div class="container" style="max-width:45rem;">
+            <form class="box" action="" method="post">
+                <p style="margin-bottom:0rem;">Nous allons vous envoyer un nouveau mot de passe par mail.</p>
+                <div class="form-group">
+                    <label for="email" class="form-label mt-4">Adresse Email :</label>
+                    <input maxlength="255" type="email" name="email" required class="form-control" placeholder="Saisissez votre email">
+                </div>
+                <button type="submit" name="submit" class="btn btn-info">Réinitialiser votre mot de passe</button>
+            </form>
+        </div>
+    </header>
   <?php
   }
 } else {
@@ -78,20 +79,18 @@ if (isset($erreur)) {
   include("navbar.php");
   popup($erreur, 6000, "error");
 ?>
-  <div class="content" style="min-height: 70%;  margin-top: 20vh">
-    <div class="container containergrey">
-      <form action="" method="post">
-        <p style="text-align: center">Nous allons vous envoyer un nouveau mot de passe par mail. <br/></p>
-        <br/>
-        <label for="mail">Email :</label>
-        <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) {
-                                                                  echo htmlspecialchars($_POST['email']);
-                                                                } ?>" required><br />
-        <input type="submit" name="submit" value="Réinitialiser votre mot de passe">
-      </form>
-    </div>
-  </div>
-
+  <header class="masthead">
+      <div class="container" style="max-width:45rem;">
+          <form class="box" action="" method="post">
+              <p style="margin-bottom:0rem;">Nous allons vous envoyer un nouveau mot de passe par mail.</p>
+              <div class="form-group">
+                  <label for="email" class="form-label mt-4">Adresse Email :</label>
+                  <input maxlength="255" type="email" name="email" required class="form-control" value="<?php if (isset($_POST['email'])) {echo htmlspecialchars($_POST['email']);} ?>">
+              </div>
+              <button type="submit" name="submit" class="btn btn-info">Réinitialiser votre mot de passe</button>
+          </form>
+      </div>
+  </header>
 <?php
 }
 

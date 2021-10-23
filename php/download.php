@@ -47,11 +47,14 @@ protect_before($dateconcours);
             include("header.php");
             include("navbar.php");
             echo '
-            <div class="content" style="margin-top: 15vh">
-                <div class="container containergrey">
-                    <p style="text-align: center;">Le fichier n\'existe pas.</p>
+            <header class="masthead">
+                <div class="container" style="max-width:45rem;">
+                    <div class="box">
+                        <p class="byline">Le fichier n\'existe pas</p>
+                        <p class="byline"><a href="myteam.php">Retour à mon équipe</a></p>
+                    </div>
                 </div>
-            </div>
+            </header>
             ';
             include("footer.php");
         }
@@ -60,11 +63,14 @@ protect_before($dateconcours);
         include("header.php");
         include("navbar.php");
         echo '
-        <div class="content" style="margin-top: 15vh">
-            <div class="container containergrey">
-                <p style="text-align: center;">Le nom du fichier n\'est pas défini</p>
+        <header class="masthead">
+            <div class="container" style="max-width:45rem;">
+                <div class="box">
+                    <p class="byline">Le nom du fichier n\'est pas définit</p>
+                    <p class="byline"><a href="myteam.php">Retour à mon équipe</a></p>
+                </div>
             </div>
-        </div>
+        </header>
         ';
         include("footer.php");
     } 

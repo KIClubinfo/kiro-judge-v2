@@ -129,7 +129,7 @@ include("navbar.php");
       <header class="masthead" >
           <div class="container-fluid">
               <div class="row justify-content-center">
-                  <div class="col-lg-10">
+                  <div class="col-lg-12">
                       <div class="container">
                             <table class="box-tableau table table-hover text-white">
                             <thead>
