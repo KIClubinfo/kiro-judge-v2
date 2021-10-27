@@ -126,7 +126,7 @@ if (!empty($msg_error)) {
                 <li> <a href="sujets/sujet1.pdf" target="_blank">Session 2017-2018, en partenariat avec Air France</a> et les <a href="sujets/sujet1.zip" target="_blank">instances</a></li>
                 <li> <a href="sujets/sujet2.pdf" target="_blank">Session 2018-2019, en partenariat avec LocalSolver</a> et les <a href="sujets/sujet2.zip" target="_blank">instances</a></li>
                 <li> <a href="sujets/sujet3.pdf" target="_blank">Session 2019-2020, en partenariat avec Renault</a> et les <a href="sujets/sujet3.zip" target="_blank">instances</a></li>
-                <li> <a href="sujets/sujet4.pdf" target="_blank">Session 2020-2021, en partenariat avec SNCF</a> et les <a href="sujets/sujet4.zip" target="_blank">instances</a></li>
+		            <li> <a href="sujets/sujet4.pdf" target="_blank">Session 2020-2021, en partenariat avec la SNCF</a> et les <a href="sujets/sujet4.zip" target="_blank">instances</a></li>
             </ul>
         </div>
     </section>
