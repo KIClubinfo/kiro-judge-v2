@@ -7,3 +7,5 @@ function protect_before($dateconcours) {
         exit;
     }
 }
+
+?>

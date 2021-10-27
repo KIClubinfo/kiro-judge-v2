@@ -340,6 +340,7 @@ if (isset($erreur)) {
         <!--AFFICHAGE DU FORMULAIRE AVEC ERREUR-->
         <div class="container" style="max-width:45rem;">
             <?php #popup($erreur, 6000, "error"); ?>
+            <p><?php echo $erreur; ?></p>
             <form action="" method="post" name="inscription">
                 <div id="equipe" style="display: block;" class="box">
                 <!--<button class="page-link" onclick="javascript:avance('equipe', 'participant-1');" href="#">Participant 1</button>-->

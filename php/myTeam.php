@@ -91,76 +91,82 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                         <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous le score et les instances soumises :</p>
                         <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Score actuelle : <?php echo(number_format($team->score))?></h4>
                         <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Meilleures solutions :</h4>
-                        <table class="box-tableau table table-hover text-white">
-                            <thead>
-                            <tr class="table-dark">
-                                <th scope="col">Type d'instance</th>
-                                <th scope="col">Score</th>
-                                <th scope="col">Télécharger</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach($Best_Sol as $sol){ if ($sol[$score] >= 0) {?>
-                            <tr>
-                                <th scope="row">Instance <?php echo(INSTANCE_NAMES[$sol[$instance_id]])?></th>
-                                <td><?php echo(number_format($sol[$score]))?></td>
-                                <td><?php echo '<a href="download_instance.php?path=';
-                                        echo get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]);
-                                        echo '">Télécharger cette instance</a>';?></td>
-                            </tr>
-                            <?php }}?>
-                            </tbody>
-                        </table>
-                        <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Dernières solutions :</h4>
-                        <table class="box-tableau table table-hover text-white">
-                            <thead>
-                            <tr class="table-dark">
-                                <th scope="col">Type d'instance</th>
-                                <th scope="col">Score</th>
-                                <th scope="col">Télécharger</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach($Last_Sol as $sol){?>
-                            <tr>
-                                <th scope="row">Instance <?php echo(INSTANCE_NAMES[$sol[$instance_id]])?></th>
-                                <?php if ($sol[$score] >= 0) {?>
-                                    <td><?php echo(number_format($sol[$score]))?> </td>
-                                <?php } else {?>
-                                    <td><?php display_errors_button($sol[$errors])?> </td>
-                                <?php }?>
-                                <td><?php echo '<a href="download_instance.php?path=';
+                        <div class="table-responsive">
+                            <table class="box-tableau table table-hover text-white">
+                                <thead>
+                                <tr class="table-dark">
+                                    <th scope="col">Type d'instance</th>
+                                    <th scope="col">Score</th>
+                                    <th scope="col">Télécharger</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($Best_Sol as $sol){ if ($sol[$score] >= 0) {?>
+                                <tr>
+                                    <th scope="row">Instance <?php echo(INSTANCE_NAMES[$sol[$instance_id]])?></th>
+                                    <td><?php echo(number_format($sol[$score]))?></td>
+                                    <td><?php echo '<a href="download_instance.php?path=';
                                             echo get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]);
                                             echo '">Télécharger cette instance</a>';?></td>
-                            </tr>
-                            <?php }?>
-                            </tbody>
-                        </table>
-                        <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Historique des solution :</h4>
-                        <table class="box-tableau table table-hover text-white">
-                            <thead>
-                            <tr class="table-dark">
-                                <th scope="col">Type d'instance</th>
-                                <th scope="col">Score</th>
-                                <th scope="col">Télécharger</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($All_Sol as $Sol){ ?>
-                            <tr>
-                                <th scope="row">Instance <?php echo(INSTANCE_NAMES[$Sol[$instance_id]])?></th>
-                                <?php if ($Sol[$score] >= 0) { ?>
-                                    <td><?php echo(number_format($Sol[$score]))?></td>
-                                <?php } else { ?>
-                                    <td><?php display_errors_button($Sol[$errors])?></td>
-                                <?php } ?>
-                                <td><?php echo '<a href="download_instance.php?path=';
-                                                echo get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                </tr>
+                                <?php }}?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Dernières solutions :</h4>
+                        <div class="table-responsive">
+                            <table class="box-tableau table table-hover text-white">
+                                <thead>
+                                <tr class="table-dark">
+                                    <th scope="col">Type d'instance</th>
+                                    <th scope="col">Score</th>
+                                    <th scope="col">Télécharger</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($Last_Sol as $sol){?>
+                                <tr>
+                                    <th scope="row">Instance <?php echo(INSTANCE_NAMES[$sol[$instance_id]])?></th>
+                                    <?php if ($sol[$score] >= 0) {?>
+                                        <td><?php echo(number_format($sol[$score]))?> </td>
+                                    <?php } else {?>
+                                        <td><?php display_errors_button($sol[$errors])?> </td>
+                                    <?php }?>
+                                    <td><?php echo '<a href="download_instance.php?path=';
+                                                echo get_solution_filepath($sol[$instance_id],$teamid,$sol[$solution_id]);
                                                 echo '">Télécharger cette instance</a>';?></td>
-                            </tr>
-                            <?php }?>
-                            </tbody>
-                        </table>
+                                </tr>
+                                <?php }?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Historique des solution :</h4>
+                        <div class="table-responsive">
+                            <table class="box-tableau table table-hover text-white">
+                                <thead>
+                                <tr class="table-dark">
+                                    <th scope="col">Type d'instance</th>
+                                    <th scope="col">Score</th>
+                                    <th scope="col">Télécharger</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($All_Sol as $Sol){ ?>
+                                <tr>
+                                    <th scope="row">Instance <?php echo(INSTANCE_NAMES[$Sol[$instance_id]])?></th>
+                                    <?php if ($Sol[$score] >= 0) { ?>
+                                        <td><?php echo(number_format($Sol[$score]))?></td>
+                                    <?php } else { ?>
+                                        <td><?php display_errors_button($Sol[$errors])?></td>
+                                    <?php } ?>
+                                    <td><?php echo '<a href="download_instance.php?path=';
+                                                    echo get_solution_filepath($Sol[$instance_id],$teamid,$Sol[$solution_id]);
+                                                    echo '">Télécharger cette instance</a>';?></td>
+                                </tr>
+                                <?php }?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -62,73 +62,77 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
             popup("Cette équipe n'est pas active.", 6000, "error");
           }
           ?>
-          <table class="box-tableau table table-hover text-white">
+          <div class="table-responsive">
+            <table class="box-tableau table table-hover text-white">
+                <thead>
+                  <tr class="table-dark">
+                    <?php if (is_admin()) {echo '<th scope="col">Id</th>';} ?>
+                    <th scope="col">Nom d'équipe</th>
+                    <th scope="col">Hub</th>
+                    <th scope="col">Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <?php if (is_admin()) {
+                    echo '<th scope="row">' . htmlspecialchars($team_affiche->id) . '</th>';
+                    } ?>
+                    <td><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></td>
+                    <td><?php if ($team_affiche->hub == 1) {echo "Hub de l'École des Ponts";} else{echo "Hub distanciel (Discord)";}?></td>
+                    <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "Autre";}?></td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+          <div class="table-responsive">
+            <table class="box-tableau table table-hover text-white">
               <thead>
                 <tr class="table-dark">
-                  <?php if (is_admin()) {echo '<th scope="col">Id</th>';} ?>
-                  <th scope="col">Nom d'équipe</th>
-                  <th scope="col">Hub</th>
-                  <th scope="col">Type</th>
+                  <th scope="col">Prénom</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">École</th>
+                  <?php if (is_admin()) { //Si affichage admin
+                  ?>
+                    <th scope="col">Numéro de téléphone</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Id</th>
+                  <?php } ?>
                 </tr>
               </thead>
               <tbody>
                 <tr>
+                  <th scope="row"><?php echo htmlspecialchars($membre_1->prenom); ?></th>
+                  <td><?php echo htmlspecialchars($membre_1->nom); ?></td>
+                  <td><?php echo htmlspecialchars($membre_1->ecole); ?></td>
                   <?php if (is_admin()) {
-                  echo '<th scope="row">' . htmlspecialchars($team_affiche->id) . '</th>';
+                    echo '<td>' . htmlspecialchars($membre_1->tel) . '</td>';
+                    echo '<td>' . htmlspecialchars($membre_1->mail) . '</td>';
+                    echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_1->id) . '">' . htmlspecialchars($membre_1->id) . '</a></td>';
                   } ?>
-                  <td><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></td>
-                  <td><?php if ($team_affiche->hub == 1) {echo "Hub de l'École des Ponts";} else{echo "Hub distanciel (Discord)";}?></td>
-                  <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "Autre";}?></td>
+                </tr>
+                <tr>
+                  <th scope="row"><?php echo htmlspecialchars($membre_2->prenom); ?></th>
+                  <td><?php echo htmlspecialchars($membre_2->nom); ?></td>
+                  <td><?php echo htmlspecialchars($membre_2->ecole); ?></td>
+                  <?php if (is_admin()) {
+                    echo '<td>' . htmlspecialchars($membre_2->tel) . '</td>';
+                    echo '<td>' . htmlspecialchars($membre_2->mail) . '</td>';
+                    echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></td>';
+                  } ?>
+                </tr>
+                <tr>
+                  <th scope="row"><?php echo htmlspecialchars($membre_3->prenom); ?></th>
+                  <td><?php echo htmlspecialchars($membre_3->nom); ?></td>
+                  <td><?php echo htmlspecialchars($membre_3->ecole); ?></td>
+                  <?php if (is_admin()) {
+                    echo '<td>' . htmlspecialchars($membre_3->tel) . '</td>';
+                    echo '<td>' . htmlspecialchars($membre_3->mail) . '</td>';
+                    echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_3->id) . '">' . htmlspecialchars($membre_3->id) . '</a></td>';
+                  } ?>
                 </tr>
               </tbody>
-          </table>
-          <table class="box-tableau table table-hover text-white">
-            <thead>
-              <tr class="table-dark">
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">École</th>
-                <?php if (is_admin()) { //Si affichage admin
-                ?>
-                  <th scope="col">Numéro de téléphone</th>
-                  <th scope="col">Mail</th>
-                  <th scope="col">Id</th>
-                <?php } ?>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"><?php echo htmlspecialchars($membre_1->prenom); ?></th>
-                <td><?php echo htmlspecialchars($membre_1->nom); ?></td>
-                <td><?php echo htmlspecialchars($membre_1->ecole); ?></td>
-                <?php if (is_admin()) {
-                  echo '<td>' . htmlspecialchars($membre_1->tel) . '</td>';
-                  echo '<td>' . htmlspecialchars($membre_1->mail) . '</td>';
-                  echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_1->id) . '">' . htmlspecialchars($membre_1->id) . '</a></td>';
-                } ?>
-              </tr>
-              <tr>
-                <th scope="row"><?php echo htmlspecialchars($membre_2->prenom); ?></th>
-                <td><?php echo htmlspecialchars($membre_2->nom); ?></td>
-                <td><?php echo htmlspecialchars($membre_2->ecole); ?></td>
-                <?php if (is_admin()) {
-                  echo '<td>' . htmlspecialchars($membre_2->tel) . '</td>';
-                  echo '<td>' . htmlspecialchars($membre_2->mail) . '</td>';
-                  echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_2->id) . '">' . htmlspecialchars($membre_2->id) . '</a></td>';
-                } ?>
-              </tr>
-              <tr>
-                <th scope="row"><?php echo htmlspecialchars($membre_3->prenom); ?></th>
-                <td><?php echo htmlspecialchars($membre_3->nom); ?></td>
-                <td><?php echo htmlspecialchars($membre_3->ecole); ?></td>
-                <?php if (is_admin()) {
-                  echo '<td>' . htmlspecialchars($membre_3->tel) . '</td>';
-                  echo '<td>' . htmlspecialchars($membre_3->mail) . '</td>';
-                  echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($membre_3->id) . '">' . htmlspecialchars($membre_3->id) . '</a></td>';
-                } ?>
-              </tr>
-            </tbody>
-        </table>
+            </table>
+          </div>
       </div>
   </header>
 <?php
@@ -147,34 +151,36 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   ?>
   <header class="masthead">
       <div class="container">
-          <table class="box-tableau table table-hover text-white">
-              <thead>
-                <tr class="table-dark">
-                  <?php if (is_admin()) {?>
-                  <th scope="col">Id</th><?php ; } ?>
-                  <th scope="col">Nom d'équipe</th>
-                  <th scope="col">Hub</th>
-                  <th scope="col">Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                foreach($result_ids as $id_team){
-                $id_team = $id_team["id"];
-                $team_affiche = new team($id_team);
-                ?>
-                <tr>
-                  <?php if (is_admin()) { ?>
-                  <th scope="row"><?php echo htmlspecialchars($team_affiche->id) ?></th><?php  } ?>
-                  <td><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></td>
-                  <td><?php if ($team_affiche->hub == 1) {echo "Hub de l'École des Ponts";} else{echo "Hub distanciel (Discord)";}?></td>
-                  <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "Autre";}?></td>
-                </tr>
-                <?php
-                }
-                }?>
-              </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="box-tableau table table-hover text-white">
+                <thead>
+                  <tr class="table-dark">
+                    <?php if (is_admin()) {?>
+                    <th scope="col">Id</th><?php ; } ?>
+                    <th scope="col">Nom d'équipe</th>
+                    <th scope="col">Hub</th>
+                    <th scope="col">Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach($result_ids as $id_team){
+                  $id_team = $id_team["id"];
+                  $team_affiche = new team($id_team);
+                  ?>
+                  <tr>
+                    <?php if (is_admin()) { ?>
+                    <th scope="row"><?php echo htmlspecialchars($team_affiche->id) ?></th><?php  } ?>
+                    <td><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></td>
+                    <td><?php if ($team_affiche->hub == 1) {echo "Hub de l'École des Ponts";} else{echo "Hub distanciel (Discord)";}?></td>
+                    <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "Autre";}?></td>
+                  </tr>
+                  <?php
+                  }
+                  }?>
+                </tbody>
+            </table>
+          </div>
       </div>
   </header>
   <?php
