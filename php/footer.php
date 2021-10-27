@@ -26,6 +26,11 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
+        <script src="js/event-handler.js"></script>
+        <script src="js/selector-engine.js"></script>
+        <script src="js/data.js"></script>
+        <script src="js/base-component.js"></script>
+        <script src="js/alert.js"></script>
         <script src="js/scripts.js"></script>
         <script src="scripts/my_scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->

@@ -46,22 +46,31 @@ if ($team_id_affiche != -1){
 
 
 if (isset($erreur)) { //si erreur dans la team demandé
- popup($erreur, 6000, "error");
+  echo 
+  '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    '.$erreur.'
+  </div>';
 }
 if (isset($erreur2)) { //Si erreur dans l'afficage de la team
- popup($erreur2, 6000, "error");
+  echo 
+  '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    '.$erreur2.'
+  </div>';
 }
 
 if (isset($membre_3)) { //Si tout a bien marché on affiche tout
-  include("header.php");
+  if (is_admin() and !$team_affiche->valide) { //Si la team n'est pas active
+    echo 
+      '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        Cette équipe n\'est pas active.
+      </div>';
+  }
 ?>
   <header class="masthead">
       <div class="container">
-          <?php
-          if (is_admin() and !$team_affiche->valide) { //Si la team n'est pas active
-            popup("Cette équipe n'est pas active.", 6000, "error");
-          }
-          ?>
           <div class="table-responsive">
             <table class="box-tableau table table-hover text-white">
                 <thead>

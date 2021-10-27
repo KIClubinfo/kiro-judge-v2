@@ -334,13 +334,16 @@ if (isset($erreur)) {
     include("header.php");
     include("navbar.php");
     //si on doit afficher le formulaire avec un message d'erreur
+    echo 
+    '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        '.$erreur.'
+    </div>';
     ?>
 
     <header class="masthead">
         <!--AFFICHAGE DU FORMULAIRE AVEC ERREUR-->
         <div class="container" style="max-width:45rem;">
-            <?php #popup($erreur, 6000, "error"); ?>
-            <p><?php echo $erreur; ?></p>
             <form action="" method="post" name="inscription">
                 <div id="equipe" style="display: block;" class="box">
                 <!--<button class="page-link" onclick="javascript:avance('equipe', 'participant-1');" href="#">Participant 1</button>-->

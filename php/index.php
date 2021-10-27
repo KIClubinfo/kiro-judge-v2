@@ -42,10 +42,18 @@ if (isset($_GET['maj_admin'])) { //On affiche un message pour signifier la bonne
 }
 
 if (!empty($msg)) {
-  popup($msg);
+  echo 
+  '<div class="alert alert-warning  alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    '.$msg.'
+  </div>';
 }
 if (!empty($msg_error)) {
-  popup($msg_error, 6000, "error");
+  echo 
+  '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    '.$msg_error.'
+  </div>';
 }
 ?>
 
@@ -53,7 +61,7 @@ if (!empty($msg_error)) {
     <header class="masthead">
         <div class="container">
             <img src="assets/img/logo_kiro.png" alt="" style="width: 40%;">
-            <div class="text-uppercase" style="font-size: 2rem;">Concours inter-école de recherche opérationnelle</div>
+            <div class="masthead-text text-uppercase">Concours inter-école de recherche opérationnelle</div>
         </div>
     </header>
     <!-- Description du concours-->

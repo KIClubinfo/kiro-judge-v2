@@ -46,7 +46,13 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 <header class="masthead">
                     <div class="container" style="max-width:45rem;">
                         <form class="box" action="" method="post">
-                            <?php popup("Vous devez modifier votre mot de passe."); ?>
+                            <?php 
+                            echo 
+                              '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                Vous devez modifier votre mot de passe
+                              </div>';
+                            ?>
                             <h4 class="">Vous devez modifier votre mot de passe</h4>
                             <div class="form-group">
                               <label for="password" class="form-label mt-4">Nouveau mot de passe (6 caractères minimum) :</label>
@@ -115,11 +121,15 @@ if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
   include("navbar.php");
+  echo 
+    '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      '.$erreur.'
+    </div>';
 
 ?>
   <header class="masthead">
         <div class="container" style="max-width:45rem;">
-            <?php popup($erreur, 6000, "error"); ?>
             <form class="box" action="" method="post">
                 <div class="form-group">
                   <label for="email" class="form-label mt-4">Adresse Email :</label>
@@ -182,11 +192,14 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
 if (isset($erreur22)) {
   include("header.php");
   include("navbar.php");
-
+  echo 
+    '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      '.$erreur22.'
+    </div>';
 ?>
   <header class="masthead">
       <div class="container" style="max-width:45rem;">
-          <?php popup($erreur22, 6000, "error"); ?>
           <form class="box" action="" method="post">
               <h4 class="">Vous devez modifier votre mot de passe</h4>
               <div class="form-group">

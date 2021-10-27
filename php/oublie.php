@@ -77,7 +77,11 @@ if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
   include("navbar.php");
-  popup($erreur, 6000, "error");
+  echo 
+  '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    '.$erreur.'
+  </div>';
 ?>
   <header class="masthead">
       <div class="container" style="max-width:45rem;">
