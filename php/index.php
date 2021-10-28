@@ -174,7 +174,7 @@ if (!empty($msg_error)) {
                       </div>
                     </div>
                 </div>
-                <h3 class="section-subheading-section text-muted">Le règlement</h3>
+                <h3 class="section-subheading-section text-muted" id="reglement">Le règlement</h3>
                 <div class="row h-100">
                     <div class="col-lg-4">
                       <div class="box-invisible">
