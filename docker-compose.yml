@@ -12,7 +12,7 @@ services:
       - "./php/uploads:/var/www/html/uploads"
       - "/var/www/html/vendor"
     ports:
-      - 8123:80
+      - ${web_port}:80
     environment:
       - mysql_password=${mysql_password}
       - gmail_password=${gmail_password}
@@ -25,7 +25,7 @@ services:
     depends_on:
       - db
     ports:
-      - 8125:8080
+      - ${websocket_port}:8080
     environment:
       - mysql_password=${mysql_password}
       - NODE_ENV=production
@@ -40,7 +40,7 @@ services:
       MYSQL_USER: kiro_user
       MYSQL_PASSWORD: ${mysql_password}
     ports:
-      - 6033:3306
+      - ${db_port}:3306
     volumes:
       - ./db_data:/var/lib/mysql
       - ./php/conf_server/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -52,7 +52,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: ${mysql_password}
     ports:
-      - 8124:80
+      - ${phpmyadmin_port}:80
     depends_on:
       - db 
   webinstaller:
