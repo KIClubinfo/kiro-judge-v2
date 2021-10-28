@@ -4,7 +4,7 @@ services:
     build:
       context: ./php
       dockerfile: Dockerfile
-    container_name: php_74
+    container_name: kiro-dev_php_74
     depends_on:
       - db
     volumes:
@@ -21,7 +21,7 @@ services:
     build:
       context: ./node
       dockerfile: Dockerfile
-    container_name: node_12
+    container_name: kiro-dev_node_12
     depends_on:
       - db
     ports:
@@ -30,7 +30,7 @@ services:
       - mysql_password=${mysql_password}
       - NODE_ENV=production
   db:
-    container_name: mysql8
+    container_name: kiro-dev_mysql8
     image: mysql:8.0.20
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -58,7 +58,7 @@ services:
   webinstaller:
     build:
       context: ./webinstaller
-    container_name: webinstaller_0
+    container_name: kiro-dev_webinstaller_0
     depends_on:
       - db
     environment:
@@ -66,7 +66,7 @@ services:
   webtest:
     build:
       context: ./webtest
-    container_name: webtest_0
+    container_name: kiro-dev_webtest_0
     depends_on:
       - db
     environment:
