@@ -9,8 +9,6 @@ if (!isset($_SESSION["user"])){
   exit();
 }
 
-$dateconcours = new DateTime('2021-05-06 12:00:00');
-
 include("date_protection.php");
 protect_before($dateconcours);
 
@@ -18,7 +16,7 @@ protect_before($dateconcours);
     if(isset($_GET['path'])){
         //Read the filename
         $filename = $_GET['path'];
-        $regex='~^(/var/www/html/sujets/sujet4)\.(zip|pdf)$~';
+        $regex='~^(/var/www/html/sujet_concours/sujet)\.(zip|pdf)$~';
         if (!preg_match($regex, $filename)){
             header('Location: index.php');
             exit();

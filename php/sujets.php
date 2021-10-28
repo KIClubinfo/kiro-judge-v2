@@ -10,10 +10,6 @@ if (!isset($_SESSION["user"])){
   exit();
 }
 
-include("date_protection.php");
-$dateconcours = new DateTime('2021-05-06 11:30:00');
-protect_before($dateconcours);
-
 include("header.php");
 include("navbar.php");
 
@@ -30,17 +26,16 @@ include("navbar.php");
                             <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous le sujet du concours :</p>
                             <?php
                             $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
-                            $dateconcours = new DateTime('2021-05-06 12:00:00');
 
-                            if ($date>=$dateconcours) {//AJOUTER UN or is_admin() ET LES LIENS
+                            if ($date>=$dateconcours) {
                                                 echo '
                                                 <span style="color:black; font-size:large;">
-                                                Accédez au <a style="font-weight:700;" href="">sujet du concours</a>.</br>
-                                                Téléchargez les <a style="font-weight:700;" href="">instances</a> du sujet.
+                                                Accédez au <a style="font-weight:700;" href="download.php?path=/var/www/html/sujet_concours/sujet.pdf">sujet du concours</a>.</br>
+                                                Téléchargez les <a style="font-weight:700;" href="download.php?path=/var/www/html/sujet_concours/sujet.zip">instances</a> du sujet.
                                                 </span>
                                             ';
                                             } else {
-                                                echo '<span style="color:black; font-size:large;">Le sujet et les instances apparaîtront ici au début de l\'épreuve : <br> Le <B>jeudi 6 mai 2021 à 12h</B>.</span>';
+                                                echo '<span style="color:black; font-size:large;">Le sujet et les instances apparaîtront ici au début de l\'épreuve : <br> Le <B>jeudi 25 novembre 2021 à 14h</B>.</span>';
                                             }
                             ?>
                         </div>
