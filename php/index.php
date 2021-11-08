@@ -110,13 +110,11 @@ if (!empty($msg_error)) {
                             <a href="https://www.airliquide.com/fr">
                                 <img src="assets/img/air_liquide.png" height="90px">
                             </a>
-                            <p style="margin-top: 15px;"> Créé en 1937, le <strong>Groupe SNCF</strong> est l’entreprise 
-                                ferroviaire publique française. Leur réseau compte près de 29 000 km de lignes, 3000 gares ferroviaires, 
-                                et gère chaque jour 15 000 départs de trains pour 10 millions de voyageurs et 250 000 tonnes de 
-                                marchandises. En perpétuelle évolution, le groupe investit dans le développement et la modernisation 
-                                du réseau ferré national, tout en s’adaptant aux défis environnementaux actuels. Il possède aussi 
-                                plusieurs filiales à l’international, telles que Geodis, spécialisée dans le transport de 
-                                marchandises, ou encore Keolis, leader mondial du métro automatique et du tramway. </p>
+                            <p style="margin-top: 15px;">Air Liquide est un leader mondial des gaz, technologies et services pour l’industrie et la santé. Présent dans 80 pays avec 64 500 collaborateurs, le Groupe sert plus de 3,8 millions de clients et de patients. Oxygène, azote et hydrogène sont des petites molécules essentielles à la vie, la matière et l’énergie. Elles incarnent le territoire scientifique d’Air Liquide et sont au cœur du métier du Groupe depuis sa création en 1902.
+
+<br><br>
+Air Liquide a pour ambition de contribuer à un monde plus durable avec au cœur de sa stratégie, un engagement marqué en faveur du climat et de la transition énergétique : le Groupe entend jouer un rôle décisif dans l’avènement d’une société bas carbone et le développement d'une économie de l'hydrogène.
+
                         </div>
                     </div>
                 </div>
