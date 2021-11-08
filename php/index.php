@@ -111,10 +111,8 @@ if (!empty($msg_error)) {
                                 <img src="assets/img/air_liquide.png" height="90px">
                             </a>
                             <p style="margin-top: 15px;">Air Liquide est un leader mondial des gaz, technologies et services pour l’industrie et la santé. Présent dans 80 pays avec 64 500 collaborateurs, le Groupe sert plus de 3,8 millions de clients et de patients. Oxygène, azote et hydrogène sont des petites molécules essentielles à la vie, la matière et l’énergie. Elles incarnent le territoire scientifique d’Air Liquide et sont au cœur du métier du Groupe depuis sa création en 1902.
-
-<br><br>
-Air Liquide a pour ambition de contribuer à un monde plus durable avec au cœur de sa stratégie, un engagement marqué en faveur du climat et de la transition énergétique : le Groupe entend jouer un rôle décisif dans l’avènement d’une société bas carbone et le développement d'une économie de l'hydrogène.
-
+				<br><br>
+				Air Liquide a pour ambition de contribuer à un monde plus durable avec au cœur de sa stratégie, un engagement marqué en faveur du climat et de la transition énergétique : le Groupe entend jouer un rôle décisif dans l’avènement d’une société bas carbone et le développement d'une économie de l'hydrogène.
                         </div>
                     </div>
                 </div>
