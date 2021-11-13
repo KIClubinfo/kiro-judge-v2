@@ -69,7 +69,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
       </div>';
   }
 ?>
-  <header class="masthead">
+  <header class="masthead min-vh-80">
       <div class="container">
           <div class="table-responsive">
             <table class="box-tableau table table-hover text-white">
@@ -158,7 +158,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
   }
 
   ?>
-  <header class="masthead">
+  <header class="masthead min-vh-80">
       <div class="container">
           <div class="table-responsive">
             <table class="box-tableau table table-hover text-white">
