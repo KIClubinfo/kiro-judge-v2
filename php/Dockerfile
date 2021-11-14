@@ -9,9 +9,7 @@ COPY conf_server/apache.conf /usr/local/apache2/httpd.conf
 COPY conf_server/init.sql /docker-entrypoint-initdb.d/
 
 WORKDIR /var/www/html/
-COPY composer_install.sh .
-COPY composer.json .
-COPY composer.lock .
+COPY . .
 RUN chmod +x composer_install.sh
 RUN ./composer_install.sh
 RUN php composer.phar install

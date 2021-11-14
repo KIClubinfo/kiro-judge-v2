@@ -7,10 +7,6 @@ services:
     container_name: kiro-dev_php_74
     depends_on:
       - db
-    volumes:
-      - ./php:/var/www/html/
-      - "./php/uploads:/var/www/html/uploads"
-      - "/var/www/html/vendor"
     ports:
       - ${web_port}:80
     environment:
