@@ -122,13 +122,47 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'kiro.enpc@gmail.com';                     //SMTP username
+
+    //SMTP username
+    if(file_exists('mailer.txt')){
+        $file = fopen('mailer.txt', 'r+');
+        $num = fgets($file);
+    }
+    else{
+        $file = fopen('mailer.txt', 'a+');
+        $num = 0;
+    }
+    fseek($file, 0);
+    if($num==0){$mail->Username='noreply.enpc1@gmail.com';}
+    else if($num==1){$mail->Username='noreply.enpc2@gmail.com';}
+    else if($num==2){$mail->Username='noreply.enpc3@gmail.com';}
+    else if($num==3){$mail->Username='noreply.enpc4@gmail.com';}
+    else if($num==4){$mail->Username='noreply.enpc5@gmail.com';}
+    else if($num==5){$mail->Username='noreply.enpc6@gmail.com';}
+    else if($num==6){$mail->Username='noreply.enpc7@gmail.com';}
+    else if($num==7){$mail->Username='noreply.enpc8@gmail.com';}
+    else if($num==8){$mail->Username='noreply.enpc9@gmail.com';}
+    else if($num==9){$mail->Username='noreply.enpc10@gmail.com';}
+    else{$mail->Username='noreply.enpc1@gmail.com';}
+    //actualisation du mailer actuel:
+    if($num>8 || $num<0){
+        $num=0;
+        fputs($file, $num);
+        fclose($file);
+    }
+    else{
+        $num=$num+1;
+        fputs($file, $num);
+        fclose($file);
+    }
+
+    
     $mail->Password   = getenv("gmail_password");                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('kiro.enpc@gmail.com', 'Team KIRO');
+    $mail->setFrom('noreply.enpc@gmail.com', 'Team KIRO');
     $mail->addAddress($email);     //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
