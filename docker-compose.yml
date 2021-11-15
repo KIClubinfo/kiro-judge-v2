@@ -11,7 +11,7 @@ services:
       - ${web_port}:80
     environment:
       - mysql_password=${mysql_password}
-      - gmail_password=${gmail_password}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
       - discord_link=${discord_link}
   websocket:
     build:
