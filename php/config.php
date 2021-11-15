@@ -3,8 +3,8 @@ session_start();
 include("popup.php");
 
 ##########NOT FOR PROD
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+#error_reporting(E_ALL);
+ini_set('display_errors', 'Off');
 
 
 $db_password = $_ENV["mysql_password"];
