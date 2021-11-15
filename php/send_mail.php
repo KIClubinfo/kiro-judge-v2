@@ -178,7 +178,7 @@ try {
 
     $mail->send();
 } catch (Exception $e) {
-
+    error_log("Caught $e");
 };
 };
 
@@ -310,7 +310,7 @@ try {
 
     $mail->send();
 } catch (Exception $e) {
-
+    error_log("Caught $e");
 };
 };
 ?>
