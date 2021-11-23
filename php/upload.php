@@ -125,15 +125,15 @@ include("navbar.php");
                         <p style="color:#2f2f2f; font-size:large;">Vous pouvez envoyer un ou plusieurs fichiers à la fois :</p>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Première instance :</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-small.json :</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Seconde instance :</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-medium.json :</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Troisième instance :</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-large.json :</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">

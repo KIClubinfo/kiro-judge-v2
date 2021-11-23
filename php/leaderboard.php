@@ -13,7 +13,7 @@ include("navbar.php");
                         <div class="box-concours" style="padding-top:2rem;">
                             <h3 style="color:black;">Leaderboard :</h3>
                             <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous le classement en temps réel :</p>
-                            <div class="table-responsive">
+                            <div id="leaderboard" class="table-responsive">
                                 <table class="box-tableau table table-hover text-white">
                                     <thead>
                                     <tr class="table-dark">
@@ -51,9 +51,9 @@ include("navbar.php");
             </div>
         </div>
     </header>
+    <script src="scripts/runtime-main.7f94bd84.js"></script>
+    <script src="scripts/2.1477e5ea.chunk.js"></script>
+    <script src="scripts/main.a424d41f.chunk.js"></script>
 <?php
 include("footer.php");
 ?>
-<!--<script src="scripts/runtime-main.7f94bd84.js"></script>
-<script src="scripts/2.1477e5ea.chunk.js"></script>
-<script src="scripts/main.a424d41f.chunk.js"></script>-->
