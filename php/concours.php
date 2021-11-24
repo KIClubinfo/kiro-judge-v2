@@ -10,7 +10,7 @@ if (!isset($_SESSION["user"])){
 }
 
 include("date_protection.php");
-$dateconcours = new DateTime('2021-11-25 11:30:00');
+$dateconcours = new DateTime('2021-11-24 11:30:00');
 protect_before($dateconcours);
 
 include("header.php");
