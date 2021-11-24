@@ -16,7 +16,7 @@ include("navbar.php");
                             <ul class="list-centered">
                                 <li style="color:black; font-size:large;">Contact 1 : kiro.enpc@gmail.com</li>
                                 <li style="color:black; font-size:large;">Contact 2 : 07.50.24.52.18 || Pour les questions générales</li>
-                                <li style="color:black; font-size:large;">Contact 3 : 06.52.93.12.44 || Pour les problèmes avec Discord</li>
+                                <li style="color:black; font-size:large;">Contact 3 : 07.81.70.52.38 || Pour les problèmes avec Discord</li>
                             </ul>
                         </div>
                     </div>

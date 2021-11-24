@@ -33,6 +33,7 @@ include("navbar.php");
                                 <li style="color:black; font-size:large;">Pour visualiser le classement en temps réel, rendez-vous dans l'onglet "Classement"</li>
                                 <li style="color:black; font-size:large;">Pour contacter le KI en cas de problème, rendez-vous dans l'onglet "Contact"</li>
                             </ul>
+                            <h4 style="color:#2f2f2f"><br>Lien vers le Discord du concours : <a href="<?php getenv('discord_link') ?>"><?php getenv('discord_link') ?></a></h4>
                         </div>
                     </div>
                 </div>

@@ -140,7 +140,7 @@ if (!empty($msg_error)) {
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Le Planning</h2>
                 <h3 class="section-subheading-section text-muted">Date limite des inscriptions</h3>
-                <p>Les inscriptions se termineront le 23 novembre à 23h59. Aucune inscription ne sera acceptée passé ce delai.</p>
+                <p>Les inscriptions se termineront le 24 novembre à 23h59. Aucune inscription ne sera acceptée passé ce delai.</p>
                 <h3 class="section-subheading-section text-muted">La session</h3>
                 <p>Cette cinquième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne ou à distance sur Discord le jeudi 25 novembre 2021.</p>
                 <div class="row h-100">
