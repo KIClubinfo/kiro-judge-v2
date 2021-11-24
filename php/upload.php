@@ -56,7 +56,7 @@ include("navbar.php");
 
 
             move_uploaded_file($tmp_name, $file_path);
-            $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
+            $command = 'python3 /var/www/html/solution_checker/AirLiquideJudge/python/airliquideparser.py -s "%s" -i "%s"';
 
             $old_score = $team->get_instance_best_score($key);
 
