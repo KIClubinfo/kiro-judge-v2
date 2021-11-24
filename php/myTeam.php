@@ -89,7 +89,7 @@ if ($req = $conn->prepare("SELECT * FROM solutions  WHERE team_id=? ORDER BY $da
                     <div class="box-concours" style="padding-top:2rem;">
                         <h3 style="color:black;">Mon équipe : <?php echo($team->nom)?></h3>
                         <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous le score et les instances soumises :</p>
-                        <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Score actuelle : <?php echo(number_format($team->score))?></h4>
+                        <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Score actuel : <?php echo(number_format($team->score))?></h4>
                         <h4 style="color:black; font-weight:500; text-align:left; margin:2rem;">Meilleures solutions :</h4>
                         <div class="table-responsive">
                             <table class="box-tableau table table-hover text-white">
