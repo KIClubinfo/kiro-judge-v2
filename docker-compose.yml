@@ -41,6 +41,7 @@ services:
       - ./db_data:/var/lib/mysql
       - ./php/conf_server/init.sql:/docker-entrypoint-initdb.d/init.sql
   phpmyadmin:
+    container_name: kiro_phpmyadmin
     image: phpmyadmin/phpmyadmin:5
     restart: always
     environment:
