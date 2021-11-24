@@ -9,8 +9,6 @@ if (!isset($_SESSION["user"])){
   exit();
 }
 
-$dateconcours = new DateTime('2021-05-06 12:00:00');
-
 include("date_protection.php");
 protect_before($dateconcours);
 
@@ -18,7 +16,7 @@ protect_before($dateconcours);
     if(isset($_GET['path'])){
         //Read the filename
         $filename = $_GET['path'];
-        $regex='~^(/var/www/html/sujets/sujet4)\.(zip|pdf)$~';
+        $regex='~^(/var/www/html/sujet_concours/sujet)\.(zip|pdf)$~';
         if (!preg_match($regex, $filename)){
             header('Location: index.php');
             exit();
@@ -47,11 +45,14 @@ protect_before($dateconcours);
             include("header.php");
             include("navbar.php");
             echo '
-            <div class="content" style="margin-top: 15vh">
-                <div class="container containergrey">
-                    <p style="text-align: center;">Le fichier n\'existe pas.</p>
+            <header class="masthead">
+                <div class="container" style="max-width:45rem;">
+                    <div class="box">
+                        <p class="byline">Le fichier n\'existe pas</p>
+                        <p class="byline"><a href="myteam.php">Retour à mon équipe</a></p>
+                    </div>
                 </div>
-            </div>
+            </header>
             ';
             include("footer.php");
         }
@@ -60,11 +61,14 @@ protect_before($dateconcours);
         include("header.php");
         include("navbar.php");
         echo '
-        <div class="content" style="margin-top: 15vh">
-            <div class="container containergrey">
-                <p style="text-align: center;">Le nom du fichier n\'est pas défini</p>
+        <header class="masthead">
+            <div class="container" style="max-width:45rem;">
+                <div class="box">
+                    <p class="byline">Le nom du fichier n\'est pas définit</p>
+                    <p class="byline"><a href="myteam.php">Retour à mon équipe</a></p>
+                </div>
             </div>
-        </div>
+        </header>
         ';
         include("footer.php");
     } 

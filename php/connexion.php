@@ -42,20 +42,29 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
                 $_SESSION['id_team'] = intval($result['id_team']); //ca sera utile pour modifier le mot de passe
                 include("header.php");
                 include("navbar.php");
+                echo 
+                  '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    Vous devez modifier votre mot de passe
+                  </div>';
 ?>
-
-                <div class="content" style="margin-top: 15px">
-                  <div class="container containergrey">
-                    <form action="" method="post">
-                      <?php popup("Vous devez modifier votre mot de passe."); ?>
-                      <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
-                      <input minlength="6" type="password" name="password" onchange='validatePassword();' required>
-                      <label for="password-verif">Nouveau mot de passe (vérification):</label>
-                      <input minlength="6" type="password" name="password-verif" onchange='validatePassword();' required>
-                      <input type="submit" name="submit22" value="Changer mon mot de passe">
-                    </form>
-                  </div>
-                </div>
+                <header class="masthead">
+                    <div class="container" style="max-width:45rem;">
+                        <form class="box" action="" method="post">
+                            <h4 class="">Vous devez modifier votre mot de passe</h4>
+                            <div class="form-group">
+                              <label for="password" class="form-label mt-4">Nouveau mot de passe (6 caractères minimum) :</label>
+                              <input minlength="6" type="password" name="password" class="form-control" placeholder="Saisissez votre nouveau mot de passe" onchange='validatePassword();' required>
+                            </div>
+                            <div class="form-group">
+                              <label for="password-verif" class="form-label mt-4">Confirmez le nouveau mot de passe :</label>
+                              <input minlength="6" type="password" name="password-verif" class="form-control" placeholder="Veuillez confirmer votre nouveau mot de passe" onchange='validatePassword();' required>
+                            </div>
+                            <!--<input type="submit" name="submit22" value="Changer mon mot de passe">-->
+                            <button type="submit" name="submit22"class="btn btn-info">Changer mon mot de passe</button>
+                        </form>
+                    </div>
+                </header>
     <?php
               }
             } else {
@@ -78,20 +87,25 @@ if (!(isset($_SESSION['user']))) { //Si l'utilisateur n'est pas connecté
     include("navbar.php");
 
     ?>
-    <div class="content" style=" padding-top: 20vh">
-      <div class="container containergrey">
-        <form action="" method="post">
-          <label for="mail">Email :</label>
-          <input maxlength="255" type="email" name="email" required><br />
-          <label for="password">Mot de passe :</label>
-          <input minlength="6" type="password" name="password" required><br />
-          <div style="text-align: right">
-            <a align="right" href="oublie.php">Mot de passe oublié</a>
-          </div>
-          <input type="submit" name="submit" value="Se connecter">
-        </form>
-      </div>
-    </div>
+    <header class="masthead">
+        <div class="container" style="max-width:45rem;">
+            <form class="box" action="" method="post">
+                <div class="form-group">
+                  <label for="email" class="form-label mt-4">Adresse Email :</label>
+                  <input maxlength="255" type="email" name="email" required class="form-control" placeholder="Saisissez votre email">
+                </div>
+                <div class="form-group">
+                  <label for="password" class="form-label mt-4">Mot de passe :</label>
+                  <input minlength="6" type="password" name="password" required class="form-control" placeholder="Saisissez votre mot de passe">
+                </div>
+                <div class="padding:1rem;">
+                  <a href="oublie.php">Mot de passe oublié ?</a>
+                </div>
+                <!--<input type="submit" name="submit" value="Se connecter">-->
+                <button type="submit" name="submit" class="btn btn-info">Se connecter</button>
+            </form>
+        </div>
+    </header>
   <?php
   }
 } else { //deja connecte
@@ -105,25 +119,32 @@ if (isset($erreur)) {
   //si on doit afficher le formulaire avec un message d'erreur
   include("header.php");
   include("navbar.php");
+  echo 
+    '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      '.$erreur.'
+    </div>';
 
 ?>
-  <div class="content" style= "padding-top: 20vh">
-    <div class="container containergrey">
-       <?php popup($erreur, 6000, "error"); ?>
-      <form action="" method="post">
-        <label for="mail">Email :</label>
-        <input maxlength="255" type="email" name="email" value="<?php if (isset($_POST['email'])) {
-                                                                  echo htmlspecialchars($_POST['email']);
-                                                                } ?>" required><br />
-        <label for="password">Mot de passe :</label>
-        <input minlength="6" type="password" name="password" required><br />
-        <div style="text-align: right">
-          <a align="right" href="oublie.php">Mot de passe oublié</a>
+  <header class="masthead">
+        <div class="container" style="max-width:45rem;">
+            <form class="box" action="" method="post">
+                <div class="form-group">
+                  <label for="email" class="form-label mt-4">Adresse Email :</label>
+                  <input maxlength="255" type="email" name="email" required class="form-control" value="<?php if (isset($_POST['email'])) {echo htmlspecialchars($_POST['email']);} ?>" required>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="form-label mt-4">Mot de passe :</label>
+                  <input minlength="6" type="password" name="password" required class="form-control" placeholder="Saisissez votre mot de passe">
+                </div>
+                <div class="padding:1rem;">
+                  <a href="oublie.php">Mot de passe oublié ?</a>
+                </div>
+                <!--<input type="submit" name="submit" value="Se connecter">-->
+                <button type="submit" name="submit" class="btn btn-info">Se connecter</button>
+            </form>
         </div>
-        <input type="submit" name="submit" value="Se connecter">
-      </form>
-    </div>
-  </div>
+    </header>
 <?php
 }
 
@@ -169,21 +190,29 @@ if (!(isset($_SESSION['user'])) and isset($_POST['submit22']) and (isset($_SESSI
 if (isset($erreur22)) {
   include("header.php");
   include("navbar.php");
-
+  echo 
+    '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      '.$erreur22.'
+    </div>';
 ?>
-  <div class="content" style="padding-top: 20vh">
-    <div class="container containergrey">
-      <?php popup($erreur22, 6000, "error"); ?>
-      <form action="" method="post">
-        Vous devez modifier votre mot de passe.
-        <label for="password">Nouveau mot de passe (6 caractères minimum):</label>
-        <input minlength="6" id="password" type="password" name="password" onchange='validatePassword();' required>
-        <label for="password-verif">Nouveau mot de passe (vérification):</label>
-        <input minlength="6" id="password-verif" type="password" name="password-verif" onchange='validatePassword();' required>
-        <input type="submit" name="submit22" value="Changer mon mot de passe">
-      </form>
-    </div>
-  </div>
+  <header class="masthead">
+      <div class="container" style="max-width:45rem;">
+          <form class="box" action="" method="post">
+              <h4 class="">Vous devez modifier votre mot de passe</h4>
+              <div class="form-group">
+                <label for="password" class="form-label mt-4">Nouveau mot de passe (6 caractères minimum) :</label>
+                <input minlength="6" type="password" name="password" class="form-control" placeholder="Saisissez votre nouveau mot de passe" onchange='validatePassword();' required>
+              </div>
+              <div class="form-group">
+                <label for="password-verif" class="form-label mt-4">Confirmez le nouveau mot de passe :</label>
+                <input minlength="6" type="password" name="password-verif" class="form-control" placeholder="Veuillez confirmer votre nouveau mot de passe" onchange='validatePassword();' required>
+              </div>
+              <!--<input type="submit" name="submit22" value="Changer mon mot de passe">-->
+              <button type="submit" name="submit22"class="btn btn-info">Changer mon mot de passe</button>
+          </form>
+      </div>
+  </header>
 <?php
 }
 ?>

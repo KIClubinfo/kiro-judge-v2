@@ -3,15 +3,16 @@ include("../config.php");
 include("../header.php");
 include("../navbar.php");
 ?>
-
-<div class="content" style="text-align: center; margin-top : 5vh; color: white">
-    <div style="font-size: 4em;">ERREUR 404</div>
-    <br />
-    <div style="font-size: 3em;">Page non trouvée</div>
-    <br />
-    <div style="font-size: 3em;"><a href="index.php" style="text-decoration: none;">Retour à l'accueil</a></div>
-</div>
-
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container" style="max-width:45rem;">
+            <div class="box">
+                <p class="byline">ERREUR 404</p>
+                <p class="byline">Page non trouvée</p>
+                <p class="byline"><a href="index.php">Retour à l'Accueil</a></p>
+            </div>
+        </div>
+    </header>
 <?php
 include("../footer.php");
 ?>

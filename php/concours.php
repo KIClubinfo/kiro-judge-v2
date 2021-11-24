@@ -10,39 +10,36 @@ if (!isset($_SESSION["user"])){
 }
 
 include("date_protection.php");
-$dateconcours = new DateTime('2021-05-06 11:30:00');
+$dateconcours = new DateTime('2021-11-25 11:30:00');
 protect_before($dateconcours);
 
 include("header.php");
 include("navbar.php");
 
 ?>
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="styletest.css" />
-</head>
-
-<div class="content" style="margin-top: 15vh">
-    
-    <?php
-    include("menuconcours.php");
-    ?>
-
-    <section class="concours">
-        <div class="title" style="margin-top:20px; text-align:center;">
-            <h2 style="font-size: 2.7em">Concours</h2>
-            <span class="byline">Vous êtes sur la page du concours.<br></span>
-            <span class="byline">Vous trouverez sur cette page toutes les informations relatives au concours le jour J.<br><br></span>
-            <ul style="text-align:left; list-style-type:disc; margin-left:40px;">
-                <li class="byline" style="color:black; font-size:x-large;">Pour accéder au sujet et aux instances associées, rendez-vous dans l'onglet "Sujet"</li>
-                <li class="byline" style="color:black; font-size:x-large;">Pour uploader votre solution, rendez-vous dans l'onglet "Upload"</li>
-                <li class="byline" style="color:black; font-size:x-large;">Pour visualiser le classement en temps réel, rendez-vous dans l'onglet "Classement"</li>
-                <li class="byline" style="color:black; font-size:x-large;">Pour contacter le KI en cas de problème, rendez-vous dans l'onglet "Contact"</li>
-            </ul>
+    <!-- Masthead-->
+    <header class="masthead" >
+        <div class="container-fluid">
+            <div class="row">
+                <?php include("menuconcours.php"); ?>
+                <div class="col-lg-8">
+                    <div class="container">
+                        <div class="box-concours" style="padding-top:2rem;">
+                            <h3 style="color:black;">Bienvenue dans l'espace dédié au concours :</h3>
+                            <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous des indications concernant les différentes rubriques</p>
+                            <ul class="list-centered">
+                                <li style="color:black; font-size:large;">Pour accéder au sujet et aux instances associées, rendez-vous dans l'onglet "Sujet"</li>
+                                <li style="color:black; font-size:large;">Pour uploader votre solution, rendez-vous dans l'onglet "Upload des instances"</li>
+                                <li style="color:black; font-size:large;">Pour visualiser le classement en temps réel, rendez-vous dans l'onglet "Classement"</li>
+                                <li style="color:black; font-size:large;">Pour contacter le KI en cas de problème, rendez-vous dans l'onglet "Contact"</li>
+                            </ul>
+                            <h4 style="color:#2f2f2f"><br>Lien vers le Discord du concours : <a href="<?php echo getenv('discord_link') ?>"><?php echo getenv('discord_link') ?></a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
-</div>
-
+    </header>
 <?php
 include("footer.php");
 ?>

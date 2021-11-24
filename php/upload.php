@@ -21,11 +21,14 @@ include("navbar.php");
     <script src="scripts/display_errors.js"></script>
 </head>
 
-<div class="content" style="margin-top: 15vh">
-
-  <?php
-  include("menuconcours.php");
-
+<header class="masthead" >
+        <div class="container-fluid">
+            <div class="row">
+                <?php include("menuconcours.php");?>
+                <div class="col-lg-8">
+                  <div class="container">
+                      <div class="box-concours" style="padding-top:2rem;">
+<?php
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['user'])) {
       if (isset($_POST['submit'])) {
@@ -41,12 +44,10 @@ include("navbar.php");
         // Send new score if OK
         $team = new team($_SESSION["user"]->id_team);
         $user = new user($_SESSION["user"]->id);
-
-        echo '<section class="concours">';
-        echo '<div class="title" style="margin-top:20px; text-align:center;"><h2 style="font-size: 2.7em; margin-bottom:30px;">Résultat de l\'Upload</h2></div>';
-        echo '<div class="title" style="text-align:left;">';
-        echo '<span class="byline" style="margin-left: 210px; color:black;">Vous trouverez ci-dessous le résultat de l\'upload :</span>';
-        echo '</div>';
+        
+        echo '<h3 style="color:black;">Résultat de l\'Upload :</h3>
+              <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous le résultat de l\'upload :</p>';
+        
         foreach ($_FILES["solutions"]["error"] as $key => $error) {
           if ($error == UPLOAD_ERR_OK) {
 
@@ -80,12 +81,13 @@ include("navbar.php");
   ?>
   <div>
     <?php
-            echo "<span style='font-size: 1.7em;margin-left:350px;'>".INSTANCE_NAMES[$key]." : </span>";
+            echo "<h4 style='color:black; font-size:3rem; font-weight:500; text-align:center; margin:2rem;'>".INSTANCE_NAMES[$key]."</h4>";
+            // echo "<span style='font-size: 1.7em;margin-left:350px;'>".INSTANCE_NAMES[$key]." : </span>";
             if ($score < 0) {
               display_errors_button($errors_string);
             } else {
                 $color = ($old_score > $score) ?"green" : "red";
-              echo "<span style='color: {$color}; font-size: 1.7em;'>" . $score . "<span />";
+              echo "<h4 style='color: {$color}; font-size:3rem; font-weight:500; text-align:center; margin:2rem;'>" . $score . "</h4>";
             }
     ?>
   </div>
@@ -105,83 +107,45 @@ include("navbar.php");
     echo '<br />';
           }
         }
-        echo '<div />';
         $team->update_score();
         http_response_code(200);
-        echo '<div class="title" style="text-align:left;">';
-        echo '<span class="byline"><br/> <span style="color:red;">Rouge</span> : La solution est moins bonne que la précédente</span>';
-        echo '<span class="byline"><br/> <span style="color:green;">Vert</span> : La solution est meilleure que la précédente</span>';
-        echo '</div>';
-        echo "</section>";
+        echo '<p style="color:#2f2f2f; text-align:left; font-size:large; margin-bottom:3rem;">
+                  <em style="color:red;">Rouge : </em> La solution que vous avez proposé est moins bonne que la précédente </br>
+                  <em style="color:green;">Vert : </em>La solution que vous avez proposé est meilleure que la précédente </br>
+              </p>';
       } else {
         http_response_code(400);
       }
     } else {
       http_response_code(401);
     }
-      ?>
-
-      <section class="concours">
-          <div class="title" style="margin-top:20px; text-align:center;">
-              <h2 style="font-size: 2.7em; margin-bottom:30px; text-align:center;">Upload des solutions</h2>
-              <form action="" method="post" enctype="multipart/form-data">
-                  <span class="byline">Vous pouvez envoyer un ou plusieurs fichiers a la fois :</span>
-                  <span class="byline" style="color:black; font-size:x-large;">
-          <br /><br />
-            A :
-          <input type="file" name="solutions[]" style="margin-left:64px"/>
-          <br /><br />
-            NS :
-          <input type="file" name="solutions[]" style="margin-left:48px"/>
-          <br /><br />
-            PE :
-          <input type="file" name="solutions[]" style="margin-left:53px"/>
-          <br /><br />
-            PMP :
-          <input type="file" name="solutions[]" style="margin-left:30px"/>
-          <br /><br />
-          <input type="submit" value="Envoyer" name="submit" />
-        </span>
-              </form>
-          </div>
-      </section>
-
-      <?php
-  } else {
-
-?>
-
-  <section class="concours">
-    <div class="title" style="margin-top:20px; text-align:center;">
-      <h2 style="font-size: 2.7em; margin-bottom:30px; text-align:center;">Upload des solutions</h2>
-      <form action="" method="post" enctype="multipart/form-data">
-        <span class="byline">Vous pouvez envoyer un ou plusieurs fichiers a la fois :</span>
-        <span class="byline" style="color:black; font-size:x-large;">
-          <br /><br />
-            A :
-          <input type="file" name="solutions[]" style="margin-left:64px"/>
-          <br /><br />
-            NS :
-          <input type="file" name="solutions[]" style="margin-left:48px"/>
-          <br /><br />
-            PE :
-          <input type="file" name="solutions[]" style="margin-left:53px"/>
-          <br /><br />
-            PMP :
-          <input type="file" name="solutions[]" style="margin-left:30px"/>
-          <br /><br />
-          <input type="submit" value="Envoyer" name="submit" />
-        </span>
-      </form>
-    </div>
-  </section>
-
-<?php
   }
 ?>
-</div>
+                        <h3 style="color:black;">Upload des instances :</h3>
+                        <p style="color:#2f2f2f; font-size:large;">Vous pouvez envoyer un ou plusieurs fichiers à la fois :</p>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-small.json :</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-medium.json :</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-large.json :</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-info" type="submit" value="Envoyer" name="submit" style="border: 1px solid #0dcaf0;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <?php
-
-
 include("footer.php");
 ?>

@@ -1,11 +1,3 @@
 ErrorDocument 404 https://kiro.enpc.org/404.php
 ErrorDocument 403 https://kiro.enpc.org/403.php
 Options -Indexes
-
-<Files *.pdf> 
-Deny from All
-</Files>
-
-<Files *.zip> 
-Deny from All
-</Files>
