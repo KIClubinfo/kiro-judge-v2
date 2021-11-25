@@ -7,7 +7,7 @@ import './style.css';
 
 // Fichier de config ? Modification à la main ? Variable d'environnement ?
 // Tout cela ne me plait guère...
-const WEBSOCKET_URL = "wss://kiro.enpc.org/wss"
+const WEBSOCKET_URL = "wss://kiro-dev.enpc.org/wss"
 
 class Score extends React.Component {
     render() {
