@@ -29,7 +29,7 @@ include("navbar.php");
                             <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous des indications concernant les différentes rubriques</p>
                             <ul class="list-centered">
                                 <li style="color:black; font-size:large;">Pour accéder au sujet et aux instances associées, rendez-vous dans l'onglet "Sujet"</li>
-                                <li style="color:black; font-size:large;">Pour uploader votre solution, rendez-vous dans l'onglet "Upload des instances"</li>
+                                <li style="color:black; font-size:large;">Pour uploader votre solution, rendez-vous dans l'onglet "Upload des solutions"</li>
                                 <li style="color:black; font-size:large;">Pour visualiser le classement en temps réel, rendez-vous dans l'onglet "Classement"</li>
                                 <li style="color:black; font-size:large;">Pour contacter le KI en cas de problème, rendez-vous dans l'onglet "Contact"</li>
                             </ul>

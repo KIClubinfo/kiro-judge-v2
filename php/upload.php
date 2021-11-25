@@ -120,7 +120,7 @@ include("navbar.php");
     }
   }
 ?>
-                        <h3 style="color:black;">Upload des instances :</h3>
+                        <h3 style="color:black;">Upload des solutions :</h3>
                         <p style="color:#2f2f2f; font-size:large;">Vous pouvez envoyer un ou plusieurs fichiers à la fois :</p>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
