@@ -23,22 +23,17 @@
                 return Object(a.a)(c, [{
                     key: "render",
                     value: function() {
-                        return Object(j.jsxs)("div", {
-                            class: "row2",
-                            children: [Object(j.jsx)("div", {
-                                class: "cell",
+                        return Object(j.jsxs)("tr", {
+                            children: [Object(j.jsx)("th", {
+                                scope="row",
                                 children: this.props.name
-                            }), Object(j.jsx)("div", {
-                                class: "cell",
+                            }), Object(j.jsx)("td", {
                                 children: 1 + this.props.classement
-                            }), Object(j.jsx)("div", {
-                                class: "cell",
+                            }), Object(j.jsx)("td", {
                                 children: this.props.score
-                            }), Object(j.jsx)("div", {
-                                class: "cell",
+                            }), Object(j.jsx)("td", {
                                 children: 1 === this.props.hub ? "Hub de l'\xc9cole des Ponts" : "Hub distanciel (Discord)"
-                            }), Object(j.jsx)("div", {
-                                class: "cell",
+                            }), Object(j.jsx)("td", {
                                 children: 1 === this.props.type_equipe ? "1A" : 2 === this.props.type_equipe ? "\xc9tudiante" : "Autre"
                             })]
                         })
@@ -78,33 +73,31 @@
                     key: "render",
                     value: function() {
                         return Object(j.jsx)("div", {
-                            class: "container",
-                            children: Object(j.jsx)("div", {
-                                class: "wrap-table100",
-                                style: {
-                                    marginTop: "5vh"
-                                },
-                                children: Object(j.jsxs)("div", {
-                                    class: "table",
-                                    children: [Object(j.jsxs)("div", {
-                                        class: "row2 header",
-                                        children: [Object(j.jsx)("div", {
-                                            class: "cell",
+                            class:"table-responsive",
+                            children: Object(j.jsx)("table", {
+                                class:"box-tableau table table-hover text-white",
+                                children: [Object(j.jsxs)("thead", {
+                                    children: Object(j.jsxs)("tr", {
+                                        class: "table-dark",
+                                        children: [Object(j.jsx)("th", {
+                                            scope:"col",
                                             children: "Nom d'\xe9quipe"
-                                        }), Object(j.jsx)("div", {
-                                            class: "cell",
+                                        }), Object(j.jsx)("th", {
+                                            scope:"col",
                                             children: "Classement"
-                                        }), Object(j.jsx)("div", {
-                                            class: "cell",
+                                        }), Object(j.jsx)("th", {
+                                            scope:"col",
                                             children: "Score"
-                                        }), Object(j.jsx)("div", {
-                                            class: "cell",
+                                        }), Object(j.jsx)("th", {
+                                            scope:"col",
                                             children: "Hub"
-                                        }), Object(j.jsx)("div", {
-                                            class: "cell",
+                                        }), Object(j.jsx)("th", {
+                                            scope:"col",
                                             children: "Type"
                                         })]
-                                    }), this.state.scores.map((function(e, s) {
+                                    })
+                                }),Object(j.jsxs)("tbody", {
+                                    children: this.state.scores.map((function(e, s) {
                                         return Object(j.jsx)(u, {
                                             name: e.nom,
                                             score: e.public_score,
@@ -112,8 +105,8 @@
                                             hub: e.hub,
                                             type_equipe: e.type_equipe
                                         }, e.id)
-                                    }))]
-                                })
+                                    }))
+                                })]
                             })
                         })
                     }
