@@ -64,7 +64,7 @@ include("navbar.php");
             $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
               $results = [];
             exec($command_format, $results);
-            $score = intval($results[0]);
+            $score = intval($results[0]/10000);
 
             $errors_string = "";
             for ($i = 1; $i < sizeof($results); $i++) {
@@ -84,7 +84,7 @@ include("navbar.php");
               display_errors_button($errors_string);
             } else {
                 $color = ($old_score > $score) ?"green" : "red";
-              echo "<h4 style='color: {$color}; font-size:3rem; font-weight:500; text-align:center; margin:2rem;'>" . $score . "</h4>";
+              echo "<h4 style='color: {$color}; font-size:3rem; font-weight:500; text-align:center; margin:2rem;'>" . number_format($score) . "</h4>";
             }
     ?>
   </div>

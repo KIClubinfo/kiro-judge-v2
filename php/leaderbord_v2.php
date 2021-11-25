@@ -32,7 +32,7 @@ else{
                   ?>
                   <tr>
                     <th scope="row"><?php echo htmlspecialchars($team_affiche->nom); ?></th>
-                    <td><?php echo htmlspecialchars($team_affiche->score); ?></td>
+                    <td><?php echo htmlspecialchars(number_format($team_affiche->score)); ?></td>
                   </tr>
                   <?php
                   }
