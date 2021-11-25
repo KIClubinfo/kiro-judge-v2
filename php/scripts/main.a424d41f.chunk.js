@@ -25,7 +25,7 @@
                     value: function() {
                         return Object(j.jsxs)("tr", {
                             children: [Object(j.jsx)("th", {
-                                scope="row",
+                                scope: "row",
                                 children: this.props.name
                             }), Object(j.jsx)("td", {
                                 children: 1 + this.props.classement
