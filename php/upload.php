@@ -62,11 +62,9 @@ include("navbar.php");
 
 
             $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
-
               $results = [];
             exec($command_format, $results);
-
-            $score = intval($results[0]);
+            $score = floatval($results[0]);
 
             $errors_string = "";
             for ($i = 1; $i < sizeof($results); $i++) {
@@ -123,6 +121,10 @@ include("navbar.php");
                         <h3 style="color:black;">Upload des instances :</h3>
                         <p style="color:#2f2f2f; font-size:large;">Vous pouvez envoyer un ou plusieurs fichiers à la fois :</p>
                         <form action="" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-tiny.json :</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
                             <div class="form-group">
                                 <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-small.json :</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
