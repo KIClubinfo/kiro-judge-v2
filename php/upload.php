@@ -65,7 +65,9 @@ include("navbar.php");
               $results = [];
             exec($command_format, $results);
             $score = intval($results[0]/10000);
-
+            if($score==0){
+              $score = -1;
+            }
             $errors_string = "";
             for ($i = 1; $i < sizeof($results); $i++) {
               $errors_string .= $results[$i] . PHP_EOL;
