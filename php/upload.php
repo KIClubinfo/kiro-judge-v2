@@ -64,10 +64,8 @@ include("navbar.php");
             $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
               $results = [];
             exec($command_format, $results);
-            if($results[0]!=-1){
-              $score = intval($results[0]/10000);
-            }
-            else{
+            $score = intval($results[0]/10000);
+            if($score==0){
               $score = -1;
             }
             $errors_string = "";
