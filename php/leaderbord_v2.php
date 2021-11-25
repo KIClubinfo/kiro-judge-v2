@@ -3,7 +3,7 @@ include("config.php");
 include("header.php");
 include("navbar.php");
 
-if ($req2 = $conn->prepare("SELECT id FROM teams")) { //toutes les id des teams
+if ($req2 = $conn->prepare("SELECT id FROM teams ORDER BY score ASC")) { //toutes les id des teams
     $req2->execute();
     $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
 
@@ -31,12 +31,12 @@ else{
                   $team_affiche = new team($id_team);
                   ?>
                   <tr>
-                    <tr scope="row"><?php echo htmlspecialchars($team_affiche->nom); ?></tr>
+                    <th scope="row"><?php echo htmlspecialchars($team_affiche->nom); ?></th>
                     <td><?php echo htmlspecialchars($team_affiche->public_score); ?></td>
                   </tr>
                   <?php
                   }
-                  }?>
+                  ?>
                 </tbody>
             </table>
           </div>
