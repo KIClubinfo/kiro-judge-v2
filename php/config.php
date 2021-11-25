@@ -178,7 +178,7 @@ function update_solution($solution_id, $score, $error)
 {
     global $conn;
     if ($request = $conn->prepare("UPDATE solutions SET errors = ?, score = ? WHERE solution_id = ?")) {
-        $request->bind_param("sfi", $error, $score, $solution_id);
+        $request->bind_param("sii", $error, $score, $solution_id);
         $request->execute();
         $request->close();
     }
