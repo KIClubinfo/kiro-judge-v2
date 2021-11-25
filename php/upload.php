@@ -62,11 +62,9 @@ include("navbar.php");
 
 
             $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
-
               $results = [];
             exec($command_format, $results);
-
-            $score = intval($results[0]);
+            $score = floatval($results[0]);
 
             $errors_string = "";
             for ($i = 1; $i < sizeof($results); $i++) {
