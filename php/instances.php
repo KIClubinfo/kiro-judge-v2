@@ -1,26 +1,26 @@
 <?php
 const INSTANCE_NAMES = [
-    "A",
-    "NS",
-    "PE",
-    "PMP"
+    "KIRO-tiny",
+    "KIRO-small",
+    "KIRO-medium",
+    "KIRO-large"
 ];
 
 const INSTANCE_FILES = [
-    "/var/www/html/solution_checker/instances/A.json",
-    "/var/www/html/solution_checker/instances/NS.json",
-    "/var/www/html/solution_checker/instances/PE.json",
-    "/var/www/html/solution_checker/instances/PMP.json"
+    "/var/www/html/solution_checker/instances/KIRO-tiny.json",
+    "/var/www/html/solution_checker/instances/KIRO-small.json",
+    "/var/www/html/solution_checker/instances/KIRO-medium.json",
+    "/var/www/html/solution_checker/instances/KIRO-large.json"
 ];
 
 const INSTANCE_SCORES = [
-    930000,
-    21483000,
-    18834240,
-    17584000,
+    5000000,
+    1000000000,
+    5000000000,
+    300000000000
 ];
 
-const WORST_SCORE = 58831240;
+const WORST_SCORE = 306005000000;
 
 function display_errors_button($errors) {
     $errors_format = str_replace(PHP_EOL, "<br/>", $errors);

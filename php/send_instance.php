@@ -33,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
 
                     $instances = [
-                        "/var/www/html/solution_checker/instances/Asmall_fixed.json",
-                        "/var/www/html/solution_checker/instances/inst_A_fixed.json",
-                        "/var/www/html/solution_checker/instances/inst_NS_fixed.json",
-                        "/var/www/html/solution_checker/instances/inst_PMP_fixed.json"
+                        "/var/www/html/solution_checker/instances/KIRO-tiny.json",
+                        "/var/www/html/solution_checker/instances/KIRO-small.json",
+                        "/var/www/html/solution_checker/instances/KIRO-medium.json",
+                        "/var/www/html/solution_checker/instances/KIRO-large.json"
                     ];
 
 

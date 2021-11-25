@@ -1,5 +1,14 @@
 <?php
 include("config.php");
+
+if (!isset($_SESSION["user"])){
+    header('Location: index.php?not_connected');
+    exit();
+}
+  
+include("date_protection.php");
+protect_before($dateconcours);
+
 include("header.php");
 include("navbar.php");
 ?>
