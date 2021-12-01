@@ -88,7 +88,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
                     } ?>
                     <td><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></td>
                     <td><?php if ($team_affiche->hub == 1) {echo "Hub de l'École des Ponts";} else{echo "Hub distanciel (Discord)";}?></td>
-                    <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "Autre";}?></td>
+                    <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "RO";}?></td>
                   </tr>
                 </tbody>
             </table>
@@ -182,7 +182,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
                     <th scope="row"><?php echo htmlspecialchars($team_affiche->id) ?></th><?php  } ?>
                     <td><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></td>
                     <td><?php if ($team_affiche->hub == 1) {echo "Hub de l'École des Ponts";} else{echo "Hub distanciel (Discord)";}?></td>
-                    <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "Autre";}?></td>
+                    <td><?php if ($team_affiche->type_equipe == 1) {echo "1A";} elseif ($team_affiche->type_equipe == 2) {echo "Étudiante";} else{echo "RO";}?></td>
                   </tr>
                   <?php
                   }

@@ -101,7 +101,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
                                                     } elseif ($team_affiche->type_equipe == 2) {
                                                                   echo "Étudiante";
                                                     } else{
-                                                                  echo "Autre";
+                                                                  echo "RO";
                                                       }?></div>
         </div>
       </div>
@@ -227,7 +227,7 @@ if (isset($membre_3)) { //Si tout a bien marché on affiche tout
                                 } elseif ($team_affiche->type_equipe == 2) {
                                               echo "Étudiante";
                                 } else{
-                                              echo "Autre";
+                                              echo "RO";
                                   }?></div>
       </div>
 

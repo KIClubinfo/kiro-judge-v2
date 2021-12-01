@@ -208,7 +208,7 @@ if (!(isset($_SESSION['user']))) { //vérifie que l'utilisateur n'est pas connec
                     <div class="form-group" style="margin:2rem;">
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="1"> Équipe 1A des ponts
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="2"> Équipe étudiante
-                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> Autre
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> RO
                     </div>
                     <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-info">Étape suivante</button>
                 </div>
@@ -369,7 +369,7 @@ if (isset($erreur)) {
                     <div class="form-group" style="margin:2rem;">
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="1"> Équipe 1A des ponts
                       <INPUT type="radio" name="type_equipe" class="form-check-input" value="2"> Équipe étudiante
-                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> Autre
+                      <INPUT type="radio" name="type_equipe" class="form-check-input" value="3" checked> RO
                     </div>
                     <button type="button" id="button-1" onclick="javascript:avance('equipe', 'participant-1');" class="btn btn-info">Étape suivante</button>
                 </div>

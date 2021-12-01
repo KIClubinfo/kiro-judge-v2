@@ -15,30 +15,35 @@ else{
 }
 ?>
 <header class="masthead min-vh-80">
-      <div class="container">
-          <div class="table-responsive">
-            <table class="box-tableau table table-hover text-white">
-                <thead>
-                  <tr class="table-dark">
-                    <th scope="col">Nom d'équipe</th>
-                    <th scope="col">Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  foreach($result_ids as $id_team){
-                  $id_team = $id_team["id"];
-                  $team_affiche = new team($id_team);
-                  ?>
-                  <tr>
-                    <th scope="row"><?php echo htmlspecialchars($team_affiche->nom); ?></th>
-                    <td><?php echo htmlspecialchars(number_format($team_affiche->score)); ?></td>
-                  </tr>
-                  <?php
-                  }
-                  ?>
-                </tbody>
-            </table>
+    <div class="container-fluid">
+        <div class="row">
+            <?php include("menuconcours.php"); ?>
+            <div class="col-lg-8">
+                <div class="table-responsive">
+                    <table class="box-tableau table table-hover text-white">
+                        <thead>
+                          <tr class="table-dark">
+                            <th scope="col">Nom d'équipe</th>
+                            <th scope="col">Score</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          foreach($result_ids as $id_team){
+                          $id_team = $id_team["id"];
+                          $team_affiche = new team($id_team);
+                          ?>
+                          <tr>
+                            <th scope="row"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></th>
+                            <td><?php echo htmlspecialchars(number_format($team_affiche->score)); ?></td>
+                          </tr>
+                          <?php
+                          }
+                          ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
           </div>
       </div>
   </header>
