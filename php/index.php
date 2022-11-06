@@ -163,8 +163,8 @@ if (!empty($msg_error)) {
                 <p>Cette sixième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne ou à distance sur Discord le jeudi 24 novembre 2022.</p>
                 <div class="row h-100">
                     <div class="col-lg-2" style="margin-top: 1rem;">
-                      <div class="box"> <span><strong>13h30</strong></span>
-                        <p> Accueil des participants. </p>
+                      <div class="box"> <span><strong>13h15</strong></span>
+                        <p> Accueil des participant et présentation du sujet par l'entreprise. </p>
                       </div>
                     </div>
                     <div class="col-lg-2" style="margin-top: 1rem;">
@@ -183,8 +183,8 @@ if (!empty($msg_error)) {
                       </div>
                     </div>
                     <div class="col-lg-3" style="margin-top: 1rem;">
-                      <div class="box"> <span><strong>21h</strong></span>
-                        <p>Annonce des résultats et remise des prix à l'École des Ponts.</p>
+                      <div class="box"> <span><strong>20h30</strong></span>
+                        <p>Annonce des résultats, remise des prix à l'École des Ponts et buffet convivial.</p>
                       </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@ if (!empty($msg_error)) {
                     <div class="col-lg-4">
                       <div class="box-invisible">
                         <span><strong>Article 3</strong></span>
-                        <p>La participation se fait par équipes de trois candidats. Exceptionnellement, la présence physique des candidats n’est pas requise, et le concours pourra se faire en ligne sur Discord.</p>
+                        <p>La participation se fait par équipes de trois candidats. La présence physique des candidats est recommandée mais pas obligatoire, le concours pourra se faire en ligne sur Discord.</p>
                       </div>
                     </div>
                 </div>
