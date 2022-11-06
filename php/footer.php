@@ -9,15 +9,15 @@
                             <a href="https://cermics.enpc.fr"><img src="assets/img/cermics.png" height="100px"></a>
                         </div>
                         <div class="col-lg-4">
-                            <a href="https://www.airliquide.com/fr"><img src="assets/img/air_liquide.png" height="100px"></a>
+                            <a href="https://www.pelico.ai"><img src="assets/img/pelico.svg" height="50px"></a>
                         </div>
                         <div class="col-lg-4">
-                            <a href="https://clubinfo.enpc.org" ><img src="assets/img/ki.png" height="100px"></i></a>
+                            <a href="https://www.fondationdesponts.fr" ><img src="assets/img/fdp.png" height="100px"></i></a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-white">
-                            Kiro 2021 &copy; Club Informatique de l'École des Ponts
+                            Kiro 2022 &copy; Club Informatique de l'École des Ponts
                         </div>
                     </div>
                 </div>
