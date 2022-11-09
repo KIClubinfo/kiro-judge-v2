@@ -95,7 +95,7 @@ if (!empty($msg_error)) {
                     <div class="col-lg-12" style="margin-top: 2rem;">
                         <div class="box">
                             <a href="https://www.pelico.ai">
-                                <img src="assets/img/pelico.svg" height="90px">
+                                <img src="assets/img/pelico.svg" width= "60%">
                             </a>
                             <p style="margin-top: 15px;">La chaîne d'approvisionnement et la production sont devenues plus complexes que jamais, 
                             avec une demande volatile, des chaînes d'approvisionnement fragmentées et des produits de plus en plus complexes. 
