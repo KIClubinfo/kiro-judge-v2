@@ -35,7 +35,7 @@ else{
                           ?>
                           <tr>
                             <th scope="row"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></th>
-                            <td><?php echo htmlspecialchars(number_format($team_affiche->score)); ?></td>
+                            <td><?php echo htmlspecialchars(number_format($team_affiche->public_score)); ?></td>
                           </tr>
                           <?php
                           }
