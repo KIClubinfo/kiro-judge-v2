@@ -10,9 +10,10 @@ ini_set('display_errors', 'Off');
 $db_password = $_ENV["mysql_password"];
 
 setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
-$date_limite_inscription = date_create('2022-11-25');
+$date_limite_inscription = date_create('2022-11-24');
 $aujourdhui = new DateTime("now");
-$dateconcours = new DateTime('2021-11-25 14:00:00');
+$dateconcours = new DateTime('2022-11-23 13:00:00');
+$datefinconcours = new DateTime('2022-11-24 20:00:00');
 
 $phpFileUploadErrors = array(
     0 => 'There is no error, the file uploaded with success',
@@ -138,7 +139,7 @@ class team
 
                     // VERIFIER QU'UNE CERTAINE CONDITION SUR LA DATE SOIT REMPLIE (@leaderboad_freeze)
                     $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
-                    $datefreeze = new DateTime('2021-05-06 16:30:00');
+                    $datefreeze = new DateTime('2022-11-24 19:30:00');
                     if ($date<=$datefreeze) {
                         if ($req3 = $conn->prepare("UPDATE teams SET public_score =? WHERE id=?")) {
                             $req3->bind_param("si", $score, $this->id);
