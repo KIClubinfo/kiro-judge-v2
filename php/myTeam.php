@@ -7,7 +7,7 @@ if (!isset($_SESSION["user"])){
 }
   
 include("date_protection.php");
-protect_before($dateconcours);
+protect_before($dateconcours,$datefinconcours);
 
 include("header.php");
 include("navbar.php");

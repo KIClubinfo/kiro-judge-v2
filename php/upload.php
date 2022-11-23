@@ -7,7 +7,7 @@ if (!isset($_SESSION["user"])) {
 }
 
 include("date_protection.php");
-protect_before($dateconcours);
+protect_before($dateconcours,$datefinconcours);
 
 include("header.php");
 include("navbar.php");
@@ -56,7 +56,7 @@ include("navbar.php");
 
 
             move_uploaded_file($tmp_name, $file_path);
-            $command = 'python3 /var/www/html/solution_checker/AirLiquideJudge/python/airliquideparser.py -s "%s" -i "%s"';
+            $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
 
             $old_score = $team->get_instance_best_score($key);
 
@@ -64,7 +64,7 @@ include("navbar.php");
             $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
               $results = [];
             exec($command_format, $results);
-            $score = intval($results[0]/10000);
+            $score = intval($results[0]);
             if($score==0){
               $score = -1;
             }
@@ -128,15 +128,15 @@ include("navbar.php");
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-small.json :</h4>
-                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
-                            </div>
-                            <div class="form-group">
                                 <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-medium.json :</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
                                 <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-large.json :</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">KIRO-huge.json :</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">

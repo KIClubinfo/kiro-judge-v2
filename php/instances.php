@@ -1,16 +1,16 @@
 <?php
 const INSTANCE_NAMES = [
     "KIRO-tiny",
-    "KIRO-small",
     "KIRO-medium",
-    "KIRO-large"
+    "KIRO-large",
+    "KIRO-huge"
 ];
 
 const INSTANCE_FILES = [
     "/var/www/html/solution_checker/instances/KIRO-tiny.json",
-    "/var/www/html/solution_checker/instances/KIRO-small.json",
     "/var/www/html/solution_checker/instances/KIRO-medium.json",
-    "/var/www/html/solution_checker/instances/KIRO-large.json"
+    "/var/www/html/solution_checker/instances/KIRO-large.json",
+    "/var/www/html/solution_checker/instances/KIRO-huge.json",
 ];
 
 const INSTANCE_SCORES = [

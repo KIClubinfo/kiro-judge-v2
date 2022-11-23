@@ -34,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $instances = [
                         "/var/www/html/solution_checker/instances/KIRO-tiny.json",
-                        "/var/www/html/solution_checker/instances/KIRO-small.json",
                         "/var/www/html/solution_checker/instances/KIRO-medium.json",
-                        "/var/www/html/solution_checker/instances/KIRO-large.json"
+                        "/var/www/html/solution_checker/instances/KIRO-large.json",
+                        "/var/www/html/solution_checker/instances/KIRO-huge.json"
                     ];
 
 

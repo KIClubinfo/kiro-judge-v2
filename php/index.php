@@ -21,6 +21,10 @@ if (isset($_GET['not_connected'])) {
   $msg_error = "Tu dois être connecté pour accéder à cette partie.";
 }
 
+if (isset($_GET['finished'])) {
+  $msg_error = "Le concours est terminé ! Merci d'avoir participé";
+}
+
 if (isset($_GET['deco'])) { //On affiche un message pour signifier la bonne déconnexion
   $msg = "Tu as bien été déconnecté.";
 }
