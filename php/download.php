@@ -10,7 +10,7 @@ if (!isset($_SESSION["user"])){
 }
 
 include("date_protection.php");
-protect_before($dateconcours);
+protect_before($dateconcours,$datefinconcours);
 
     //telechargement du fichier
     if(isset($_GET['path'])){

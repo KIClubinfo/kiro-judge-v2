@@ -12,7 +12,7 @@ if (!isset($_SESSION["user"])){
 $dateconcours = new DateTime('2021-05-06 12:00:00');
 
 include("date_protection.php");
-protect_before($dateconcours);
+protect_before($dateconcours,$datefinconcours);
 
     //telechargement du fichier
     if(isset($_GET['path'])){
