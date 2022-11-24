@@ -9,7 +9,7 @@ if (!isset($_SESSION["user"])){
   exit();
 }
 
-$dateconcours = new DateTime('2021-05-06 12:00:00');
+$dateconcours = new DateTime('2021-11-25 14:00:00');
 
 include("date_protection.php");
 protect_before($dateconcours);
