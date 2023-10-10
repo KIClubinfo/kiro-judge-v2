@@ -13,6 +13,8 @@ services:
       - mysql_password=${mysql_password}
       - SENDGRID_API_KEY=${SENDGRID_API_KEY}
       - discord_link=${discord_link}
+    volumes:
+      - ./php:/var/www/html
   websocket:
     build:
       context: ./node
