@@ -76,7 +76,7 @@ if (!empty($msg_error)) {
                 <h3 class="section-subheading text-muted" style="font-size: 1,5rem;">À l'École des Ponts ParisTech</h3>
             </div>
             <div class="row text-justify">
-                <p> Participez à la sixième édition du KIRO, un concours organisé par le Club Informatique de l'École des Ponts, 
+                <p> Participez à la septième édition du KIRO, un concours organisé par le Club Informatique de l'École des Ponts, 
                     en partenariat avec l'entreprise RTE, la Fondation des Ponts et le laboratoire CERMICS. Il s'agit d'un concours ouvert aux étudiants 
                     intéressés par la résolution effective d'un problème de recherche opérationnelle.</p>
                 <p> En quelques mots, le KIRO c'est : </p>
