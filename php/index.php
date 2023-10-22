@@ -92,7 +92,7 @@ if (!empty($msg_error)) {
     <section class="page-section bg-light" id="partenaires">
         <div class="container">
             <div class="text-center" style=" border-radius: 10px; padding:1rem; background-color: rgba(73, 73, 73, 0.356);">
-                <h2 class="text-white text-uppercase" style="font-size: 2.7em;">Une sixième édition</h2>
+                <h2 class="text-white text-uppercase" style="font-size: 2.7em;">Une septième édition</h2>
                 <span class="text-white" style="font-size: 1.7em;">Sponsorisée par RTE, la Fondation des Ponts et le CERMICS</span>
             </div>
                 <div class="row h-100">
@@ -160,7 +160,7 @@ if (!empty($msg_error)) {
                 <h3 class="section-subheading-section text-muted">Date limite des inscriptions</h3>
                 <p>Les inscriptions se termineront le mercredi 8 novembre à 23h59. Aucune inscription ne sera acceptée passé ce delai.</p>
                 <h3 class="section-subheading-section text-muted">La session</h3>
-                <p>Cette sixième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne ou à distance sur Discord le jeudi 9 novembre 2023.</p>
+                <p>Cette septième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne ou à distance sur Discord le jeudi 9 novembre 2023.</p>
                 <div class="row h-100">
                     <div class="col-lg-2" style="margin-top: 1rem;">
                       <div class="box"> <span><strong>13h15</strong></span>
