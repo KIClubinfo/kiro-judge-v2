@@ -287,7 +287,7 @@ if (!empty($msg_error)) {
                 <p>Plusieurs options sont disponibles pour passer le KIRO, en <strong>présentiel ou distanciel</strong>.</br> L'édition présentielle se déroulera dans les locaux de l'Ecole des Ponts.</p>
                 </br>
                 <p><strong>Cité Descartes, 6-8 Avenue Blaise Pascal, 77420 Champs-sur-Marne<br>
-                    Bâtiment Carnot, amphithéâtre Cauchy <br>
+                    Bâtiment Coriolos, amphithéâtre Caquot <br>
                 </strong></p>
                 </br>
                 <p>Pour ceux passant l’épreuve au format distanciel, le lien du discord vous sera envoyé après inscription.
