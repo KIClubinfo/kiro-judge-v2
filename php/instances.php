@@ -8,11 +8,11 @@ const INSTANCE_NAMES = [
 ];
 
 const INSTANCE_FILES = [
-    "/var/www/html/solution_checker/instances/toy.json",
-    "/var/www/html/solution_checker/instances/small.json",
-    "/var/www/html/solution_checker/instances/medium.json",
-    "/var/www/html/solution_checker/instances/large.json",
-    "/var/www/html/solution_checker/instances/huge.json",
+    "/var/www/html/solution_checker/instances/input/toy.json",
+    "/var/www/html/solution_checker/instances/input/small.json",
+    "/var/www/html/solution_checker/instances/input/medium.json",
+    "/var/www/html/solution_checker/instances/input/large.json",
+    "/var/www/html/solution_checker/instances/input/huge.json",
 ];
 
 const INSTANCE_SCORES = [
