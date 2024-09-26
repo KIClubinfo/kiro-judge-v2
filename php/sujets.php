@@ -27,7 +27,7 @@ include("navbar.php");
                             <?php
                             $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 
-                            if ($date>=$dateconcours) {
+                            if ($date>=$dateconcours or is_admin()) {
                                                 echo '
                                                 <span style="color:black; font-size:large;">
                                                 Accédez au <a style="font-weight:700;" href="download.php?path=/var/www/html/sujet_concours/sujet.pdf">sujet du concours</a>.</br>
