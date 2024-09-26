@@ -15,6 +15,7 @@ services:
       - discord_link=${discord_link}
     volumes:
       - ./php:/var/www/html
+      - "/var/www/html/vendor"
   websocket:
     build:
       context: ./node
