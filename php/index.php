@@ -73,11 +73,11 @@ if (!empty($msg_error)) {
         <div class="container" style="padding-top: 1rem;">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">UN CONCOURS DE RECHERCHE OPÉRATIONNELLE POUR LES ÉTUDIANTS</h2>
-                <h3 class="section-subheading text-muted" style="font-size: 1,5rem;">À l'École des Ponts ParisTech</h3>
+                <h3 class="section-subheading text-muted" style="font-size: 1,5rem;">À l'École Nationale des Ponts et Chaussées</h3>
             </div>
             <div class="row text-justify">
-                <p> Participez à la septième édition du KIRO, un concours organisé par le Club Informatique de l'École des Ponts, 
-                    en partenariat avec l'entreprise RTE, la Fondation des Ponts et le laboratoire CERMICS. Il s'agit d'un concours ouvert aux étudiants 
+                <p> Participez à la huitième édition du KIRO, un concours organisé par le Club Informatique de l'École des Ponts, 
+                    en partenariat avec Renault, la Fondation des Ponts et le laboratoire CERMICS. Il s'agit d'un concours ouvert aux étudiants 
                     intéressés par la résolution effective d'un problème de recherche opérationnelle.</p>
                 <p> En quelques mots, le KIRO c'est : </p>
                 <ul style="padding-left: 3rem;">
@@ -92,17 +92,17 @@ if (!empty($msg_error)) {
     <section class="page-section bg-light" id="partenaires">
         <div class="container">
             <div class="text-center" style=" border-radius: 10px; padding:1rem; background-color: rgba(73, 73, 73, 0.356);">
-                <h2 class="text-white text-uppercase" style="font-size: 2.7em;">Une septième édition</h2>
-                <span class="text-white" style="font-size: 1.7em;">Sponsorisée par RTE, la Fondation des Ponts et le CERMICS</span>
+                <h2 class="text-white text-uppercase" style="font-size: 2.7em;">Une huitième édition</h2>
+                <span class="text-white" style="font-size: 1.7em;">Sponsorisée par Renault, la Fondation des Ponts et le CERMICS</span>
             </div>
                 <div class="row h-100">
                     <div class="col-lg-12" style="margin-top: 2rem;">
                         <div class="box">
-                            <a href="https://www.rte-france.com">
-                                <img src="assets/img/rte.png" width= "10%">
+                            <a href="https://www.renault.fr" target="_blank">
+                                <img src="assets/img/renault.png" height= "150px">
                             </a>
                             <p style="margin-top: 15px;">    
-                            RTE, gestionnaire du réseau de transport d’électricité français, assure une mission de service public : garantir l’alimentation en électricité à tout moment et avec la même qualité de service sur le territoire national grâce à la mobilisation de ses 9 500 salariés. RTE gère en temps réel les flux électriques et l'équilibre entre la production et la consommation. RTE maintient et développe le réseau haute et très haute tension (de 63 000 à 400 000 volts) qui compte plus de 100 000 kilomètres de lignes aériennes, plus de 6 000 kilomètres de lignes souterraines, 2 800 postes électriques en exploitation ou co-exploitation et 51 lignes transfrontalières. Le réseau français, qui est le plus étendu d’Europe, est interconnecté avec 33 pays. En tant qu’opérateur industriel de la transition énergétique, RTE optimise et transforme son réseau pour raccorder les installations de production d’électricité quels que soient les choix énergétiques futurs. RTE, par son expertise et ses rapports, éclaire les choix des pouvoirs publics.
+                            Marque historique de la mobilité, leader de l’électrique en Europe, Renault développe depuis toujours des véhicules innovants. Avec le plan stratégique « Renaulution », dévoilé en janvier 2021, la marque dessine une transformation ambitieuse et génératrice de valeur. Elle entend incarner la modernité et l'innovation dans les services technologiques, énergétiques et de mobilité - dans l’industrie automobile et au-delà.
                             </p>
                         </div>
                     </div>
@@ -122,11 +122,11 @@ if (!empty($msg_error)) {
                     <div class="col-lg-6" style="margin-top: 2rem;">
                         <div class="box">
                             <a href="https://cermics.enpc.fr">
-                                <img src="assets/img/cermics.png" height="120px">
+                                <img src="assets/img/Logo-CERMICS-2024.png" height="80px">
                             </a>
                             <p style="margin-top: 15px;">Le <strong>CERMICS</strong> (Centre d'Enseignement et de Recherche
                                 en Mathématiques et Calcul Scientifique) est le laboratoire de recherche en mathématiques
-                                appliquées de l'École des Ponts ParisTech. Ses principaux domaines de recherche sont les
+                                appliquées de l'École Nationale des Ponts et Chaussées. Ses principaux domaines de recherche sont les
                                 Probabilités Appliquées, La Modélisation, l'Analyse et la Simulation et L'Optimisation des
                                 Systèmes.</p>
                         </div>
@@ -149,7 +149,10 @@ if (!empty($msg_error)) {
 		            <li> <a href="sujets/sujet4.pdf" target="_blank">Session 2020-2021, en partenariat avec la SNCF</a> et les <a href="sujets/sujet4.zip" target="_blank">instances</a></li>
                 <li> <a href="sujets/sujet5_v2.pdf" target="_blank">Session 2021-2022, en partenariat avec AirLiquide</a> et les <a href="sujets/sujet5_v2.zip" target="_blank">instances</a></li>
                 <li> <a href="sujets/sujet6.pdf" target="_blank">Session 2022-2023, en partenariat avec Pelico</a> et les <a href="sujets/sujet6.zip" target="_blank">instances</a></li>
-            </ul>
+                <li> <a href="sujets/sujet7.pdf" target="_blank">Session 2023-2024, en partenariat avec RTE</a> et les <a href="sujets/sujet7.zip" target="_blank">instances</a></li>
+
+              
+              </ul>
         </div>
     </section>
     <!-- Le Planning-->
@@ -158,9 +161,9 @@ if (!empty($msg_error)) {
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Le Planning</h2>
                 <h3 class="section-subheading-section text-muted">Date limite des inscriptions</h3>
-                <p>Les inscriptions se termineront le mercredi 8 novembre à 23h59. Aucune inscription ne sera acceptée passé ce delai.</p>
+                <p>Les inscriptions se termineront le mercredi 13 novembre à 23h59. Aucune inscription ne sera acceptée passé ce delai.</p>
                 <h3 class="section-subheading-section text-muted">La session</h3>
-                <p>Cette septième session se déroulera au choix au sein de l'École des Ponts ParisTech à Champs-sur-Marne ou à distance sur Discord le jeudi 9 novembre 2023.</p>
+                <p>Cette huitième session se déroulera au choix au sein de l'École Nationale des Ponts et Chaussées à Champs-sur-Marne ou à distance sur Discord le jeudi 14 novembre 2024.</p>
                 <div class="row h-100">
                     <div class="col-lg-2" style="margin-top: 1rem;">
                       <div class="box"> <span><strong>13h15</strong></span>
@@ -277,7 +280,7 @@ if (!empty($msg_error)) {
                     <li>2ème : 1000 €</li>
                     <li>3ème : 500 €</li>
                 </ul>
-                En plus de ces prix, la 1ère équipe composée uniquement de <strong>1A</strong> de l'École des Ponts gagnera un iPad par personne.
+                En plus de ces prix, la 1ère équipe composée uniquement de <strong>1A</strong> de l'École des Ponts gagnera <strong>un iPad par personne</strong>.
                 </p>
                 <button class="btn btn-info" onclick="self.location.href='inscription.php'">S'inscrire</button>
             </div>

@@ -6,18 +6,18 @@
             <div class="container">
                     <div class="row h-100" style="margin-top:2rem; margin-bottom:2rem;">
                         <div class="col-lg-4">
-                            <a href="https://cermics.enpc.fr"><img src="assets/img/cermics.png" height="100px"></a>
+                            <a href="https://cermics.enpc.fr" target="_blank"><img src="assets/img/Logo-CERMICS-2024.png" height="70px"></a>
                         </div>
                         <div class="col-lg-4">
-                            <a href="https://www.rte-france.com/"><img src="assets/img/rte.png" height="100px"></a>
+                            <a href="https://www.renault.fr" target="_blank"><img src="assets/img/renault-blanc.png" height="100px"></a>
                         </div>
                         <div class="col-lg-4">
-                            <a href="https://www.fondationdesponts.fr" ><img src="assets/img/fdp.png" height="100px"></i></a>
+                            <a href="https://www.fondationdesponts.fr" target="_blank"><img src="assets/img/fdp.png" height="100px"></i></a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-white">
-                            Kiro 2023 &copy; Club Informatique de l'École des Ponts
+                            Kiro 2024 &copy; Club Informatique de l'École des Ponts
                         </div>
                     </div>
                 </div>
