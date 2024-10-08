@@ -276,11 +276,11 @@ if (!empty($msg_error)) {
 
                 <p>Voici les prix remis aux trois premières équipes étudiantes, à partager entre les membres du groupe:
                 <ul class="list-centered">
-                    <li>1er : 1500€</li>
-                    <li>2ème : 1000 €</li>
+                    <li>1er : 1000€</li>
+                    <li>2ème : 750 €</li>
                     <li>3ème : 500 €</li>
                 </ul>
-                En plus de ces prix, la 1ère équipe composée uniquement de <strong>1A</strong> de l'École des Ponts gagnera <strong>un iPad par personne</strong>.
+                En plus de ces prix, la 1ère équipe composée uniquement de <strong>1A</strong> de l'École des Ponts gagnera <strong>750 €</strong>.
                 </p>
                 <button class="btn btn-info" onclick="self.location.href='inscription.php'">S'inscrire</button>
             </div>
