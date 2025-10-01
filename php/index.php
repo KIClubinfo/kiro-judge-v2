@@ -76,8 +76,8 @@ if (!empty($msg_error)) {
                 <h3 class="section-subheading text-muted" style="font-size: 1,5rem;">À l'École Nationale des Ponts et Chaussées</h3>
             </div>
             <div class="row text-justify">
-                <p> Participez à la huitième édition du KIRO, un concours organisé par le Club Informatique de l'École des Ponts, 
-                    en partenariat avec Renault, la Fondation des Ponts et le laboratoire CERMICS. Il s'agit d'un concours ouvert aux étudiants 
+                <p> Participez à la neuvième édition du KIRO, un concours organisé par le Club Informatique de l'École des Ponts, 
+                    en partenariat avec Califrais, la Fondation des Ponts et le laboratoire CERMICS. Il s'agit d'un concours ouvert aux étudiants 
                     intéressés par la résolution effective d'un problème de recherche opérationnelle.</p>
                 <p> En quelques mots, le KIRO c'est : </p>
                 <ul style="padding-left: 3rem;">
@@ -92,17 +92,21 @@ if (!empty($msg_error)) {
     <section class="page-section bg-light" id="partenaires">
         <div class="container">
             <div class="text-center" style=" border-radius: 10px; padding:1rem; background-color: rgba(73, 73, 73, 0.356);">
-                <h2 class="text-white text-uppercase" style="font-size: 2.7em;">Une huitième édition</h2>
-                <span class="text-white" style="font-size: 1.7em;">Sponsorisée par Renault, la Fondation des Ponts et le CERMICS</span>
+                <h2 class="text-white text-uppercase" style="font-size: 2.7em;">Une neuvième édition</h2>
+                <span class="text-white" style="font-size: 1.7em;">Sponsorisée par Califrais, la Fondation des Ponts et le CERMICS</span>
             </div>
                 <div class="row h-100">
                     <div class="col-lg-12" style="margin-top: 2rem;">
                         <div class="box">
-                            <a href="https://www.renault.fr" target="_blank">
-                                <img src="assets/img/renault.png" height= "150px">
+                            <a href="https://www.califrais.fr/" target="_blank">
+                                <img src="assets/img/Califrais_transparent.png" height= "150px">
                             </a>
                             <p style="margin-top: 15px;">    
-                            Marque historique de la mobilité, leader de l’électrique en Europe, Renault développe depuis toujours des véhicules innovants. Avec le plan stratégique « Renaulution », dévoilé en janvier 2021, la marque dessine une transformation ambitieuse et génératrice de valeur. Elle entend incarner la modernité et l'innovation dans les services technologiques, énergétiques et de mobilité - dans l’industrie automobile et au-delà.
+                              <strong>Califrais</strong> est une start-up française spécialisée dans l’optimisation des flux alimentaires, en particulier des produits frais et périssables. Basée au Marché International de Rungis, la startup développe des solutions innovantes combinant intelligence artificielle, modélisation mathématique et logistique opérationnelle.
+                            </p>
+                            
+                            <p style="margin-top: 15px;">    
+                              Fondée en 2014, Califrais a pour mission de rendre la chaîne d’approvisionnement alimentaire plus performante et plus durable. Son objectif est double : réduire le gaspillage alimentaire et décarboner la logistique grâce à une meilleure prévision de la demande, une optimisation des stocks et une organisation des livraisons plus efficace.
                             </p>
                         </div>
                     </div>
@@ -161,32 +165,32 @@ if (!empty($msg_error)) {
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Le Planning</h2>
                 <h3 class="section-subheading-section text-muted">Date limite des inscriptions</h3>
-                <p>Les inscriptions se termineront le mercredi 13 novembre à 23h59. Aucune inscription ne sera acceptée passé ce delai.</p>
+                <p>Les inscriptions se termineront le mercredi 12 novembre à 23h59. Aucune inscription ne sera acceptée passé ce delai.</p>
                 <h3 class="section-subheading-section text-muted">La session</h3>
-                <p>Cette huitième session se déroulera au choix au sein de l'École Nationale des Ponts et Chaussées à Champs-sur-Marne ou à distance sur Discord le jeudi 14 novembre 2024.</p>
+                <p>Cette neuvième session se déroulera au choix au sein de l'École Nationale des Ponts et Chaussées à Champs-sur-Marne ou à distance sur Discord le jeudi 12 novembre 2025.</p>
                 <div class="row h-100">
                     <div class="col-lg-2" style="margin-top: 1rem;">
-                      <div class="box"> <span><strong>13h15</strong></span>
+                      <div class="box"> <span><strong>12h30</strong></span>
                         <p> Accueil des participant et présentation du sujet par l'entreprise. </p>
                       </div>
                     </div>
                     <div class="col-lg-2" style="margin-top: 1rem;">
-                      <div class="box"> <span><strong>14h</strong></span>
+                      <div class="box"> <span><strong>13h</strong></span>
                         <p> Début de l'épreuve. </p>
                       </div>
                     </div>
                     <div class="col-lg-3" style="margin-top: 1rem;">
-                      <div class="box"> <span><strong>19h30</strong></span>
+                      <div class="box"> <span><strong>18h30</strong></span>
                         <p> Dernière demie-heure, l'accès au palmarès des scores est figé. </p>
                       </div>
                     </div>
                     <div class="col-lg-2" style="margin-top: 1rem;">
-                      <div class="box"> <span><strong>20h</strong></span>
+                      <div class="box"> <span><strong>19h</strong></span>
                         <p> Fin de l'épreuve, l'envoi des scores est bloqué. </p>
                       </div>
                     </div>
                     <div class="col-lg-3" style="margin-top: 1rem;">
-                      <div class="box"> <span><strong>20h30</strong></span>
+                      <div class="box"> <span><strong>19h30</strong></span>
                         <p>Annonce des résultats, remise des prix à l'École des Ponts et buffet convivial.</p>
                       </div>
                     </div>
@@ -250,7 +254,7 @@ if (!empty($msg_error)) {
                 <p> 
                     Ces données sont nécessaires à la bonne organisation du concours. Les participants peuvent exercer les
                     droits prévus par la loi Informatique et Libertés du 6 janvier 1978 modifiée en écrivant à 
-                    <a href="mailto:kiro.enpc@gmail.com">kiro.enpc@gmail.com</a>. 
+                    <a href="mailto:faustine.delorme@eleves.enpc.fr">faustine.delorme@eleves.enpc.fr</a>. 
                 </p>
             </div>
             
@@ -275,13 +279,25 @@ if (!empty($msg_error)) {
                 <p class="byline">Les lots</p>
 
                 <p>Voici les prix remis aux trois premières équipes étudiantes, à partager entre les membres du groupe:
+
                 <ul class="list-centered">
-                    <li>1er : 1000€</li>
-                    <li>2ème : 750 €</li>
-                    <li>3ème : 500 €</li>
+                  <li>1er : 1200€</li>
+                  <li>2ème : 800 €</li>
+                  <li>3ème : 400 €</li>
                 </ul>
-                En plus de ces prix, la 1ère équipe composée uniquement de <strong>1A</strong> de l'École des Ponts gagnera <strong>750 €</strong>.
+                <p>
+                  La 1ère équipe des de l'École des <strong>Ponts</strong> gagnera <strong>600 €</strong>.
                 </p>
+                
+                <p>Si les Ponts font top 3:</p>
+                <ul class="list-centered">
+                  <li>1er : 1500€</li>
+                  <li>2ème : 900 €</li>
+                  <li>3ème : 600 €</li>
+                </ul>
+                
+                En plus de ces prix, la 1ère équipe composée uniquement de <strong>1A</strong> de l'École des <strong>Ponts</strong> gagnera <strong>des iPads</strong>.
+              </p>
                 <button class="btn btn-info" onclick="self.location.href='inscription.php'">S'inscrire</button>
             </div>
             
