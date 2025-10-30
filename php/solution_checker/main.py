@@ -1,6 +1,6 @@
 from json import decoder
 from converter import convert_instance, convert_solution
-from loader import load_json
+from loader import *
 from solution_format_checker import solution_checker
 from constraints import check_constraints
 from cost import cost
@@ -17,16 +17,9 @@ def parser(instance_path, solution_path):
     """
 
     try:
-        # We import both files in variables
-        raw_instance = load_json(instance_path)
-        raw_solution = load_json(solution_path)
-
-        # We check the validity of the solution's format
-        solution_checker(raw_instance, raw_solution)
-
         # we convert the instance and the solution in order to manipulate them more easily
-        converted_instance = convert_instance(raw_instance)
-        converted_solution = convert_solution(raw_solution)
+        converted_instance = load_csv_instance(instance_path)
+        converted_solution = load_csv_solution(solution_path)
 
         # We check whether the solution verifies all constraints
         check_constraints(converted_solution, converted_instance)
@@ -36,9 +29,6 @@ def parser(instance_path, solution_path):
 
     except FileNotFoundError:
         return "Error: File not found, parsing aborted"
-
-    except decoder.JSONDecodeError:
-        return "Error: File is not a valid Json"
 
     except InstanceError as errors:
         message = "Error: instance is not valid, traceback list for information:\n"

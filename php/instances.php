@@ -1,18 +1,15 @@
 <?php
 const INSTANCE_NAMES = [
-    "KIRO-toy",
+    "KIRO-tiny",
     "KIRO-small",
     "KIRO-medium",
-    "KIRO-large",
-    "KIRO-huge"
 ];
 
 const INSTANCE_FILES = [
-    "/var/www/html/solution_checker/instances/input/toy.json",
-    "/var/www/html/solution_checker/instances/input/small.json",
-    "/var/www/html/solution_checker/instances/input/medium.json",
-    "/var/www/html/solution_checker/instances/input/large.json",
-    "/var/www/html/solution_checker/instances/input/huge.json",
+    "/var/www/html/solution_checker/instances/tiny.json",
+    "/var/www/html/solution_checker/instances/small.json",
+    "/var/www/html/solution_checker/instances/medium.json",
+    
 ];
 
 const INSTANCE_SCORES = [
