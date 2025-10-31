@@ -66,7 +66,7 @@ def load_csv_instance(file_path):
     #print(vehicles)
     #print(customers)
     #print(network)
-    return (vehicles, customers, network)
+    return {"vehicles" : vehicles, "customers": customers, "network": network}
 
 def load_csv_solution(file_path):
 #routes a que des valerus entières avec des None pour les fin de routes

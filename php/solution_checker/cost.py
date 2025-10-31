@@ -1,32 +1,43 @@
 from constants import *
 from math import sqrt, cos, sin
 from errors import InstanceError
+from loader import load_csv_instance, load_csv_solution
 
 """
     Calculate total cost of the solution - MAIN OBJECTIVE FUNCTION
-    instance: problem instance data:
-    instance = 
-    {
-        "vehicles": {},
-        "customers": {},
-        "network": {}
-    }
+    instance: problem instance data loaded from load_csv_instance
+    solution: routes data loaded from load_csv_solution
 """
-def euclidean_distance(coord1, coord2):
-    return sqrt((coord1[0] - coord2[0])**2 + (coord1[1] - coord2[1])**2)
+
+def get_vehicle(vehicles, small, refrigerated):
+    """Get vehicle by small and refrigerated flags"""
+    for vehicle in vehicles:
+        if vehicle['small'] == small and vehicle['refrigerated'] == refrigerated:
+            return vehicle
+    raise InstanceError([f"Vehicle not found for small={small}, refrigerated={refrigerated}"])
+
+def extract_customer_sequence(route):
+    """Extract customer sequence from route dict"""
+    sequence = []
+    idx = 1
+    while f'customer_{idx}' in route:
+        customer_id = route[f'customer_{idx}']
+        if customer_id is not None:
+            sequence.append(customer_id)
+        idx += 1
+    return sequence
 
 def rental_cost(instance, route):
-    """Calculate rental cost for a route
-    """
-    vehicle_key = (route[SMALL], route[REFRIGERATED])
-    return instance["vehicles"][vehicle_key][RENTAL_COST]
+    """Calculate rental cost for a route"""
+    vehicle = get_vehicle(instance["vehicles"], route['small'], route['refrigerated'])
+    return vehicle['rental_cost']
 
 def fuel_cost(instance, route):
     """Calculate fuel cost for a route"""
-    vehicle_key = (route[SMALL], route[REFRIGERATED])
-    unit_cost = instance["vehicles"][vehicle_key][UNIT_FUEL_COST]
+    vehicle = get_vehicle(instance["vehicles"], route['small'], route['refrigerated'])
+    unit_cost = vehicle['unit_fuel_cost']
     
-    sequence = [DEPOT_ID] + route[CUSTOMER_SEQUENCE] + [DEPOT_ID]
+    sequence = [0] + extract_customer_sequence(route) + [0]
     total_distance = 0
     
     for i in range(len(sequence) - 1):
@@ -37,10 +48,10 @@ def fuel_cost(instance, route):
 
 def diameter_cost(instance, route):
     """Calculate diameter penalty cost for a route"""
-    vehicle_key = (route[SMALL], route[REFRIGERATED])
-    unit_cost = instance["vehicles"][vehicle_key][UNIT_DIAMETER_COST]
+    vehicle = get_vehicle(instance["vehicles"], route['small'], route['refrigerated'])
+    unit_cost = vehicle['unit_diameter_cost']
     
-    sequence = route[CUSTOMER_SEQUENCE]
+    sequence = extract_customer_sequence(route)
     
     if len(sequence) < 2:
         return 0
@@ -60,17 +71,24 @@ def route_cost(instance, route):
             diameter_cost(instance, route))
 
 def total_cost(instance, solution):
-    """ Calculate total cost of the solution - MAIN OBJECTIVE FUNCTION
-        instance: problem instance data:
-        instance = 
-        {
-            "vehicles": {},
-            "customers": {},
-            "network": {}
-        }
+    """Calculate total cost of the solution - MAIN OBJECTIVE FUNCTION
+    
+    Args:
+        instance: dict with keys "vehicles", "customers", "network"
+                 from load_csv_instance()
+        solution: list of route dicts from load_csv_solution()
+    
+    Returns:
+        float: total cost in euro cents
     """
     total = 0
-    for route in solution[ROUTES]:
+    for route in solution:
         total += route_cost(instance, route)
     
     return total
+
+# Test
+if __name__ == "__main__":
+    instance = load_csv_instance("instances/tiny")
+    solution = load_csv_solution("instances/tiny/example_routes.csv")
+    print(total_cost(instance, solution))
