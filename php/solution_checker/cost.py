@@ -88,7 +88,7 @@ def total_cost(instance, solution):
     return total
 
 # Test
-if __name__ == "__main__":
-    instance = load_csv_instance("instances/tiny")
-    solution = load_csv_solution("instances/tiny/example_routes.csv")
-    print(total_cost(instance, solution))
+#if __name__ == "__main__":
+#    instance = load_csv_instance("instances/tiny")
+#    solution = load_csv_solution("instances/tiny/example_routes.csv")
+#    print(total_cost(instance, solution))
