@@ -5,10 +5,10 @@ const INSTANCE_NAMES = [
     "KIRO-medium",
 ];
 
-const INSTANCE_FILES = [
-    "/var/www/html/solution_checker/instances/tiny.json",
-    "/var/www/html/solution_checker/instances/small.json",
-    "/var/www/html/solution_checker/instances/medium.json",
+const INSTANCE_PATHES = [
+    "/var/www/html/solution_checker/instances/tiny",
+    "/var/www/html/solution_checker/instances/small",
+    "/var/www/html/solution_checker/instances/medium",
     
 ];
 

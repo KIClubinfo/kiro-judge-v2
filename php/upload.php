@@ -61,7 +61,7 @@ include("navbar.php");
             $old_score = $team->get_instance_best_score($key);
 
 
-            $command_format = sprintf($command, $file_path, INSTANCE_FILES[$key]);
+            $command_format = sprintf($command, $file_path, INSTANCE_PATHES[$key]);
               $results = [];
             exec($command_format, $results);
             $score = intval($results[0]);
