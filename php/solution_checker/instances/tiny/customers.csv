@@ -1,0 +1,5 @@
+id,longitude,latitude,order_weight,window_start,window_end,delivery_duration,small_street,fresh_product
+0,2.3499,48.7494,,,,,,
+1,2.3619,48.85288,291,553,654,17,1,1
+2,2.34898,48.84155,365,530,610,19,0,1
+3,2.33515,48.83347,269,474,538,23,0,1
