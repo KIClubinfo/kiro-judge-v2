@@ -70,7 +70,7 @@ def route_cost(instance, route):
             fuel_cost(instance, route) + 
             diameter_cost(instance, route))
 
-def total_cost(instance, solution):
+def cost(instance, solution):
     """Calculate total cost of the solution - MAIN OBJECTIVE FUNCTION
     
     Args:
