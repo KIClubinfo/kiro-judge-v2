@@ -37,10 +37,7 @@ def load_csv_instance(file_path):
     network = [[0,     11540, 10247, 9410],
               [11540, 0,     1575,  2914], 
               [10247, 1575,  0,     1353],
-              [9410,  2914,  1353,  0]]
-    A 2D list of integers representing the graph with 0 on the diagonal.
-    
-    Returns the triplet (vehicles, customers, network) as a dictionary.
+              [9410,  2914,  1353,  0]]    
     """
     
     # --- 1. Load data from CSV files ---
@@ -86,7 +83,6 @@ def load_csv_instance(file_path):
                      raise InstanceError([f"Invalid non-numeric value '{customer[key]}' for '{key}' in customers.csv"])
     
     # --- 4. Process Network Data (Build Adjacency Matrix) ---
-    # This is a much more robust way to build the matrix.
     num_nodes = len(customers)
     if num_nodes == 0:
         raise InstanceError(["customers.csv is empty or could not be read."])
