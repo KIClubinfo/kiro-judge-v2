@@ -1,7 +1,5 @@
 from json import decoder
-from converter import convert_instance, convert_solution
 from loader import *
-from solution_format_checker import solution_checker
 from constraints import check_constraints
 from cost import cost
 from errors import InstanceError
@@ -22,7 +20,7 @@ def parser(instance_path, solution_path):
         converted_solution = load_csv_solution(solution_path)
 
         # We check whether the solution verifies all constraints
-        check_constraints(converted_solution, converted_instance)
+        check_constraints(converted_instance, converted_solution)
 
         # We calculate its cost
         return cost(converted_instance, converted_solution)
