@@ -12,7 +12,7 @@ from loader import load_csv_instance, load_csv_solution
 def get_vehicle(vehicles, small, refrigerated):
     """Get vehicle by small and refrigerated flags"""
     for vehicle in vehicles:
-        if vehicle['small'] == small and vehicle['refrigerated'] == refrigerated:
+        if vehicle[SMALL] == small and vehicle[REFRIGERATED] == refrigerated:
             return vehicle
     raise InstanceError([f"Vehicle not found for small={small}, refrigerated={refrigerated}"])
 
@@ -29,15 +29,15 @@ def extract_customer_sequence(route):
 
 def rental_cost(instance, route):
     """Calculate rental cost for a route"""
-    vehicle = get_vehicle(instance["vehicles"], route['small'], route['refrigerated'])
-    return vehicle['rental_cost']
+    vehicle = get_vehicle(instance["vehicles"], route[SMALL], route[REFRIGERATED])
+    return vehicle[RENTAL_COST]
 
 def fuel_cost(instance, route):
     """Calculate fuel cost for a route"""
-    vehicle = get_vehicle(instance["vehicles"], route['small'], route['refrigerated'])
-    unit_cost = vehicle['unit_fuel_cost']
+    vehicle = get_vehicle(instance["vehicles"], route[SMALL], route[REFRIGERATED])
+    unit_cost = vehicle[UNIT_FUEL_COST]
     
-    sequence = [0] + extract_customer_sequence(route) + [0]
+    sequence = [DEPOT_ID] + extract_customer_sequence(route) + [DEPOT_ID]
     total_distance = 0
     
     for i in range(len(sequence) - 1):
@@ -48,8 +48,8 @@ def fuel_cost(instance, route):
 
 def diameter_cost(instance, route):
     """Calculate diameter penalty cost for a route"""
-    vehicle = get_vehicle(instance["vehicles"], route['small'], route['refrigerated'])
-    unit_cost = vehicle['unit_diameter_cost']
+    vehicle = get_vehicle(instance["vehicles"], route[SMALL], route[REFRIGERATED])
+    unit_cost = vehicle[UNIT_DIAMETER_COST]
     
     sequence = extract_customer_sequence(route)
     
