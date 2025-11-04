@@ -7,4 +7,5 @@ from errors import InstanceError
 
 
 def check_constraints(instance, solution):
+    
     pass
