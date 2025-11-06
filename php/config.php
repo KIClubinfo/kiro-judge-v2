@@ -10,10 +10,10 @@ ini_set('display_errors', 'Off');
 $db_password = $_ENV["mysql_password"];
 
 setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
-$date_limite_inscription = date_create('2024-11-14');
+$date_limite_inscription = date_create('2025-11-07');
 $aujourdhui = new DateTime("now");
-$dateconcours = new DateTime('2024-11-14 14:00:00');
-$datefinconcours = new DateTime('2024-11-14 20:00:00');
+$dateconcours = new DateTime('2025-11-07 13:00:00');
+$datefinconcours = new DateTime('2025-11-14 20:00:00');
 
 $phpFileUploadErrors = array(
     0 => 'There is no error, the file uploaded with success',
