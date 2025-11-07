@@ -156,7 +156,7 @@ def check_constraints(instance, solution):
             
             # Calculate travel time from current_customer to next_customer
             travel_duration = _get_travel_duration(
-                route_vehicle, current_customer, next_customer, current_time
+                route_vehicle, current_customer, next_customer, current_time, instance["network_Manhattan"]
             )
             
             # Constraint 3b/3c: Arrival time at customer
