@@ -47,7 +47,7 @@ def fuel_cost(instance, route):
 def diameter_cost(instance, route):
     """Calculate diameter penalty cost for a route"""
     vehicle = get_vehicle(instance["vehicles"], route[FAMILY])
-    unit_cost = vehicle[DIAMETER_COST]
+    unit_cost = vehicle[RADIUS_COST]
     
     sequence = extract_customer_sequence(route)
     
