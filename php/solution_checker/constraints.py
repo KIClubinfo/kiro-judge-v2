@@ -105,7 +105,7 @@ def check_constraints(instance, solution):
     # to match the solution file's 'small'/'refrigerated' (ints).
     try:
         vehicle_map = {
-            (v[FAMILY]): v 
+            (v['family']): v 
             for v in instance["vehicles"]
         }
     except KeyError:
