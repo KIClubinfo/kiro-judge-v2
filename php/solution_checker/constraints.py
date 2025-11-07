@@ -34,7 +34,7 @@ def _get_travel_duration(vehicle, customer_i, customer_j, departure_time_t, netw
     # 1. Calculate Reference Travel Time: τ_s,f(i, j)
     # τ_s,f(i,j) = δ_M(i, j)/sf + pf
     ref_time = (
-        network_Manhattan[customer_i[ID]][customer_j[ID]] * vehicle[SPEED] + vehicle[PARKING_TIME]
+        network_Manhattan[customer_i[ID]][customer_j[ID]] / vehicle[SPEED] + vehicle[PARKING_TIME]
     )
 
     # 2. Calculate Time-Dependent Factor: γ_s,f(t)
