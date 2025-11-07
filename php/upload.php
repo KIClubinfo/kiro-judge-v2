@@ -56,12 +56,12 @@ include("navbar.php");
 
 
             move_uploaded_file($tmp_name, $file_path);
-            $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
+            $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s" -ic "%s"';
 
             $old_score = $team->get_instance_best_score($key);
 
 
-            $command_format = sprintf($command, $file_path, INSTANCE_PATHES[$key]);
+            $command_format = sprintf($command, $file_path, INSTANCE_PATHES[$key][0], INSTANCE_PATHES[$key][1]);
               $results = [];
             exec($command_format, $results);
             $score = intval($results[0]);

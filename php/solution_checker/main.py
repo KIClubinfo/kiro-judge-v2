@@ -11,7 +11,7 @@ from errors import InstanceError
 # - from loader import * (replaced with specific imports)
 
 
-def parser(instance_path, solution_path):
+def parser(instance_path, instance, solution_path):
     """
     Loads, validates, and scores a solution for a given instance.
     
@@ -22,7 +22,7 @@ def parser(instance_path, solution_path):
 
     try:
         # Load the instance data (vehicles, customers, network)
-        converted_instance = load_csv_instance(instance_path)
+        converted_instance = load_csv_instance(instance_path, instance)
         
         # Load the participant's solution (routes)
         converted_solution = load_csv_solution(solution_path)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         "KIRO Problem and give it a score."
     )
     python_parser.add_argument(
-        "-i", "--instance", 
+        "-i", "--instance_path", 
         dest="instance_path", 
         default=None,
         help="Path to the instance directory (e.g., './instances/tiny')"
@@ -66,6 +66,12 @@ if __name__ == "__main__":
         dest="solution_path", 
         default=None,
         help="Path to the solution file (e.g., './routes.csv')"
+    )
+    python_parser.add_argument(
+        "-ic", "--instance_chosen", 
+        dest="instance", 
+        default=None,
+        help="The instance chosen)"
     )
 
     args = python_parser.parse_args()
@@ -81,10 +87,14 @@ if __name__ == "__main__":
         print("Error: Missing solution path. Use -s or --solution.")
         exit(1)
 
+    if not args.instance_chosen:
+        print("Error: Missing solution chosen. Use -ic or --instance_chosen.")
+        exit(1)
+
     # --- 3. Run the Parser ---
     
     # Pass the file paths to the main parser function
-    result = parser(args.instance_path, args.solution_path)
+    result = parser(args.instance_path, args.solution_path, args.instance_chosen)
 
     # --- 4. Print the Output ---
     

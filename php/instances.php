@@ -1,14 +1,28 @@
 <?php
 const INSTANCE_NAMES = [
-    "KIRO-tiny",
-    "KIRO-small",
-    "KIRO-medium",
+    "KIRO-01",
+    "KIRO-02",
+    "KIRO-03",
+    "KIRO-04",
+    "KIRO-05",
+    "KIRO-06",
+    "KIRO-07",
+    "KIRO-08",
+    "KIRO-09",
+    "KIRO-10",
 ];
 
 const INSTANCE_PATHES = [
-    "/var/www/html/solution_checker/instances/tiny",
-    "/var/www/html/solution_checker/instances/small",
-    "/var/www/html/solution_checker/instances/medium",
+    ["/var/www/html/solution_checker/instances", "instance_01"],
+    ["/var/www/html/solution_checker/instances", "instance_02"],
+    ["/var/www/html/solution_checker/instances", "instance_03"],
+    ["/var/www/html/solution_checker/instances", "instance_04"],
+    ["/var/www/html/solution_checker/instances", "instance_05"],
+    ["/var/www/html/solution_checker/instances", "instance_06"],
+    ["/var/www/html/solution_checker/instances", "instance_07"],
+    ["/var/www/html/solution_checker/instances", "instance_08"],
+    ["/var/www/html/solution_checker/instances", "instance_09"],
+    ["/var/www/html/solution_checker/instances", "instance_10"],
     
 ];
 
