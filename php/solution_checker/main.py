@@ -69,7 +69,7 @@ if __name__ == "__main__":
     )
     python_parser.add_argument(
         "-ic", "--instance_chosen", 
-        dest="instance", 
+        dest="instance_chosen", 
         default=None,
         help="The instance chosen)"
     )
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     # --- 3. Run the Parser ---
     
     # Pass the file paths to the main parser function
-    result = parser(args.instance_path, args.solution_path, args.instance_chosen)
+    result = parser(args.instance_path, args.instance_chosen, args.solution_path)
 
     # --- 4. Print the Output ---
     
