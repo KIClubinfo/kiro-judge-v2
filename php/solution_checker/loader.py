@@ -95,7 +95,6 @@ def load_csv_instance(file_path, instance):
         for j in range(num_nodes):
             network_Manhattan[i][j] = abs(RHO*2*pi/360*(customers[i]["latitude"]-customers[j]["latitude"])) + abs(RHO*cos(2*pi/360*customers[0]["longitude"])*2*pi/360*(customers[j]["longitude"]-customers[i]["longitude"]))
             network_Euclidean[i][j] = sqrt(abs(RHO*2*pi/360*(customers[i]["latitude"]-customers[j]["latitude"]))**2 + abs(RHO*cos(2*pi/360*customers[0]["longitude"])*2*pi/360*(customers[j]["longitude"]-customers[i]["longitude"]))**2)
-            print(f'i : {i}, j : {j}, value : {network_Manhattan[i][j]}')
     return {"vehicles": vehicles, "customers": customers, "network_Euclidean": network_Euclidean, "network_Manhattan": network_Manhattan}
 
 
