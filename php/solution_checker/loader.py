@@ -127,7 +127,7 @@ def load_csv_solution(file_path):
                 # Empty cells (for routes with fewer stops) become None
                 route[key] = None
             else:
-                # All values (small, refrigerated, customer IDs) are integers
+                # All values (customer IDs) are integers
                 try:
                     route[key] = int(value)
                 except ValueError:

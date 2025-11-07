@@ -68,8 +68,8 @@ def _extract_customer_sequence(route):
     """
     sequence = []
     idx = 1
-    while f'customer_{idx}' in route:
-        customer_id = route[f'customer_{idx}']
+    for key in list(route.keys())[1:]:
+        customer_id = route[key]
         if customer_id is not None:
             sequence.append(customer_id)
         else:
@@ -77,6 +77,16 @@ def _extract_customer_sequence(route):
             break
         idx += 1
     return sequence
+
+"""     while f'customer_{idx}' in route:
+        customer_id = route[f'customer_{idx}']
+        if customer_id is not None:
+            sequence.append(customer_id)
+        else:
+            # Reaches the end of this route's sequence (e.g., customer_3 is None)
+            break
+        idx += 1
+    return sequence """
 
 # --- Main Constraint Check Function ---
 
@@ -203,7 +213,7 @@ def check_constraints(instance, solution):
     if served_set != all_customer_ids:
         missing = all_customer_ids - served_set
         if missing:
-            errors.append(f"Missing customers (not served): {missing}.")
+            errors.append(f"Missing customers (not served): {missing} or error naming column customer_xx.")
             
         extra = served_set - all_customer_ids
         if extra:
