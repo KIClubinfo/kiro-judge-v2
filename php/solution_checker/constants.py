@@ -1,5 +1,5 @@
 # Vehicle fields
-FAMILY = "family"
+FAMILY = "vehicle_id"
 MAX_CAPACITY = "max_capacity"
 RENTAL_COST = "rental_cost"
 FUEL_COST = "fuel_cost"
