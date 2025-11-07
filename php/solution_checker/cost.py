@@ -9,12 +9,11 @@ from loader import load_csv_instance, load_csv_solution
     solution: routes data loaded from load_csv_solution
 """
 
-def get_vehicle(vehicles, small, refrigerated):
+def get_vehicle(vehicles, family):
     """Get vehicle by small and refrigerated flags"""
     for vehicle in vehicles:
-        if vehicle[SMALL] == small and vehicle[REFRIGERATED] == refrigerated:
-            return vehicle
-    raise InstanceError([f"Vehicle not found for small={small}, refrigerated={refrigerated}"])
+        return vehicles[family]
+    raise InstanceError([f"Vehicle not found for family={family}"])
 
 def extract_customer_sequence(route):
     """Extract customer sequence from route dict"""
@@ -29,27 +28,27 @@ def extract_customer_sequence(route):
 
 def rental_cost(instance, route):
     """Calculate rental cost for a route"""
-    vehicle = get_vehicle(instance["vehicles"], route[SMALL], route[REFRIGERATED])
+    vehicle = get_vehicle(instance["vehicles"], route[FAMILY])
     return vehicle[RENTAL_COST]
 
 def fuel_cost(instance, route):
     """Calculate fuel cost for a route"""
-    vehicle = get_vehicle(instance["vehicles"], route[SMALL], route[REFRIGERATED])
-    unit_cost = vehicle[UNIT_FUEL_COST]
+    vehicle = get_vehicle(instance["vehicles"], route[FAMILY])
+    unit_cost = vehicle[FUEL_COST]
     
     sequence = [DEPOT_ID] + extract_customer_sequence(route) + [DEPOT_ID]
     total_distance = 0
     
     for i in range(len(sequence) - 1):
         src, dst = sequence[i], sequence[i + 1]
-        total_distance += instance["network"][src][dst]
+        total_distance += instance["network_Manhattan"][src][dst]
     
     return unit_cost * total_distance
 
 def diameter_cost(instance, route):
     """Calculate diameter penalty cost for a route"""
-    vehicle = get_vehicle(instance["vehicles"], route[SMALL], route[REFRIGERATED])
-    unit_cost = vehicle[UNIT_DIAMETER_COST]
+    vehicle = get_vehicle(instance["vehicles"], route[FAMILY])
+    unit_cost = vehicle[DIAMETER_COST]
     
     sequence = extract_customer_sequence(route)
     
@@ -59,10 +58,10 @@ def diameter_cost(instance, route):
     max_distance = 0
     for i in range(len(sequence)):
         for j in range(i + 1, len(sequence)):
-            distance = instance["network"][sequence[i]][sequence[j]]
+            distance = instance["network_Euclidean"][sequence[i]][sequence[j]]
             max_distance = max(max_distance, distance)
     
-    return unit_cost * max_distance
+    return unit_cost * (1/2*max_distance)**2
 
 def route_cost(instance, route):
     """Calculate total cost for a single route"""

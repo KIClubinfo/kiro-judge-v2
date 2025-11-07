@@ -16,7 +16,7 @@ It performs 5 main checks:
 
 # --- Internal Helper Functions ---
 
-def _get_travel_duration(vehicle, customer_i, customer_j, departure_time_t):
+def _get_travel_duration(vehicle, customer_i, customer_j, departure_time_t, network_Manhattan):
     """
     Calculates the time-dependent travel duration τ_s,f(i, j | t).
     This implements the formulas from section 2 of the PDF.
@@ -32,11 +32,9 @@ def _get_travel_duration(vehicle, customer_i, customer_j, departure_time_t):
     """
     
     # 1. Calculate Reference Travel Time: τ_s,f(i, j)
-    # τ_s,f(i,j) = a_x|x_j - x_i| + a_y|y_j - y_i| + b
+    # τ_s,f(i,j) = δ_M(i, j)/sf + pf
     ref_time = (
-        vehicle[LONGITUDE_DIFF_TIME] * abs(customer_j[LONGITUDE] - customer_i[LONGITUDE]) +
-        vehicle[LATITUDE_DIFF_TIME] * abs(customer_j[LATITUDE] - customer_i[LATITUDE]) +
-        vehicle[BIAS_TIME]
+        network_Manhattan[customer_i][customer_j] * vehicle[SPEED] + vehicle[PARKING_TIME]
     )
 
     # 2. Calculate Time-Dependent Factor: γ_s,f(t)
@@ -107,11 +105,11 @@ def check_constraints(instance, solution):
     # to match the solution file's 'small'/'refrigerated' (ints).
     try:
         vehicle_map = {
-            (int(v[SMALL]), int(v[REFRIGERATED])): v 
+            (v[FAMILY]): v 
             for v in instance["vehicles"]
         }
     except KeyError:
-        raise InstanceError(["Invalid vehicles.csv: 'small' or 'refrigerated' not found."])
+        raise InstanceError(["Invalid vehicles.csv: 'family' not found"])
 
     # --- 2. Check Customer Partitioning (Constraint 1) ---
     
@@ -119,7 +117,7 @@ def check_constraints(instance, solution):
     all_customer_ids = {c[ID] for c in instance["customers"] if c[ID] != DEPOT_ID}
     served_customer_ids = []
 
-    # --- 3. Check each route for constraints (2a, 2b, 2c, 3) ---
+    # --- 3. Check each route for constraints (2, 3) ---
     
     for route_idx, route in enumerate(solution):
         
@@ -131,11 +129,11 @@ def check_constraints(instance, solution):
 
         # --- Get Route Vehicle ---
         try:
-            route_vehicle = vehicle_map[(route[SMALL], route[REFRIGERATED])]
+            route_vehicle = vehicle_map[route[FAMILY]]
         except KeyError:
             errors.append(
-                f"Route {route_idx}: Invalid vehicle type specified "
-                f"(small={route[SMALL]}, refrigerated={route[REFRIGERATED]})."
+                f"Route {route_idx}: Invalid vehicle family specified "
+                f"(family={route[FAMILY]})."
             )
             # Cannot check other constraints for this route, skip to next
             continue 
@@ -153,22 +151,6 @@ def check_constraints(instance, solution):
             
             next_customer = customer_map[customer_id]
             served_customer_ids.append(customer_id)
-
-            # --- Check Vehicle Type Constraints (2b, 2c) ---
-            
-            # Constraint 2b: Small streets
-            if route_vehicle[SMALL] == 0 and next_customer[SMALL_STREET] == 1:
-                errors.append(
-                    f"Route {route_idx}: Vehicle is large but serves customer "
-                    f"{customer_id} on a small street."
-                )
-            
-            # Constraint 2c: Fresh products
-            if route_vehicle[REFRIGERATED] == 0 and next_customer[FRESH_PRODUCT] == 1:
-                errors.append(
-                    f"Route {route_idx}: Vehicle is not refrigerated but serves "
-                    f"customer {customer_id} with fresh products."
-                )
 
             # --- Check Time Constraints (3a, 3b, 3c, 3d) ---
             
@@ -199,7 +181,7 @@ def check_constraints(instance, solution):
             # Accumulate weight for capacity check
             total_weight += next_customer[ORDER_WEIGHT]
 
-        # --- Check Vehicle Capacity Constraint (2a) ---
+        # --- Check Vehicle Capacity Constraint (2) ---
         if total_weight > route_vehicle[MAX_CAPACITY]:
             errors.append(
                 f"Route {route_idx}: Exceeds capacity. "

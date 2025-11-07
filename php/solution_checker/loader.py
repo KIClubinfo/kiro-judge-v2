@@ -1,12 +1,15 @@
 import csv
 from errors import InstanceError
+from math import *
+from constants import *
+
 
 """
 This file loads and converts instance data and solution files
 from their CSV format into Python data structures (lists and dicts).
 """
 
-def load_csv_instance(file_path):
+def load_csv_instance(file_path, instance):
     """
     Loads all instance data (vehicles, customers, network) from a directory.
     
@@ -18,23 +21,19 @@ def load_csv_instance(file_path):
                           is the distance from node i to node j.
     Example return format:
     
-    vehicles = [{'small': 0.0, 'refrigerated': 0.0, 'max_capacity': 3500.0, 
-                'rental_cost': 18000.0, 'unit_fuel_cost': 35.0, 'unit_diameter_cost': 20.0, 
-                'longitude_diff_time': 111.67, 'latitude_diff_time': 161.67, 'bias_time': 8.33, 
-                'fourier_cos_0': 1.18, 'fourier_cos_1': -0.16, 'fourier_cos_2': -0.02, 
-                'fourier_cos_3': 0.03, 'fourier_sin_0': 0.0, 'fourier_sin_1': -0.12, 
-                'fourier_sin_2': 0.0, 'fourier_sin_3': 0.06}
-              ]
-    
+    vehicles = [{   'family': 1.0, 'max_capacity': 800.0, 'rental_cost': 260.0, 'fuel_cost': 0.0005, 
+                    'radius_cost': 0.0009705352210466934, 'speed': 12.29, 'parking_time': 400.0, 'fourier_cos_0': 1.22, 
+                    'fourier_sin_0': 0.0, 'fourier_cos_1': -0.19, 'fourier_sin_1': -0.14, 'fourier_cos_2': -0.03, 
+                    'fourier_sin_2': -0.01, 'fourier_cos_3': 0.03, 'fourier_sin_3': 0.06}
+              ]    
     customers = [{'id': 0, 'longitude': 2.3499, 'latitude': 48.7494, 'order_weight': None,
-                 'window_start': None, 'window_end': None, 'delivery_duration': None, 
-                 'small_street': None, 'fresh_product': None},
+                 'window_start': None, 'window_end': None, 'delivery_duration': None},
                 {'id': 1, 'longitude': 2.3619, 'latitude': 48.85288,
                  'order_weight': 291, 'window_start': 553, 'window_end': 654, 
-                 'delivery_duration': 17, 'small_street': 1, 'fresh_product': 1}
+                 'delivery_duration': 17}
                ]
 
-    network = [[0,     11540, 10247, 9410],
+    network_Euclidean or network_Manhattan = [[0,     11540, 10247, 9410],
               [11540, 0,     1575,  2914], 
               [10247, 1575,  0,     1353],
               [9410,  2914,  1353,  0]]    
@@ -44,27 +43,28 @@ def load_csv_instance(file_path):
     try:
         with open(f"{file_path}/vehicles.csv", 'r') as f:
             vehicles = list(csv.DictReader(f))
-        with open(f"{file_path}/customers.csv", 'r') as f:
+        with open(f"{file_path}/{instance}.csv", 'r') as f:
             customers = list(csv.DictReader(f))
-        with open(f"{file_path}/network.csv", 'r') as f:
-            network_dict = list(csv.DictReader(f))
     except FileNotFoundError as e:
         raise InstanceError([f"Error loading instance file: {e.filename} not found."])
 
     # --- 2. Process Vehicle Data ---
     # All vehicle parameters are numeric (costs, coefficients, etc.)
-    for vehicle in vehicles:
-        for key in vehicle:
+    for vehicle_family in vehicles:
+        for key in vehicle_family:
             try:
-                vehicle[key] = float(vehicle[key])
+                if(key == 'id'):
+                    vehicle_family[key] = int(vehicle_family[key])
+                else :
+                    vehicle_family[key] = float(vehicle_family[key])
             except ValueError:
-                raise InstanceError([f"Invalid non-numeric value '{vehicle[key]}' for '{key}' in vehicles.csv"])
+                raise InstanceError([f"Invalid non-numeric value '{vehicle_family[key]}' for '{key}' in vehicles.csv"])
 
     # --- 3. Process Customer Data ---
     # Define which keys should be integers vs. floats, as per kiro2025.pdf
     INT_KEYS = [
         'id', 'order_weight', 'window_start', 'window_end', 
-        'delivery_duration', 'small_street', 'fresh_product'
+        'delivery_duration'
     ]
     FLOAT_KEYS = ['longitude', 'latitude']
 
@@ -88,25 +88,15 @@ def load_csv_instance(file_path):
         raise InstanceError(["customers.csv is empty or could not be read."])
 
     # Create an (N x N) matrix, where N = num_nodes
-    network = [[0] * num_nodes for _ in range(num_nodes)]
+    network_Manhattan = [[0] * num_nodes for _ in range(num_nodes)]
+    network_Euclidean = [[0] * num_nodes for _ in range(num_nodes)]
     
-    for edge in network_dict:
-        try:
-            # Get data from the CSV row
-            source = int(edge["source"])
-            destination = int(edge["destination"])
-            distance = int(edge["distance"])
-            
-            # Populate the matrix
-            if 0 <= source < num_nodes and 0 <= destination < num_nodes:
-                network[source][destination] = distance
-            else:
-                print(f"Warning: network.csv edge ({source}, {destination}) is out of bounds.")
-                
-        except ValueError:
-            raise InstanceError([f"Invalid non-integer value in network.csv: {edge}"])
-    
-    return {"vehicles": vehicles, "customers": customers, "network": network}
+    for i in range(num_nodes):
+        for j in range(num_nodes):
+            network_Manhattan[i][j] = abs(RHO*2*pi/360*(customers[i]["latitude"]-customers[j]["latitude"])) + abs(RHO*cos(2*pi/360*customers[0]["longitude"])*2*pi/360*(customers[j]["longitude"]-customers[i]["longitude"]))
+            network_Euclidean[i][j] = sqrt(abs(RHO*2*pi/360*(customers[i]["latitude"]-customers[j]["latitude"]))**2 + abs(RHO*cos(2*pi/360*customers[0]["longitude"])*2*pi/360*(customers[j]["longitude"]-customers[i]["longitude"]))**2)
+            print(f'i : {i}, j : {j}, value : {network_Manhattan[i][j]}')
+    return {"vehicles": vehicles, "customers": customers, "network_Euclidean": network_Euclidean, "network_Manhattan": network_Manhattan}
 
 
 def load_csv_solution(file_path):
@@ -147,13 +137,15 @@ def load_csv_solution(file_path):
     return routes
 
 # Test
-# if __name__ == "__main__":
-#     instance_data = load_csv_instance("instances/tiny")
-#     print("--- Instance Data ---")
-#     print(instance_data["vehicles"])
-#     print(instance_data["customers"])
-#     print(instance_data["network"])
+if __name__ == "__main__":
+    instance_data = load_csv_instance("php/solution_checker/instances", "instance_01")
+    print("--- Instance Data ---")
+    print(instance_data)
+#    print(instance_data["vehicles"])
+#    print(instance_data["customers"])
+#    print(instance_data["network_Manhattan"])
+#    print(instance_data["network_Euclidean"])
     
-#     solution_data = load_csv_solution("instances/tiny/example_routes.csv")
-#     print("\n--- Solution Data ---")
-#     print(solution_data)
+#    solution_data = load_csv_solution("instances/tiny/example_routes.csv")
+#    print("\n--- Solution Data ---")
+#    print(solution_data)
