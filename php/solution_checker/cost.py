@@ -11,7 +11,7 @@ from loader import load_csv_instance, load_csv_solution
 
 def get_vehicle(vehicles, family):
     """Get vehicle by small and refrigerated flags"""
-    return vehicles[family]
+    return vehicles[family-1]
     raise InstanceError([f"Vehicle not found for family={family}"])
 
 def extract_customer_sequence(route):
