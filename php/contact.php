@@ -23,9 +23,9 @@ include("navbar.php");
                             <h3 style="color:black;">Contact :</h3>
                             <p style="color:#2f2f2f; font-size:large;">Vous trouverez ci-dessous tous les contacts dont vous aurez besoin en cas de problème :</p>
                             <ul class="list-centered">
-                                <li style="color:black; font-size:large;">Contact 1 : kiro.enpc@gmail.com</li>
-                                <li style="color:black; font-size:large;">Contact 2 : 07.50.24.52.18 || Pour les questions générales</li>
-                                <li style="color:black; font-size:large;">Contact 3 : 07.81.70.52.38 || Pour les problèmes avec Discord</li>
+                                <li style="color:black; font-size:large;">Contact 1 : faustine.delorme@eleves.enpc.fr</li>
+                                <li style="color:black; font-size:large;">Contact 2 : +33 6 18 46 22 05 || Pour les questions générales</li>
+                                <li style="color:black; font-size:large;">Contact 3 : +33 6 52 83 00 14 || Pour les problèmes techniques</li>
                             </ul>
                         </div>
                     </div>

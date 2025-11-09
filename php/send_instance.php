@@ -33,10 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
 
                     $instances = [
-                        "/var/www/html/solution_checker/instances/KIRO-tiny.json",
-                        "/var/www/html/solution_checker/instances/KIRO-medium.json",
-                        "/var/www/html/solution_checker/instances/KIRO-large.json",
-                        "/var/www/html/solution_checker/instances/KIRO-huge.json"
+                        "/var/www/html/solution_checker/instances/instance_01.csv",
+                        "/var/www/html/solution_checker/instances/instance_02.csv",
+                        "/var/www/html/solution_checker/instances/instance_03.csv",
+                        "/var/www/html/solution_checker/instances/instance_04.csv",
+                        "/var/www/html/solution_checker/instances/instance_05.csv",
+                        "/var/www/html/solution_checker/instances/instance_06.csv",
+                        "/var/www/html/solution_checker/instances/instance_07.csv",
+                        "/var/www/html/solution_checker/instances/instance_08.csv",
+                        "/var/www/html/solution_checker/instances/instance_09.csv",
+                        "/var/www/html/solution_checker/instances/instance_10.csv"
                     ];
 
 

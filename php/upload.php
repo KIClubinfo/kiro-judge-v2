@@ -124,23 +124,43 @@ include("navbar.php");
                         <p style="color:#2f2f2f; font-size:large;">Vous pouvez envoyer un ou plusieurs fichiers à la fois :</p>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">tiny : routes.csv:</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 01 : routes.csv:</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">small : routes.csv:</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 02 : routes.csv:</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">medium : routes.csv:</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 03 : routes.csv:</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">large : routes.csv:</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 04 : routes.csv:</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
-                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">huge : routes.csv:</h4>
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 05 : routes.csv:</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 06 : routes.csv:</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 07 : routes.csv:</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 08 : routes.csv:</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 09 : routes.csv:</h4>
+                                <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color:black; font-weight:500; text-align:left; margin-top:2rem;">Instance 10 : routes.csv:</h4>
                                 <input class="form-control" type="file" name="solutions[]" style="border: 1px solid #0dcaf0;">
                             </div>
                             <div class="form-group">
