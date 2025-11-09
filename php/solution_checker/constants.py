@@ -1,5 +1,6 @@
+import math
 # Vehicle fields
-FAMILY = "vehicle_id"
+FAMILY = "family" 
 MAX_CAPACITY = "max_capacity"
 RENTAL_COST = "rental_cost"
 FUEL_COST = "fuel_cost"
@@ -18,17 +19,24 @@ WINDOW_START = "window_start"
 WINDOW_END = "window_end"
 DELIVERY_DURATION = "delivery_duration"
 
-# Network fields
-SOURCE = "source"
-DESTINATION = "destination"
-DISTANCE = "distance"
-
 # Solution fields
 ROUTES = "routes"
 CUSTOMER_SEQUENCE = "customer_sequence"
 
-# Constants
+# Depot ID is always 0
 DEPOT_ID = 0
-DEPARTURE_TIME = 300  # 5:00 AM in minutes from midnight
-OMEGA = 2 * 3.14159265359 / 1440  # Daily periodicity
+
+# Earth radius in meters, from main.pdf and constants.jl 
 RHO = 6.371e6
+
+# Departure time from depot
+# main.pdf  and eval.jl both use t=0 as the start time.
+DEPARTURE_TIME = 0.0
+
+# Omega (angular frequency) for Fourier series
+#
+# CRITICAL: This reproduces the Julia reference logic.
+# The PDF [cite: 51] specifies T = 86400 seconds.
+# The Julia eval.jl passes time 't' in seconds to a function using
+# an omega 'ω' based on T=1440.
+OMEGA = 2 * math.pi / 1440.0

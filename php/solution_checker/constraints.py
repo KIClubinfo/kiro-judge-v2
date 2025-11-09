@@ -3,42 +3,43 @@ from constants import *
 from errors import InstanceError
 
 """
-This file checks all solution constraints as defined in the kiro2025.pdf.
-
-It performs 5 main checks:
-1.  Customer Partitioning: Each customer is in exactly one route.
-2.  Vehicle Capacity: Route weight does not exceed vehicle capacity.
-3.  Vehicle Type: Small street / fresh product rules are followed.
-4.  Time Windows: Simulates each route to ensure deliveries are
-    made within [t_min, t_max].
-5.  Data Integrity: Catches invalid customer or vehicle IDs.
+This file checks all solution constraints as defined in the main.pdf
+and interpreted by the Julia reference evaluator.
 """
 
 # --- Internal Helper Functions ---
 
-def _get_travel_duration(vehicle, customer_i, customer_j, departure_time_t, network_Manhattan):
+def _get_travel_duration(vehicle, customer_i_id, customer_j_id, departure_time_t, network_Manhattan):
     """
-    Calculates the time-dependent travel duration τ_s,f(i, j | t).
-    This implements the formulas from section 2 of the PDF.
+    Calculates the time-dependent travel duration τ_f(i, j | t).
+    This implements the formulas from main.pdf [cite: 45, 47-52]
+    as modified by the Julia evaluator eval.jl .
     
     Args:
-        vehicle (dict): The vehicle object (from instance["vehicles"]).
-        customer_i (dict): The customer object for the source.
-        customer_j (dict): The customer object for the destination.
-        departure_time_t (float): The departure time from customer_i.
+        vehicle (dict): The vehicle object.
+        customer_i_id (int): The ID (and index) of the source customer.
+        customer_j_id (int): The ID (and index) of the destination customer.
+        departure_time_t (float): The departure time from customer_i (in seconds).
+        network_Manhattan (list): The 2D distance matrix.
 
     Returns:
-        float: The travel duration in minutes.
+        float: The travel duration in seconds.
     """
     
-    # 1. Calculate Reference Travel Time: τ_s,f(i, j)
-    # τ_s,f(i,j) = δ_M(i, j)/sf + pf
-    ref_time = (
-        network_Manhattan[customer_i[ID]][customer_j[ID]] / vehicle[SPEED] + vehicle[PARKING_TIME]
-    )
+    # 1. Calculate Reference Travel Time: τ(i, j)
+    #    τ(i,j) = δ_M(i, j) / s_f
+    #
+    #    NOTE: We match the Julia eval.jl which omits parking_time (p_f).
+    #    The old Python code and PDF [cite: 50] included it, but the Julia ref does not.
+    manhattan_distance = network_Manhattan[customer_i_id][customer_j_id]
+    ref_time = manhattan_distance / vehicle[SPEED]
 
-    # 2. Calculate Time-Dependent Factor: γ_s,f(t)
-    # γ_s,f(t) = Σ[n=0 to 3] (α(n)cos(nωt) + β(n)sin(nωt))
+    # 2. Calculate Time-Dependent Factor: γ_f(t)
+    #    γ_f(t) = Σ[n=0 to 3] (α(n)cos(nωt) + β(n)sin(nωt))
+    #
+    #    NOTE: We use OMEGA based on T=1440 (from Julia constants.jl )
+    #    and 't' in seconds (from Julia eval.jl ),
+    #    to faithfully reproduce the Julia implementation.
     
     t = departure_time_t
     gamma = vehicle["fourier_cos_0"]  # n=0 (sin(0)=0)
@@ -57,36 +58,27 @@ def _get_travel_duration(vehicle, customer_i, customer_j, departure_time_t, netw
     )
 
     # 3. Return final duration
-    # τ_s,f(i,j|t) = τ_s,f(i,j) * γ_s,f(t)
+    # τ_f(i,j|t) = τ(i,j) * γ_f(t) [cite: 45]
     return ref_time * gamma
 
 
 def _extract_customer_sequence(route):
     """
     Extracts the ordered customer sequence from a route dictionary.
-    (Internal copy from cost.py to avoid circular dependencies).
+    (This is the correct version from cost.py)
     """
     sequence = []
     idx = 1
-    for key in list(route.keys())[1:]:
-        customer_id = route[key]
-        if customer_id is not None:
-            sequence.append(customer_id)
-        else:
-            # Reaches the end of this route's sequence (e.g., customer_3 is None)
-            break
-        idx += 1
-    return sequence
-
-"""     while f'customer_{idx}' in route:
+    # As per main.pdf , headers are customer_1, customer_2, ...
+    while f'customer_{idx}' in route:
         customer_id = route[f'customer_{idx}']
         if customer_id is not None:
             sequence.append(customer_id)
         else:
-            # Reaches the end of this route's sequence (e.g., customer_3 is None)
+            # Reaches the end of this route's sequence
             break
         idx += 1
-    return sequence """
+    return sequence
 
 # --- Main Constraint Check Function ---
 
@@ -103,29 +95,29 @@ def check_constraints(instance, solution):
     errors = []
     
     # --- 1. Build lookup maps for fast access ---
-    
-    # Customer map: {id: customer_dict}
     try:
+        # Customer map: {id: customer_dict}
         customer_map = {c[ID]: c for c in instance["customers"]}
     except KeyError:
-        raise InstanceError(["Invalid customers.csv: 'id' column not found."])
+        raise InstanceError(["Invalid instance file: 'id' column not found."])
 
-    # Vehicle map: {(small, refrigerated): vehicle_dict}
-    # Note: We cast vehicle 'small'/'refrigerated' (floats) to int
-    # to match the solution file's 'small'/'refrigerated' (ints).
     try:
+        # Vehicle map: {family_id: vehicle_dict}
         vehicle_map = {
-            (v['family']): v 
+            v['family']: v 
             for v in instance["vehicles"]
         }
     except KeyError:
-        raise InstanceError(["Invalid vehicles.csv: 'family' not found"])
+        raise InstanceError(["Invalid vehicles.csv: 'family' column not found"])
 
     # --- 2. Check Customer Partitioning (Constraint 1) ---
     
     # Get all customer IDs that must be served (all except depot)
     all_customer_ids = {c[ID] for c in instance["customers"] if c[ID] != DEPOT_ID}
     served_customer_ids = []
+    
+    # Tolerance for floating point time comparisons (from eval.jl )
+    TIME_TOLERANCE = 1e-5
 
     # --- 3. Check each route for constraints (2, 3) ---
     
@@ -135,29 +127,36 @@ def check_constraints(instance, solution):
         customer_sequence = _extract_customer_sequence(route)
         
         if not customer_sequence:
-            continue  # Empty route, only pays rental (checked in cost.py)
+            continue  # Empty route is valid (just pays rental)
 
         # --- Get Route Vehicle ---
         try:
+            # route[FAMILY] uses FAMILY="family" from constants.py
             route_vehicle = vehicle_map[route[FAMILY]]
         except KeyError:
             errors.append(
-                f"Route {route_idx}: Invalid vehicle family specified "
-                f"(family={route[FAMILY]})."
+                f"Route {route_idx+1}: Invalid vehicle family specified "
+                f"(family={route.get(FAMILY)})."
             )
             # Cannot check other constraints for this route, skip to next
             continue 
 
         total_weight = 0
-        current_time = DEPARTURE_TIME  # All trucks depart at 5:00 AM
-        current_customer = customer_map[DEPOT_ID] # Start at depot
+        # DEPARTURE_TIME is 0.0 (in seconds), 
+        current_time = DEPARTURE_TIME  
+        current_customer_id = DEPOT_ID # Start at depot
 
         # --- Simulate the route, customer by customer ---
         for customer_id in customer_sequence:
             
             if customer_id not in customer_map:
-                errors.append(f"Route {route_idx}: Contains invalid customer ID {customer_id}.")
-                continue
+                errors.append(f"Route {route_idx+1}: Contains invalid customer ID {customer_id}.")
+                # This customer_id is fatal for the route, skip to next route
+                break 
+            
+            if customer_id == DEPOT_ID:
+                errors.append(f"Route {route_idx+1}: Cannot visit depot (ID 0) mid-route.")
+                break
             
             next_customer = customer_map[customer_id]
             served_customer_ids.append(customer_id)
@@ -166,27 +165,29 @@ def check_constraints(instance, solution):
             
             # Calculate travel time from current_customer to next_customer
             travel_duration = _get_travel_duration(
-                route_vehicle, current_customer, next_customer, current_time, instance["network_Manhattan"]
+                route_vehicle, current_customer_id, customer_id, 
+                current_time, instance["network_Manhattan"]
             )
             
-            # Constraint 3b/3c: Arrival time at customer
+            # Constraint 3b/3c: Arrival time at customer [cite: 77-79]
             arrival_time = current_time + travel_duration
             
-            # Constraint 3d: Check arrival against time window [t_min, t_max]
-            if arrival_time > next_customer[WINDOW_END]:
+            # Constraint 3d: Check arrival against time window [t_min, t_max] [cite: 81-82]
+            # 
+            if arrival_time > next_customer[WINDOW_END] + TIME_TOLERANCE:
                 errors.append(
-                    f"Route {route_idx}: Late arrival at customer {customer_id}. "
+                    f"Route {route_idx+1}: Late arrival at customer {customer_id}. "
                     f"Arrived at {arrival_time:.2f}, window ends at {next_customer[WINDOW_END]}."
                 )
 
-            # Constraint 3a: Calculate departure time
+            # Constraint 3a: Calculate departure time [cite: 75-76]
             # Wait if arriving early, then perform delivery
             delivery_start_time = max(arrival_time, next_customer[WINDOW_START])
             departure_time = delivery_start_time + next_customer[DELIVERY_DURATION]
 
             # Update state for next loop iteration
             current_time = departure_time
-            current_customer = next_customer
+            current_customer_id = customer_id
             
             # Accumulate weight for capacity check
             total_weight += next_customer[ORDER_WEIGHT]
@@ -194,7 +195,7 @@ def check_constraints(instance, solution):
         # --- Check Vehicle Capacity Constraint (2) ---
         if total_weight > route_vehicle[MAX_CAPACITY]:
             errors.append(
-                f"Route {route_idx}: Exceeds capacity. "
+                f"Route {route_idx+1}: Exceeds capacity for family {route[FAMILY]}. "
                 f"Total weight {total_weight} > max capacity {route_vehicle[MAX_CAPACITY]}."
             )
 
@@ -213,10 +214,12 @@ def check_constraints(instance, solution):
     if served_set != all_customer_ids:
         missing = all_customer_ids - served_set
         if missing:
-            errors.append(f"Missing customers (not served): {missing} or error naming column customer_xx.")
+            errors.append(f"Missing customers (not served): {missing}.")
             
         extra = served_set - all_customer_ids
         if extra:
+            # This should be caught by the (customer_id not in customer_map)
+            # check, but we include it for robustness.
             errors.append(f"Invalid customers served (not in instance): {extra}.")
 
     # --- 5. Raise all collected errors ---
