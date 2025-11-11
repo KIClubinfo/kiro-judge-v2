@@ -24,7 +24,7 @@ else{
                         <thead>
                           <tr class="table-dark">
                             <th scope="col">Nom d'équipe</th>
-                            <th scope="col">Score</th>
+                            <th scope="col">Score (lower is better)</th>
                           </tr>
                         </thead>
                         <tbody>
