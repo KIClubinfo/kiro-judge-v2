@@ -69,9 +69,9 @@ def _extract_customer_sequence(route):
     """
     sequence = []
     idx = 1
-    # As per main.pdf , headers are customer_1, customer_2, ...
-    while f'customer_{idx}' in route:
-        customer_id = route[f'customer_{idx}']
+    # As per main.pdf , headers are order_1, order_2, ...
+    while f'order_{idx}' in route:
+        customer_id = route[f'order_{idx}']
         if customer_id is not None:
             sequence.append(customer_id)
         else:
