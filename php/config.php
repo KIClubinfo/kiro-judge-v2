@@ -142,7 +142,6 @@ class team
                     $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
                     $datefreeze = new DateTime('2025-11-10 19:30:00');
                     if ($date<=$datefreeze) {
-                        var_dump("ow");
                         if ($req3 = $conn->prepare("UPDATE teams SET public_score =? WHERE id=?")) {
                             $req3->bind_param("si", $score, $this->id);
                             $req3->execute();
