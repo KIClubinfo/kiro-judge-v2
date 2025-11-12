@@ -5,7 +5,7 @@ include("navbar.php");
 
 $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 
-if ($date < $datelast30concours) {
+if ($date > $datelast30concours) {
 
     $datelast30concours_str = $datelast30concours->format('Y-m-d H:i:s');
 
