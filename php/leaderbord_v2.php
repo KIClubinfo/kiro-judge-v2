@@ -5,9 +5,10 @@ include("navbar.php");
 
 $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 
-if ($date > $datelast30concours) {
+if ($date < $datelast30concours) {
 
-    // Préparation de la requête
+    $datelast30concours_str = $datelast30concours->format('Y-m-d H:i:s');
+
     $sql = "
         SELECT team_id, MIN(score) AS best_score
         FROM solutions
@@ -17,13 +18,13 @@ if ($date > $datelast30concours) {
     ";
 
     if ($req2 = $conn->prepare($sql)) {
-        // Liaison du paramètre (type: s = string si c’est un datetime au format texte)
-        $req2->bind_param('s', $datelast30concours);
 
+        $req2->bind_param('s', $datelast30concours_str);
         $req2->execute();
-        $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC);
 
+        $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC);
         $req2->close();
+
     } else {
         $erreur3 = "Erreur lors de la préparation de la requête SQL.";
         die($erreur3);
