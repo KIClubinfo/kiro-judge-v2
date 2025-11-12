@@ -45,6 +45,10 @@ if (isset($_GET['maj_admin'])) { //On affiche un message pour signifier la bonne
   $msg = "Les données de l'utilisateur ont été mises à jour.";
 }
 
+if (isset($_GET['freeze_leaderboard'])) { //On affiche un message pour signifier le leaderbopard est freeze
+  $msg = "Le leaderboard n'est plus visible.";
+}
+
 if (!empty($msg)) {
   echo 
   '<div class="alert alert-warning  alert-dismissible fade show" role="alert" style="position:fixed; bottom:0; margin:1rem;">

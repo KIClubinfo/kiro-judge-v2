@@ -2,7 +2,7 @@
 include("config.php");
 
 include("date_protection.php");
-protect_before($dateconcours,$datelast30concours);
+protect_freeze($dateconcours,$datelast30concours);
 include("header.php");
 include("navbar.php");
 
