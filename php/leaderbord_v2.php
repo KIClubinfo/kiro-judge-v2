@@ -3,7 +3,34 @@ include("config.php");
 include("header.php");
 include("navbar.php");
 
-if ($req2 = $conn->prepare("SELECT id FROM teams ORDER BY score ASC")) { //toutes les id des teams
+$date = new DateTime(null, new DateTimeZone('Europe/Paris'));
+
+if ($date > $datelast30concours) {
+
+    // Préparation de la requête
+    $sql = "
+        SELECT team_id, MIN(score) AS best_score
+        FROM solutions
+        WHERE upload_time < ? AND score > 0
+        GROUP BY team_id
+        ORDER BY best_score ASC
+    ";
+
+    if ($req2 = $conn->prepare($sql)) {
+        // Liaison du paramètre (type: s = string si c’est un datetime au format texte)
+        $req2->bind_param('s', $datelast30concours);
+
+        $req2->execute();
+        $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        $req2->close();
+    } else {
+        $erreur3 = "Erreur lors de la préparation de la requête SQL.";
+        die($erreur3);
+    }
+}
+else{
+  if ($req2 = $conn->prepare("SELECT id FROM teams ORDER BY score ASC")) { //toutes les id des teams
     $req2->execute();
     $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
 
@@ -13,6 +40,9 @@ else{
     $erreur3 = "Erreur lors de la connexion à la base de données.";
     die();
 }
+}
+
+
 ?>
 <header class="masthead min-vh-80">
     <div class="container-fluid">

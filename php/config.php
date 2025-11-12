@@ -13,7 +13,8 @@ setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
 $date_limite_inscription = date_create('2025-11-10');
 $aujourdhui = new DateTime("now");
 $dateconcours = new DateTime('2025-11-07 13:00:00');
-$datefinconcours = new DateTime('2025-11-14 20:00:00');
+$datelast30concours = new DateTime('2025-11-12 19:30:00');
+$datefinconcours = new DateTime('2025-11-12 20:00:00');
 
 $phpFileUploadErrors = array(
     0 => 'There is no error, the file uploaded with success',
