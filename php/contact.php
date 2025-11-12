@@ -27,7 +27,7 @@ include("navbar.php");
                                 <li style="color:black; font-size:large;">Contact-mail 2 : anwar.kardid@eleves.enpc.fr</li>
                                 <li style="color:black; font-size:large;">Contact-mail 2 : Charles.DE-BOURGOING@eleves.enpc.fr</li>
                                 <li style="color:black; font-size:large;">Contact-num  1 : +33 6 18 46 22 05 Faustine D.|| Pour les questions générales</li>
-                                <li style="color:black; font-size:large;">Contact-num  2 : +33 6 52 83 00 14 Thomas B.  || Pour les problèmes techniques</li>
+                                <li style="color:black; font-size:large;">Contact-num  2 : +33 6 52 83 00 14 Thomas L.  || Pour les problèmes techniques</li>
                             </ul>
                         </div>
                     </div>
