@@ -46,7 +46,7 @@ if (isset($_GET['maj_admin'])) { //On affiche un message pour signifier la bonne
 }
 
 if (isset($_GET['freeze_leaderboard'])) { //On affiche un message pour signifier le leaderbopard est freeze
-  $msg = "Le leaderboard n'est plus visible.";
+  $msg = "Le palmarès n'est plus visible.";
 }
 
 if (!empty($msg)) {

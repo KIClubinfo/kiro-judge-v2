@@ -12,9 +12,9 @@ $db_password = $_ENV["mysql_password"];
 setlocale(LC_TIME, ['fr', 'fra', 'fr_FR']);
 $date_limite_inscription = date_create('2025-11-12');
 $aujourdhui = new DateTime("now");
-$dateconcours = new DateTime('2025-11-12 13:00:00');
-$datelast30concours = new DateTime('2025-11-12 21:30:00');
-$datefinconcours = new DateTime('2025-11-13 21:00:00');
+$dateconcours = new DateTime('2025-11-13 13:00:00');
+$datelast30concours = new DateTime('2025-11-13 18:30:00');
+$datefinconcours = new DateTime('2025-11-13 19:00:00');
 
 $phpFileUploadErrors = array(
     0 => 'There is no error, the file uploaded with success',
