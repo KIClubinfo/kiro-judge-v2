@@ -7,8 +7,10 @@ $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
 
 if ($date > $datelast30concours) {
 
+    // Conversion de la date en string SQL
     $datelast30concours_str = $datelast30concours->format('Y-m-d H:i:s');
 
+    // Sélectionne le meilleur score (le plus petit) pour chaque équipe
     $sql = "
         SELECT team_id, MIN(score) AS best_score
         FROM solutions
@@ -29,22 +31,23 @@ if ($date > $datelast30concours) {
         $erreur3 = "Erreur lors de la préparation de la requête SQL.";
         die($erreur3);
     }
-}
-else{
-  if ($req2 = $conn->prepare("SELECT id FROM teams ORDER BY score ASC")) { //toutes les id des teams
-    $req2->execute();
-    $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
 
-    $req2->close();
-}
-else{
-    $erreur3 = "Erreur lors de la connexion à la base de données.";
-    die();
-}
-}
+} else {
 
+    // Sinon on prend simplement toutes les équipes triées par score
+    $sql = "SELECT id, score FROM teams ORDER BY score ASC";
 
+    if ($req2 = $conn->prepare($sql)) {
+        $req2->execute();
+        $result_ids = $req2->get_result()->fetch_all(MYSQLI_ASSOC);
+        $req2->close();
+    } else {
+        $erreur3 = "Erreur lors de la connexion à la base de données.";
+        die($erreur3);
+    }
+}
 ?>
+
 <header class="masthead min-vh-80">
     <div class="container-fluid">
         <div class="row">
@@ -60,24 +63,41 @@ else{
                         </thead>
                         <tbody>
                           <?php
-                          foreach($result_ids as $id_team){
-                          $id_team = $id_team["id"];
-                          $team_affiche = new team($id_team);
-                          ?>
-                          <tr>
-                            <th scope="row"><a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id) ?>"><?php echo htmlspecialchars($team_affiche->nom); ?></a></th>
-                            <td><?php echo htmlspecialchars(number_format((float)$team_affiche->score)); ?></td>
-                          </tr>
-                          <?php
+                          foreach ($result_ids as $row) {
+                              // Compatibilité : la colonne peut s’appeler "team_id" ou "id"
+                              $id_team = isset($row["team_id"]) ? $row["team_id"] : $row["id"];
+                              $team_affiche = new team($id_team);
+
+                              // Récupération du score
+                              $score = isset($row["best_score"]) ? $row["best_score"] : $team_affiche->score;
+                              ?>
+                              <tr>
+                                <th scope="row">
+                                  <a href="teams.php?id_team=<?php echo htmlspecialchars($team_affiche->id); ?>">
+                                    <?php echo htmlspecialchars($team_affiche->nom); ?>
+                                  </a>
+                                </th>
+                                <td>
+                                  <?php
+                                  if (is_numeric($score)) {
+                                      echo number_format((float)$score, 2, '.', ' ');
+                                  } else {
+                                      echo '—';
+                                  }
+                                  ?>
+                                </td>
+                              </tr>
+                              <?php
                           }
                           ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-          </div>
-      </div>
-  </header>
-  <?php
-  include("footer.php");
-  ?>
+        </div>
+    </div>
+</header>
+
+<?php
+include("footer.php");
+?>
