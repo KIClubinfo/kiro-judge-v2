@@ -2,7 +2,7 @@
 include("config.php");
 include("header.php");
 include("navbar.php");
-include("date_protcetion.php");
+include("date_protection.php");
 protect_before($dateconcours,$datelast30concours);
 
 $date = new DateTime(null, new DateTimeZone('Europe/Paris'));
