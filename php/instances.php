@@ -27,14 +27,19 @@ const INSTANCE_PATHES = [
 ];
 
 const INSTANCE_SCORES = [
-    1000000,
-    5000000,
-    1000000000,
-    5000000000,
-    300000000000
+    701900,
+    1751300,
+    3024000,
+    4305500,
+    5804800,
+    7694300,
+    10572900,
+    10572900,
+    17960300,
+    21872500
 ];
 
-const WORST_SCORE = 306006000000;
+const WORST_SCORE = 84260400;
 
 function display_errors_button($errors) {
     $errors_format = str_replace(PHP_EOL, "<br/>", $errors);
