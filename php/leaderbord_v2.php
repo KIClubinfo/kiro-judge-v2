@@ -1,8 +1,8 @@
 <?php
 include("config.php");
 
-include("date_protection.php");
-protect_freeze($dateconcours,$datelast30concours);
+/* include("date_protection.php");
+protect_freeze($dateconcours,$datelast30concours); */
 include("header.php");
 include("navbar.php");
 

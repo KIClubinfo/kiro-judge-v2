@@ -9,9 +9,9 @@ if (!isset($_SESSION["user"])){
   exit();
 }
 
-include("date_protection.php");
+/* include("date_protection.php");
 protect_before($dateconcours,$datefinconcours);
-
+ */
 include("header.php");
 include("navbar.php");
 
