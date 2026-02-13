@@ -9,16 +9,17 @@ COPY conf_server/apache.conf /usr/local/apache2/httpd.conf
 COPY conf_server/init.sql /docker-entrypoint-initdb.d/
 
 WORKDIR /var/www/html/
-COPY composer_install.sh .
-COPY composer.json .
-COPY composer.lock .
+COPY . .
 RUN chmod +x composer_install.sh
 RUN ./composer_install.sh
 RUN php composer.phar install
 
 RUN apt update && apt upgrade -y
 RUN apt install python3 -y
+RUN apt install python3-pip -y
+
 RUN mkdir -p solution_checker
-COPY solution_checker/ solution_check/
+COPY solution_checker/ solution_checker/
 RUN mkdir -p uploads
 RUN chmod -R 777 uploads
+RUN chmod -R 777 /var/www/html/

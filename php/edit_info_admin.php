@@ -82,8 +82,8 @@ include("navbar.php");
         $_SESSION['token_csrf'] = $token_csrf;
         include("header.php");
 ?>
-        <div class="content">
-          <div class="container containergrey">
+      <header class="masthead" >
+          <div class="container">
             <form action="" method="post">
               <legend>
                 <div class="number">1</div> Informations personnelles
@@ -105,7 +105,7 @@ include("navbar.php");
               <input type="submit" name="submit" value="Modifier les informations">
             </form>
           </div>
-        </div>
+      </header>
       <?php
 
       } else {
@@ -126,41 +126,51 @@ include("navbar.php");
       $result = $req->get_result()->fetch_all(MYSQLI_ASSOC); //resulats de la requête
       $req->close();
       ?>
-      <table border="4">
-        <thead>
-          <tr>
-            <th>Id équipe</th>
-            <th>Type équipe</th>
-            <th>Nom d'équipe</th>
-            <th>Id</th>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Mail</th>
-            <th>Téléphone</th>
-            <th>École</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          foreach ($result as $user) { //On affiche tous les users
-            echo '<tr>';
-            $team = new team($user["id_team"]);
-            $player = new user($user["id"]);
-            echo '<td><a href="teams.php?id_team=' . htmlspecialchars($team->id) . '">' . htmlspecialchars($team->id) . '</a></td>';
-            echo '<td>' . htmlspecialchars($team->type_equipe) . '</td>';
-            echo '<td>' . htmlspecialchars($team->nom) . '</td>';
-            echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($player->id) . '">' . htmlspecialchars($player->id) . '</a></td>';
-            echo '<td>' . htmlspecialchars($player->prenom) . '</td>';
-            echo '<td>' . htmlspecialchars($player->nom) . '</td>';
-            echo '<td>' . htmlspecialchars($player->mail) . '</td>';
-            echo '<td>' . htmlspecialchars($player->tel) . '</td>';
-            echo '<td>' . htmlspecialchars($player->ecole) . '</td>';
-
-
-            echo '</tr>';
-          } ?>
-        </tbody>
-      </table>
+      <header class="masthead" >
+          <div class="container-fluid">
+              <div class="row justify-content-center">
+                  <div class="col-lg-12">
+                      <div class="container">
+                        <div class="table-responsive">
+                            <table class="box-tableau table table-hover text-white">
+                              <thead>
+                                  <tr class="table-dark">
+                                  <th scope="col">Id équipe</th>
+                                  <th scope="col">Type équipe</th>
+                                  <th scope="col">Nom d'équipe</th>
+                                  <th scope="col">Id</th>
+                                  <th scope="col">Prénom</th>
+                                  <th scope="col">Nom</th>
+                                  <th scope="col">Mail</th>
+                                  <th scope="col">Téléphone</th>
+                                  <th scope="col">École</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <?php
+                                  foreach ($result as $user) { //On affiche tous les users
+                                  echo '<tr>';
+                                  $team = new team($user["id_team"]);
+                                  $player = new user($user["id"]);
+                                  echo '<th scope="row"><a href="teams.php?id_team=' . htmlspecialchars($team->id) . '">' . htmlspecialchars($team->id) . '</a></th>';
+                                  echo '<td>' . htmlspecialchars($team->type_equipe) . '</td>';
+                                  echo '<td>' . htmlspecialchars($team->nom) . '</td>';
+                                  echo '<td><a href="edit_info_admin.php?id=' . htmlspecialchars($player->id) . '">' . htmlspecialchars($player->id) . '</a></td>';
+                                  echo '<td>' . htmlspecialchars($player->prenom) . '</td>';
+                                  echo '<td>' . htmlspecialchars($player->nom) . '</td>';
+                                  echo '<td>' . htmlspecialchars($player->mail) . '</td>';
+                                  echo '<td>' . htmlspecialchars($player->tel) . '</td>';
+                                  echo '<td>' . htmlspecialchars($player->ecole) . '</td>';
+                                  echo '</tr>';
+                                  } ?>
+                              </tbody>
+                            </table>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </header>
     <?php
     } else {
       $erreur = "Erreur lors de la récupération des données";
@@ -173,9 +183,8 @@ include("navbar.php");
     $_SESSION['token_csrf'] = $token_csrf;
     include("header.php");
     ?>
-
-    <div class="content">
-      <div class="container containergrey">
+    <header class="masthead">
+      <div class="container">
         <form action="" method="post">
           <div class="erreur"><?php echo $erreur2; ?> </div>
           <legend>
@@ -198,7 +207,7 @@ include("navbar.php");
           <input type="submit" name="submit" value="Modifier les informations">
         </form>
       </div>
-    </div>
+    </header>
   <?php
   }
 } else { //Pas un admin

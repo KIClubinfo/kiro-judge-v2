@@ -33,10 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $command = 'python3 /var/www/html/solution_checker/main.py -s "%s" -i "%s"';
 
                     $instances = [
-                        "/var/www/html/solution_checker/instances/Asmall_fixed.json",
-                        "/var/www/html/solution_checker/instances/inst_A_fixed.json",
-                        "/var/www/html/solution_checker/instances/inst_NS_fixed.json",
-                        "/var/www/html/solution_checker/instances/inst_PMP_fixed.json"
+                        "/var/www/html/solution_checker/instances/instance_01.csv",
+                        "/var/www/html/solution_checker/instances/instance_02.csv",
+                        "/var/www/html/solution_checker/instances/instance_03.csv",
+                        "/var/www/html/solution_checker/instances/instance_04.csv",
+                        "/var/www/html/solution_checker/instances/instance_05.csv",
+                        "/var/www/html/solution_checker/instances/instance_06.csv",
+                        "/var/www/html/solution_checker/instances/instance_07.csv",
+                        "/var/www/html/solution_checker/instances/instance_08.csv",
+                        "/var/www/html/solution_checker/instances/instance_09.csv",
+                        "/var/www/html/solution_checker/instances/instance_10.csv"
                     ];
 
 
